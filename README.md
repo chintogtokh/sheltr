@@ -1,11 +1,11 @@
 # Sheltr
 
-![alt text](https://raw.githubusercontent.com/chintogtokh/sheltr/documentation/logo.png | width=100)
+<img src="https://github.com/chintogtokh/sheltr/raw/master/documentation/logo.png?sanitize=true" width="100">
 
-This utilises the MERN Stack.
+Sheltr - connecting safe homes with new students.
 
 ## Development
-
+The app utilises the MERN Stack.
 * https://blog.cloudboost.io/creating-your-first-mern-stack-application-b6604d12e4d3
 * http://mern.io/
 
