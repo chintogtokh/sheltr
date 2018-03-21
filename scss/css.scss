@@ -2,13 +2,14 @@ html{
     height:100%;
 }
 body {
-    color: #002362;
+    color: #5a5a5a;
     font-family: 'PT Sans', sans-serif !important;
     height:100%;
 }
 
 nav.navbar{
-  // background-color:white;
+  background-color: rgba(255,255,255,0.3);
+  box-shadow: 0px 0px 20px 20px rgba(255,255,255,0.3);
   font-weight: bold;
 
   .navbar-nav{
@@ -60,6 +61,12 @@ header {
                     font-size:4rem;
                 }
                 p.lead{
+                    .btn{
+                        padding-left:40px;
+                        padding-right:40px;
+                        font-weight: bold;
+                        border-radius: .9rem;
+                    }
                     font-size:1.5rem;
                 }
             }
@@ -69,5 +76,65 @@ header {
 }
 
 main{
-    padding:20px 0;
+    padding-top:50px;
+}
+
+div.featurette{
+    padding: 20px 0;
+
+    &#open-data img{
+        width:inherit;
+        padding:5px;
+
+        width:inherit;
+        margin-bottom:25px;
+        transition: all .2s ease-in-out;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+
+    &#people img{
+        width:inherit;
+        margin-bottom:25px;
+        transition: all .2s ease-in-out;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    //margin-top: 4rem;
+  }
+}
+
+img.inline-logo{
+    height:70px;
+    margin-top:-43px;
+}
+
+footer{
+    padding-top:40px;
+    padding-bottom:20px;
 }
