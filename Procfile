@@ -1,2 +1,2 @@
-web: node ./bin/www
-api: npm start --prefix ./client
+backend: node ./bin/www
+client: npm start --prefix ./client
