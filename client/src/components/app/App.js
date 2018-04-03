@@ -15,9 +15,10 @@ const App = () => (
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
         <Route exact path="/topics" component={Topics} />
         <Route exact path="/map" component={VicMap} />
+        <Route exact path="/credits" component={Credits} />
         <Route component={NoMatch} />
       </Switch>
       <Footer />
@@ -25,15 +26,38 @@ const App = () => (
   </Router>
 );
 
-const About = () => (
-  <main>
-    <h2>About</h2>
-  </main>
+const Contact = () => (
+  <div>
+    <main role="main">
+        <div className="container">
+          <h1>Contact</h1>
+          <div>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/77Ms1oCiDH4?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <ul>
+        <li>
+          Ein
+        </li>
+        <li>
+          Zwei
+        </li>
+        <li>
+          Drei
+        </li>
+        <li>
+          Vier
+        </li>
+        </ul>
+        </div>
+    </main>
+  </div>
 )
 ;
 const Topics = ({ match }) => (
   <div>
-    <h2>Topics</h2>
+  <main role="main">
+        <div className="container">
+    <h1>Topics</h1>
     <ul>
       <li>
         <Link to={`${match.url}/rendering`}>Rendering with React</Link>
@@ -50,22 +74,51 @@ const Topics = ({ match }) => (
     <Route
       exact
       path={match.url}
-      render={() => <h3>Please select a topic.</h3>}
-    />
+      render={() => <h3>Please select a topic.</h3>}/>
+  </div>
+  </main>
   </div>
 );
 
 const Topic = ({ match }) => (
   <div>
+  <main role="main">
+        <div className="container">
     <h3>{match.params.topicId}</h3>
+  </div>
+  </main>
+  </div>
+);
+
+const Credits = ({ location }) => (
+  <div>
+    <main role="main">
+      <div className="container">
+        <h1>Credits</h1>
+        <ul>
+        <li>
+          Ein
+        </li>
+        <li>
+          Zwei
+        </li>
+        <li>
+          Drei
+        </li>
+        </ul>
+      </div>
+    </main>
   </div>
 );
 
 const NoMatch = ({ location }) => (
   <div>
-    <h3>
-      No match for <code>{location.pathname}</code>
-    </h3>
+    <main role="main">
+        <div className="container">
+          <h1>Sorry :(</h1>
+          <pre>No match for <code>{location.pathname}</code></pre>
+        </div>
+    </main>
   </div>
 );
 

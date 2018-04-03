@@ -34,8 +34,9 @@ class Home extends Component {
           </div>
         </div>
       </div>
+      <div id="about"></div>
       <main role="main">
-            <div className="container" id="about">
+            <div className="container">
 
                 <div className="row featurette">
                     <div className="col-lg-7 col-md-12">
@@ -44,7 +45,7 @@ class Home extends Component {
                     <p className="lead">We are a diverse state. Do you like parks? Do you like hip bars? Or do you just want a quiet place to study? We're here to help.</p>
                     </div>
                     <div className="col-md-5 d-none d-lg-block">
-                      <img className="featurette-image img-fluid mx-auto" alt="Australia" style={{width: 350 + 'px' }} src="images/australia.png" data-holder-rendered="true" />
+                      <img className="featurette-image img-fluid mx-auto" alt="Travelers" style={{width: 350 + 'px' }} src="images/airport.jpg" data-holder-rendered="true" />
                     </div>
                 </div>
 
