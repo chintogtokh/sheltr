@@ -1,28 +1,11 @@
-html {
-  height: 100%; }
-
-body {
-  color: #5a5a5a;
-  font-family: 'PT Sans', sans-serif !important;
-  height: 100%; }
-
-nav.navbar {
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 0px 20px 20px rgba(255, 255, 255, 0.3);
-  font-weight: bold; }
-  nav.navbar .navbar-nav .nav-item .nav-link {
-    color: #002362; }
-  nav.navbar .navbar-brand img {
-    height: 50px; }
-
-header {
+div.header-container {
   display: block;
   position: relative;
   width: 100%;
   min-height: auto;
   text-align: center;
   color: #fff;
-  background-image: url(../files/back.jpg);
+  background-image: url(../../files/back.jpg);
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -30,9 +13,9 @@ header {
   -o-background-size: cover; }
 
 @media (min-width: 768px) {
-  header {
+  div.header-container {
     min-height: 100vh; }
-    header .header-content {
+    div.header-container .header-content {
       width: 100%;
       position: absolute;
       top: 50%;
@@ -40,22 +23,19 @@ header {
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%); }
-      header .header-content .header-content-inner {
+      div.header-container .header-content .header-content-inner {
         margin-right: auto;
         margin-left: auto;
         max-width: 1000px; }
-        header .header-content .header-content-inner h1 {
+        div.header-container .header-content .header-content-inner h1 {
           font-size: 4rem; }
-        header .header-content .header-content-inner p.lead {
+        div.header-container .header-content .header-content-inner p.lead {
           font-size: 1.5rem; }
-          header .header-content .header-content-inner p.lead .btn {
+          div.header-container .header-content .header-content-inner p.lead .btn {
             padding-left: 40px;
             padding-right: 40px;
             font-weight: bold;
             border-radius: .9rem; } }
-
-main {
-  padding-top: 50px; }
 
 div.featurette {
   padding: 20px 0; }
@@ -89,7 +69,3 @@ div.featurette {
 img.inline-logo {
   height: 70px;
   margin-top: -43px; }
-
-footer {
-  padding-top: 40px;
-  padding-bottom: 20px; }

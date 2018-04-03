@@ -1,0 +1,17 @@
+nav.navbar{
+  background-color: rgba(255,255,255,0.3);
+  box-shadow: 0px 0px 20px 20px rgba(255,255,255,0.3);
+  font-weight: bold;
+
+  .navbar-nav{
+    .nav-item{
+      .nav-link {
+        color:#002362;
+      }
+    }
+  }
+
+  .navbar-brand img{
+    height:50px;
+  }
+}
