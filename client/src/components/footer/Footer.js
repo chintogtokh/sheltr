@@ -14,7 +14,7 @@ class Footer extends Component {
       <div>
         <footer className="container">
           <p>
-          built with <i className="fas fa-heart"></i> in Melbourne by team saladandscrambedeggs &middot; &nbsp;
+          made with <i className="fas fa-heart"></i> in Melbourne by team saladandscrambedeggs &middot; &nbsp;
           <HashLink smooth to="/#about" scroll={el => el.scrollIntoView({ behavior: "smooth", block: 'start' })}>about</HashLink>
           &nbsp;&middot;&nbsp;
           <HashLink to="/#contact">contact</HashLink>

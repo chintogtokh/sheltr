@@ -19,12 +19,17 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1>Starting a new life in Victoria?</h1>
+              <h1><span class="before-vicmap">Starting a new life in </span><span class="vicmap">Victoria</span>?</h1>
               <p className="lead">
-                  We've got you covered
+                We've got you covered!
               </p>
               <p className="lead">
-                  <a href="/map" className="btn btn-primary btn-lg">Find a safe <i className="fas fa-home"></i></a>
+                  I want to find a <input type="text" placeholder="relatively"/> safe suburb to live in,
+                  <br /> costing <input type="text" placeholder="$100 to 200"/> per week
+                  <br />
+              </p>
+              <p className="lead">
+                <a href="/map" className="btn btn-primary btn-lg">Let's go <i class="fas fa-arrow-alt-circle-right"></i></a>
               </p>
           </div>
         </div>
@@ -33,18 +38,18 @@ class Home extends Component {
             <div className="container" id="about">
 
                 <div className="row featurette">
-                    <div className="col-md-7">
+                    <div className="col-lg-7 col-md-12">
                     <h2 className="featurette-heading">Umm, what is sheltr? <span className="text-muted"></span></h2>
                     <p className="lead">Our goal is to connect new students coming to Victoria with safe, affordable, and comfortable homes.</p>
-                    <p className="lead">We are a diverse state. Do you like parks? Do you like hip bars? Or do you just wanna quiet suburb? We're here to help.</p>
+                    <p className="lead">We are a diverse state. Do you like parks? Do you like hip bars? Or do you just want a quiet place to study? We're here to help.</p>
                     </div>
-                    <div className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto" alt="Australia" style={{width: 350 + 'px' }} src="images/australia.png" data-holder-rendered="true" />
+                    <div className="col-md-5 d-none d-lg-block">
+                      <img className="featurette-image img-fluid mx-auto" alt="Australia" style={{width: 350 + 'px' }} src="images/australia.png" data-holder-rendered="true" />
                     </div>
                 </div>
 
                 <div className="row featurette" id="open-data">
-                    <div className="col-md-5">
+                    <div className="col-md-5 d-none d-lg-block">
                         <div className="row">
                             <div className="col-md">
                                 <img alt="Apparently this is needed" src="images/data-vic.jpg" />
@@ -77,10 +82,10 @@ class Home extends Component {
                         </div>
                     </div>
 
-                    <div className="col-md-7">
+                    <div className="col-lg-7 col-md-12">
                         <h2 className="featurette-heading">...but how does it work?</h2>
-                        <p className="lead">Victoria is a digital state.</p>
-                        <p className="lead">We've gathered, analysed, mined, and messed with loads of open data made available from the Victorian government to present an interactive visualisation for your benefit.</p>
+                        <p className="lead">Victoria is a world leader in open data.</p>
+                        <p className="lead">We've gathered, analysed, mined, and crunched a ton of this data to present to you our findings.</p>
                         <p>
 
                         </p>
@@ -89,12 +94,12 @@ class Home extends Component {
                 </div>
 
                 <div className="row featurette" id="people">
-                    <div className="col-md-7">
+                    <div className="col-lg-7 col-md-12">
                         <h2 className="featurette-heading">..and who made this?</h2>
                         <p className="lead">We're four students at Monash University.</p>
-                        <p className="lead">Pls send food. We're very hungry.</p>
+                        <p className="lead">Please send food. We're very hungry. Accepting deliveries to Floor 3, Building B, Monash Caulfield.</p>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 d-none d-lg-block">
                         <div className="row">
                             <div className="col-md">
                                 <img alt="Apparently this is needed" src="images/chinto.jpg" />

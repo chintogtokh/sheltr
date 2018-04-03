@@ -2,25 +2,32 @@ div.header-container {
     display: block;
     position: relative;
     width: 100%;
-    min-height: auto;
+    min-height: 100vh;
     text-align: center;
     color: #fff;
+    padding-top:80px;
     background-image: url(../../files/back.jpg);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    padding: 20px 0;
+
+    .header-content{
+        margin-top: 80px;
+        top: calc(50% - 80px);
+    }
 }
 
-@media (min-width: 768px){
+@media (min-width: 1068px){
     div.header-container {
-        min-height: 100vh;
 
        .header-content {
             width:100%;
             position: absolute;
-            top: 50%;
+            margin-top: 80px;
+            top: calc(50% - 80px);
             padding: 0 50px;
             -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
@@ -83,9 +90,6 @@ div.featurette{
 }
 
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
 @media (min-width: 40em) {
   .featurette-heading {
     font-size: 50px;
@@ -95,4 +99,39 @@ div.featurette{
 img.inline-logo{
     height:70px;
     margin-top:-43px;
+}
+
+.header-content-inner input {
+    margin:0 10px;
+    background:transparent;
+    border:none;
+    color:white;
+    border-bottom: 3px solid white;
+    border-bottom-style: dotted;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white;
+        opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: white;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: white;
+    }
+
+}
+
+.before-vicmap{
+    z-index:10;
+    position: relative;
+}
+
+.vicmap{
+    background-image: url(../../files/vicmap.svg);
+    z-index:-1;
+    padding:35px 0;
+    background-size: cover;
 }

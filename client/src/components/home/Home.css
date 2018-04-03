@@ -2,40 +2,44 @@ div.header-container {
   display: block;
   position: relative;
   width: 100%;
-  min-height: auto;
+  min-height: 100vh;
   text-align: center;
   color: #fff;
+  padding-top: 80px;
   background-image: url(../../files/back.jpg);
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover; }
+  -o-background-size: cover;
+  padding: 20px 0; }
+  div.header-container .header-content {
+    margin-top: 80px;
+    top: calc(50% - 80px); }
 
-@media (min-width: 768px) {
-  div.header-container {
-    min-height: 100vh; }
-    div.header-container .header-content {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      padding: 0 50px;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%); }
-      div.header-container .header-content .header-content-inner {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 1000px; }
-        div.header-container .header-content .header-content-inner h1 {
-          font-size: 4rem; }
-        div.header-container .header-content .header-content-inner p.lead {
-          font-size: 1.5rem; }
-          div.header-container .header-content .header-content-inner p.lead .btn {
-            padding-left: 40px;
-            padding-right: 40px;
-            font-weight: bold;
-            border-radius: .9rem; } }
+@media (min-width: 1068px) {
+  div.header-container .header-content {
+    width: 100%;
+    position: absolute;
+    margin-top: 80px;
+    top: calc(50% - 80px);
+    padding: 0 50px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    div.header-container .header-content .header-content-inner {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 1000px; }
+      div.header-container .header-content .header-content-inner h1 {
+        font-size: 4rem; }
+      div.header-container .header-content .header-content-inner p.lead {
+        font-size: 1.5rem; }
+        div.header-container .header-content .header-content-inner p.lead .btn {
+          padding-left: 40px;
+          padding-right: 40px;
+          font-weight: bold;
+          border-radius: .9rem; } }
 
 div.featurette {
   padding: 20px 0; }
@@ -60,8 +64,6 @@ div.featurette {
   line-height: 1;
   letter-spacing: -.05rem; }
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
 @media (min-width: 40em) {
   .featurette-heading {
     font-size: 50px; } }
@@ -69,3 +71,32 @@ div.featurette {
 img.inline-logo {
   height: 70px;
   margin-top: -43px; }
+
+.header-content-inner input {
+  margin: 0 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  border-bottom: 3px solid white;
+  border-bottom-style: dotted; }
+  .header-content-inner input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */ }
+  .header-content-inner input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white; }
+  .header-content-inner input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white; }
+
+.before-vicmap {
+  z-index: 10;
+  position: relative; }
+
+.vicmap {
+  background-image: url(../../files/vicmap.svg);
+  z-index: -1;
+  padding: 35px 0;
+  background-size: cover; }
