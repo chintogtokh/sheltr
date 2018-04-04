@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import './Home.css';
 
 class Home extends Component {
@@ -19,7 +20,7 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span class="before-vicmap">Starting a new life in </span><span class="vicmap">Victoria</span>?</h1>
+              <h1><span className="before-vicmap">Starting a new life in </span><span className="vicmap">Victoria</span>?</h1>
               <p className="lead">
                 We've got you covered!
               </p>
@@ -29,7 +30,7 @@ class Home extends Component {
                   <br />
               </p>
               <p className="lead">
-                <a href="/map" className="btn btn-primary btn-lg">Let's go <i class="fas fa-arrow-alt-circle-right"></i></a>
+                <Link to="/map" className="btn btn-primary btn-lg">Let's go <i className="fas fa-arrow-alt-circle-right"></i></Link>
               </p>
           </div>
         </div>

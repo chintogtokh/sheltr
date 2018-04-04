@@ -12,47 +12,45 @@ div.header-container {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    padding: 20px 0;
+    padding: 70px 10px;
 
     .header-content{
-        margin-top: 80px;
+        padding-top: 80px;
         top: calc(50% - 80px);
     }
 }
 
 @media (min-width: 1068px){
-    div.header-container {
+  div.header-container {
+   .header-content {
+      width:100%;
+      position: absolute;
+      margin-top: 80px;
+      top: calc(50% - 80px);
+      // padding: 0 50px;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
 
-       .header-content {
-            width:100%;
-            position: absolute;
-            margin-top: 80px;
-            top: calc(50% - 80px);
-            padding: 0 50px;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-
-            .header-content-inner {
-                margin-right: auto;
-                margin-left: auto;
-                max-width: 1000px;
-                h1{
-                    font-size:4rem;
-                }
-                p.lead{
-                    .btn{
-                        padding-left:40px;
-                        padding-right:40px;
-                        font-weight: bold;
-                        border-radius: .9rem;
-                    }
-                    font-size:1.5rem;
-                }
-            }
-
+      .header-content-inner {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1000px;
+        h1{
+            font-size:3rem;
         }
+        p.lead{
+          .btn{
+              padding-left:40px;
+              padding-right:40px;
+              font-weight: bold;
+              border-radius: .9rem;
+          }
+          font-size:1.5rem;
+        }
+      }
     }
+  }
 }
 
 div.featurette{
@@ -133,5 +131,6 @@ img.inline-logo{
     background-image: url(../../files/vicmap.svg);
     z-index:-1;
     padding:35px 0;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }

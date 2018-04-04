@@ -8,6 +8,7 @@ import Navbar from "../navbar/Navbar";
 import Home from "../home/Home";
 import VicMap from "../vicmap/VicMap";
 import Footer from "../footer/Footer";
+import Contact from "../contact/Contact";
 
 const App = () => (
   <Router>
@@ -26,33 +27,7 @@ const App = () => (
   </Router>
 );
 
-const Contact = () => (
-  <div>
-    <main role="main">
-        <div className="container">
-          <h1>Contact</h1>
-          <div>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/77Ms1oCiDH4?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-          <ul>
-        <li>
-          Ein
-        </li>
-        <li>
-          Zwei
-        </li>
-        <li>
-          Drei
-        </li>
-        <li>
-          Vier
-        </li>
-        </ul>
-        </div>
-    </main>
-  </div>
-)
-;
+
 const Topics = ({ match }) => (
   <div>
   <main role="main">
