@@ -9,6 +9,7 @@ import Home from "../home/Home";
 import VicMap from "../vicmap/VicMap";
 import Footer from "../footer/Footer";
 import Contact from "../contact/Contact";
+import Login from "../login/Login";
 
 const App = () => (
   <Router>
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/topics" component={Topics} />
         <Route exact path="/map" component={VicMap} />
         <Route exact path="/credits" component={Credits} />
+        <Route exact path="/login" component={Login} />
         <Route component={NoMatch} />
       </Switch>
       <Footer />

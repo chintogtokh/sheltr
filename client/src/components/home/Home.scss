@@ -12,11 +12,15 @@ div.header-container {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    padding: 70px 10px;
+    // padding: 70px 10px;
 
     .header-content{
         padding-top: 80px;
         top: calc(50% - 80px);
+
+        .header-content-inner {
+          padding: 0 20px;
+        }
     }
 }
 

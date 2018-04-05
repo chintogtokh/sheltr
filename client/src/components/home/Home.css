@@ -11,11 +11,12 @@ div.header-container {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover;
-  padding: 70px 10px; }
+  -o-background-size: cover; }
   div.header-container .header-content {
     padding-top: 80px;
     top: calc(50% - 80px); }
+    div.header-container .header-content .header-content-inner {
+      padding: 0 20px; }
 
 @media (min-width: 1068px) {
   div.header-container .header-content {

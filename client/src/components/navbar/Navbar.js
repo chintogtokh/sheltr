@@ -16,7 +16,12 @@ class Navbar extends Component {
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                <li class="nav-item active">
+                  <Link to="/login" className="nav-link"><i className="fas fa-user"></i> Login / Signup</Link>
+                </li>
+            </ul>
         </div>
       </nav>
     );
