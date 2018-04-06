@@ -54,32 +54,32 @@ class Home extends Component {
                     <div className="col-md-5 d-none d-lg-block">
                         <div className="row">
                             <div className="col-md">
-                                <img alt="Apparently this is needed" src="images/data-vic.jpg" />
+                                <a href="https://www.data.vic.gov.au" target="_blank"><img alt="Victoria's open data directory" src="images/data-vic.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <img alt="Apparently this is needed" src="images/data-melb.jpg" />
+                                <a href="https://data.melbourne.vic.gov.au" target="_blank"><img alt="The City of Melbourne’s open data platform" src="images/data-melb.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <img alt="Apparently this is needed" src="images/crime-stats-vic.jpg" />
+                                <a href="https://www.crimestatistics.vic.gov.au" target="_blank"><img alt="Crime Statistics Agency Victoria" src="images/crime-stats-vic.jpg" /></a>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md">
-                                <img alt="Apparently this is needed" src="images/abs.jpg" />
+                                <a href="http://www.abs.gov.au" target="_blank"><img alt="Australian Bureau of Statistics" src="images/abs.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <img alt="Apparently this is needed" src="images/ptv.jpg" />
+                                <a href="https://www.ptv.vic.gov.au" target="_blank"><img alt="Public Transport Victoria" src="images/ptv.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <img alt="Apparently this is needed" src="images/vic.png" />
+                                <a href="https://www.vic.gov.au" target="_blank"><img alt="Victorian Government" src="images/vic.png" /></a>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md-4">
-                                <img alt="Apparently this is needed" src="images/australiangov.png" />
+                                <a href="https://www.australia.gov.au/about-australia/facts-and-figures/statistics" target="_blank"><img alt="Australian Government" src="images/australiangov.png" /></a>
                             </div>
                             <div className="col-md-4">
-                                <img alt="Apparently this is needed" src="images/vicroads.jpg" />
+                                <a href="https://www.vicroads.vic.gov.au" target="_blank"><img alt="Vicroads" src="images/vicroads.jpg" /></a>
                             </div>
                         </div>
                     </div>
@@ -120,8 +120,6 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </main>
         </div>
