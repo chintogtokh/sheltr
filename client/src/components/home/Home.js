@@ -54,32 +54,32 @@ class Home extends Component {
                     <div className="col-md-5 d-none d-lg-block">
                         <div className="row">
                             <div className="col-md">
-                                <a href="https://www.data.vic.gov.au" target="_blank"><img alt="Victoria's open data directory" src="images/data-vic.jpg" /></a>
+                                <a href="https://www.data.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Victoria's open data directory" src="images/data-vic.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <a href="https://data.melbourne.vic.gov.au" target="_blank"><img alt="The City of Melbourne’s open data platform" src="images/data-melb.jpg" /></a>
+                                <a href="https://data.melbourne.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="The City of Melbourne’s open data platform" src="images/data-melb.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <a href="https://www.crimestatistics.vic.gov.au" target="_blank"><img alt="Crime Statistics Agency Victoria" src="images/crime-stats-vic.jpg" /></a>
+                                <a href="https://www.crimestatistics.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Crime Statistics Agency Victoria" src="images/crime-stats-vic.jpg" /></a>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md">
-                                <a href="http://www.abs.gov.au" target="_blank"><img alt="Australian Bureau of Statistics" src="images/abs.jpg" /></a>
+                                <a href="http://www.abs.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Australian Bureau of Statistics" src="images/abs.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <a href="https://www.ptv.vic.gov.au" target="_blank"><img alt="Public Transport Victoria" src="images/ptv.jpg" /></a>
+                                <a href="https://www.ptv.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Public Transport Victoria" src="images/ptv.jpg" /></a>
                             </div>
                             <div className="col-md">
-                                <a href="https://www.vic.gov.au" target="_blank"><img alt="Victorian Government" src="images/vic.png" /></a>
+                                <a href="https://www.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Victorian Government" src="images/vic.png" /></a>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md-4">
-                                <a href="https://www.australia.gov.au/about-australia/facts-and-figures/statistics" target="_blank"><img alt="Australian Government" src="images/australiangov.png" /></a>
+                                <a href="https://www.australia.gov.au/about-australia/facts-and-figures/statistics" rel="noopener noreferrer" target="_blank"><img alt="Australian Government" src="images/australiangov.png" /></a>
                             </div>
                             <div className="col-md-4">
-                                <a href="https://www.vicroads.vic.gov.au" target="_blank"><img alt="Vicroads" src="images/vicroads.jpg" /></a>
+                                <a href="https://www.vicroads.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Vicroads" src="images/vicroads.jpg" /></a>
                             </div>
                         </div>
                     </div>
