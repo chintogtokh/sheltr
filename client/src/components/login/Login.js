@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import './Login.css';
 
 import { userActions } from '../../actions';
 
 class Login extends Component {
+
+    googleNotImplementedNotification = () => toast("Google Login hasn't been implemented yet. It's coming soon!",
+      {
+        type: toast.TYPE.INFO,
+        autoClose: 5000,
+        hideProgressBar: true,
+        bodyClassName: "custom-toast"
+      });
+
     constructor(props) {
         super(props);
 
         // reset login status
-        this.props.dispatch(userActions.logout());
+        // this.props.dispatch(userActions.logout());
 
         this.state = {
             username: '',
@@ -42,10 +52,9 @@ class Login extends Component {
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
-        <div>
-          <main role="main">
             <div className="login-container">
               <div className="container">
+                <ToastContainer />
                 <h1>Login</h1>
                 <div>
                   <form name="form" onSubmit={this.handleSubmit}>
@@ -59,17 +68,15 @@ class Login extends Component {
                     <div className="form-group inline-button-group">
                       <button type="submit" className="btn btn-primary">Login</button>
                       {loggingIn &&
-                          <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                          <span>&nbsp;<i className="fas fa-spinner fa-pulse"></i>&nbsp;</span>
                       }
-                      <Link to="/register" className="btn btn-light">Register</Link>
-                      <button type="button" className="btn btn-light"><i className="fab fa-google"></i> Login with Google</button>
+                      <Link to="/auth/register" className="btn btn-light">Register</Link>
+                      <button type="button" onClick={this.googleNotImplementedNotification} className="btn btn-light"><i className="fab fa-google"></i> Login with Google</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-          </main>
-        </div>
         );
     }
 }
@@ -81,8 +88,5 @@ function mapStateToProps(state) {
         loggingIn
     };
 }
-
-// const connectedLogin = connect(mapStateToProps)(Login);
-// export default { connectedLogin as Login };
 
 export default connect(mapStateToProps)(Login);
