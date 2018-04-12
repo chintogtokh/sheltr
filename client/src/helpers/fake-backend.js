@@ -56,7 +56,7 @@ export function configureFakeBackend() {
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         // find user by id in users array
                         let urlParts = url.split('/');
-                        let id = parseInt(urlParts[urlParts.length - 1]);
+                        let id = parseInt(urlParts[urlParts.length - 1],10);
                         let matchedUsers = users.filter(user => { return user.id === id; });
                         let user = matchedUsers.length ? matchedUsers[0] : null;
 
@@ -99,7 +99,7 @@ export function configureFakeBackend() {
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         // find user by id in users array
                         let urlParts = url.split('/');
-                        let id = parseInt(urlParts[urlParts.length - 1]);
+                        let id = parseInt(urlParts[urlParts.length - 1],10);
                         for (let i = 0; i < users.length; i++) {
                             let user = users[i];
                             if (user.id === id) {

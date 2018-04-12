@@ -6,10 +6,6 @@ import full_logo from '../../files/full_logo.svg';
 
 class Navbar extends Component {
 
-  constructor(props) {
-      super(props);
-  }
-
   render() {
     const { user, loggedIn } = this.props;
     return (

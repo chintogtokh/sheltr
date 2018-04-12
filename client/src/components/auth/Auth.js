@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../../helpers';
@@ -7,7 +7,6 @@ import { alertActions } from '../../actions';
 import Login from '../login/Login';
 import Logout from '../logout/Logout';
 import Register from '../register/Register';
-import PrivateRoute from '../PrivateRoute';
 import './Auth.css'
 
 class Auth extends React.Component {
