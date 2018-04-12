@@ -34,11 +34,11 @@ class Auth extends React.Component {
                             <div className={`alert ${alert.type}`}>{alert.message}</div>
                         }
                     </div>
-                    <Redirect exact from='/auth' to='/auth/login' />
                     <Switch>
                         <Route exact path="/auth/login" component={Login} />
                         <Route exact path="/auth/register" component={Register} />
                         <Route exact path="/auth/logout" component={Logout} />
+                        <Route exact path="/auth" render={() => <Redirect to="/auth/login" />} />
                     </Switch>
                 </div>
                 </div>
