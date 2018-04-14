@@ -12,6 +12,7 @@ config.dbPass = 'AnVkgeYGpDV6RaQ8y1duvdh+dD/E4z+dh46MUaU/DkA=';
 config.serverPort = 3000;
 config.bodyLimit = "100kb";
 config.corsHeaders = ["Link"];
+config.jwtSecret = "dummysecret";
 
 
 export default config;

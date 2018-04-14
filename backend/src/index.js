@@ -8,10 +8,6 @@ import cors from 'cors';
 const app = express();
 const port = 5000;
 
-mongoose.set('debug', true);
-
-// mongoose instance connection url connection
-
 let dbHost = config.dbHost;
 let dbPort = config.dbPort;
 let dbName = config.dbName;
@@ -19,6 +15,8 @@ let dbUser = config.dbUser;
 let dbPass = encodeURIComponent(config.dbPass);
 
 mongoose.Promise = global.Promise;
+mongoose.set('debug', true);
+
 var uri = `mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`;
 mongoose.connect(uri);
 
