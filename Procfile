@@ -1,2 +1,2 @@
-backend: npm run dev --prefix ./server
-client: npm start --prefix ./client
+backend: npm run dev --prefix ./backend
+frontend: npm start --prefix ./frontend
