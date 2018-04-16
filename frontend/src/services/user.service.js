@@ -17,7 +17,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch('/users/authenticate', requestOptions)
+    return fetch('/auth/login', requestOptions)
         .then(response => {
             if (!response.ok) {
                 return Promise.reject(response.statusText);

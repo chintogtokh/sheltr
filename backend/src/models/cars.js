@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-mongoose.Promise = global.Promise;
 
 const CarSchema = mongoose.Schema({
     name: {type: String, required: true}

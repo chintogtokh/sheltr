@@ -1,5 +1,5 @@
 import mongoose, {Schema} from 'mongoose';
-mongoose.Promise = global.Promise;
+import md5 from 'md5';
 
 const UserSchema = Schema({
     username: {
@@ -8,6 +8,7 @@ const UserSchema = Schema({
     },
     password: {
         type: String,
+        select: false,
         required: true
     },
     first_name: {
@@ -22,47 +23,17 @@ const UserSchema = Schema({
     collection: 'users'
 });
 
-let userModel = mongoose.model('User', UserSchema);
+UserSchema.pre('save', () => {
+    var user = this;
 
-userModel.getAll = () => {
-    var query = userModel.find({}, 'username first_name last_name');
-    var promise = query.exec();
-    return promise;
-};
+    // only hash the password if it has been modified (or is new)
+    if (!user.isModified('password')) return next();
 
-// userModel.authenticateUser = (req, res) => {
-//     let {
-//         email,
-//         password
-//     } = req.body
+    //md5 here, see http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 
-//     db.User.findByEmail(email)
-//         .then((user) => (!user) ? Promise.reject("User not found.") : user)
-//         .then((user) => user.comparePassword(password))
-//         .then((user) => user.publicParse(user))
-//         .then((user) => {
-//             res.status(200)
-//                 .json({
-//                     success: true,
-//                     token: createJWToken({
-//                         sessionData: user,
-//                         maxAge: 3600
-//                     })
-//                 })
-//         })
-//         .catch((err) => {
-//             res.status(401)
-//                 .json({
-//                     message: err || "Validation failed. Given email and password aren't matching."
-//                 })
-//         })
-// };
+    user.password = md5(user.password);
+    next();
 
-userModel.registerNewUser = (req, res) => {
-    console.log(req.body);
-    res.send({
-        'a': 'aa'
-    });
-};
+});
 
-export default userModel;
+export default mongoose.model('User', UserSchema);

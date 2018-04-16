@@ -39,7 +39,13 @@ class Navbar extends Component {
 }
 
 function mapStateToProps(state) {
-    const { loggedIn, user } = state.authentication;
+    let { loggedIn, user } = state.authentication;
+    try{
+      user = user.user;
+    }
+    catch(e){
+      //dont care for now
+    }
     return {
         loggedIn, user
     };
