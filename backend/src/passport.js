@@ -1,9 +1,13 @@
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const passportJWT = require("passport-jwt");
+import passport from 'passport';
+import passportJWT from 'passport-jwt';
+import {Strategy as LocalStrategy} from 'passport-local';
+import userModel from './models/users';
+import md5 from 'md5'; //this is temporary!!!
+import config from './config/config.dev';
+
 const JWTStrategy   = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
-import userModel from './models/users';
+
 
 passport.use(new LocalStrategy({
         usernameField: 'username',
@@ -12,17 +16,17 @@ passport.use(new LocalStrategy({
     function(username, password, cb) {
         //this one is typically a DB call. Assume that the returned user object is pre-formatted and ready for storing in JWT
         return userModel.findOne({
-                username
-            })
+                username: username
+            }).select("+password")
             .then(user => {
-                if (!user) {
-                    return cb(null, false, {
-                        message: 'Incorrect username or password.'
-                    });
+                if (!user || (user.password != md5(password))) {
+                    return cb(null, false,
+                        'Incorrect username or password.'
+                    );
                 }
-                return cb(null, user, {
-                    message: 'Logged In Successfully'
-                });
+                return cb(null, user,
+                    'Logged In Successfully'
+                );
             })
             .catch(err => cb(err));
     }
@@ -30,7 +34,7 @@ passport.use(new LocalStrategy({
 
 passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : 'your_jwt_secret'
+        secretOrKey   : config.jwtSecret
     },
     function (jwtPayload, cb) {
 

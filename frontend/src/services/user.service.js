@@ -18,20 +18,21 @@ function login(username, password) {
     };
 
     return fetch('/auth/login', requestOptions)
+        .then(response => response.json().then( data => ({
+            data: data,
+            status: response.status
+            })
+        ))
         .then(response => {
-            if (!response.ok) {
-                return Promise.reject(response.statusText);
+            if (response.status != 200) {
+                return Promise.reject(response.data.message);
             }
-
-            return response.json();
-        })
-        .then(user => {
+            const user = response.data;
             // login successful if there's a jwt token in the response
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
             }
-
             return user;
         });
 }
@@ -66,7 +67,18 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch('/users/register', requestOptions).then(handleResponse);
+    return fetch('/auth/register', requestOptions).then(response => response.json().then( data => ({
+            data: data,
+            status: response.status
+            })
+        ))
+        .then(response => {
+            if (response.status != 200) {
+                return Promise.reject(response.data.message);
+            }
+            const user = response.data;
+            return user;
+        });
 }
 
 function update(user) {

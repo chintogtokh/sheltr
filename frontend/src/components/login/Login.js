@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import './Login.css';
-
+import { history } from '../../helpers';
+import { alertActions } from '../../actions';
 import { userActions } from '../../actions';
 
 class Login extends Component {
@@ -19,14 +20,15 @@ class Login extends Component {
     constructor(props) {
         super(props);
 
-        // reset login status
-        // this.props.dispatch(userActions.logout());
-
         this.state = {
             username: '',
             password: '',
             submitted: false
         };
+
+        const { dispatch } = this.props;
+
+        dispatch(alertActions.clear());
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
