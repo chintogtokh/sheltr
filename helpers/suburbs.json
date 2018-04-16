@@ -12,5 +12,9 @@
     "outlinks": {
     "realestate": "http://www.google.com",
     "domain": "http://www.google.com"
+    },
+    "coords": {
+        "lat": -37.894,
+        "lng": 145.046
     }
 }

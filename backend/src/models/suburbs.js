@@ -14,6 +14,10 @@ const SuburbSchema = mongoose.Schema({
     outlinks: {
     	realestate: String,
     	domain: String
+    },
+    coords: {
+        lat: Number,
+        lng: Number
     }
 }, {collection : 'suburbs'});
 
