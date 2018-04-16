@@ -10,6 +10,7 @@ import VicMap from "../vicmap/VicMap";
 import Footer from "../footer/Footer";
 import Contact from "../contact/Contact";
 import Auth from "../auth/Auth";
+import Suburb from "../suburb/Suburb";
 
 const App = () => (
   <Router>
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/map" component={VicMap} />
         <Route exact path="/credits" component={Credits} />
+        <Route exact path="/suburb/:name" component={Suburb} />
         <Route path="/auth" component={Auth} />
         <Route component={NoMatch} />
       </Switch>

@@ -24,7 +24,7 @@ function login(username, password) {
             })
         ))
         .then(response => {
-            if (response.status != 200) {
+            if (response.status !== 200) {
                 return Promise.reject(response.data.message);
             }
             const user = response.data;
@@ -73,7 +73,7 @@ function register(user) {
             })
         ))
         .then(response => {
-            if (response.status != 200) {
+            if (response.status !== 200) {
                 return Promise.reject(response.data.message);
             }
             const user = response.data;

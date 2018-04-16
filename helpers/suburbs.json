@@ -1,0 +1,16 @@
+{
+    "name": "Glen Huntly",
+    "population": 12345,
+    "shim": "glen-huntly",
+    "average_rental": 10,
+    "most_popular_language": "Mongolian",
+    "amenities": {
+    "bus": true,
+    "train": true,
+    "tram": false
+    },
+    "outlinks": {
+    "realestate": "http://www.google.com",
+    "domain": "http://www.google.com"
+    }
+}

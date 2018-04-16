@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import './Login.css';
-import { history } from '../../helpers';
 import { alertActions } from '../../actions';
 import { userActions } from '../../actions';
 

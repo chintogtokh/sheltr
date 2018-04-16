@@ -3,6 +3,7 @@ import { Router } from 'express';
 import cars from './cars';
 import users from './users';
 import auth from './auth';
+import suburbs from './suburbs';
 import passport from 'passport';
 
 let api = Router();
@@ -10,6 +11,7 @@ let api = Router();
 api.use('/cars', passport.authenticate('jwt', {session: false}), cars);
 api.use('/users', users);
 api.use('/auth', auth);
+api.use('/suburbs', suburbs);
 
 // perhaps expose some API metadata at the root
 api.get('/', (req, res) => {

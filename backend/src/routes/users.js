@@ -1,8 +1,6 @@
 import userModel from '../models/users';
 
-import {
-    Router
-} from 'express';
+import {Router } from 'express';
 
 let userRouter = Router();
 

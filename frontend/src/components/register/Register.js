@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActions } from '../../actions';
 import './Register.css';
-import { history } from '../../helpers';
 import { alertActions } from '../../actions';
 
 class Register extends React.Component {
