@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Home.css';
+// import SpiderChart from '../spiderchart/SpiderChart';
 
 class Home extends Component {
 
@@ -12,20 +13,44 @@ class Home extends Component {
           <div className="header-content-inner text-xs-center">
               <h1><span className="before-vicmap">are you starting a new life in </span><span className="vicmap">victoria</span>?</h1>
               <p className="lead">
-                we'll help with the house hunt, just help us with a few numbers!
+                we'll help with the house hunt, just help us answer a few questions!
               </p>
               <p className="lead">
-                  I consider safety from crime to be
+                  I consider:
+                  <br/>
+                  <i className="fas fa-eye"></i> safety from crime to be:
                   <select name="safety">
+                    <option value>irrelevant</option>
                     <option value="1">very important</option>
                     <option value="2">moderately important</option>
                     <option value="3">not important</option>
                   </select>
-                  <br /> and affordability to be
+                  <br />
+                  <i className="fas fa-money-bill-alt"></i> affordability to be:
                   <select name="affordability">
+                    <option value>irrelevant</option>
                     <option value="1">very important</option>
                     <option value="2">moderately important</option>
                     <option value="3">not important</option>
+                  </select>
+                  <br />
+                  <i className="fas fa-language"></i> my native language to be:
+                  <select name="language">
+                    <option value>irrelevant</option>
+                    <option value="1">very important</option>
+                    <option value="2">moderately important</option>
+                    <option value="3">not important</option>
+                  </select> and my language is
+                  <select name="spoken-language">
+                    <option value="3">mongolian</option>
+                    <option value="3">russian</option>
+                  </select>
+                  <br />
+                  <i className="fas fa-university"></i> my preferred uni to be:
+                  <select name="uni">
+                    <option value>monash caulfield</option>
+                    <option value>monash clayton</option>
+                    <option value>rmit</option>
                   </select>
                   <br />
               </p>
@@ -42,13 +67,13 @@ class Home extends Component {
             <div className="row">
 
               <div className="col-md-4">
-                  <h2 className="featurette-heading">What is this? <span className="text-muted"></span></h2>
-                    <p className="lead">Our goal is to impart local knowledge on new students arriving in Victoria. We aim to connect you with safe, affordable, and comfortable places to live.</p>
+                  <h2 className="featurette-heading">what is this? <span className="text-muted"></span></h2>
+                    <p className="lead">Our goal is to impart local area knowledge on new students arriving in Victoria. We aim to connect you with safe, affordable, and comfortable places to live.</p>
                     <img className="featurette-image img-fluid mx-auto" alt="Travelers" style={{width: 350 + 'px' }} src="images/airport.jpg" data-holder-rendered="true" />
                     <p className="lead">We are a diverse state. Do you like parks? Do you like hip bars? Or do you just want a quiet place to study? We're here to help.</p>
               </div>
               <div className="col-md-4">
-                   <h2 className="featurette-heading">How does it work?</h2>
+                   <h2 className="featurette-heading">how does it work?</h2>
                     <p className="lead">Victoria is a world leader in open data.</p>
                     <p className="lead">We've gathered, analysed, mined, and crunched a ton of this data to present to you our findings.</p>
                     <p className="block-of-images">
@@ -63,7 +88,7 @@ class Home extends Component {
                     </p>
               </div>
               <div className="col-md-4">
-                  <h2 className="featurette-heading">Who made this?</h2>
+                  <h2 className="featurette-heading">who made this?</h2>
                   <p className="lead">We're four students at Monash University.</p>
                   <p className="lead">Please send food. We're very hungry. Accepting deliveries to Floor 3, Building B, Monash Caulfield.</p>
                   <p className="block-of-portraits">

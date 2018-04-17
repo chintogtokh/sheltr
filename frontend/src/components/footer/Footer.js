@@ -20,8 +20,7 @@ class Footer extends Component {
           <HashLink to="/">home</HashLink>&nbsp;&middot;&nbsp;
           <HashLink smooth to="/#about" scroll={el => el.scrollIntoView({ behavior: "smooth", block: 'start' })}>about</HashLink>
           &nbsp;&middot;&nbsp;
-          <Link to="/contact">contact</Link>&nbsp;&middot;&nbsp;
-          <Link to="/credits">credits</Link>
+          <Link to="/contact">contact</Link>
           <span className="tram-container">
             <img src={tram} alt="Tram"/>
           </span>

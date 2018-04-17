@@ -4,10 +4,10 @@ div.header-container {
   position: relative;
   width: 100%;
   min-height: 500px;
-  text-align: center;
+  text-align: left;
   color: #fff;
   padding-top: 80px;
-  background-image: url(../../files/poly.jpg);
+  background-image: url(../../files/poly.png);
   background-color: rgba(0, 0, 0, 0.5);
   background-position: center;
   -webkit-background-size: cover;

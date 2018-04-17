@@ -20,7 +20,6 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/map" component={VicMap} />
-        <Route exact path="/credits" component={Credits} />
         <Route exact path="/suburb/:name" component={Suburb} />
         <Route path="/auth" component={Auth} />
         <Route component={NoMatch} />
@@ -31,27 +30,27 @@ const App = () => (
 );
 
 
-//temporary
-const Credits = ({ location }) => (
-  <div>
-    <main role="main">
-      <div className="container">
-        <h1>Credits</h1>
-        <ul>
-        <li>
-          Ein
-        </li>
-        <li>
-          Zwei
-        </li>
-        <li>
-          Drei
-        </li>
-        </ul>
-      </div>
-    </main>
-  </div>
-);
+// //temporary
+// const Credits = ({ location }) => (
+//   <div>
+//     <main role="main">
+//       <div className="container">
+//         <h1>Credits</h1>
+//         <ul>
+//         <li>
+//           Ein
+//         </li>
+//         <li>
+//           Zwei
+//         </li>
+//         <li>
+//           Drei
+//         </li>
+//         </ul>
+//       </div>
+//     </main>
+//   </div>
+// );
 
 const NoMatch = ({ location }) => (
   <div>
