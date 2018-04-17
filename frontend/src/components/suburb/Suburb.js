@@ -18,7 +18,7 @@ class Suburb extends Component {
     }
 
   render() {
-    const { suburb, extract } = this.props;
+    const { suburb, extract, coords} = this.props;
       return (
       <div>
           <main role="main">
@@ -48,12 +48,13 @@ class Suburb extends Component {
                       </div>
                     </div>
                     <div className="col-md-4">
-                      <Map style={{'height':500+'px','width':100+'%'}} center={suburb.coords} zoom={12}>
+                    { coords &&
+                      <Map style={{'height':500+'px','width':100+'%'}} center={coords} zoom={12}>
                             <TileLayer
                               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                        <Marker position={suburb.coords}>
+                        <Marker position={coords}>
                           <Popup>
                             <span>
                               A pretty CSS3 popup. <br /> Easily customizable.
@@ -61,6 +62,7 @@ class Suburb extends Component {
                           </Popup>
                         </Marker>
                         </Map>
+                        }
                     </div>
                   </div>
 
@@ -80,7 +82,8 @@ class Suburb extends Component {
 
 const mapStateToProps = state => ({
   suburb: state.suburb.suburb,
-  extract: state.suburb.suburb_wiki.extract
+  extract: state.suburb.wiki_extract,
+  coords : state.suburb.coords
 });
 
 // export default connect(mapStateToProps)(Suburb);

@@ -4,16 +4,6 @@ import './Home.css';
 
 class Home extends Component {
 
-  state = {
-    users:[]
-  }
-
-  // componentDidMount() {
-  //   fetch('/users')
-  //   .then(res => res.json())
-  //   .then(users => this.setState({users}));
-  // }
-
   render() {
     return (
       <div>
@@ -25,8 +15,15 @@ class Home extends Component {
                 We've got you covered!
               </p>
               <p className="lead">
-                  I want to find a <input type="text" placeholder="relatively"/> safe suburb to live in,
+                  I want to find a
+                  <select>
+                    <option value="1">very safe</option>
+                    <option value="2">relatively safe</option>
+                    <option value="3">safe</option>
+                  </select>
+                  safe suburb to live in,
                   <br /> costing <input type="text" placeholder="$100 to 200"/> per week
+
                   <br />
               </p>
               <p className="lead">

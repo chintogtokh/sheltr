@@ -19,7 +19,11 @@ export function suburb(state = initialState, action) {
 		case suburbConstants.FETCH_SUBURB_WIKI:
 			return {
 				...state,
-				suburb_wiki: action.payload
+				wiki_extract: action.payload.extract,
+				coords: {
+					lat: action.payload.coordinates.lat,
+					lng: action.payload.coordinates.lon
+				}
 			}
 		case suburbConstants.SUBURB_WIKI_NOTFOUND:
 			return {

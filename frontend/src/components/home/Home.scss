@@ -121,6 +121,22 @@ img.inline-logo{
     &::-ms-input-placeholder { /* Microsoft Edge */
         color: white;
     }
+}
+
+.header-content-inner select {
+    padding:0 10px;
+    margin:0 10px;
+    background:transparent;
+    border:none;
+    color:white;
+    border-bottom: 3px solid white;
+    border-bottom-style: dotted;
+
+    option{
+      color:white;
+      background-color:grey;
+    }
+
 
 }
 
