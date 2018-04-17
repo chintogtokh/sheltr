@@ -54,7 +54,6 @@ class Login extends Component {
         const { username, password, submitted } = this.state;
         return (
             <div className="login-container">
-              <div className="container">
                 <ToastContainer />
                 <h1>Login</h1>
                 <div>
@@ -76,7 +75,6 @@ class Login extends Component {
                     </div>
                   </form>
                 </div>
-              </div>
             </div>
         );
     }

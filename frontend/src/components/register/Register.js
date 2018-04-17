@@ -55,7 +55,6 @@ class Register extends React.Component {
         return (
 
             <div className="register-container">
-              <div className="container">
                 <h1>Register</h1>
                 <div>
                     <form name="form" onSubmit={this.handleSubmit}>
@@ -96,7 +95,6 @@ class Register extends React.Component {
                         </div>
                     </form>
                 </div>
-              </div>
             </div>
         );
     }

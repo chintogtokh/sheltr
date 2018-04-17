@@ -7,7 +7,11 @@ body {
   height: 100%; }
 
 main {
-  padding-top: 90px; }
+  z-index: 40;
+  position: relative; }
+
+.container {
+  padding-top: 40px; }
 
 .custom-toast {
   font-family: 'Cabin'; }

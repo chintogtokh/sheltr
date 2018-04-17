@@ -1,32 +1,30 @@
 div.header-container {
   display: block;
+  z-index: 10;
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 500px;
   text-align: center;
   color: #fff;
   padding-top: 80px;
-  background-image: url(../../files/back.jpg);
+  background-image: url(../../files/poly.jpg);
+  background-color: rgba(0, 0, 0, 0.5);
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover; }
+  -o-background-size: cover;
+  padding-bottom: 50px; }
   div.header-container .header-content {
-    padding-top: 80px;
-    top: calc(50% - 80px); }
+    padding-top: 80px; }
     div.header-container .header-content .header-content-inner {
       padding: 0 20px; }
 
 @media (min-width: 1068px) {
   div.header-container .header-content {
     width: 100%;
-    position: absolute;
-    margin-top: 80px;
-    top: calc(50% - 80px);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
+    z-index: 10;
+    padding-bottom: 50px; }
     div.header-container .header-content .header-content-inner {
       margin-right: auto;
       margin-left: auto;
@@ -59,13 +57,13 @@ div.featurette {
 
 /* Thin out the marketing headings */
 .featurette-heading {
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1;
   letter-spacing: -.05rem; }
 
 @media (min-width: 40em) {
   .featurette-heading {
-    font-size: 50px; } }
+    font-size: 2.2rem; } }
 
 img.inline-logo {
   height: 70px;
@@ -112,3 +110,33 @@ img.inline-logo {
   padding: 35px 0;
   background-size: contain;
   background-repeat: no-repeat; }
+
+.home-container {
+  margin-top: -40px;
+  z-index: 10;
+  background-color: white;
+  border-radius: 25px;
+  max-width: 1400px;
+  padding: 40px; }
+
+.block-of-images {
+  text-align: center; }
+  .block-of-images img {
+    width: 120px;
+    margin: 10px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out; }
+    .block-of-images img:hover {
+      transform: scale(1.1); }
+
+.block-of-portraits {
+  text-align: center; }
+  .block-of-portraits img {
+    width: 150px;
+    margin: 10px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out; }
+    .block-of-portraits img:hover {
+      transform: scale(1.1); }

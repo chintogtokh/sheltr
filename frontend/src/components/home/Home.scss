@@ -1,22 +1,24 @@
 div.header-container {
     display: block;
+    z-index:10;
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 500px;
     text-align: center;
     color: #fff;
     padding-top:80px;
-    background-image: url(../../files/back.jpg);
+    background-image: url(../../files/poly.jpg);
+    background-color: rgba(0,0,0,0.5);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    // padding: 70px 10px;
+    // background-color: rgba(0,0,0,0.5);
+    padding-bottom:50px;
 
     .header-content{
         padding-top: 80px;
-        top: calc(50% - 80px);
 
         .header-content-inner {
           padding: 0 20px;
@@ -28,13 +30,9 @@ div.header-container {
   div.header-container {
    .header-content {
       width:100%;
-      position: absolute;
-      margin-top: 80px;
-      top: calc(50% - 80px);
-      // padding: 0 50px;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+      z-index:10;
+      // background-color: rgba(0,0,0,0.5);
+      padding-bottom:50px;
 
       .header-content-inner {
         margin-right: auto;
@@ -84,7 +82,7 @@ div.featurette{
 
 /* Thin out the marketing headings */
 .featurette-heading {
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1;
   letter-spacing: -.05rem;
 }
@@ -92,7 +90,7 @@ div.featurette{
 
 @media (min-width: 40em) {
   .featurette-heading {
-    font-size: 50px;
+    font-size: 2.2rem;
   }
 }
 
@@ -151,4 +149,47 @@ img.inline-logo{
     padding:35px 0;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.home-container{
+  margin-top:-40px;
+  z-index:10;
+  background-color:white;
+  border-radius: 25px;
+  max-width:1400px;
+  padding: 40px;
+}
+
+.block-of-images{
+  text-align:center;
+
+  img{
+    width:120px;
+    margin:10px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+  }
+}
+
+.block-of-portraits{
+  text-align:center;
+
+  img{
+    width:150px;
+    margin:10px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+  }
 }

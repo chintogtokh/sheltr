@@ -28,11 +28,9 @@ class Auth extends React.Component {
                 <main role="main">
                 <div className="auth-container">
                 <div className="container">
-                    <div className="container">
-                        {alert.message &&
-                            <div className={`alert ${alert.type}`}>{alert.message}</div>
-                        }
-                    </div>
+                    {alert.message &&
+                        <div className={`alert ${alert.type}`}>{alert.message}</div>
+                    }
                     <Switch>
                         <Route exact path="/auth/login" component={Login} />
                         <Route exact path="/auth/register" component={Register} />
