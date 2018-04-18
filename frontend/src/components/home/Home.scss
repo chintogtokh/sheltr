@@ -18,15 +18,34 @@ div.header-container {
     padding-bottom:50px;
 
     .header-content{
-        padding-top: 80px;
 
         .header-content-inner {
           padding: 0 20px;
 
           p.lead{
+
+            .lead-row{
+              margin-bottom:5px;
+            }
+
             img{
               height: 1.5em;
               max-width: 2em;
+            }
+
+            a.btn{
+              padding-left:80px;
+              padding-right:80px;
+              font-weight: bold;
+              border-radius: .9rem;
+              float:right;
+              clear:both;
+            }
+
+            div.input-label{
+              padding:0 10px;
+              min-width: 290px;
+              display: inline-block;
             }
           }
         }
@@ -49,17 +68,7 @@ div.header-container {
             font-size:3rem;
         }
         p.lead{
-          .btn{
-              padding-left:40px;
-              padding-right:40px;
-              font-weight: bold;
-              border-radius: .9rem;
-          }
           font-size:1.5rem;
-          img{
-            height: 1.5em;
-            max-width: 2em;
-          }
         }
       }
     }
@@ -132,22 +141,22 @@ img.inline-logo{
     }
 }
 
-.header-content-inner select {
-    padding:0 10px;
-    margin:0 10px;
-    background:transparent;
-    border:none;
-    color:white;
-    border-bottom: 3px solid white;
-    border-bottom-style: dotted;
+// .header-content-inner select {
+//     padding:0 10px;
+//     margin:0 10px;
+//     background:transparent;
+//     border:none;
+//     color:white;
+//     border-bottom: 3px solid white;
+//     border-bottom-style: dotted;
 
-    option{
-      color:white;
-      background-color:grey;
-    }
+//     option{
+//       color:white;
+//       background-color:grey;
+//     }
 
 
-}
+// }
 
 .before-vicmap{
     z-index:10;
@@ -203,4 +212,12 @@ img.inline-logo{
     }
 
   }
+}
+
+.react-select{
+    display: inline-block;
+    font-size: inherit;
+    min-width: 250px;
+    top: 0;
+    margin-bottom: -0.5em;
 }

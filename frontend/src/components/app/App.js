@@ -11,6 +11,7 @@ import Footer from "../footer/Footer";
 import Contact from "../contact/Contact";
 import Auth from "../auth/Auth";
 import Suburb from "../suburb/Suburb";
+import Credits from "../credits/Credits";
 
 const App = () => (
   <Router>
@@ -21,6 +22,7 @@ const App = () => (
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/map" component={VicMap} />
         <Route exact path="/suburb/:name" component={Suburb} />
+        <Route exact path="/credits" component={Credits} />
         <Route path="/auth" component={Auth} />
         <Route component={NoMatch} />
       </Switch>

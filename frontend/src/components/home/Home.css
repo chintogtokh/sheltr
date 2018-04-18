@@ -15,13 +15,24 @@ div.header-container {
   background-size: cover;
   -o-background-size: cover;
   padding-bottom: 50px; }
-  div.header-container .header-content {
-    padding-top: 80px; }
-    div.header-container .header-content .header-content-inner {
-      padding: 0 20px; }
-      div.header-container .header-content .header-content-inner p.lead img {
-        height: 1.5em;
-        max-width: 2em; }
+  div.header-container .header-content .header-content-inner {
+    padding: 0 20px; }
+    div.header-container .header-content .header-content-inner p.lead .lead-row {
+      margin-bottom: 5px; }
+    div.header-container .header-content .header-content-inner p.lead img {
+      height: 1.5em;
+      max-width: 2em; }
+    div.header-container .header-content .header-content-inner p.lead a.btn {
+      padding-left: 80px;
+      padding-right: 80px;
+      font-weight: bold;
+      border-radius: .9rem;
+      float: right;
+      clear: both; }
+    div.header-container .header-content .header-content-inner p.lead div.input-label {
+      padding: 0 10px;
+      min-width: 290px;
+      display: inline-block; }
 
 @media (min-width: 1068px) {
   div.header-container .header-content {
@@ -35,15 +46,7 @@ div.header-container {
       div.header-container .header-content .header-content-inner h1 {
         font-size: 3rem; }
       div.header-container .header-content .header-content-inner p.lead {
-        font-size: 1.5rem; }
-        div.header-container .header-content .header-content-inner p.lead .btn {
-          padding-left: 40px;
-          padding-right: 40px;
-          font-weight: bold;
-          border-radius: .9rem; }
-        div.header-container .header-content .header-content-inner p.lead img {
-          height: 1.5em;
-          max-width: 2em; } }
+        font-size: 1.5rem; } }
 
 div.featurette {
   padding: 20px 0; }
@@ -94,18 +97,6 @@ img.inline-logo {
     /* Microsoft Edge */
     color: white; }
 
-.header-content-inner select {
-  padding: 0 10px;
-  margin: 0 10px;
-  background: transparent;
-  border: none;
-  color: white;
-  border-bottom: 3px solid white;
-  border-bottom-style: dotted; }
-  .header-content-inner select option {
-    color: white;
-    background-color: grey; }
-
 .before-vicmap {
   z-index: 10;
   position: relative; }
@@ -146,3 +137,10 @@ img.inline-logo {
     transition: all .2s ease-in-out; }
     .block-of-portraits img:hover {
       transform: scale(1.1); }
+
+.react-select {
+  display: inline-block;
+  font-size: inherit;
+  min-width: 250px;
+  top: 0;
+  margin-bottom: -0.5em; }

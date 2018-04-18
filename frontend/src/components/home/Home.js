@@ -6,10 +6,21 @@ import chat from '../../files/chat.svg';
 import credit_card from '../../files/credit_card.svg';
 import university from '../../files/university.svg';
 // import SpiderChart from '../spiderchart/SpiderChart';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 class Home extends Component {
 
+  state = {
+    selectedOption: '',
+  }
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+  }
+
   render() {
+    const { crimeSafety, affordability, language, actualLanguage, uni, uniCampus } = this.state;
+
     return (
       <div>
       <div className="header-container">
@@ -21,45 +32,98 @@ class Home extends Component {
               </p>
               <p className="lead">
                   I consider:
-                  <br/>
-                  <img src={detective} alt="safety"/> safety from crime to be:
-                  <select name="safety">
-                    <option value>irrelevant</option>
-                    <option value="1">very important</option>
-                    <option value="2">moderately important</option>
-                    <option value="3">not important</option>
-                  </select>
+                  <div className="lead-row">
+                  <img src={detective} alt="safety"/>
+                  <div className="input-label"> safety from crime to be:</div>
+
+                  <Select
+                  className = "react-select"
+                      name="crimeSafety"
+                      value={crimeSafety}
+                      onChange={this.handleChange}
+                      options={[
+                        { value: null, label: 'not important' },
+                        { value: '4', label: 'very important' },
+                        { value: '3', label: 'moderately important' },
+                        { value: '2', label: 'important' },
+                        { value: '1', label: 'not important' }
+                      ]}
+                    />
+                  </div>
+                  <div className="lead-row">
+                  <img src={credit_card} alt="affordability"/>
+                  <div className="input-label">affordability to be:</div>
+                  <Select
+                  className = "react-select"
+                      name="affordability"
+                      value={affordability}
+                      onChange={this.handleChange}
+                      options={[
+                        { value: null, label: 'not important' },
+                        { value: '4', label: 'very important' },
+                        { value: '3', label: 'moderately important' },
+                        { value: '2', label: 'important' },
+                        { value: '1', label: 'not important' }
+                      ]}
+                    />
+                  </div>
+                  <div className="lead-row">
+                  <img src={chat} alt="language"/>
+                  <div className="input-label"> my native language to be:</div>
+                  <Select
+                  className = "react-select"
+                      name="actualLanguage"
+                      value={actualLanguage}
+                      onChange={this.handleChange}
+                      options={[
+                        { value: null, label: 'not important' },
+                        { value: '4', label: 'very important' },
+                        { value: '3', label: 'moderately important' },
+                        { value: '2', label: 'important' },
+                        { value: '1', label: 'not important' }
+                      ]}
+                    />
+                  &nbsp;(i speak&nbsp;
+                  <Select
+                  className = "react-select"
+                      name="actualLanguage"
+                      value={actualLanguage}
+                      onChange={this.handleChange}
+                      options={[
+                        { value: 'mongolian', label: 'mongolian' },
+                        { value: 'russian', label: 'russian' }
+                      ]}
+                    />)
+                  </div>
+                  <div className="lead-row">
+                  <img src={university} alt="university"/>
+                  <div className="input-label">my preferred uni to be:</div>
+                  <Select
+                  className = "react-select"
+                      name="uni"
+                      value={uni}
+                      onChange={this.handleChange}
+                      options={[
+                        { value: 'monash', label: 'monash' },
+                        { value: 'rmit', label: 'rmit' }
+                      ]}
+                    />
+                  &nbsp;at&nbsp;
+                  <Select
+                  className = "react-select"
+                      name="uniCampus"
+                      value={uniCampus}
+                      onChange={this.handleChange}
+                      options={[
+                        { value: 'caulfield', label: 'caulfield' },
+                        { value: 'clayton', label: 'clayton' }
+                      ]}
+                    />
                   <br />
-                  <img src={credit_card} alt="affordability"/> affordability to be:
-                  <select name="affordability">
-                    <option value>irrelevant</option>
-                    <option value="1">very important</option>
-                    <option value="2">moderately important</option>
-                    <option value="3">not important</option>
-                  </select>
-                  <br />
-                  <img src={chat} alt="language"/> my native language to be:
-                  <select name="language">
-                    <option value>irrelevant</option>
-                    <option value="1">very important</option>
-                    <option value="2">moderately important</option>
-                    <option value="3">not important</option>
-                  </select> and my language is
-                  <select name="spoken-language">
-                    <option value="3">mongolian</option>
-                    <option value="3">russian</option>
-                  </select>
-                  <br />
-                  <img src={university} alt="university"/> my preferred uni to be:
-                  <select name="uni">
-                    <option value>monash caulfield</option>
-                    <option value>monash clayton</option>
-                    <option value>rmit</option>
-                  </select>
-                  <br />
+                  </div>
               </p>
-              <p className="lead">
-                <Link to="/map" className="btn btn-primary btn-lg">Let's go <i className="fas fa-arrow-alt-circle-right"></i></Link>
+              <p className="lead" style={{overflow: 'auto'}}>
+                <Link to="/map" className="btn-pulsating btn btn-light btn-lg">click here to start! <i className="fas fa-arrow-alt-circle-right"></i></Link>
               </p>
           </div>
         </div>
@@ -79,7 +143,7 @@ class Home extends Component {
               <div className="col-md-4">
                    <h2 className="featurette-heading">how does it work?</h2>
                     <p className="lead">Victoria is a world leader in open data.</p>
-                    <p className="lead">We've gathered, analysed, mined, and crunched a ton of this data to present to you our findings.</p>
+                    <p className="lead">We've gathered, analysed, mined, and crunched a tonne of this data to present our findings to you.</p>
                     <p className="block-of-images">
                     <a href="https://www.data.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="Victoria's open data directory" src="images/data-vic.jpg" /></a>
                     <a href="https://data.melbourne.vic.gov.au" rel="noopener noreferrer" target="_blank"><img alt="The City of Melbourne’s open data platform" src="images/data-melb.jpg" /></a>
@@ -94,7 +158,7 @@ class Home extends Component {
               <div className="col-md-4">
                   <h2 className="featurette-heading">who made this?</h2>
                   <p className="lead">We're four students at Monash University.</p>
-                  <p className="lead">Please send food. We're very hungry. Accepting deliveries to Floor 3, Building B, Monash Caulfield.</p>
+                  <p className="lead">Please send food. We're very hungry. Accepting unsolicited pizza & coffee deliveries to Floor 3, Building B, Monash Caulfield.</p>
                   <p className="block-of-portraits">
                   <img alt="Chintogtokh" src="images/chinto.jpg" />
                   <img alt="James" src="images/james.jpg" />

@@ -14,7 +14,11 @@ main{
 }
 
 .container{
-	padding-top:40px;
+	padding-top:80px;
+
+	h1{
+		text-transform: lowercase;
+	}
 }
 
 .custom-toast{
