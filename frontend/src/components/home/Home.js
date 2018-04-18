@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Home.css';
+import detective from '../../files/detective.svg';
+import chat from '../../files/chat.svg';
+import credit_card from '../../files/credit_card.svg';
+import university from '../../files/university.svg';
 // import SpiderChart from '../spiderchart/SpiderChart';
 
 class Home extends Component {
@@ -11,14 +15,14 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span className="before-vicmap">are you starting a new life in </span><span className="vicmap">victoria</span>?</h1>
+              <h1><span className="before-vicmap">are you starting a new life in </span><span>victoria</span>?</h1>
               <p className="lead">
                 we'll help with the house hunt, just help us answer a few questions!
               </p>
               <p className="lead">
                   I consider:
                   <br/>
-                  <i className="fas fa-eye"></i> safety from crime to be:
+                  <img src={detective} alt="safety"/> safety from crime to be:
                   <select name="safety">
                     <option value>irrelevant</option>
                     <option value="1">very important</option>
@@ -26,7 +30,7 @@ class Home extends Component {
                     <option value="3">not important</option>
                   </select>
                   <br />
-                  <i className="fas fa-money-bill-alt"></i> affordability to be:
+                  <img src={credit_card} alt="affordability"/> affordability to be:
                   <select name="affordability">
                     <option value>irrelevant</option>
                     <option value="1">very important</option>
@@ -34,7 +38,7 @@ class Home extends Component {
                     <option value="3">not important</option>
                   </select>
                   <br />
-                  <i className="fas fa-language"></i> my native language to be:
+                  <img src={chat} alt="language"/> my native language to be:
                   <select name="language">
                     <option value>irrelevant</option>
                     <option value="1">very important</option>
@@ -46,7 +50,7 @@ class Home extends Component {
                     <option value="3">russian</option>
                   </select>
                   <br />
-                  <i className="fas fa-university"></i> my preferred uni to be:
+                  <img src={university} alt="university"/> my preferred uni to be:
                   <select name="uni">
                     <option value>monash caulfield</option>
                     <option value>monash clayton</option>
