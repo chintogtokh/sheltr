@@ -22,7 +22,7 @@ div.header-container {
         .header-content-inner {
           padding: 0 20px;
 
-          p.lead{
+          div.lead{
 
             .lead-row{
               margin-bottom:5px;
@@ -31,6 +31,11 @@ div.header-container {
             img{
               height: 1.5em;
               max-width: 2em;
+            }
+
+            .fake-img{
+              display: inline-block;
+              min-width: 1.5em;
             }
 
             a.btn{
@@ -67,7 +72,7 @@ div.header-container {
         h1{
             font-size:3rem;
         }
-        p.lead{
+        div.lead{
           font-size:1.5rem;
         }
       }
@@ -217,7 +222,7 @@ img.inline-logo{
 .react-select{
     display: inline-block;
     font-size: inherit;
-    min-width: 250px;
+    min-width: 300px;
     top: 0;
     margin-bottom: -0.5em;
 }

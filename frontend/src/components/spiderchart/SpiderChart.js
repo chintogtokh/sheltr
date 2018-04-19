@@ -13,8 +13,8 @@ class SpiderChart extends Component {
             draw: function(id, d, options) {
                 var cfg = {
                     radius: 6,
-                    w: 600,
-                    h: 600,
+                    w: 200,
+                    h: 200,
                     factor: 1,
                     factorLegend: .85,
                     levels: 5,

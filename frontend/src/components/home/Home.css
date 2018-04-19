@@ -17,19 +17,22 @@ div.header-container {
   padding-bottom: 50px; }
   div.header-container .header-content .header-content-inner {
     padding: 0 20px; }
-    div.header-container .header-content .header-content-inner p.lead .lead-row {
+    div.header-container .header-content .header-content-inner div.lead .lead-row {
       margin-bottom: 5px; }
-    div.header-container .header-content .header-content-inner p.lead img {
+    div.header-container .header-content .header-content-inner div.lead img {
       height: 1.5em;
       max-width: 2em; }
-    div.header-container .header-content .header-content-inner p.lead a.btn {
+    div.header-container .header-content .header-content-inner div.lead .fake-img {
+      display: inline-block;
+      min-width: 1.5em; }
+    div.header-container .header-content .header-content-inner div.lead a.btn {
       padding-left: 80px;
       padding-right: 80px;
       font-weight: bold;
       border-radius: .9rem;
       float: right;
       clear: both; }
-    div.header-container .header-content .header-content-inner p.lead div.input-label {
+    div.header-container .header-content .header-content-inner div.lead div.input-label {
       padding: 0 10px;
       min-width: 290px;
       display: inline-block; }
@@ -45,7 +48,7 @@ div.header-container {
       max-width: 1000px; }
       div.header-container .header-content .header-content-inner h1 {
         font-size: 3rem; }
-      div.header-container .header-content .header-content-inner p.lead {
+      div.header-container .header-content .header-content-inner div.lead {
         font-size: 1.5rem; } }
 
 div.featurette {
@@ -141,6 +144,6 @@ img.inline-logo {
 .react-select {
   display: inline-block;
   font-size: inherit;
-  min-width: 250px;
+  min-width: 300px;
   top: 0;
   margin-bottom: -0.5em; }
