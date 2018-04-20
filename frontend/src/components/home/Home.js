@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from "react-router-dom";
-import { HashLink } from 'react-router-hash-link';
 import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import { browseActions } from '../../actions';
@@ -56,12 +54,12 @@ class Home extends Component {
 
     const params = this.state;
     for(var key in params){
-      if (params[key]===""){
+      if (params[key]==="" || params[key]===null){
         delete params[key];
       }
     }
 
-    if(Object.keys(params).length==0){
+    if(Object.keys(params).length===0){
       this.mustSubmitNotification();
     }
     else{
@@ -209,7 +207,7 @@ class Home extends Component {
         <div className="container home-container">
           <div className="row">
             <div className="col-md-4">
-                <h2 className="featurette-heading"><HashLink smooth to="/#about" scroll={el => el.scrollIntoView({ behavior: "smooth", block: 'start' })}> * </HashLink>what is this? <span className="text-muted"></span></h2>
+                <h2 className="featurette-heading">what is this? <span className="text-muted"></span></h2>
                   <div className="lead">Our goal is to impart local area knowledge on new students arriving in Victoria. We aim to connect you with safe, affordable, and comfortable places to live.</div>
                   <img className="featurette-image img-fluid mx-auto" alt="Travelers" style={{width: 350 + 'px' }} src="images/airport.jpg" data-holder-rendered="true" />
                   <div className="lead">We are a diverse state. Do you like parks? Do you like hip bars? Or do you just want a quiet place to study? We're here to help.</div>

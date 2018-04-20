@@ -29,11 +29,6 @@ function fetchSuburb (suburb_shim) {
 	};
 };
 
-function toTitleCase(str)
-{
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
-
 function fetchSuburbWiki (suburb_name) {
     var url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + suburb_name + ", Victoria";
     return dispatch => {
