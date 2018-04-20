@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import './Home.css';
 import detective from '../../files/detective.svg';
@@ -40,7 +40,7 @@ class Home extends Component {
   onSubmit = function(e) {
     e.preventDefault();
 
-    console.log(this.state);
+
 
   }
 

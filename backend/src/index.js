@@ -8,7 +8,7 @@ import {clientErrorHandler, errorHandler} from './middleware';
 import passport from './passport';
 
 const app = express();
-const port = 5000;
+const port = 6000;
 
 let dbHost = config.dbHost;
 let dbPort = config.dbPort;
