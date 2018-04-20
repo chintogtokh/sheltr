@@ -17,7 +17,7 @@ function enterPreferences(data) {
 function fetchRankedSuburbs(){
 
 	return dispatch => {
-    fetch('/api/ranked_suburbs/')
+    fetch('/api/ranked_suburbs')
         .then(response => response.json().then( data => ({
             data: data,
             status: response.status

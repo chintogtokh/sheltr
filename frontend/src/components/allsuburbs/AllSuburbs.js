@@ -15,7 +15,7 @@ class AllSuburbs extends Component {
 
   componentDidMount() {
     let { preferences} = this.props;
-    fetch('/api/suburbs/')
+    fetch('/api/ranked_suburbs')
         .then(response => response.json().then( data => ({
             data: data,
             status: response.status
