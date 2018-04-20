@@ -7,7 +7,7 @@ export const suburbActions = {
 
 function fetchSuburb (suburb_shim) {
 	return dispatch => {
-    fetch('/suburbs/' + suburb_shim)
+    fetch('/api/suburbs/' + suburb_shim)
         .then(response => response.json().then( data => ({
             data: data,
             status: response.status

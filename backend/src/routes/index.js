@@ -8,13 +8,13 @@ import passport from 'passport';
 
 let api = Router();
 
-api.use('/cars', passport.authenticate('jwt', {session: false}), cars);
-api.use('/users', users);
-api.use('/auth', auth);
-api.use('/suburbs', suburbs);
+api.use('/api/cars', passport.authenticate('jwt', {session: false}), cars);
+api.use('/api/users', users);
+api.use('/api/auth', auth);
+api.use('/api/suburbs', suburbs);
 
 // perhaps expose some API metadata at the root
-api.get('/', (req, res) => {
+api.get('/api', (req, res) => {
 	res.json({ version });
 });
 
