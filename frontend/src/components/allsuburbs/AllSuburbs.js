@@ -12,13 +12,16 @@ class AllSuburbs extends Component {
     }
 
   render() {
-    const { suburb, extract, coords} = this.props;
+    let { preferences} = this.props;
+    preferences = JSON.stringify(preferences);
       return (
       <div>
           <main role="main">
             <div className="container">
 
                     <h1>...here are the top 5 suburbs</h1>
+
+                    {preferences}
 
 
                 </div>

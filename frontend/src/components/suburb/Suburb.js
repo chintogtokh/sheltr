@@ -13,12 +13,12 @@ class Suburb extends Component {
 
         const { dispatch } = this.props;
         dispatch(suburbActions.fetchSuburb(suburbName));
-        dispatch(suburbActions.fetchSuburbWiki(suburbName));
+        // dispatch(suburbActions.fetchSuburbWiki(suburbName));
 
     }
 
   render() {
-    const { suburb, extract, coords} = this.props;
+    const { suburb, extract} = this.props;
       return (
       <div>
           <main role="main">
@@ -48,13 +48,13 @@ class Suburb extends Component {
                       </div>
                     </div>
                     <div className="col-md-4">
-                    { coords &&
-                      <Map style={{'height':500+'px','width':100+'%'}} center={coords} zoom={12}>
+
+                      <Map style={{'height':500+'px','width':100+'%'}} center={suburb.coords} zoom={12}>
                             <TileLayer
                               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                        <Marker position={coords}>
+                        <Marker position={suburb.coords}>
                           <Popup>
                             <span>
                               A pretty CSS3 popup. <br /> Easily customizable.
@@ -62,7 +62,7 @@ class Suburb extends Component {
                           </Popup>
                         </Marker>
                         </Map>
-                        }
+
                     </div>
                   </div>
 
@@ -82,8 +82,7 @@ class Suburb extends Component {
 
 const mapStateToProps = state => ({
   suburb: state.suburb.suburb,
-  extract: state.suburb.wiki_extract,
-  coords : state.suburb.coords
+  extract: state.suburb.wiki_extract
 });
 
 // export default connect(mapStateToProps)(Suburb);

@@ -34,8 +34,8 @@ function toTitleCase(str)
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
-function fetchSuburbWiki (suburb_shim) {
-    var url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + toTitleCase(suburb_shim.replace("-"," ")) + ", Victoria";
+function fetchSuburbWiki (suburb_name) {
+    var url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + suburb_name + ", Victoria";
     return dispatch => {
     fetch(url)
         .then(response => response.json().then( data => ({
