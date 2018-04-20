@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
-import './Home.css';
+import { ToastContainer, toast } from 'react-toastify';
+import Select from 'react-select';
+import { browseActions } from '../../actions';
+import { connect } from 'react-redux';
+
+//images
 import detective from '../../files/detective.svg';
 import chat from '../../files/chat.svg';
 import credit_card from '../../files/credit_card.svg';
 import university from '../../files/university.svg';
-// import SpiderChart from '../spiderchart/SpiderChart';
-import Select from 'react-select';
+//css
 import 'react-select/dist/react-select.css';
+import './Home.css';
 
 class Home extends Component {
+
+
+  mustSubmitNotification = () => toast("You must input at least one preference!",
+      {
+        type: toast.TYPE.INFO,
+        autoClose: 5000,
+        hideProgressBar: true,
+        bodyClassName: "custom-toast"
+      });
 
   constructor(props) {
     super(props);
@@ -40,7 +54,21 @@ class Home extends Component {
   onSubmit = function(e) {
     e.preventDefault();
 
+    const params = this.state;
+    for(var key in params){
+      if (params[key]===""){
+        delete params[key];
+      }
+    }
 
+    if(Object.keys(params).length==0){
+      this.mustSubmitNotification();
+    }
+    else{
+      const { dispatch } = this.props;
+      dispatch(browseActions.browseSuburb(params));
+
+    }
 
   }
 
@@ -49,6 +77,7 @@ class Home extends Component {
 
     return (
       <div>
+      <ToastContainer />
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
@@ -56,7 +85,7 @@ class Home extends Component {
               <div className="lead">
                 we'll help with the house hunt, just help us answer a few questions!
               </div>
-
+              <br/>
 
               <form onSubmit={this.onSubmit}>
               <div className="lead">
@@ -213,4 +242,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+
+function mapStateToProps(state) {
+    //
+}
+
+export default connect(null)(Home);

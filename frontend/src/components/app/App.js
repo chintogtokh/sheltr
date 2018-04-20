@@ -11,6 +11,7 @@ import Footer from "../footer/Footer";
 import Contact from "../contact/Contact";
 import Auth from "../auth/Auth";
 import Suburb from "../suburb/Suburb";
+import AllSuburbs from "../allsuburbs/AllSuburbs";
 import Credits from "../credits/Credits";
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/map" component={VicMap} />
+        <Route exact path="/suburb" component={AllSuburbs} />
         <Route exact path="/suburb/:name" component={Suburb} />
         <Route exact path="/credits" component={Credits} />
         <Route path="/auth" component={Auth} />
@@ -30,29 +32,6 @@ const App = () => (
     </div>
   </Router>
 );
-
-
-// //temporary
-// const Credits = ({ location }) => (
-//   <div>
-//     <main role="main">
-//       <div className="container">
-//         <h1>Credits</h1>
-//         <ul>
-//         <li>
-//           Ein
-//         </li>
-//         <li>
-//           Zwei
-//         </li>
-//         <li>
-//           Drei
-//         </li>
-//         </ul>
-//       </div>
-//     </main>
-//   </div>
-// );
 
 const NoMatch = ({ location }) => (
   <div>
