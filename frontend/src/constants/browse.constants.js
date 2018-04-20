@@ -1,3 +1,3 @@
 export const browseConstants = {
-    BROWSE_SUBURBS: 'BROWSE_SUBURBS'
+    ENTERED_PREFERENCES: 'ENTERED_PREFERENCES'
 };

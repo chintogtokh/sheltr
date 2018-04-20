@@ -4,11 +4,10 @@ const initialState = {
 	browsePreferences: {}
 }
 
-export function browse(state = initialState, action) {
+export function browse(state = {}, action) {
 	switch(action.type){
-		case browseConstants.BROWSE_SUBURBS:
+		case browseConstants.ENTERED_PREFERENCES:
 			return {
-				...state,
 				browsePreferences: action.payload
 			}
 		default:

@@ -66,10 +66,16 @@ class Home extends Component {
     }
     else{
       const { dispatch } = this.props;
-      dispatch(browseActions.browseSuburb(params));
-
+      dispatch(browseActions.enterPreferences(params));
     }
 
+  }
+
+  componentWillReceiveProps(nextProps) {
+  if (nextProps.preferences) {
+    this.props.history.push('/suburb');
+      // window.location='/suburb';
+    }
   }
 
   render() {
@@ -243,8 +249,8 @@ class Home extends Component {
 }
 
 
-function mapStateToProps(state) {
-    //
-}
+const mapStateToProps = state => ({
+  preferences: state.browse
+});
 
-export default connect(null)(Home);
+export default connect(mapStateToProps)(Home);

@@ -3,25 +3,12 @@ import {
 } from '../constants';
 
 export const browseActions = {
-    browseSuburb
+    enterPreferences
 };
 
-function browseSuburb(data) {
+function enterPreferences(data) {
 
-    return dispatch => {
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(res => res.json())
-            .then(posts =>
-                dispatch({
-                    type: browseConstants.BROWSE_SUBURBS,
-                    payload: data
-                })
-            );
+    return { type: browseConstants.ENTERED_PREFERENCES,
+            payload: data };
 
-    }
 };

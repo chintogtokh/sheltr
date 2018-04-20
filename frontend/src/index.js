@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/app/App';
 import registerServiceWorker from './registerServiceWorker';
-import { store } from './helpers';
+import {stores} from './helpers';
+import { PersistGate } from 'redux-persist/integration/react';
 
 // setup fake backend
 //import { configureFakeBackend } from './helpers';
 //configureFakeBackend();
 
 ReactDOM.render(
-	<Provider store={store}>
+	<Provider store={stores.store}>
+	<PersistGate loading={null} persistor={stores.persistor}>
 		<App />
+	</PersistGate>
 	</Provider>,
 	document.getElementById('root')
 	);
