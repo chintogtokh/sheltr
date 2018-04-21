@@ -10,8 +10,11 @@ rankedSuburbRouter.post('/', (req, res) => {
     const preferences = req.body;
     //var promise = suburbModel.aggregate({ $mul: { rating_safety: 1.25} },"rating_safety rating_affordability");
 
-    var user_safety =  (typeof preferences.crimeSafety === "undefined")? 1 :preferences.crimeSafety;;
-    var user_affordability = (typeof preferences.affordability === "undefined")?1:preferences.affordability;
+    var crimeSafety =  (typeof preferences.crimeSafety !== "undefined")? preferences.crimeSafety:1;
+    var affordability = (typeof preferences.affordability !== "undefined")? preferences.affordability:1;
+    var language = (typeof preferences.language !== "undefined")? preferences.language :1;
+    var actualLanguage = (typeof preferences.actualLanguage !== "undefined")? preferences.actualLanguage:null;
+    var uni = (typeof preferences.uni !== "undefined")?preferences.uni:null;
 
     suburbModel.aggregate([{
         $project: {
@@ -21,10 +24,15 @@ rankedSuburbRouter.post('/', (req, res) => {
             rating_safety: true,
             userRating: {
                 $sum: [{
-                    $multiply: [parseInt(user_affordability), "$rating_affordability"]
+                    $multiply: [parseInt(affordability), "$rating_affordability"]
                 }, {
-                    $multiply: [parseInt(user_safety), "$rating_safety"]
-                }]
+                    $multiply: [parseInt(crimeSafety), "$rating_safety"]
+                }, {
+                    $multiply: [parseInt(language), "$language." + actualLanguage]
+                }, {
+                    $multiply: [100, "$universities." + uni]
+                }
+                ]
             },
         }
     }]).sort({

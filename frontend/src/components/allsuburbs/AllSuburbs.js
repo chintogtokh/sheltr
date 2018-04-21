@@ -20,23 +20,23 @@ class AllSuburbs extends Component {
   componentWillMount() {
     let { preferences } = this.props;
 
-    let params = preferences;
+    let params = JSON.parse(JSON.stringify(preferences));
 //    delete params;
 
     delete params.raw_uni;
     delete params.raw_actualLanguage;
 
-    // if(params.uni && params.uni.shim){
-    //   let tmp = params.uni.shim;
-    //   delete params.uni;
-    //   params.uni = tmp;
-    // }
+    if(params.uni && params.uni.shim){
+      let tmp = params.uni.shim;
+      delete params.uni;
+      params.uni = tmp;
+    }
 
-    // if(params.actualLanguage && params.actualLanguage.shim){
-    //   let tmp = params.actualLanguage.shim;
-    //   delete params.actualLanguage;
-    //   params.actualLanguage = tmp;
-    // }
+    if(params.actualLanguage && params.actualLanguage.shim){
+      let tmp = params.actualLanguage.shim;
+      delete params.actualLanguage;
+      params.actualLanguage = tmp;
+    }
 
     const requestOptions = {
         method: 'POST',

@@ -155,10 +155,10 @@ class Home extends Component {
                     value={crimeSafety}
                     onChange={this.handleSelectChange('crimeSafety')}
                     options={[
-                      { value: null, label: 'not important' },
-                      { value: '4',  label: 'very important' },
-                      { value: '3',  label: 'moderately important' },
-                      { value: '2',  label: 'important' },
+                      { value: '0', label: 'irrelevant' },
+                      { value: '10',  label: 'very important' },
+                      { value: '7',  label: 'moderately important' },
+                      { value: '4',  label: 'important' },
                       { value: '1',  label: 'not important' }
                     ]}
                   />
@@ -172,10 +172,10 @@ class Home extends Component {
                     value={affordability}
                     onChange={this.handleSelectChange('affordability')}
                     options={[
-                      { value: null, label: 'not important' },
-                      { value: '4',  label: 'very important' },
-                      { value: '3',  label: 'moderately important' },
-                      { value: '2',  label: 'important' },
+                      { value: '0',  label: 'irrelevant' },
+                      { value: '10',  label: 'very important' },
+                      { value: '7',  label: 'moderately important' },
+                      { value: '4',  label: 'important' },
                       { value: '1',  label: 'not important' }
                     ]}
                   />
@@ -189,10 +189,10 @@ class Home extends Component {
                     value={language}
                     onChange={this.handleSelectChange('language')}
                     options={[
-                      { value: null, label: 'not important' },
-                      { value: '4',  label: 'very important' },
-                      { value: '3',  label: 'moderately important' },
-                      { value: '2',  label: 'important' },
+                      { value: '0', label: 'irrelevant' },
+                      { value: '10',  label: 'very important' },
+                      { value: '7',  label: 'moderately important' },
+                      { value: '4',  label: 'important' },
                       { value: '1',  label: 'not important' }
                     ]}
                   />
