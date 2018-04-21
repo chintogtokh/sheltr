@@ -38,6 +38,8 @@ class Home extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  new = true;
+
   handleSelectChange = function(name) {
     return function(newValue) {
         if(newValue){
@@ -51,6 +53,7 @@ class Home extends Component {
 
   onSubmit = function(e) {
     e.preventDefault();
+    this.new = false;
 
     const params = this.state;
     for(var key in params){
@@ -70,9 +73,8 @@ class Home extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-  if (nextProps.preferences) {
+  if (nextProps.preferences && this.new == false) {
     this.props.history.push('/suburb');
-      // window.location='/suburb';
     }
   }
 

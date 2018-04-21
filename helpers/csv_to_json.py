@@ -5,12 +5,13 @@ import re
 
 def row_to_obj(data):
 	# print data
+	# random.randint(1,101),
 	return {
 	    "name": data[2].title(),
 	    "population": 12345,
 	    "shim": re.sub('[^0-9a-zA-Z]+', '-', data[2].lower()),
-	    "rating_safety": random.randint(1,101),
-	    "rating_affordability": random.randint(1,101),
+	    "rating_safety": int(data[17]),
+	    "rating_affordability": int(data[12]),
 	    "outlinks": {
 	    "realestate": "http://www.google.com",
 	    "domain": "http://www.google.com"

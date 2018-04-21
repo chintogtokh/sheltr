@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AllSuburbs.css';
 import { connect } from 'react-redux';
 import { browseActions } from '../../actions';
+import { Link } from 'react-router-dom';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class AllSuburbs extends Component {
@@ -13,7 +14,7 @@ class AllSuburbs extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let { preferences} = this.props;
     fetch('/api/ranked_suburbs')
         .then(response => response.json().then( data => ({
@@ -29,7 +30,9 @@ class AllSuburbs extends Component {
                 console.log("error.");
             }
             else{
-              this.setState({suburbs: response.data});
+              this.setState({suburbs: response.data.map((item,i) =>
+                <li key={i}><Link to={"/suburb/" + item.shim}>{item.name}</Link></li>)
+              });
             }
         });
 
@@ -39,7 +42,8 @@ class AllSuburbs extends Component {
     let { preferences} = this.props;
     let { suburbs } = this.state;
     preferences = JSON.stringify(preferences);
-    suburbs = JSON.stringify(suburbs);
+    // console.log(suburbs);
+    // suburbs = this.state.suburbs)
       return (
       <div>
           <main role="main">
@@ -47,12 +51,15 @@ class AllSuburbs extends Component {
 
                     <h1>...here are the top 5 suburbs</h1>
 
-                    {preferences}
+                    <p>
+                    According to the analysis of our data based on your preferences, the suburbs that most fit your needs are as follows.
+                    </p>
+                    {/*preferences*/}
 
                     <hr/>
-
+                    <ul>
                     {suburbs}
-
+                    </ul>
 
                 </div>
           </main>
