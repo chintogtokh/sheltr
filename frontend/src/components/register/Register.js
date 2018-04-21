@@ -27,6 +27,10 @@ class Register extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount = function() {
+        document.title = "Sheltr | Register";
+    }
+
     handleChange(event) {
         const { name, value } = event.target;
         const { user } = this.state;

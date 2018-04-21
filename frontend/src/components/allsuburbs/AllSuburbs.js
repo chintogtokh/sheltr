@@ -14,6 +14,10 @@ class AllSuburbs extends Component {
     };
   }
 
+  componentDidMount = function() {
+        document.title = "Sheltr | Recommendations";
+    }
+
   componentWillMount() {
     let { preferences} = this.props;
 

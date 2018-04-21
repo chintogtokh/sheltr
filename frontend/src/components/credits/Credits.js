@@ -3,6 +3,10 @@ import './Credits.css';
 
 class Credits extends Component {
 
+  componentDidMount = function() {
+        document.title = "Sheltr | Credits";
+    }
+
     render() {
         return (
         <div>

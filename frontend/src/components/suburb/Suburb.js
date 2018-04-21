@@ -26,9 +26,6 @@ class Suburb extends Component {
     }
   };
 
-  componentDidMount(){
-
-  }
 
   render() {
     const { suburb, extract} = this.props;
@@ -36,6 +33,8 @@ class Suburb extends Component {
     const corner1 = [bboxArray[1], bboxArray[0]];
     const corner2 = [bboxArray[3], bboxArray[2]];
     const bounds = [corner1, corner2];
+
+    document.title = "Sheltr | " + suburb.name;
 
       return (
       <div>

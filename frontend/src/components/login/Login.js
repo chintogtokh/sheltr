@@ -8,6 +8,10 @@ import { userActions } from '../../actions';
 
 class Login extends Component {
 
+    componentDidMount = function() {
+        document.title = "Sheltr | Login";
+    }
+
     googleNotImplementedNotification = () => toast("Google Login hasn't been implemented yet. It's coming soon!",
       {
         type: toast.TYPE.INFO,

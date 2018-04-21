@@ -3,6 +3,10 @@ import './Contact.css';
 
 class Contact extends Component {
 
+    componentDidMount = function() {
+        document.title = "Sheltr | Contact";
+    }
+
     render() {
         return (
         <div>

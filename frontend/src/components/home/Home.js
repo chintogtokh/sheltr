@@ -38,6 +38,10 @@ class Home extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount = function() {
+    document.title = "Sheltr | Home";
+  }
+
   new = true;
 
   handleSelectChange = function(name) {
@@ -89,7 +93,7 @@ class Home extends Component {
           <div className="header-content-inner text-xs-center">
               <h1><span className="before-vicmap">are you coming to study in victoria?</span></h1>
               <div className="lead">
-                we'll help with the house hunt, just help us answer a few questions!
+                we'll help with the house hunt, just help us with some of your preferences.
               </div>
               <br/>
 
@@ -192,15 +196,12 @@ class Home extends Component {
                   }
               </div>
 
-              <button className="btn-pulsating btn btn-light btn-lg" type="submit">Submit</button>
+              <br/>
 
-              </form>
-
-
-              <div className="lead" style={{overflow: 'auto'}}>
-                {/* <Link to="/map" className="btn-pulsating btn btn-light btn-lg">click here to start! <i className="fas fa-arrow-alt-circle-right"></i></Link> */}
-
+              <div style={{textAlign:'right'}}>
+              <button className="btn btn-light btn-lg" type="submit">Give me some recommendations!</button>
               </div>
+              </form>
           </div>
         </div>
       </div>
