@@ -5,21 +5,25 @@ import {
 
 let rankedSuburbRouter = Router();
 
-rankedSuburbRouter.get('/', (req, res) => {
+rankedSuburbRouter.post('/', (req, res) => {
     // res.send([1, 2, 3]);
-
+    const preferences = req.body;
     //var promise = suburbModel.aggregate({ $mul: { rating_safety: 1.25} },"rating_safety rating_affordability");
 
-    var user_safety = 1;
-    var user_affordability = 10;
+    var user_safety =  (typeof preferences.crimeSafety === "undefined")? 1 :preferences.crimeSafety;;
+    var user_affordability = (typeof preferences.affordability === "undefined")?1:preferences.affordability;
 
     suburbModel.aggregate([{
-        $addFields: {
+        $project: {
+            name: true,
+            shim: true,
+            rating_affordability: true,
+            rating_safety: true,
             userRating: {
                 $sum: [{
-                    $multiply: [user_affordability, "$rating_affordability"]
+                    $multiply: [parseInt(user_affordability), "$rating_affordability"]
                 }, {
-                    $multiply: [user_safety, "$rating_safety"]
+                    $multiply: [parseInt(user_safety), "$rating_safety"]
                 }]
             },
         }

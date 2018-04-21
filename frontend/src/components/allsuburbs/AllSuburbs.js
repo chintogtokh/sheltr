@@ -16,26 +16,32 @@ class AllSuburbs extends Component {
 
   componentWillMount() {
     let { preferences} = this.props;
-    fetch('/api/ranked_suburbs')
-        .then(response => response.json().then( data => ({
-            data: data,
-            status: response.status
-            })
-        ))
-        .then(response => {
-            if (response.status !== 200) {
-                // dispatch({
-                //     type: suburbConstants.SUBURB_NOTFOUND,
-                // })
-                console.log("error.");
-            }
-            else{
-              this.setState({suburbs: response.data.map((item,i) =>
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(preferences.browsePreferences)
+    };
+
+      fetch('/api/ranked_suburbs',requestOptions)
+          .then(response => response.json().then( data => ({
+              data: data,
+              status: response.status
+              })
+          ))
+          .then(response => {
+              if (response.status !== 200) {
+                  // dispatch({
+                  //     type: suburbConstants.SUBURB_NOTFOUND,
+                  // })
+                  console.log("error.");
+              }
+              else{
+                  this.setState({suburbs: response.data.map((item,i) =>
                 <li key={i}><Link to={"/suburb/" + item.shim}>{item.name}</Link></li>)
               });
-            }
-        });
-
+              }
+          });
   }
 
   render() {

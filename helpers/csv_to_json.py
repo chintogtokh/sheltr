@@ -4,23 +4,25 @@ import random
 import re
 
 def row_to_obj(data):
-	# print data
-	# random.randint(1,101),
-	return {
-	    "name": data[2].title(),
-	    "population": 12345,
-	    "shim": re.sub('[^0-9a-zA-Z]+', '-', data[2].lower()),
-	    "rating_safety": int(data[17]),
-	    "rating_affordability": int(data[12]),
-	    "outlinks": {
-	    "realestate": "http://www.google.com",
-	    "domain": "http://www.google.com"
-	    },
-	    "coords": {
-	        "lat": float(data[5]),
-	        "lng": float(data[4])
-	    }
-	}
+    # print data
+    # random.randint(1,101),
+    with open('./data/geojson/' + data[2] + "_xaaaa.geojson", 'r') as json_file:
+        json_data = json.loads(json_file.read())
+        return {
+            "name": data[2].title(),
+            "shim": re.sub('[^0-9a-zA-Z]+', '-', data[2].lower()),
+            "rating_safety": int(data[17]),
+            "rating_affordability": int(data[12]),
+            "outlinks": {
+                "realestate": data[8],
+                "domain": data[7]
+            },
+            "geojson": json_data,
+            "coords": {
+                "lat": float(data[5]),
+                "lng": float(data[4])
+            }
+        }
 
 
 '''
@@ -180,10 +182,10 @@ def row_to_obj(data):
 153 Zomi
 '''
 with open('FINAL_SUBURB_ANALYSIS.csv', 'rb') as csvfile:
-	readr = csv.reader(csvfile, delimiter=',')
-	initial = readr.next()
-	for line in readr:
-		print json.dumps(row_to_obj(line))
-	# print initial
-	# for row in readr:
-	# 	print ', '.join(row)
+    readr = csv.reader(csvfile, delimiter=',')
+    initial = readr.next()
+    for line in readr:
+        print json.dumps(row_to_obj(line))
+    # print initial
+    # for row in readr:
+    #   print ', '.join(row)
