@@ -138,10 +138,14 @@ img.inline-logo {
   top: 0;
   color: black;
   font-size: 15px;
-  margin-bottom: -0.5em;
-  z-index: 100; }
+  margin-bottom: -0.5em; }
   .react-select .Select-control {
     border: none !important; }
+  .react-select .Select-placeholder {
+    color: black; }
+  .react-select .Select-menu {
+    z-index: 50;
+    max-height: 150px; }
 
 .pulsating-circle {
   position: absolute;

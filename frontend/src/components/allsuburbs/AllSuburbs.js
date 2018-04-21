@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './AllSuburbs.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+// import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class AllSuburbs extends Component {
 
   constructor(props) {
     super(props);
-    const { dispatch } = this.props;
+    // const { dispatch } = this.props;
     this.state = {
     };
   }
@@ -18,12 +18,30 @@ class AllSuburbs extends Component {
     }
 
   componentWillMount() {
-    let { preferences} = this.props;
+    let { preferences } = this.props;
+
+    let params = preferences;
+//    delete params;
+
+    delete params.raw_uni;
+    delete params.raw_actualLanguage;
+
+    // if(params.uni && params.uni.shim){
+    //   let tmp = params.uni.shim;
+    //   delete params.uni;
+    //   params.uni = tmp;
+    // }
+
+    // if(params.actualLanguage && params.actualLanguage.shim){
+    //   let tmp = params.actualLanguage.shim;
+    //   delete params.actualLanguage;
+    //   params.actualLanguage = tmp;
+    // }
 
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(preferences.browsePreferences)
+        body: JSON.stringify(params)
     };
 
       fetch('/api/ranked_suburbs',requestOptions)
@@ -48,9 +66,9 @@ class AllSuburbs extends Component {
   }
 
   render() {
-    let { preferences} = this.props;
+    // let { preferences} = this.props;
     let { suburbs } = this.state;
-    preferences = JSON.stringify(preferences);
+    // preferences = JSON.stringify(preferences);
     // console.log(suburbs);
     // suburbs = this.state.suburbs)
       return (

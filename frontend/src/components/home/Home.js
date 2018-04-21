@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import { browseActions } from '../../actions';
 import { connect } from 'react-redux';
-import {debounce} from 'lodash';
+// import {debounce} from 'lodash';
 
 //images
 import detective from '../../files/detective.svg';
@@ -27,33 +27,36 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      crimeSafety: '',
-      affordability: '',
-      language: '',
-      actualLanguage: '',
-      uni: '',
-      uniCampus: ''
-    };
+
+    this.state = {};
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChangeLang = this.onChangeLang.bind(this);
-    this.onChangeUni = this.onChangeUni.bind(this);
+    this.getLanguages = this.getLanguages.bind(this);
+    this.getUnis = this.getUnis.bind(this);
   }
 
   componentDidMount = function() {
     document.title = "Sheltr | Home";
+
+    // console.log(this.props.preferences);
+
+    if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
+      this.setState(this.props.preferences);
+    }
   }
 
   new = true;
 
   handleSelectChange = function(name) {
     return function(newValue) {
-        if(newValue){
-        this.setState({[name]:newValue.value});
+        if(typeof newValue !== "undefined" && name !== "actualLanguage" && name !== "uni"){
+          this.setState({[name]:newValue.value});
+        }
+        else if(typeof newValue !== "undefined"){
+          this.setState({[name]:newValue,["raw_"+name]:newValue});
         }
         else{
-        this.setState({[name]:''});
+          this.setState({[name]:''});
         }
     }.bind(this);
   };
@@ -63,41 +66,41 @@ class Home extends Component {
     this.new = false;
 
     let params = this.state;
-    for(var key in params){
-      if (params[key]==="" || params[key]===null){
-        delete params[key];
-      }
-    }
-
-    if(params.actualLanguage){
-      params.actualLanguage = params.actualLanguage.shim;
-    }
-
-    if(params.uni){
-      params.uni = params.uni.shim;
-    }
+    // for(var key in params){
+    //   if (params[key]==="" || params[key]===null){
+    //     delete params[key];
+    //   }
+    // }
 
     if(Object.keys(params).length===0){
       this.mustSubmitNotification();
     }
     else{
-    //   console.log(this.state);
-    // return;
-      const { dispatch } = this.props;
-      dispatch(browseActions.enterPreferences(params));
-    }
 
+    const { dispatch } = this.props;
+    dispatch(browseActions.enterPreferences(params));
+    }
   }
 
+
+
   componentWillReceiveProps(nextProps) {
-  if (nextProps.preferences && this.new === false) {
-    this.props.history.push('/suburb');
+
+
+
+    if (nextProps.preferences && this.new === false) {
+      this.props.history.push('/suburb');
     }
   }
 
   getLanguages (input) {
     if (!input) {
-      return Promise.resolve({ options: [] });
+      if(this.state.raw_actualLanguage){
+        input = this.state.raw_actualLanguage.name;
+      }
+        else{
+          return Promise.resolve({ options: [] });
+        }
     }
 
     return fetch(`/api/search/languages?q=${input}`)
@@ -109,25 +112,19 @@ class Home extends Component {
 
   getUnis (input) {
     if (!input) {
-      return Promise.resolve({ options: [] });
+      if(this.state.raw_uni){
+        console.log("D");
+        input = this.state.raw_uni.name;
+      }
+        else{
+          return Promise.resolve({ options: [] });
+        }
     }
 
     return fetch(`/api/search/universities?q=${input}`)
     .then((response) => response.json())
     .then((json) => {
       return { options:json };
-    });
-  }
-
-  onChangeLang (value) {
-    this.setState({
-      actualLanguage: value,
-    });
-  }
-
-  onChangeUni (value) {
-    this.setState({
-      uni: value,
     });
   }
 
@@ -208,11 +205,12 @@ class Home extends Component {
                   <Select.Async
                   placeholder = ""
                   name="actualLanguage"
+                  autoload = {true}
                   className = "react-select"
-                  value={this.state.actualLanguage}
+                  value={actualLanguage}
                   valueKey="shim"
                   labelKey="name"
-                  onChange={this.onChangeLang}
+                  onChange={this.handleSelectChange('actualLanguage')}
                   loadOptions={this.getLanguages}
                   backspaceRemoves={true} />
 
@@ -223,12 +221,13 @@ class Home extends Component {
                   <div className="input-label">my preferred uni is:</div>
                   <Select.Async
                   placeholder = ""
+                  autoload = {true}
                   name="uni"
                   className = "react-select"
-                  value={this.state.uni}
+                  value={uni}
                   valueKey="shim"
                   labelKey="name"
-                  onChange={this.onChangeUni}
+                  onChange={this.handleSelectChange('uni')}
                   loadOptions={this.getUnis}
                   backspaceRemoves={true} />
                   </div>
@@ -270,7 +269,7 @@ class Home extends Component {
             <div className="col-md-4">
                 <h2 className="featurette-heading">who made this?</h2>
                 <div className="lead">We're four students at Monash University.</div>
-                <div className="lead">Please send food. We're very hungry. Accepting unsolicited pizza & coffee deliveries to Floor 3, Building B, Monash Caulfield.</div>
+                <div className="lead">Floor 3, Building B, Monash Caulfield.</div>
                 <p className="block-of-portraits">
                 <img alt="Chintogtokh" src="images/chinto.jpg" />
                 <img alt="James" src="images/james.jpg" />
@@ -286,9 +285,11 @@ class Home extends Component {
   }
 }
 
-
-const mapStateToProps = state => ({
-  preferences: state.browse
-});
+function mapStateToProps(state) {
+    const preferences = state.browse;
+    return {
+        preferences
+    };
+}
 
 export default connect(mapStateToProps)(Home);
