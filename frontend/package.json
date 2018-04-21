@@ -23,7 +23,8 @@
     "react-toastify": "^3.4.3",
     "redux": "^3.7.2",
     "redux-persist": "^5.9.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "turf-bbox": "^3.0.12"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

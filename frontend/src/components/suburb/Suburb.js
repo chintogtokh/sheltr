@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Suburb.css';
 import { connect } from 'react-redux';
 import { suburbActions } from '../../actions';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, GeoJSON } from 'react-leaflet';
+import bbox from 'turf-bbox';
 
 class Suburb extends Component {
 
@@ -17,8 +18,25 @@ class Suburb extends Component {
 
     }
 
+    getStyle(feature, layer) {
+    return {
+      color: '#006400',
+      weight: 5,
+      opacity: 0.65
+    }
+  };
+
+  componentDidMount(){
+
+  }
+
   render() {
     const { suburb, extract} = this.props;
+    const bboxArray = bbox(suburb.geojson);
+    const corner1 = [bboxArray[1], bboxArray[0]];
+    const corner2 = [bboxArray[3], bboxArray[2]];
+    const bounds = [corner1, corner2];
+
       return (
       <div>
           <main role="main">
@@ -49,18 +67,12 @@ class Suburb extends Component {
                     </div>
                     <div className="col-md-4">
 
-                      <Map style={{'height':500+'px','width':100+'%'}} center={suburb.coords} zoom={12}>
+                      <Map style={{'height':500+'px','width':100+'%'}} bounds={bounds}>
                             <TileLayer
                               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                        <Marker position={suburb.coords}>
-                          <Popup>
-                            <span>
-                              A pretty CSS3 popup. <br /> Easily customizable.
-                            </span>
-                          </Popup>
-                        </Marker>
+                            <GeoJSON key={suburb.shim} data={suburb.geojson} style={this.getStyle} />
                         </Map>
 
                     </div>
