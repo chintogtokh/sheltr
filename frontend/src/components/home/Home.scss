@@ -1,6 +1,6 @@
 div.header-container {
     display: block;
-    z-index:10;
+    // //z-index:10;
     position: relative;
     width: 100%;
     min-height: 500px;
@@ -61,7 +61,7 @@ div.header-container {
   div.header-container {
    .header-content {
       width:100%;
-      z-index:10;
+      // //z-index:10;
       // background-color: rgba(0,0,0,0.5);
       padding-bottom:50px;
 
@@ -125,12 +125,8 @@ img.inline-logo{
 }
 
 .header-content-inner input {
-    margin:0 10px;
-    background:transparent;
     border:none;
-    color:white;
-    border-bottom: 3px solid white;
-    border-bottom-style: dotted;
+    color:black;
 
     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: white;
@@ -164,21 +160,21 @@ img.inline-logo{
 // }
 
 .before-vicmap{
-    z-index:10;
+    // //z-index:10;
     position: relative;
 }
 
 .vicmap{
     background-image: url(../../files/vicmap.svg);
-    z-index:-1;
+    //z-index:-1;
     padding:35px 0;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .home-container{
-  margin-top:-40px;
-  z-index:10;
+  // margin-top:-40px;
+  // //z-index:10;
   background-color:white;
   border-radius: 25px;
   max-width:1200px;
@@ -222,9 +218,19 @@ img.inline-logo{
 .react-select{
     display: inline-block;
     font-size: inherit;
-    min-width: 300px;
+    min-width: 400px;
     top: 0;
+    color:black;
+    font-size:15px;
     margin-bottom: -0.5em;
+    z-index:100;
+    .Select-control{
+      border:none!important;
+    }
+
+    .Select-menu{
+      // max-height: 150px;
+    }
 }
 
 .pulsating-circle {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './AllSuburbs.css';
 import { connect } from 'react-redux';
-import { browseActions } from '../../actions';
 import { Link } from 'react-router-dom';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 

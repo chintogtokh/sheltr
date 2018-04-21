@@ -5,6 +5,7 @@ import users from './users';
 import auth from './auth';
 import suburbs from './suburbs';
 import ranked_suburbs from './ranked_suburbs';
+import search from './search';
 import passport from 'passport';
 
 let api = Router();
@@ -14,6 +15,8 @@ api.use('/api/users', users);
 api.use('/api/auth', auth);
 api.use('/api/suburbs', suburbs);
 api.use('/api/ranked_suburbs', ranked_suburbs);
+
+api.use('/api/search', search);
 
 // perhaps expose some API metadata at the root
 api.get('/api', (req, res) => {

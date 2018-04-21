@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import './Login.css';
 import { alertActions } from '../../actions';
 import { userActions } from '../../actions';
@@ -11,14 +11,6 @@ class Login extends Component {
     componentDidMount = function() {
         document.title = "Sheltr | Login";
     }
-
-    googleNotImplementedNotification = () => toast("Google Login hasn't been implemented yet. It's coming soon!",
-      {
-        type: toast.TYPE.INFO,
-        autoClose: 5000,
-        hideProgressBar: true,
-        bodyClassName: "custom-toast"
-      });
 
     constructor(props) {
         super(props);
@@ -58,7 +50,6 @@ class Login extends Component {
         const { username, password, submitted } = this.state;
         return (
             <div className="login-container">
-                <ToastContainer />
                 <h1>Login</h1>
                 <div>
                   <form name="form" onSubmit={this.handleSubmit}>
@@ -75,7 +66,6 @@ class Login extends Component {
                           <span>&nbsp;<i className="fas fa-spinner fa-pulse"></i>&nbsp;</span>
                       }
                       <Link to="/auth/register" className="btn btn-light">Register</Link>
-                      <button type="button" onClick={this.googleNotImplementedNotification} className="btn btn-light"><i className="fab fa-google"></i> Login with Google</button>
                     </div>
                   </form>
                 </div>

@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import { browseActions } from '../../actions';
 import { connect } from 'react-redux';
+import {debounce} from 'lodash';
 
 //images
 import detective from '../../files/detective.svg';
@@ -36,6 +37,8 @@ class Home extends Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeLang = this.onChangeLang.bind(this);
+    this.onChangeUni = this.onChangeUni.bind(this);
   }
 
   componentDidMount = function() {
@@ -59,17 +62,27 @@ class Home extends Component {
     e.preventDefault();
     this.new = false;
 
-    const params = this.state;
+    let params = this.state;
     for(var key in params){
       if (params[key]==="" || params[key]===null){
         delete params[key];
       }
     }
 
+    if(params.actualLanguage){
+      params.actualLanguage = params.actualLanguage.shim;
+    }
+
+    if(params.uni){
+      params.uni = params.uni.shim;
+    }
+
     if(Object.keys(params).length===0){
       this.mustSubmitNotification();
     }
     else{
+    //   console.log(this.state);
+    // return;
       const { dispatch } = this.props;
       dispatch(browseActions.enterPreferences(params));
     }
@@ -77,13 +90,49 @@ class Home extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-  if (nextProps.preferences && this.new == false) {
+  if (nextProps.preferences && this.new === false) {
     this.props.history.push('/suburb');
     }
   }
 
+  getLanguages (input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/search/languages?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
+
+  getUnis (input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/search/universities?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
+
+  onChangeLang (value) {
+    this.setState({
+      actualLanguage: value,
+    });
+  }
+
+  onChangeUni (value) {
+    this.setState({
+      uni: value,
+    });
+  }
+
   render() {
-    const { crimeSafety, affordability, language, actualLanguage, uni, uniCampus } = this.state;
+    const { crimeSafety, affordability, language, actualLanguage, uni } = this.state;
 
     return (
       <div>
@@ -105,6 +154,7 @@ class Home extends Component {
 
                   <Select className = "react-select"
                     name="crimeSafety"
+                    placeholder = ""
                     value={crimeSafety}
                     onChange={this.handleSelectChange('crimeSafety')}
                     options={[
@@ -121,6 +171,7 @@ class Home extends Component {
                   <div className="input-label">rental affordability is:</div>
                   <Select className = "react-select"
                     name="affordability"
+                    placeholder = ""
                     value={affordability}
                     onChange={this.handleSelectChange('affordability')}
                     options={[
@@ -137,6 +188,7 @@ class Home extends Component {
                   <div className="input-label"> my native language is:</div>
                   <Select className = "react-select"
                     name="language"
+                    placeholder = ""
                     value={language}
                     onChange={this.handleSelectChange('language')}
                     options={[
@@ -152,48 +204,34 @@ class Home extends Component {
                   <div className="lead-row">
                   <div className="fake-img">&nbsp;</div>
                   <div className="input-label">and it is:</div>
-                  <Select
+
+                  <Select.Async
+                  placeholder = ""
+                  name="actualLanguage"
                   className = "react-select"
-                      name="actualLanguage"
-                      value={actualLanguage}
-                      onChange={this.handleSelectChange('actualLanguage')}
-                      options={[
-                        { value: 'mongolian', label: 'mongolian' },
-                        { value: 'russian',   label: 'russian' }
-                      ]}
-                    />
+                  value={this.state.actualLanguage}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.onChangeLang}
+                  loadOptions={this.getLanguages}
+                  backspaceRemoves={true} />
+
                   </div>
                   }
                   <div className="lead-row">
                   <img src={university} alt="university"/>
                   <div className="input-label">my preferred uni is:</div>
-                  <Select
+                  <Select.Async
+                  placeholder = ""
+                  name="uni"
                   className = "react-select"
-                      name="uni"
-                      value={uni}
-                      onChange={this.handleSelectChange('uni')}
-                      options={[
-                        { value: 'monash', label: 'monash' },
-                        { value: 'rmit', label: 'rmit' }
-                      ]}
-                    />
+                  value={this.state.uni}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.onChangeUni}
+                  loadOptions={this.getUnis}
+                  backspaceRemoves={true} />
                   </div>
-                  { uni &&
-                  <div className="lead-row">
-                  <div className="fake-img">&nbsp;</div>
-                  <div className="input-label">located  at:</div>
-                  <Select
-                  className = "react-select"
-                      name="uniCampus"
-                      value={uniCampus}
-                      onChange={this.handleSelectChange('uniCampus')}
-                      options={[
-                        { value: 'caulfield', label: 'caulfield' },
-                        { value: 'clayton', label: 'clayton' }
-                      ]}
-                    />
-                  </div>
-                  }
               </div>
 
               <br/>
@@ -213,8 +251,7 @@ class Home extends Component {
                 <h2 className="featurette-heading">what is this? <span className="text-muted"></span></h2>
                   <div className="lead">Our goal is to impart local area knowledge on new students arriving in Victoria. We aim to connect you with safe, affordable, and comfortable places to live.</div>
                   <img className="featurette-image img-fluid mx-auto" alt="Travelers" style={{width: 350 + 'px' }} src="images/airport.jpg" data-holder-rendered="true" />
-                  <div className="lead">We are a diverse state. Do you like parks? Do you like hip bars? Or do you just want a quiet place to study? We're here to help.</div>
-            </div>
+           </div>
             <div className="col-md-4">
                  <h2 className="featurette-heading">how does it work?</h2>
                   <div className="lead">Victoria is a world leader in open data.</div>

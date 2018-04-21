@@ -20,7 +20,7 @@ class Suburb extends Component {
 
     getStyle(feature, layer) {
     return {
-      color: '#006400',
+      color: '#112660',
       weight: 5,
       opacity: 0.65
     }
