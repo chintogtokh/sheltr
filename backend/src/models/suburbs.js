@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 const SuburbSchema = mongoose.Schema({
     name: {type: String, required: true},
-    population: {type: String},
     shim: {type: String, unique: true},
     rating_safety: {type: Number},
     rating_affordability: {type: Number},
@@ -22,9 +21,6 @@ const SuburbSchema = mongoose.Schema({
     }
 }, {collection : 'suburbs'});
 
-
-SuburbSchema.methods.user_rank = function(a,b) {
-    return this.rating_safety * a;
-};
+// SuburbSchema.index({name: 'text'});
 
 export default mongoose.model('Suburb', SuburbSchema);

@@ -37,7 +37,7 @@ rankedSuburbRouter.post('/', (req, res) => {
         }
     }]).sort({
         'userRating': -1
-    }).limit(5).exec(function(err, docs) {
+    }).limit(10).exec(function(err, docs) {
         res.send(docs)
     });;
 

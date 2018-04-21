@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { suburbActions } from '../../actions';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 import bbox from 'turf-bbox';
+import Select from 'react-select';
+
 
 class Suburb extends Component {
 
@@ -11,6 +13,8 @@ class Suburb extends Component {
         super(props);
 
         const suburbName = props.match.params.name;
+
+        this.handleSelectChange = this.handleSelectChange.bind(this);
 
         const { dispatch } = this.props;
         dispatch(suburbActions.fetchSuburb(suburbName));
@@ -26,9 +30,24 @@ class Suburb extends Component {
     }
   };
 
+  getSuburbs (input) {
+    if (!input) {
+          return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/search/suburbs?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
+
+  handleSelectChange = function(value) {
+    window.open('/suburb/' + value.shim);
+  };
 
   render() {
-    const { suburb, extract} = this.props;
+    const { suburb, extract, selected_suburb} = this.props;
     const bboxArray = bbox(suburb.geojson);
     const corner1 = [bboxArray[1], bboxArray[0]];
     const corner2 = [bboxArray[3], bboxArray[2]];
@@ -43,6 +62,20 @@ class Suburb extends Component {
               <div className="container">
                   <h1>{suburb.name}</h1>
                   <br/>
+                  <Select.Async
+                  placeholder = "Search for another Suburb..."
+                  name="selected_suburb"
+                  autoload = {true}
+                  className = "react-select"
+                  value={selected_suburb}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.handleSelectChange}
+                  loadOptions={this.getSuburbs}
+                  backspaceRemoves={true} />
+                  <br/>
+
+
                   <div className="row">
                     <div className="col-md-8">
                     <p>

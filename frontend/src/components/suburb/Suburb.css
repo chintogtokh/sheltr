@@ -1,2 +1,20 @@
 .media img {
   width: 80px; }
+
+.react-select {
+  display: inline-block;
+  font-size: inherit;
+  min-width: 400px;
+  top: 0;
+  color: black;
+  font-size: 15px;
+  margin-bottom: -0.5em; }
+  .react-select .Select-control {
+    border-color: #d9d9d9 #ccc #b3b3b3 !important;
+    border-radius: 4px !important;
+    border: 1px solid #ccc !important; }
+  .react-select .Select-placeholder {
+    color: black; }
+  .react-select .Select-menu {
+    z-index: 50;
+    max-height: 150px; }
