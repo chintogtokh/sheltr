@@ -49,7 +49,7 @@ class Home extends Component {
 
   handleSelectChange = function(name) {
     return function(newValue) {
-        if(typeof newValue !== "undefined" && name !== "actualLanguage" && name !== "uni"){
+        if((typeof newValue !== "undefined" && newValue !== null) && name !== "actualLanguage" && name !== "uni"){
           this.setState({[name]:newValue.value});
         }
         else if(typeof newValue !== "undefined"){

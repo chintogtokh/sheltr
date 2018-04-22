@@ -120,9 +120,6 @@ class AllSuburbs extends Component {
                         }
                     });
                 }
-
-            //     )
-            //   });
               }
           })
   }

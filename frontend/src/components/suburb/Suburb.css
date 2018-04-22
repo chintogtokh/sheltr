@@ -1,20 +1,21 @@
 .media img {
   width: 80px; }
 
-.react-select {
+.react-select-single-suburb {
+  clear: both;
   display: inline-block;
   font-size: inherit;
-  min-width: 400px;
+  width: 100%;
   top: 0;
   color: black;
   font-size: 15px;
-  margin-bottom: -0.5em; }
-  .react-select .Select-control {
+  margin-bottom: 1em; }
+  .react-select-single-suburb .Select-control {
     border-color: #d9d9d9 #ccc #b3b3b3 !important;
     border-radius: 4px !important;
     border: 1px solid #ccc !important; }
-  .react-select .Select-placeholder {
+  .react-select-single-suburb .Select-placeholder {
     color: black; }
-  .react-select .Select-menu {
+  .react-select-single-suburb .Select-menu {
     z-index: 50;
     max-height: 150px; }
