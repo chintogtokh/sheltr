@@ -109,7 +109,7 @@ class AllSuburbs extends Component {
 
                 </p>
               </div>
-              {response1.status === 200 &&
+              {response1.status === 200 && wiki.thumbnail &&
               <img className="suburb-card card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src={wiki.thumbnail.source} />}
             </div>
             </Link>

@@ -221,13 +221,27 @@ img.inline-logo{
     min-width: 400px;
     top: 0;
     color:black;
-    font-size:15px;
+    font-size:1.2rem;
     margin-bottom: -0.5em;
+
+    &.is-focused{
+      .Select-control{
+        .Select-value-label{
+        color:black!important;
+      }
+    }
+    }
+
     // z-index:0;
     .Select-control{
-      border:none!important;
-      opacity: 0.7;
+      border:1px solid white;
+      background-color:transparent;
+      color:white;
       cursor: pointer;
+
+      .Select-value-label{
+        color:white!important;
+      }
     }
 
     .Select-placeholder{

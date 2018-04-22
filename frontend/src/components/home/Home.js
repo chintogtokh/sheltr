@@ -51,6 +51,9 @@ class Home extends Component {
     return function(newValue) {
         if((typeof newValue !== "undefined" && newValue !== null) && name !== "actualLanguage" && name !== "uni"){
           this.setState({[name]:newValue.value});
+          if(name==="language" && newValue.value==0){
+            this.setState({"actualLanguage": null});
+          }
         }
         else if(typeof newValue !== "undefined"){
           this.setState({[name]:newValue,["raw_"+name]:newValue});
@@ -152,7 +155,7 @@ class Home extends Component {
                   <Select className = "react-select"
                     name="crimeSafety"
                     placeholder = ""
-                    searchable = "false"
+                    searchable = {false}
                     value={crimeSafety}
                     onChange={this.handleSelectChange('crimeSafety')}
                     options={[
@@ -171,7 +174,7 @@ class Home extends Component {
                     name="affordability"
                     placeholder = ""
                     value={affordability}
-                    searchable = "false"
+                    searchable = {false}
                     onChange={this.handleSelectChange('affordability')}
                     options={[
                       { value: '0',  label: 'irrelevant' },
@@ -188,7 +191,7 @@ class Home extends Component {
                   <Select className = "react-select"
                     name="language"
                     placeholder = ""
-                    searchable = "false"
+                    searchable = {false}
                     value={language}
                     onChange={this.handleSelectChange('language')}
                     options={[
@@ -200,7 +203,7 @@ class Home extends Component {
                     ]}
                   />
                   </div>
-                  { language &&
+                  { (language && language!=0) &&
                   <div className="lead-row">
                   <div className="fake-img">&nbsp;</div>
                   <div className="input-label">my native language is:</div>
