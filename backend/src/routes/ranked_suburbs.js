@@ -22,6 +22,7 @@ rankedSuburbRouter.post('/', (req, res) => {
             shim: true,
             rating_affordability: true,
             rating_safety: true,
+            universities: true,
             userRating: {
                 $sum: [{
                     $multiply: [parseInt(affordability), "$rating_affordability"]
@@ -30,19 +31,17 @@ rankedSuburbRouter.post('/', (req, res) => {
                 }, {
                     $multiply: [parseInt(language), "$language." + actualLanguage]
                 }, {
-                    $multiply: [100, "$universities." + uni]
+                    $multiply: [500, "$universities." + uni]
                 }
                 ]
             },
         }
     }];
 
-    console.log(JSON.stringify(query));
-
     suburbModel.aggregate(query).sort({
         'userRating': -1
     }).limit(10).exec(function(err, docs) {
-        console.log(err);
+        console.log(docs);
         res.send(docs);
     });;
 

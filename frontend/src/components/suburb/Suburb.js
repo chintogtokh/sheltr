@@ -113,7 +113,7 @@ class Suburb extends Component {
                       <li>Affordability rating - {this.state.suburb.rating_affordability} { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}</li>
                       <li>Safety rating - {this.state.suburb.rating_safety} { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}</li>
                       {preferences.raw_uni && <li>University rating - {this.state.suburb.universities[preferences.raw_uni.shim]} - your university was <b>{preferences.raw_uni.name}</b></li>}
-                      {preferences.language && <li>Language rating - {this.state.suburb.language[preferences.raw_actualLanguage.shim]} - your preference was <b>{this.numberToRanking(preferences.raw_actualLanguage.name)}</b> and your language was <b>{preferences.raw_actualLanguage.name}</b></li>}
+                      {preferences.language && preferences.language!=0 && <li>Language rating - {this.state.suburb.language[preferences.raw_actualLanguage.shim]} - your preference was <b>{this.numberToRanking(preferences.language)}</b> and your language was <b>{preferences.raw_actualLanguage.name}</b></li>}
                     </ul>
 
                     <h3>stats</h3>
