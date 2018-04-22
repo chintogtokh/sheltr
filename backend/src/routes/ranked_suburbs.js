@@ -31,7 +31,7 @@ rankedSuburbRouter.post('/', (req, res) => {
                 }, {
                     $multiply: [parseInt(language), "$language." + actualLanguage]
                 }, {
-                    $multiply: [500, "$universities." + uni]
+                    $multiply: [2000, "$universities." + uni]
                 }
                 ]
             },

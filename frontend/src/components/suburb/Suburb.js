@@ -20,8 +20,7 @@ class Suburb extends Component {
 
       this.handleSelectChange = this.handleSelectChange.bind(this);
 
-      const { dispatch } = this.props;
-      dispatch(suburbActions.fetchSuburbWiki(suburbName));
+
 
   }
 
@@ -55,6 +54,9 @@ class Suburb extends Component {
                 this.setState({suburb: response.data, bounds: bounds});
 
                 document.title = "Sheltr | " + this.state.suburb.name;
+
+                const { dispatch } = this.props;
+                dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
             }
         });
   }
@@ -93,7 +95,7 @@ class Suburb extends Component {
   }
 
   render() {
-      const { extract, selected_suburb, preferences} = this.props;
+      const { wiki, selected_suburb, preferences} = this.props;
 
       return (
       <div>
@@ -105,7 +107,7 @@ class Suburb extends Component {
                   <div className="row">
                     <div className="col-md-8">
                     <p>
-                    {extract}
+                    {wiki}
                     </p>
 
                     <h3>main indicators</h3>
@@ -193,7 +195,8 @@ class Suburb extends Component {
 }
 
 const mapStateToProps = state => ({
-  preferences: state.browse
+  preferences: state.browse,
+  wiki: state.suburb.wiki_extract
 });
 
 // export default connect(mapStateToProps)(Suburb);
