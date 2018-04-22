@@ -1,6 +1,9 @@
 .media img {
   width: 80px; }
 
+.container h1 {
+  text-transform: capitalize; }
+
 .react-select-single-suburb {
   clear: both;
   display: inline-block;

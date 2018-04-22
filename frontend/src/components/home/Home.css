@@ -33,7 +33,7 @@ div.header-container {
       clear: both; }
     div.header-container .header-content .header-content-inner div.lead div.input-label {
       padding: 0 10px;
-      min-width: 290px;
+      min-width: 500px;
       display: inline-block; }
 
 @media (min-width: 1068px) {
@@ -140,7 +140,9 @@ img.inline-logo {
   font-size: 15px;
   margin-bottom: -0.5em; }
   .react-select .Select-control {
-    border: none !important; }
+    border: none !important;
+    opacity: 0.7;
+    cursor: pointer; }
   .react-select .Select-placeholder {
     color: black; }
   .react-select .Select-menu {

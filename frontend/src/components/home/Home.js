@@ -139,7 +139,7 @@ class Home extends Component {
           <div className="header-content-inner text-xs-center">
               <h1><span className="before-vicmap">are you coming to study in victoria?</span></h1>
               <div className="lead">
-                we'll help with the house hunt, just help us with some of your preferences.
+                are you worried about finding a place to live? we'll help you. just help us with your preferences.
               </div>
               <br/>
 
@@ -147,11 +147,12 @@ class Home extends Component {
               <div className="lead">
                   <div className="lead-row">
                   <img src={detective} alt="safety"/>
-                  <div className="input-label"> safety from crime is:</div>
+                  <div className="input-label"> an area with low crime is:</div>
 
                   <Select className = "react-select"
                     name="crimeSafety"
                     placeholder = ""
+                    searchable = "false"
                     value={crimeSafety}
                     onChange={this.handleSelectChange('crimeSafety')}
                     options={[
@@ -165,11 +166,12 @@ class Home extends Component {
                   </div>
                   <div className="lead-row">
                   <img src={credit_card} alt="affordability"/>
-                  <div className="input-label">rental affordability is:</div>
+                  <div className="input-label">affordable rent is:</div>
                   <Select className = "react-select"
                     name="affordability"
                     placeholder = ""
                     value={affordability}
+                    searchable = "false"
                     onChange={this.handleSelectChange('affordability')}
                     options={[
                       { value: '0',  label: 'irrelevant' },
@@ -182,10 +184,11 @@ class Home extends Component {
                   </div>
                   <div className="lead-row">
                   <img src={chat} alt="language"/>
-                  <div className="input-label"> my native language is:</div>
+                  <div className="input-label"> an area with many speakers of my language is:</div>
                   <Select className = "react-select"
                     name="language"
                     placeholder = ""
+                    searchable = "false"
                     value={language}
                     onChange={this.handleSelectChange('language')}
                     options={[
@@ -200,7 +203,7 @@ class Home extends Component {
                   { language &&
                   <div className="lead-row">
                   <div className="fake-img">&nbsp;</div>
-                  <div className="input-label">and it is:</div>
+                  <div className="input-label">my native language is:</div>
 
                   <Select.Async
                   placeholder = ""
@@ -218,7 +221,7 @@ class Home extends Component {
                   }
                   <div className="lead-row">
                   <img src={university} alt="university"/>
-                  <div className="input-label">my preferred uni is:</div>
+                  <div className="input-label">my preferred university or institute is:</div>
                   <Select.Async
                   placeholder = ""
                   autoload = {true}
@@ -235,8 +238,8 @@ class Home extends Component {
 
               <br/>
 
-              <div style={{textAlign:'right'}}>
-              <button className="btn btn-light btn-lg" type="submit">Give me some recommendations!</button>
+              <div style={{textAlign:'center'}}>
+              <button className="btn btn-info btn-lg" type="submit">Give me some recommendations!</button>
               </div>
               </form>
           </div>

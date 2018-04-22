@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 // import { ToastContainer, toast } from 'react-toastify';
 import './Login.css';
@@ -27,6 +28,8 @@ class Login extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.onClick = this.onClick.bind(this);
     }
 
     handleChange(e) {
@@ -45,11 +48,26 @@ class Login extends Component {
         }
     }
 
+    mustSubmitNotification = () => toast("Please contact our support staff to reset your password!",
+      {
+        type: toast.TYPE.INFO,
+        autoClose: 5000,
+        hideProgressBar: true,
+        bodyClassName: "custom-toast"
+      });
+
+    onClick = function(e) {
+        e.preventDefault();
+        this.mustSubmitNotification();
+    }
+
+
     render() {
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
             <div className="login-container">
+            <ToastContainer />
                 <h1>Login</h1>
                 <div>
                   <form name="form" onSubmit={this.handleSubmit}>
@@ -58,6 +76,7 @@ class Login extends Component {
                       <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
                     </div>
                     <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
+                        <label htmlFor="password">Password</label>
                       <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
                     </div>
                     <div className="form-group inline-button-group">
@@ -66,6 +85,7 @@ class Login extends Component {
                           <span>&nbsp;<i className="fas fa-spinner fa-pulse"></i>&nbsp;</span>
                       }
                       <Link to="/auth/register" className="btn btn-light">Register</Link>
+                      <button className="btn btn-link" onClick={this.onClick}>Forgot Password?</button>
                     </div>
                   </form>
                 </div>

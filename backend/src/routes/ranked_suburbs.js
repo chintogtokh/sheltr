@@ -16,7 +16,7 @@ rankedSuburbRouter.post('/', (req, res) => {
     var actualLanguage = (typeof preferences.actualLanguage !== "undefined")? preferences.actualLanguage:null;
     var uni = (typeof preferences.uni !== "undefined")?preferences.uni:null;
 
-    suburbModel.aggregate([{
+    var query = [{
         $project: {
             name: true,
             shim: true,
@@ -35,10 +35,15 @@ rankedSuburbRouter.post('/', (req, res) => {
                 ]
             },
         }
-    }]).sort({
+    }];
+
+    console.log(JSON.stringify(query));
+
+    suburbModel.aggregate(query).sort({
         'userRating': -1
     }).limit(10).exec(function(err, docs) {
-        res.send(docs)
+        console.log(err);
+        res.send(docs);
     });;
 
     // promise.then(data => {

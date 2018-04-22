@@ -97,25 +97,22 @@ class AllSuburbs extends Component {
                           let shel = response.data[i];
                           let wiki = response1.data;
                           this.setState({["suburb_" + i]:
+                            <Link to={"/suburb/" + shel.shim} className="text-dark">
                                         <div className="card flex-md-row mb-4 box-shadow h-md-250">
               <div className="card-body d-flex flex-column align-items-start">
                 <h3 className="mb-0">
-                  <Link to={"/suburb/" + shel.shim} className="text-dark">
                   {i+1}. {shel.name}
-                </Link>
                 </h3>
                 <div className="mb-1 text-muted"></div>
                 <p className="card-text mb-auto">
                   {response1.status === 200?wiki.extract:shel.name + " is a suburb in Victoria."}
 
                 </p>
-                <Link to={"/suburb/" + shel.shim}>
-                  Continue Reading
-                </Link>
               </div>
               {response1.status === 200 &&
               <img className="suburb-card card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src={wiki.thumbnail.source} />}
             </div>
+            </Link>
                         });
                         }
                     });
