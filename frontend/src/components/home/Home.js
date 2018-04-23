@@ -169,7 +169,7 @@ class Home extends Component {
                   </div>
                   <div className="lead-row">
                   <img src={credit_card} alt="affordability"/>
-                  <div className="input-label"> Is living in a affordable suburb a priority for you? </div>
+                  <div className="input-label"> Is living in an affordable suburb a priority for you? </div>
                   <Select className = "react-select"
                     name="affordability"
                     placeholder = ""
