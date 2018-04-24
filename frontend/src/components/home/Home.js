@@ -142,7 +142,7 @@ class Home extends Component {
           <div className="header-content-inner text-xs-center">
               <h1><span className="before-vicmap">are you coming to study in victoria?</span></h1>
               <div className="lead">
-                are you worried about finding a place to live? we'll help you. just help us with your preferences.
+                are you worried about finding a place to live? we'll help you. just tell us your priorities.
               </div>
               <br/>
 
@@ -150,7 +150,7 @@ class Home extends Component {
               <div className="lead">
                   <div className="lead-row">
                   <img src={detective} alt="safety"/>
-                  <div className="input-label"> an area with low crime is:</div>
+                  <div className="input-label"> Is living in a safe suburb a priority for you? </div>
 
                   <Select className = "react-select"
                     name="crimeSafety"
@@ -159,17 +159,17 @@ class Home extends Component {
                     value={crimeSafety}
                     onChange={this.handleSelectChange('crimeSafety')}
                     options={[
-                      { value: '0', label: 'irrelevant' },
-                      { value: '10',  label: 'very important' },
-                      { value: '7',  label: 'moderately important' },
-                      { value: '4',  label: 'important' },
-                      { value: '1',  label: 'not important' }
+                      { value: '0', label: 'Not a priority' },
+                      { value: '1',  label: 'Low priority' },
+                      { value: '4',  label: 'Neutral' },
+                      { value: '7',  label: 'Moderate priority' },
+                      { value: '10',  label: 'High priority' }
                     ]}
                   />
                   </div>
                   <div className="lead-row">
                   <img src={credit_card} alt="affordability"/>
-                  <div className="input-label">affordable rent is:</div>
+                  <div className="input-label"> Is living in an affordable suburb a priority for you? </div>
                   <Select className = "react-select"
                     name="affordability"
                     placeholder = ""
@@ -177,17 +177,17 @@ class Home extends Component {
                     searchable = {false}
                     onChange={this.handleSelectChange('affordability')}
                     options={[
-                      { value: '0',  label: 'irrelevant' },
-                      { value: '10',  label: 'very important' },
-                      { value: '7',  label: 'moderately important' },
-                      { value: '4',  label: 'important' },
-                      { value: '1',  label: 'not important' }
+                      { value: '0', label: 'Not a priority' },
+                      { value: '1',  label: 'Low priority' },
+                      { value: '4',  label: 'Neutral' },
+                      { value: '7',  label: 'Moderate priority' },
+                      { value: '10',  label: 'High priority' }
                     ]}
                   />
                   </div>
                   <div className="lead-row">
                   <img src={chat} alt="language"/>
-                  <div className="input-label"> an area with many speakers of my language is:</div>
+                  <div className="input-label"> Is living near people speaking your native language a priority for you? </div>
                   <Select className = "react-select"
                     name="language"
                     placeholder = ""
@@ -195,11 +195,11 @@ class Home extends Component {
                     value={language}
                     onChange={this.handleSelectChange('language')}
                     options={[
-                      { value: '0', label: 'irrelevant' },
-                      { value: '10',  label: 'very important' },
-                      { value: '7',  label: 'moderately important' },
-                      { value: '4',  label: 'important' },
-                      { value: '1',  label: 'not important' }
+                  { value: '0', label: 'Not a priority' },
+                      { value: '1',  label: 'Low priority' },
+                      { value: '4',  label: 'Neutral' },
+                      { value: '7',  label: 'Moderate priority' },
+                      { value: '10',  label: 'High priority' }
                     ]}
                   />
                   </div>
@@ -224,7 +224,7 @@ class Home extends Component {
                   }
                   <div className="lead-row">
                   <img src={university} alt="university"/>
-                  <div className="input-label">my preferred university or institute is:</div>
+                  <div className="input-label">My preferred university or institute is:</div>
                   <Select.Async
                   placeholder = ""
                   autoload = {true}
@@ -242,7 +242,7 @@ class Home extends Component {
               <br/>
 
               <div style={{textAlign:'center'}}>
-              <button className="btn btn-info btn-lg" type="submit">Give me some recommendations!</button>
+              <button className="btn btn-info btn-lg" type="submit"> Find suburbs </button>
               </div>
               </form>
           </div>
