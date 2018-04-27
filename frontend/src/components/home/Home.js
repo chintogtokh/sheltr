@@ -140,9 +140,9 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span className="before-vicmap">are you coming to study in victoria?</span></h1>
+              <h1><span className="before-vicmap">Welcome students, Are you coming to study in victoria?</span></h1>
               <div className="lead">
-                are you worried about finding a place to live? we'll help you. just tell us your priorities.
+                Are you worried about finding a place to live? We'll help you. Just tell us your priorities.
               </div>
               <br/>
 
@@ -206,7 +206,7 @@ class Home extends Component {
                   { (language && language!=0) &&
                   <div className="lead-row">
                   <div className="fake-img">&nbsp;</div>
-                  <div className="input-label">my native language is:</div>
+                  <div className="input-label">My native language is:</div>
 
                   <Select.Async
                   placeholder = ""
@@ -253,12 +253,12 @@ class Home extends Component {
         <div className="container home-container">
           <div className="row">
             <div className="col-md-4">
-                <h2 className="featurette-heading">what is this? <span className="text-muted"></span></h2>
+                <h2 className="featurette-heading">What is this? <span className="text-muted"></span></h2>
                   <div className="lead">Our goal is to impart local area knowledge on new students arriving in Victoria. We aim to connect you with safe, affordable, and comfortable places to live.</div>
                   <img className="featurette-image img-fluid mx-auto" alt="Travelers" style={{width: 350 + 'px' }} src="images/airport.jpg" data-holder-rendered="true" />
            </div>
             <div className="col-md-4">
-                 <h2 className="featurette-heading">how does it work?</h2>
+                 <h2 className="featurette-heading">How does it work?</h2>
                   <div className="lead">Victoria is a world leader in open data.</div>
                   <div className="lead">We've gathered, analysed, mined, and crunched a tonne of this data to present our findings to you.</div>
                   <p className="block-of-images">
@@ -273,7 +273,7 @@ class Home extends Component {
                   </p>
             </div>
             <div className="col-md-4">
-                <h2 className="featurette-heading">who made this?</h2>
+                <h2 className="featurette-heading">Who made this?</h2>
                 <div className="lead">We're four students at Monash University.</div>
                 <div className="lead">Floor 3, Building B, Monash Caulfield.</div>
                 <p className="block-of-portraits">
