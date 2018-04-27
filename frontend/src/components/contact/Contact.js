@@ -13,7 +13,9 @@ class Contact extends Component {
             <main role="main">
                 <div className="container">
 
-                    <h1>Contact Us</h1>
+                    <h1>Contact us today, and get reply with in 24 hours!</h1>
+                    
+                    <h2>saladandscrambledeggs@gmail.com</h2>
 
                     <div>Hi there, we're four students at Monash Uni. We are (ordered alphabetically):</div>
 
