@@ -117,7 +117,7 @@ class Suburb extends Component {
                     {wiki}
                     </p>
 
-                    <h3>main indicators</h3>
+                    <h3>Main indicators</h3>
                     <ul>
                       <li>Affordability rating - {this.state.suburb.rating_affordability} { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}</li>
                       <li>Safety rating - {this.state.suburb.rating_safety} { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}</li>
@@ -125,20 +125,63 @@ class Suburb extends Component {
                       {preferences.language && preferences.language!=0 && <li>Language rating - {this.state.suburb.language[preferences.raw_actualLanguage.shim]} - your preference was <b>{this.numberToRanking(preferences.language)}</b> and your language was <b>{preferences.raw_actualLanguage.name}</b></li>}
                     </ul>
 
-                    <h3>stats</h3>
+                    <h3>Stats</h3>
 
                     <div className='row'>
                       <div className="col-md-4">
-                       Type
+                     <h4> Population </h4>
+                      <img src="suburb-resident.png" alt="Population" height="50" width="50">
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number}
+                      </div>
+                    </div>
+                       
+                       <div className='row'>
+                      <div className="col-md-4">
+                      <h4> International student population </h4>
+                      <img src="total-int-student-per-suburbt.png" alt="International student population" height="50" width="50"> 
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}
+                      </div>
+                    </div>
+                       
+                       <div className='row'>
+                      <div className="col-md-4">
+                      <h4> Number of crimes per 10000 people </h4>
+                      <img src="offences-per-10000-population.png" alt="Crime per 10000 population" height="50" width="50"> 
                       </div>
                       <div className="col-md-4">
                     {this.getStatFromArray(this.state.suburb.stats,"offences-per-10000-population").number}
                       </div>
                     </div>
+                       
+                       <div className='row'>
+                      <div className="col-md-4">
+                      <h4> Most common rental price range </h4>
+                      <img src="suburb-most-common-expense-tier.png" alt="Average rental range" height="50" width="50"> 
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-most-common-expense-tier").string}
+                      </div>
+                    </div>
+                       
+                       <div className='row'>
+                      <div className="col-md-4">
+                      <h4> Most popular international student language </h4>
+                      <img src="suburb-most-int-student-lang.png" alt="Most popular language" height="50" width="50"> 
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-most-int-student-lang").string}
+                      </div>
+                    </div>
+                       
+                       
 
 
 
-                    <h3>rentals here</h3>
+                    <h3>Search of properties in this area here</h3>
                     <ul>
                       <li><a href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}>Domain.com.au</a></li>
                     <li><a href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}>Realestate.com.au</a></li>
