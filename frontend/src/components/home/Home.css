@@ -112,8 +112,8 @@ img.inline-logo {
 .block-of-images {
   text-align: center; }
   .block-of-images img {
-    width: 120px;
-    margin: 10px;
+    width: 80px;
+    margin: 5px;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out; }

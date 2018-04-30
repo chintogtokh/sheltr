@@ -17,7 +17,7 @@ import './Home.css';
 class Home extends Component {
 
 
-  mustSubmitNotification = () => toast("You must input at least one preference!",
+  mustSubmitNotification = () => toast("You must input at least one preference and a university!",
       {
         type: toast.TYPE.INFO,
         autoClose: 5000,
@@ -74,7 +74,7 @@ class Home extends Component {
     //   }
     // }
 
-    if(Object.keys(params).length===0){
+    if(Object.keys(params).length===0 || typeof params.uni == "undefined" || params.uni == null){
       this.mustSubmitNotification();
     }
     else{
@@ -218,6 +218,7 @@ class Home extends Component {
                   value={actualLanguage}
                   valueKey="shim"
                   labelKey="name"
+                  filterOption={() => true}
                   onChange={this.handleSelectChange('actualLanguage')}
                   loadOptions={this.getLanguages}
                   backspaceRemoves={true} />
@@ -231,6 +232,7 @@ class Home extends Component {
                   placeholder = "start typing..."
                   autoload = {true}
                   name="uni"
+                  filterOption={() => true}
                   className = "react-select"
                   value={uni}
                   valueKey="shim"

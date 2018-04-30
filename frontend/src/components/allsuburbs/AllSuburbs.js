@@ -127,7 +127,7 @@ class AllSuburbs extends Component {
           <main role="main">
             <div className="container">
 
-              <h1>...here are the top suburbs</h1>
+              <h1>Suburbs matching your preferences</h1>
 
               <p>
               According to the analysis of our data based on your preferences, we think that the suburbs that most fit your needs are as follows.

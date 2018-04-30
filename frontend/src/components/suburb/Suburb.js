@@ -93,12 +93,26 @@ class Suburb extends Component {
   };
 
   numberToRanking = (num) => {
-    let tmp = { '0': 'irrelevant',
-                      '10':  'very important',
-                      '7':  'moderately important',
-                      '4':  'important',
-                      '1':  'not important'}
+    let tmp = { '0': 'not a priority/irrelevant',
+                      '10':  'high priority',
+                      '7':  'moderate priority',
+                      '4':  'neutral',
+                      '4':  'low priority',
+                      '1':  'not a priority/irrelevant'}
     return tmp[num.toString()];
+  };
+
+  numberToColor = (num) => {
+    num = parseInt(num);
+    if(num>70){
+      return "badge-success";
+    }
+    else if(num>40){
+      return "badge-warning";
+    }
+    else{
+      return "badge-danger";
+    }
   }
 
   render() {
@@ -109,31 +123,60 @@ class Suburb extends Component {
           <main role="main">
             { this.state.suburb &&
               <div className="container">
-                  <h1>{this.state.suburb.name}</h1>
+
+                <div className="row">
+                  <div className="col-md-8">
+                    <h1>{this.state.suburb.name}</h1>
+                  </div>
+
+                  <div className="col-md-4">
+                  <Select.Async
+                      placeholder = "search for another suburb?"
+                      name="selected_suburb"
+                      autoload = {true}
+                      className = "react-select-single-suburb"
+                      value={selected_suburb}
+                      valueKey="shim"
+                      labelKey="name"
+                      onChange={this.handleSelectChange}
+                      loadOptions={this.getSuburbs}
+                      backspaceRemoves={true} />
+                  </div>
+                </div>
+
+
 
                   <div className="row">
                     <div className="col-md-8">
                     <p>
-                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name}><i>(data extracted from <i className="fab fa-wikipedia-w"></i>)</i></a>}
+                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data extracted from Wikipedia)</i></a>}
                     </p>
 
                     <h3>
-
                     Main indicators
                     </h3>
                     <i>Please note that the ratings are all out of 100.</i>
                     <ul>
-                      <li>Affordability rating - <span class="badge badge-pill badge-primary">{this.state.suburb.rating_affordability}/100</span> { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span>- you did not input a preference</span>}</li>
-                      <li>Safety rating - <span class="badge badge-pill badge-primary">{this.state.suburb.rating_safety}/100</span> { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span>- you did not input a preference</span>}</li>
-                      {preferences.raw_uni && <li>University rating - <span class="badge badge-pill badge-primary">{this.state.suburb.universities[preferences.raw_uni.shim]}/100</span> - your university was <b>{preferences.raw_uni.name}</b></li>}
-                      {preferences.language && preferences.language!=0 && <li>Language rating - <span class="badge badge-pill badge-primary">{this.state.suburb.language[preferences.raw_actualLanguage.shim]}/100</span> - your preference was <b>{this.numberToRanking(preferences.language)}</b> and your language was <b>{preferences.raw_actualLanguage.name}</b></li>}
+                      <li>Affordability rating - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.state.suburb.rating_affordability}/100</span> { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span>- you did not input a preference</span>}</li>
+                      <li>Safety rating - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.state.suburb.rating_safety}/100</span> { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span>- you did not input a preference</span>}</li>
+                      {preferences.raw_uni && <li>University rating - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.universities[preferences.raw_uni.shim])}>{this.state.suburb.universities[preferences.raw_uni.shim]}/100</span> - your university was <b>{preferences.raw_uni.name}</b></li>}
+                      {preferences.language && preferences.language!=0 &&
+
+                        <li>
+                          International student language rating for <b>{preferences.raw_actualLanguage.name}</b> - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.state.suburb.language[preferences.raw_actualLanguage.shim]}/100</span> - your preference was
+                          <b>&nbsp;{this.numberToRanking(preferences.language)}&nbsp;</b>
+                        </li>
+
+                      }
                     </ul>
 
-                    <h3>Statistics</h3>
+                    <br/>
+
+                    <h3>Statistics ({this.getStatFromArray(this.state.suburb.stats,"suburb-residents").year})</h3>
 
                     <div className="stats-section">
                     <div className='row'>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/suburb-resident.png" alt="Population" height="50" width="50" />
                      <h4> Population </h4>
 
@@ -144,20 +187,21 @@ class Suburb extends Component {
                     </div>
 
                        <div className='row'>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/total-int-student-per-suburbt.png" alt="International student population" height="50" width="50" />
                       <h4> International student population </h4>
 
                       </div>
                       <div className="col-md-4">
                     {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}
+                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number)).toFixed(2)} %)
                       </div>
                     </div>
 
                        <div className='row'>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/offences-per-10000-population.png" alt="Crime per 10000 population" height="50" width="50" />
-                      <h4> Number of crimes per 10000 people </h4>
+                      <h4> Number of crimes per 10'000 people </h4>
 
                       </div>
                       <div className="col-md-4">
@@ -166,9 +210,9 @@ class Suburb extends Component {
                     </div>
 
                        <div className='row'>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/suburb-most-common-expense-tier.png" alt="Average rental range" height="50" width="50" />
-                      <h4> Most common rental price range </h4>
+                      <h4> Most common rental price range (per week) </h4>
 
                       </div>
                       <div className="col-md-4">
@@ -177,7 +221,7 @@ class Suburb extends Component {
                     </div>
 
                        <div className='row'>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/suburb-most-int-student-lang.png" alt="Most popular language" height="50" width="50" />
                       <h4> Most popular international student language </h4>
 
@@ -188,28 +232,19 @@ class Suburb extends Component {
                     </div>
                     </div>
 
+                    <br/>
 
+                    <h3>Search for properties in this area here</h3>
+                    <div className="realestate-section">
+                    <span>
+                      <a href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
+                    </span>
+                    <span>
+                      <a href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
+                    </span>
+                    </div>
+                    <br/>
 
-
-
-                    <h3>Search of properties in this area here</h3>
-                    <ul>
-                      <li><a href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}>Domain.com.au</a></li>
-                    <li><a href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}>Realestate.com.au</a></li>
-                    </ul>
-
-                    <h3>or...</h3>
-                    <Select.Async
-                  placeholder = "search for another suburb?"
-                  name="selected_suburb"
-                  autoload = {true}
-                  className = "react-select-single-suburb"
-                  value={selected_suburb}
-                  valueKey="shim"
-                  labelKey="name"
-                  onChange={this.handleSelectChange}
-                  loadOptions={this.getSuburbs}
-                  backspaceRemoves={true} />
 
                     {/*
                       <div className="media">

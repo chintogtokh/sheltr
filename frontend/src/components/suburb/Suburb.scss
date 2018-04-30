@@ -28,7 +28,7 @@
 
     .Select-menu{
       z-index:50;
-      max-height: 150px;
+      max-height: 100px;
     }
 }
 
@@ -62,5 +62,15 @@
     &:hover{
         text-decoration: none;
         border-bottom:1px solid blue;
+    }
+}
+
+.leaflet-container{
+    margin-top:100px;
+}
+
+.realestate-section{
+    a{
+        padding:10px;
     }
 }
