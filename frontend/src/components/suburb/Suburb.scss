@@ -54,3 +54,13 @@
 
 
 }
+
+.wiki-link{
+    color:black;
+    border-bottom:1px solid black;
+
+    &:hover{
+        text-decoration: none;
+        border-bottom:1px solid blue;
+    }
+}

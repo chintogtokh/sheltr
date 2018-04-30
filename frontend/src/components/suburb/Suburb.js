@@ -114,16 +114,19 @@ class Suburb extends Component {
                   <div className="row">
                     <div className="col-md-8">
                     <p>
-                    {wiki}
+                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name}><i>(data extracted from <i className="fab fa-wikipedia-w"></i>)</i></a>}
                     </p>
 
-                    <h3>Main indicators</h3>
+                    <h3>
+
+                    Main indicators
+                    </h3>
                     <i>Please note that the ratings are all out of 100.</i>
                     <ul>
-                      <li>Affordability rating - {this.state.suburb.rating_affordability} { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}</li>
-                      <li>Safety rating - {this.state.suburb.rating_safety} { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}</li>
-                      {preferences.raw_uni && <li>University rating - {this.state.suburb.universities[preferences.raw_uni.shim]} - your university was <b>{preferences.raw_uni.name}</b></li>}
-                      {preferences.language && preferences.language!=0 && <li>Language rating - {this.state.suburb.language[preferences.raw_actualLanguage.shim]} - your preference was <b>{this.numberToRanking(preferences.language)}</b> and your language was <b>{preferences.raw_actualLanguage.name}</b></li>}
+                      <li>Affordability rating - <span class="badge badge-pill badge-primary">{this.state.suburb.rating_affordability}/100</span> { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span>- you did not input a preference</span>}</li>
+                      <li>Safety rating - <span class="badge badge-pill badge-primary">{this.state.suburb.rating_safety}/100</span> { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span>- you did not input a preference</span>}</li>
+                      {preferences.raw_uni && <li>University rating - <span class="badge badge-pill badge-primary">{this.state.suburb.universities[preferences.raw_uni.shim]}/100</span> - your university was <b>{preferences.raw_uni.name}</b></li>}
+                      {preferences.language && preferences.language!=0 && <li>Language rating - <span class="badge badge-pill badge-primary">{this.state.suburb.language[preferences.raw_actualLanguage.shim]}/100</span> - your preference was <b>{this.numberToRanking(preferences.language)}</b> and your language was <b>{preferences.raw_actualLanguage.name}</b></li>}
                     </ul>
 
                     <h3>Statistics</h3>

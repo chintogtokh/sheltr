@@ -8,21 +8,30 @@ let rankedSuburbRouter = Router();
 rankedSuburbRouter.post('/', (req, res) => {
     // res.send([1, 2, 3]);
     const preferences = req.body;
+
+    for(var key in preferences){
+        if (preferences[key]==null){
+            delete preferences[key];
+        }
+    }
     //var promise = suburbModel.aggregate({ $mul: { rating_safety: 1.25} },"rating_safety rating_affordability");
 
-    var crimeSafety =  (typeof preferences.crimeSafety !== "undefined")? preferences.crimeSafety:1;
-    var affordability = (typeof preferences.affordability !== "undefined")? preferences.affordability:1;
-    var language = (typeof preferences.language !== "undefined")? preferences.language :1;
+    var crimeSafety =  (typeof preferences.crimeSafety !== "undefined")? preferences.crimeSafety:0;
+    var affordability = (typeof preferences.affordability !== "undefined")? preferences.affordability:0;
+    var language = (typeof preferences.language !== "undefined")? preferences.language :0;
     var actualLanguage = (typeof preferences.actualLanguage !== "undefined")? preferences.actualLanguage:null;
     var uni = (typeof preferences.uni !== "undefined")?preferences.uni:null;
 
     var query = [{
+        "$match": {}
+    },{
         $project: {
             name: true,
             shim: true,
             rating_affordability: true,
             rating_safety: true,
             universities: true,
+            ["language." + actualLanguage]: true,
             userRating: {
                 $sum: [{
                     $multiply: [parseInt(affordability), "$rating_affordability"]
@@ -30,19 +39,32 @@ rankedSuburbRouter.post('/', (req, res) => {
                     $multiply: [parseInt(crimeSafety), "$rating_safety"]
                 }, {
                     $multiply: [parseInt(language), "$language." + actualLanguage]
-                }, {
-                    $multiply: [2000, "$universities." + uni]
                 }
                 ]
-            },
+            }
         }
     }];
+
+    if(uni){
+        query[1]['$project']['userRating']['$sum'].push({
+                    $multiply: [50, "$universities." + uni]
+                });
+    }
+
+    if(language && actualLanguage){
+        query[0]['$match']["language."+actualLanguage] = { "$exists": true, "$ne": 0 };
+    }
 
     suburbModel.aggregate(query).sort({
         'userRating': -1
     }).limit(10).exec(function(err, docs) {
-        console.log(docs);
-        res.send(docs);
+        console.log(err);
+        if(typeof docs==="undefined"){
+            res.send([]);
+        }
+        else{
+            res.send(docs);
+        }
     });;
 
     // promise.then(data => {
