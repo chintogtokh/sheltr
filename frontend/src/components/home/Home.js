@@ -38,7 +38,6 @@ class Home extends Component {
   componentDidMount = function() {
     document.title = "Sheltr | Home";
 
-    // console.log(this.props.preferences);
 
     if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
       this.setState(this.props.preferences);
@@ -116,12 +115,15 @@ class Home extends Component {
   getUnis (input) {
     if (!input) {
       if(this.state.raw_uni){
-        console.log("D");
         input = this.state.raw_uni.name;
       }
         else{
           return Promise.resolve({ options: [] });
         }
+    }
+
+    if(input.length<=2){
+      return Promise.resolve({ options: [] });
     }
 
     return fetch(`/api/search/universities?q=${input}`)
@@ -140,7 +142,7 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span className="before-vicmap">Welcome students, Are you coming to study in victoria?</span></h1>
+              <h1><span className="before-vicmap">Welcome new students!<br/>Are you coming to study in Victoria?</span></h1>
               <div className="lead">
                 Are you worried about finding a place to live? We'll help you. Just tell us your priorities.
               </div>
@@ -150,11 +152,11 @@ class Home extends Component {
               <div className="lead">
                   <div className="lead-row">
                   <img src={detective} alt="safety"/>
-                  <div className="input-label"> Is living in a safe suburb a priority for you? </div>
+                  <div className="input-label"> Is living in a safe suburb a priority?</div>
 
                   <Select className = "react-select"
                     name="crimeSafety"
-                    placeholder = ""
+                    placeholder = "please select..."
                     searchable = {false}
                     value={crimeSafety}
                     onChange={this.handleSelectChange('crimeSafety')}
@@ -169,10 +171,10 @@ class Home extends Component {
                   </div>
                   <div className="lead-row">
                   <img src={credit_card} alt="affordability"/>
-                  <div className="input-label"> Is living in an affordable suburb a priority for you? </div>
+                  <div className="input-label"> Is living in an affordable suburb a priority?</div>
                   <Select className = "react-select"
                     name="affordability"
-                    placeholder = ""
+                    placeholder = "please select..."
                     value={affordability}
                     searchable = {false}
                     onChange={this.handleSelectChange('affordability')}
@@ -187,10 +189,10 @@ class Home extends Component {
                   </div>
                   <div className="lead-row">
                   <img src={chat} alt="language"/>
-                  <div className="input-label"> Is living near people speaking your native language a priority for you? </div>
+                  <div className="input-label"> Is living near people speaking your language a priority?</div>
                   <Select className = "react-select"
                     name="language"
-                    placeholder = ""
+                    placeholder = "please select..."
                     searchable = {false}
                     value={language}
                     onChange={this.handleSelectChange('language')}
@@ -209,7 +211,7 @@ class Home extends Component {
                   <div className="input-label">My native language is:</div>
 
                   <Select.Async
-                  placeholder = ""
+                  placeholder = "start typing..."
                   name="actualLanguage"
                   autoload = {true}
                   className = "react-select"
@@ -226,7 +228,7 @@ class Home extends Component {
                   <img src={university} alt="university"/>
                   <div className="input-label">My preferred university or institute is:</div>
                   <Select.Async
-                  placeholder = ""
+                  placeholder = "start typing..."
                   autoload = {true}
                   name="uni"
                   className = "react-select"
@@ -241,8 +243,8 @@ class Home extends Component {
 
               <br/>
 
-              <div style={{textAlign:'center'}}>
-              <button className="btn btn-info btn-lg" type="submit"> Find suburbs </button>
+              <div className="find-suburbs-btn-container">
+              <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>
               </div>
               </form>
           </div>

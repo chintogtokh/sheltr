@@ -134,7 +134,9 @@ img.inline-logo {
 .react-select {
   display: inline-block;
   font-size: inherit;
-  min-width: 400px;
+  float: right;
+  clear: both;
+  width: 300px;
   top: 0;
   color: black;
   font-size: 1.2rem;
@@ -149,7 +151,7 @@ img.inline-logo {
     .react-select .Select-control .Select-value-label {
       color: white !important; }
   .react-select .Select-placeholder {
-    color: black; }
+    color: white; }
   .react-select .Select-menu {
     z-index: 50;
     max-height: 150px; }
@@ -197,3 +199,9 @@ img.inline-logo {
     transform: scale(1); }
   100% {
     transform: scale(0.8); } }
+
+div.find-suburbs-btn-container {
+  text-align: center; }
+
+.btn-find-suburbs {
+  padding: 5px 90px; }

@@ -20,8 +20,15 @@ class Suburb extends Component {
 
       this.handleSelectChange = this.handleSelectChange.bind(this);
 
+  }
 
-
+  getStatFromArray(arr, desc) {
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i].desc===desc){
+        return arr[i];
+      }
+    }
+    return null;
   }
 
   componentWillMount() {
@@ -119,13 +126,16 @@ class Suburb extends Component {
                     </ul>
 
                     <h3>stats</h3>
-                    <ul>
-                    {
-                      this.state.suburb.stats.map((value, index) => {
-                        return <li key={index}>{value.desc} - {value.number}</li>
-                       })
-                    }
-                    </ul>
+
+                    <div className='row'>
+                      <div className="col-md-4">
+                       Type
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"offences-per-10000-population").number}
+                      </div>
+                    </div>
+
 
 
                     <h3>rentals here</h3>
@@ -166,7 +176,7 @@ class Suburb extends Component {
                     </div>
                     <div className="col-md-4">
 
-                  <br/>
+
 
                     {this.state.suburb &&
                       <Map style={{'height':500+'px','width':100+'%'}} bounds={this.state.bounds}>
@@ -176,7 +186,7 @@ class Suburb extends Component {
                             />
                             <GeoJSON key={this.state.suburb.shim} data={this.state.suburb.geojson} style={this.getStyle} />
                         </Map>
-                      }
+                    }
                     </div>
                   </div>
 

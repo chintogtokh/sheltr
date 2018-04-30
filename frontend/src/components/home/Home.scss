@@ -218,7 +218,9 @@ img.inline-logo{
 .react-select{
     display: inline-block;
     font-size: inherit;
-    min-width: 400px;
+    float:right;
+    clear:both;
+    width: 300px;
     top: 0;
     color:black;
     font-size:1.2rem;
@@ -245,7 +247,7 @@ img.inline-logo{
     }
 
     .Select-placeholder{
-      color:black;
+      color:white;
     }
 
     .Select-menu{
@@ -308,4 +310,12 @@ img.inline-logo{
   100% {
     transform: scale(.8);
   }
+}
+
+div.find-suburbs-btn-container{
+  text-align: center;
+}
+
+.btn-find-suburbs{
+  padding: 5px 90px;
 }
