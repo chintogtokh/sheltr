@@ -22,3 +22,13 @@
   .react-select-single-suburb .Select-menu {
     z-index: 50;
     max-height: 150px; }
+
+.stats-section .row {
+  margin-bottom: 10px; }
+  .stats-section .row h4 {
+    font-size: 1.2em; }
+  .stats-section .row img.stat-image {
+    float: left;
+    height: 50px;
+    padding: 5px;
+    margin-right: 10px; }
