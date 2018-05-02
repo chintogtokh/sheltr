@@ -105,6 +105,12 @@ class AllSuburbs extends Component {
                                         <img className="card-img-top" src={wiki.thumbnail.source} alt={shel.shim} />
                                         </div>
                                       }
+                                      {!wiki.thumbnail &&
+
+                                          <div className="img-container-empty">
+                                          <span style={{color:'white'}}>No image available.</span>
+                                        </div>
+                                      }
               <div className="card-body">
                 <h3 className="mb-0">
                   {shel.name}
@@ -134,7 +140,7 @@ class AllSuburbs extends Component {
               <h1>Suburbs matching your preferences</h1>
 
               <p>
-              According to the analysis of our data based on your preferences, we think that the suburbs that most fit your needs are as follows.
+              According to the analysis of our data based on your preferences, we think that the following suburbs may fit your needs.
               </p>
               <div>
 

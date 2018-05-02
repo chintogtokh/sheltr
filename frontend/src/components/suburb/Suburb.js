@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import './Suburb.css';
 import { connect } from 'react-redux';
 import { suburbActions } from '../../actions';
-import { Map, TileLayer, GeoJSON } from 'react-leaflet';
+import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
 
+import detective from '../../files/detective.svg';
+import chat from '../../files/chat.svg';
+import credit_card from '../../files/credit_card.svg';
+import university from '../../files/university.svg';
 
 class Suburb extends Component {
 
@@ -64,8 +68,69 @@ class Suburb extends Component {
 
                 const { dispatch } = this.props;
                 dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
+
+                // if(this.state.uni_coords){
+                //   var newbounds = bounds;
+                //   console.log(newbounds);
+
+                //   if(this.state.uni_coords.lat>this.state.bounds[0][0]){
+                //     //newbounds[0][0] = this.state.uni_coords.lat;
+                //   }
+                //   if(this.state.uni_coords.lng>this.state.bounds[0][1]){
+                //     newbounds[0][1] = this.state.uni_coords.lng;
+                //   }
+
+                //   if(this.state.uni_coords.lat<this.state.bounds[1][0]){
+                //     newbounds[1][0] = this.state.uni_coords.lat;
+                //   }
+                //   if(this.state.uni_coords.lng<this.state.bounds[1][1]){
+                //     //newbounds[1][1] = this.state.uni_coords.lng;
+                //   }
+
+                //   console.log(newbounds);
+                //   this.setState({bounds: newbounds});
+                //   this.setState({boundsUpdated: true});
+                // }
+
             }
         });
+
+    fetch('/api/university/' + this.props.preferences.raw_uni.shim)
+        .then(response => response.json().then( data => ({
+            data: data,
+            status: response.status
+            })
+        ))
+        .then(response => {
+            this.setState({uni_coords: response.data.coords});
+
+            // if(this.state.bounds){
+            //       var newbounds = this.state.bounds;
+            //       console.log(newbounds);
+
+            //       if(response.data.coords.lat>this.state.bounds[0][0]){
+            //         //newbounds[0][0] = response.data.coords.lat;
+            //       }
+            //       if(response.data.coords.lng>this.state.bounds[0][1]){
+            //         newbounds[0][1] = response.data.coords.lng;
+            //       }
+
+            //       if(response.data.coords.lat<this.state.bounds[1][0]){
+            //         newbounds[1][0] = response.data.coords.lat;
+            //       }
+            //       if(response.data.coords.lng<this.state.bounds[1][1]){
+            //         //newbounds[1][1] = response.data.coords.lng;
+            //       }
+
+            //       console.log(newbounds);
+            //       this.setState({bounds: newbounds});
+            //       this.setState({boundsUpdated: true});
+            //     }
+
+            //this.setState({suburb: response.data, bounds: bounds});
+
+        });
+
   }
 
   getStyle(feature, layer) {
@@ -93,12 +158,11 @@ class Suburb extends Component {
   };
 
   numberToRanking = (num) => {
-    let tmp = { '0': 'not a priority/irrelevant',
-                      '10':  'high priority',
+    let tmp = {     '10':  'high priority',
                       '7':  'moderate priority',
                       '4':  'neutral',
-                      '4':  'low priority',
-                      '1':  'not a priority/irrelevant'}
+                      '1':  'low priority',
+                      '0':  'not a priority'}
     return tmp[num.toString()];
   };
 
@@ -114,6 +178,43 @@ class Suburb extends Component {
       return "badge-danger";
     }
   }
+
+  numberToWords = (name,num) => {
+    num = parseInt(num);
+    if(num>80){
+      switch(name){
+        case "safety": return "very safe";
+        case "affordability": return "very affordable";
+        case "language":  return "many students";
+        case "uni": return "very close";
+      }
+    }
+    else if(num>60){
+      switch(name){
+        case "safety": return "safe";
+        case "affordability": return "affordable";
+        case "language":  return "some students";
+        case "uni": return "close";
+      }
+    }
+    else if (num>40){
+      switch(name){
+        case "safety": return "kinda safe";
+        case "affordability": return "kinda affordable";
+        case "language":  return "few students";
+        case "uni": return "far";
+      }
+    }
+    else{
+      switch(name){
+        case "safety": return "unsafe";
+        case "affordability": return "unaffordable";
+        case "language":  return "no students";
+        case "uni": return "very far";
+      }
+    }
+  }
+
 
   render() {
       const { wiki, selected_suburb, preferences} = this.props;
@@ -155,19 +256,24 @@ class Suburb extends Component {
                     <h3>
                     Main indicators
                     </h3>
-                    <i>Please note that the ratings are all out of 100.</i>
-                    <ul>
-                      <li>Affordability rating - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.state.suburb.rating_affordability}/100</span> { preferences.affordability && <span>- your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span>- you did not input a preference</span>}</li>
-                      <li>Safety rating - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.state.suburb.rating_safety}/100</span> { preferences.crimeSafety &&  <span>- your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span>- you did not input a preference</span>}</li>
-                      {preferences.raw_uni && <li>University rating - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.universities[preferences.raw_uni.shim])}>{this.state.suburb.universities[preferences.raw_uni.shim]}/100</span> - your university was <b>{preferences.raw_uni.name}</b></li>}
+                    <ul className="rating-list">
+
+                      <li> <b>Safety rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.numberToWords("safety",this.state.suburb.rating_safety)}</span> { preferences.crimeSafety &&  <span> your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span> you did not input a preference</span>}</li>
+
+                      <li> <b>Affordability rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.numberToWords("affordability",this.state.suburb.rating_affordability)}</span> { preferences.affordability && <span> your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span> you did not input a preference</span>}</li>
+
+
                       {preferences.language && preferences.language!=0 &&
 
                         <li>
-                          International student language rating for <b>{preferences.raw_actualLanguage.name}</b> - <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.state.suburb.language[preferences.raw_actualLanguage.shim]}/100</span> - your preference was
+                          <b>International student language rating</b> for <b>{preferences.raw_actualLanguage.name}</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.numberToWords("language",this.state.suburb.language[preferences.raw_actualLanguage.shim])}</span> your preference was
                           <b>&nbsp;{this.numberToRanking(preferences.language)}&nbsp;</b>
                         </li>
 
                       }
+
+                      {preferences.raw_uni &&
+                       <li> <b>University rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.universities[preferences.raw_uni.shim])}>{this.numberToWords("uni",this.state.suburb.universities[preferences.raw_uni.shim])}</span> your university was <b>{preferences.raw_uni.name}</b></li>}
                     </ul>
 
                     <br/>
@@ -237,10 +343,10 @@ class Suburb extends Component {
                     <h3>Search for properties in this area here</h3>
                     <div className="realestate-section">
                     <span>
-                      <a href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
+                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
                     </span>
                     <span>
-                      <a href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
+                      <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
                     </span>
                     </div>
                     <br/>
@@ -269,11 +375,21 @@ class Suburb extends Component {
 
                     {this.state.suburb &&
                       <Map style={{'height':500+'px','width':100+'%'}} bounds={this.state.bounds}>
+
                             <TileLayer
                               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
                             <GeoJSON key={this.state.suburb.shim} data={this.state.suburb.geojson} style={this.getStyle} />
+                            {this.state.uni_coords &&
+                            <Marker position={this.state.uni_coords}>
+                              <Popup>
+                                <span>
+                                  {preferences.raw_uni.name}
+                                </span>
+                              </Popup>
+                            </Marker>}
+
                         </Map>
                     }
                     </div>

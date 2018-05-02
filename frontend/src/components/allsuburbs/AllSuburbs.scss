@@ -11,6 +11,16 @@
     background-color:gray;
 }
 
+.img-container-empty{
+	text-align: center;
+	line-height: 4em;
+	height:200px;
+	display: block;
+    position: relative;
+    overflow: hidden;
+    background-color:gray;
+}
+
 .img-container img {
     position: absolute;
     top: 0;
