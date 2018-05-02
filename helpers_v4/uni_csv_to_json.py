@@ -10,7 +10,7 @@ def row_to_obj(data):
     lng = data[2]
     return {
         "name": data[4],
-        "shim": re.sub('[^0-9a-zA-Z]+', '-', data[3].lower()),
+        "shim": re.sub('[^0-9a-zA-Z]+', '-', data[3].lower()).replace("-distance",""),
         "coords": {
             "lat": float(lat),
             "lng": float(lng)

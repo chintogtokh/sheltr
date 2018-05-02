@@ -19,7 +19,13 @@ class AllSuburbs extends Component {
       suburb_6: "",
       suburb_7: "",
       suburb_8: "",
-      suburb_9: ""
+      suburb_9: "",
+      suburb_10: "",
+      suburb_11: "",
+      suburb_12: "",
+      suburb_13: "",
+      suburb_14: "",
+      suburb_15: ""
     };
   }
 
@@ -162,6 +168,26 @@ class AllSuburbs extends Component {
                 <div className="col-md-3">{this.state.suburb_6}
                 </div>
                 <div className="col-md-3">{this.state.suburb_7}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-3">{this.state.suburb_8}
+                </div>
+                <div className="col-md-3">{this.state.suburb_9}
+                </div>
+                <div className="col-md-3">{this.state.suburb_10}
+                </div>
+                <div className="col-md-3">{this.state.suburb_11}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-3">{this.state.suburb_12}
+                </div>
+                <div className="col-md-3">{this.state.suburb_13}
+                </div>
+                <div className="col-md-3">{this.state.suburb_14}
+                </div>
+                <div className="col-md-3">{this.state.suburb_15}
                 </div>
               </div>
               </div>

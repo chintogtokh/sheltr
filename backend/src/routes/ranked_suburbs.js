@@ -47,23 +47,23 @@ rankedSuburbRouter.post('/', (req, res) => {
 
     if(uni){
         query[1]['$project']['userRating']['$sum'].push({
-                    $multiply: [40, "$universities." + uni]
+                    $multiply: [40, "$universities." + uni + ".number"]
                 });
 
         query[0]['$match']["university_distances."+uni+".number"] = { "$exists": true, "$lt": 10 };
 
     }
 
-    if(language && actualLanguage){
-        query[0]['$match'] = {"language": { [actualLanguage] : { "$exists": true, "$ne": 0 }}};
-    }
+    // if(language && actualLanguage){
+    //     query[0]['$match']["language." + actualLanguage] = { "$exists": true, "$ne": 0 };
+    // }
 
 
     query[0]['$match']["stats.suburb-residents.number"] = { "$exists": true, "$gt": 50 };
 
     suburbModel.aggregate(query).sort({
         'userRating': -1
-    }).limit(8).exec(function(err, docs) {
+    }).limit(16).exec(function(err, docs) {
         console.log(err);
         if(typeof docs==="undefined"){
             res.send([]);
