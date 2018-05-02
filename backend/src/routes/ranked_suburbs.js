@@ -55,9 +55,11 @@ rankedSuburbRouter.post('/', (req, res) => {
         query[0]['$match']["language."+actualLanguage] = { "$exists": true, "$ne": 0 };
     }
 
+    query[0]['$match']["universities."+uni] = { "$exists": true, "$gt": 80 };
+
     suburbModel.aggregate(query).sort({
         'userRating': -1
-    }).limit(10).exec(function(err, docs) {
+    }).limit(8).exec(function(err, docs) {
         console.log(err);
         if(typeof docs==="undefined"){
             res.send([]);

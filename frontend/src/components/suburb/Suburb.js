@@ -149,7 +149,7 @@ class Suburb extends Component {
                   <div className="row">
                     <div className="col-md-8">
                     <p>
-                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data extracted from Wikipedia)</i></a>}
+                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data automatically extracted from Wikipedia)</i></a>}
                     </p>
 
                     <h3>

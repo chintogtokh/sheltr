@@ -81,7 +81,7 @@ class AllSuburbs extends Component {
                   // dispatch({
                   //     type: suburbConstants.SUBURB_NOTFOUND,
                   // })
-                  console.log("error.");
+                  console.log("error occured");
               }
               else{
 
@@ -98,19 +98,23 @@ class AllSuburbs extends Component {
                           let wiki = response1.data;
                           this.setState({["suburb_" + i]:
                             <Link to={"/suburb/" + shel.shim} className="text-dark">
-                                        <div className="card flex-md-row mb-4 box-shadow h-md-250">
-              <div className="card-body d-flex flex-column align-items-start">
+                                        <div className="card mb-4 box-shadow h-md-250">
+                                        {response1.status === 200 && wiki.thumbnail &&
+
+                                          <div className="img-container">
+                                        <img className="card-img-top" src={wiki.thumbnail.source} alt={shel.shim} />
+                                        </div>
+                                      }
+              <div className="card-body">
                 <h3 className="mb-0">
-                  {i+1}. {shel.name}
+                  {shel.name}
                 </h3>
                 <div className="mb-1 text-muted"></div>
-                <p className="card-text mb-auto">
+                {/*<p className="card-text mb-auto">
                   {response1.status === 200?wiki.extract:shel.name + " is a suburb in Victoria."}
 
-                </p>
+                </p>*/}
               </div>
-              {response1.status === 200 && wiki.thumbnail &&
-              <img className="suburb-card card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src={wiki.thumbnail.source} />}
             </div>
             </Link>
                         });
@@ -133,16 +137,27 @@ class AllSuburbs extends Component {
               According to the analysis of our data based on your preferences, we think that the suburbs that most fit your needs are as follows.
               </p>
               <div>
-              {this.state.suburb_0}
-              {this.state.suburb_1}
-              {this.state.suburb_2}
-              {this.state.suburb_3}
-              {this.state.suburb_4}
-              {this.state.suburb_5}
-              {this.state.suburb_6}
-              {this.state.suburb_7}
-              {this.state.suburb_8}
-              {this.state.suburb_9}
+
+              <div className="row">
+                <div className="col-md-3">{this.state.suburb_0}
+                </div>
+                <div className="col-md-3">{this.state.suburb_1}
+                </div>
+                <div className="col-md-3">{this.state.suburb_2}
+                </div>
+                <div className="col-md-3">{this.state.suburb_3}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-3">{this.state.suburb_4}
+                </div>
+                <div className="col-md-3">{this.state.suburb_5}
+                </div>
+                <div className="col-md-3">{this.state.suburb_6}
+                </div>
+                <div className="col-md-3">{this.state.suburb_7}
+                </div>
+              </div>
               </div>
             </div>
           </main>

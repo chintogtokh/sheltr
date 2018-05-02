@@ -17,7 +17,7 @@ import './Home.css';
 class Home extends Component {
 
 
-  mustSubmitNotification = () => toast("You must input at least one preference and a university!",
+  mustSubmitNotification = (text) => toast(text,
       {
         type: toast.TYPE.INFO,
         autoClose: 5000,
@@ -33,6 +33,7 @@ class Home extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.getLanguages = this.getLanguages.bind(this);
     this.getUnis = this.getUnis.bind(this);
+    this.clearPreferences = this.clearPreferences.bind(this);
   }
 
   componentDidMount = function() {
@@ -74,14 +75,27 @@ class Home extends Component {
     //   }
     // }
 
+    console.log(this.state);
+
     if(Object.keys(params).length===0 || typeof params.uni == "undefined" || params.uni == null){
-      this.mustSubmitNotification();
+      this.mustSubmitNotification("You must input at least one preference and a university!");
+    }
+    else if((typeof params.language != "undefined" && params.language != null) && (params.actualLanguage == null || typeof params.actualLanguage == "undefined" )){
+      this.mustSubmitNotification("You must input a language if you select a language preference!");
     }
     else{
-
-    const { dispatch } = this.props;
-    dispatch(browseActions.enterPreferences(params));
+      const { dispatch } = this.props;
+      dispatch(browseActions.enterPreferences(params));
     }
+  }
+
+  clearPreferences = function(e) {
+    e.preventDefault();
+    this.setState({actualLanguage:null});
+    this.setState({language:null});
+    this.setState({crimeSafety:null});
+    this.setState({affordability:null});
+    this.setState({uni:null});
   }
 
 
@@ -246,7 +260,8 @@ class Home extends Component {
               <br/>
 
               <div className="find-suburbs-btn-container">
-              <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>
+              <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>&nbsp;
+              <button className="btn btn-danger btn-clear btn-lg" type="button" onClick={this.clearPreferences}> <i className="fas fa-times"></i> Clear </button>
               </div>
               </form>
           </div>
