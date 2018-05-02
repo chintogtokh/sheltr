@@ -24,1910 +24,768 @@ def row_to_obj(data):
                 "lat": float(data[2]),
                 "lng": float(data[3])
             },
-            "stats": [
-						{
+            "stats": {
+						"suburb-residents": {
 							"number": int(data[4]),
 							"year": "2016",
-							"desc":"suburb-residents"
+
 						},
 
-						{
+						"total-crimes-by-year-and-area": {
 							"number": int(data[6]),
 							"year": "2016",
-							"desc":"total-crimes-by-year-and-area"
+
 						},
 
-						{
+						"offences-per-10000-population": {
 							"number": float(data[7]),
 							"year": "2016",
-							"desc":"offences-per-10000-population"
+
 						},
 
-						{
+						"suburb-town-name-2016-adjusted-crime-rank": {
 							"number": int(data[8]),
 							"year": "2016",
-							"desc":"suburb-town-name-2016-adjusted-crime-rank"
+
 						},
 
-						{
+						"offence-count": {
 							"number": int(data[10]),
 							"year": "2016",
-							"desc":"offence-count"
+
 						},
 
-						{
+						"suburb-town-name-2016-real-crime-rank": {
 							"number": int(data[11]),
 							"year": "2016",
-							"desc":"suburb-town-name-2016-real-crime-rank"
+
 						},
 
-						{
+						"suburb-most-common-expense-tier": {
 							"number": (data[12]),
 							"year": "2016",
-							"desc":"suburb-most-common-expense-tier"
+
 						},
 
-						{
+						"number-of-rental-properties": {
 							"number": int(data[13]),
 							"year": "2016",
-							"desc":"number-of-rental-properties"
+
 						},
 
-						{
+						"price-range-rank": {
 							"number": int(data[14]),
 							"year": "2016",
-							"desc":"price-range-rank"
+
 						},
 
-						{
+						"rental-price-range-lower": {
 							"number": int(data[15]),
 							"year": "2016",
-							"desc":"rental-price-range-lower"
+
 						},
 
-						{
+						"rental-price-range-upper": {
 							"number": int(data[16]),
 							"year": "2016",
-							"desc":"rental-price-range-upper"
+
 						},
 
-						{
+						"suburb-most-int-student-lang": {
 							"number": data[20],
 							"year": "2016",
-							"desc":"suburb-most-int-student-lang"
+
 						},
 
-						{
+						"total-int-students-per-suburb": {
 							"number": int(data[21]),
 							"year": "2016",
-							"desc":"total-int-students-per-suburb"
+
 						},
 
-						{
+						"total-int-student-per-language": {
 							"number": int(data[22]),
 							"year": "2016",
-							"desc":"total-int-student-per-language"
+
 						},
 
-						{
+						"student-population-rating": {
 							"number": int(data[23]),
 							"year": "2016",
-							"desc":"student-population-rating"
+
 						},
 
-						{
+						"suburb-largest-lang-int-student-pop": {
 							"number": int(data[24]),
 							"year": "2016",
-							"desc":"suburb-largest-lang-int-student-pop"
+
 						},
 
-						{
+						"suburb-largest-int-student-lang": {
 							"number": data[25],
 							"year": "2016",
-							"desc":"suburb-largest-int-student-lang"
+
 						},
 
-						{
+						"percent-of-int-students-language-in-suburb": {
 							"number": float(data[26]),
 							"year": "2016",
-							"desc":"percent-of-int-students-language-in-suburb"
+
 						},
 
-						{
+						"int-student-language-rank-all-langs": {
 							"number": int(data[27]),
 							"year": "2016",
-							"desc":"int-student-language-rank-all-langs"
+
 						},
 
-						{
+						"average-public-transport-users-per-suburb": {
 							"number": float(data[157]),
 							"year": "2016",
-							"desc":"average-public-transport-users-per-suburb"
+
 						},
 
-						{
+						"total-public-transport-users-per-suburb": {
 							"number": int(data[158]),
 							"year": "2016",
-							"desc":"total-public-transport-users-per-suburb"
+
 						},
 
-						{
+						"total-other-usage-by-suburb": {
 							"number": float(data[159]),
 							"year": "2016",
-							"desc":"total-other-usage-by-suburb"
+
 						},
 
-						{
+						"adjusted-total-other-usage-scale-rank": {
 							"number": int(data[160]),
 							"year": "2016",
-							"desc":"adjusted-total-other-usage-scale-rank"
+
 						},
 
-						{
+						"adjusted-total-transport-use-per-suburb": {
 							"number": float(data[161]),
 							"year": "2016",
-							"desc":"adjusted-total-transport-use-per-suburb"
+
 						},
 
-						{
+						"adjusted-total-transport-use-per-suburb-rank": {
 							"number": int(data[162]),
 							"year": "2016",
-							"desc":"adjusted-total-transport-use-per-suburb-rank"
+
 						},
 
-						{
+						"adjusted-total-transport-use-per-suburb-scale-rank": {
 							"number": int(data[163]),
 							"year": "2016",
-							"desc":"adjusted-total-transport-use-per-suburb-scale-rank"
+
 						},
 
-						{
+						"most-common-transport-method": {
 							"number": (data[164]),
 							"year": "2016",
-							"desc":"most-common-transport-method"
+
 						},
 
-						{
+						"most-common-distance-per-suburb": {
 							"number": (data[165]),
 							"year": "2016",
-							"desc":"most-common-distance-per-suburb"
+
 						},
 
-						{
+						"train-station-flag": {
 							"number": (data[166]),
 							"year": "2016",
-							"desc":"train-station-flag"
+
 						},
 
-						{
+						"bus-line-flag": {
 							"number": (data[167]),
 							"year": "2016",
-							"desc":"bus-line-flag"
+
 						},
 
-						{
+						"ferry-flag": {
 							"number": (data[168]),
 							"year": "2016",
-							"desc":"ferry-flag"
+
 						},
 
-						{
+						"tram-line-flag": {
 							"number": (data[169]),
 							"year": "2016",
-							"desc":"tram-line-flag"
-						},
-
-						{
-							"number": float(data[170]),
-							"year": "2016",
-							"desc":"aapoly-ami-education-distance"
-						},
-
-						{
-							"number": float(data[171]),
-							"year": "2016",
-							"desc":"aapoly-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[172]),
-							"year": "2016",
-							"desc":"academia-international-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[173]),
-							"year": "2016",
-							"desc":"acumen-institute-of-further-education-cbd-campus-distance"
-						},
-
-						{
-							"number": float(data[174]),
-							"year": "2016",
-							"desc":"acumen-institute-of-further-education-richmond-campus-distance"
-						},
-
-						{
-							"number": float(data[175]),
-							"year": "2016",
-							"desc":"agb-training-geelong-campus-distance"
-						},
-
-						{
-							"number": float(data[176]),
-							"year": "2016",
-							"desc":"alacc-health-college-australia-distance"
-						},
-
-						{
-							"number": float(data[177]),
-							"year": "2016",
-							"desc":"alfred-deakin-college-(mibt)-waurn-ponds-campus-distance"
-						},
-
-						{
-							"number": float(data[178]),
-							"year": "2016",
-							"desc":"altec-college-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[179]),
-							"year": "2016",
-							"desc":"angad-australian-institute-of-technology-la-trobe-st-campus-distance"
-						},
-
-						{
-							"number": float(data[180]),
-							"year": "2016",
-							"desc":"angad-australian-institute-of-technology-lonsdale-st-campus-distance"
-						},
-
-						{
-							"number": float(data[181]),
-							"year": "2016",
-							"desc":"aoi-institute-distance"
-						},
-
-						{
-							"number": float(data[182]),
-							"year": "2016",
-							"desc":"ashton-college-footscray-campus-distance"
-						},
-
-						{
-							"number": float(data[183]),
-							"year": "2016",
-							"desc":"ashton-college-hallam-campus-distance"
-						},
-
-						{
-							"number": float(data[184]),
-							"year": "2016",
-							"desc":"ashton-college-hospitality-campus-distance"
-						},
-
-						{
-							"number": float(data[185]),
-							"year": "2016",
-							"desc":"ashton-college-northcote-campus-distance"
-						},
-
-						{
-							"number": float(data[186]),
-							"year": "2016",
-							"desc":"australian-academy-of-fashion-design-distance"
-						},
-
-						{
-							"number": float(data[187]),
-							"year": "2016",
-							"desc":"australian-careers-education-donald-street-campus-(aurora-building)-distance"
-						},
-
-						{
-							"number": float(data[188]),
-							"year": "2016",
-							"desc":"australian-careers-education-victoria-street-campus-distance"
-						},
-
-						{
-							"number": float(data[189]),
-							"year": "2016",
-							"desc":"australian-catholic-univeristy-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[190]),
-							"year": "2016",
-							"desc":"australian-catholic-university-ballarat-campus-distance"
-						},
-
-						{
-							"number": float(data[191]),
-							"year": "2016",
-							"desc":"australian-centre-of-further-education-distance"
-						},
-
-						{
-							"number": float(data[192]),
-							"year": "2016",
-							"desc":"australian-college-of-applied-psychology-acap--melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[193]),
-							"year": "2016",
-							"desc":"australian-college-of-sport-basketball-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[194]),
-							"year": "2016",
-							"desc":"australian-college-of-theology-distance"
-						},
-
-						{
-							"number": float(data[195]),
-							"year": "2016",
-							"desc":"australian-college-of-trade-thornbury-campus-distance"
-						},
-
-						{
-							"number": float(data[196]),
-							"year": "2016",
-							"desc":"australian-education-academy-10-blissington-street-springvale-distance"
-						},
-
-						{
-							"number": float(data[197]),
-							"year": "2016",
-							"desc":"australian-institute-of-technical-training-(aitt)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[198]),
-							"year": "2016",
-							"desc":"australian-institute-of-trades-institute-of-hotel-management-australia-distance"
-						},
-
-						{
-							"number": float(data[199]),
-							"year": "2016",
-							"desc":"australian-institute-of-translation--interpretation-(aiti)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[200]),
-							"year": "2016",
-							"desc":"australian-it--hospitality-institute-footscray-campus-distance"
-						},
-
-						{
-							"number": float(data[201]),
-							"year": "2016",
-							"desc":"australian-national-airline-college-distance"
-						},
-
-						{
-							"number": float(data[202]),
-							"year": "2016",
-							"desc":"australian-national-college-franklin-street-campus-distance"
-						},
-
-						{
-							"number": float(data[203]),
-							"year": "2016",
-							"desc":"australian-national-institute-of-business--technology-(anibt)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[204]),
-							"year": "2016",
-							"desc":"australian-pacific-college-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[205]),
-							"year": "2016",
-							"desc":"australian-study-link-institute-distance"
-						},
-
-						{
-							"number": float(data[206]),
-							"year": "2016",
-							"desc":"aveta--australian-vocational-education--training-academy-distance"
-						},
-
-						{
-							"number": float(data[207]),
-							"year": "2016",
-							"desc":"barkly-international-college-city-campus-distance"
-						},
-
-						{
-							"number": float(data[208]),
-							"year": "2016",
-							"desc":"barkly-international-college-north-melbourne-campus--automotive-workshop-distance"
-						},
-
-						{
-							"number": float(data[209]),
-							"year": "2016",
-							"desc":"barkly-international-college-distance"
-						},
-
-						{
-							"number": float(data[210]),
-							"year": "2016",
-							"desc":"baxter-institute-automotive--bakery-campus-distance"
-						},
-
-						{
-							"number": float(data[211]),
-							"year": "2016",
-							"desc":"baxter-institute-fabrication-campus-distance"
-						},
-
-						{
-							"number": float(data[212]),
-							"year": "2016",
-							"desc":"baxter-institute-hairdressing-and-beauty-campus-(flinders-street)-distance"
-						},
-
-						{
-							"number": float(data[213]),
-							"year": "2016",
-							"desc":"beaconhills-college-distance"
-						},
-
-						{
-							"number": float(data[214]),
-							"year": "2016",
-							"desc":"bendigo-tafe-bendigo-distance"
-						},
-
-						{
-							"number": float(data[215]),
-							"year": "2016",
-							"desc":"bendigo-tafe-and-kangan-institute-broadmeadows-campus-distance"
-						},
-
-						{
-							"number": float(data[216]),
-							"year": "2016",
-							"desc":"biba-academy-swantson-street-campus-distance"
-						},
-
-						{
-							"number": float(data[217]),
-							"year": "2016",
-							"desc":"box-hill-institute-city-campus-distance"
-						},
-
-						{
-							"number": float(data[218]),
-							"year": "2016",
-							"desc":"box-hill-institute-distance"
-						},
-
-						{
-							"number": float(data[219]),
-							"year": "2016",
-							"desc":"brighton-institute-of-technology-distance"
-						},
-
-						{
-							"number": float(data[220]),
-							"year": "2016",
-							"desc":"catholic-theological-college-(ctc)-melbourne-college-of-divinity--east-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[221]),
-							"year": "2016",
-							"desc":"central-australian-college-(cac)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[222]),
-							"year": "2016",
-							"desc":"central-melbourne-institute-(cmi)-city-campus-distance"
-						},
-
-						{
-							"number": float(data[223]),
-							"year": "2016",
-							"desc":"central-melbourne-institute-distance"
-						},
-
-						{
-							"number": float(data[224]),
-							"year": "2016",
-							"desc":"charles-sturt-university-study-centres-melbourne-distance"
-						},
-
-						{
-							"number": float(data[225]),
-							"year": "2016",
-							"desc":"chisholm-institue-chisholm-at-331-distance"
-						},
-
-						{
-							"number": float(data[226]),
-							"year": "2016",
-							"desc":"chisholm-institute-bass-coast-distance"
-						},
-
-						{
-							"number": float(data[227]),
-							"year": "2016",
-							"desc":"chisholm-institute-cranbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[228]),
-							"year": "2016",
-							"desc":"chisholm-institute-dandenong-campus-distance"
-						},
-
-						{
-							"number": float(data[229]),
-							"year": "2016",
-							"desc":"chisholm-institute-flinders-lane-campus-distance"
-						},
-
-						{
-							"number": float(data[230]),
-							"year": "2016",
-							"desc":"chisholm-institute-melbourne-city-campus-distance"
-						},
-
-						{
-							"number": float(data[231]),
-							"year": "2016",
-							"desc":"collarts--australian-college-of-the-arts-distance"
-						},
-
-						{
-							"number": float(data[232]),
-							"year": "2016",
-							"desc":"dalton-college-distance"
-						},
-
-						{
-							"number": float(data[233]),
-							"year": "2016",
-							"desc":"dance-factory-distance"
-						},
-
-						{
-							"number": float(data[234]),
-							"year": "2016",
-							"desc":"deakin-college-(mibt)-burwood-campus-distance"
-						},
-
-						{
-							"number": float(data[235]),
-							"year": "2016",
-							"desc":"deakin-university-burwood-campus-distance"
-						},
-
-						{
-							"number": float(data[236]),
-							"year": "2016",
-							"desc":"deakin-university-geelong-waterfront-campus-distance"
-						},
-
-						{
-							"number": float(data[237]),
-							"year": "2016",
-							"desc":"deakin-university-warrnambool-campus-distance"
-						},
-
-						{
-							"number": float(data[238]),
-							"year": "2016",
-							"desc":"deakin-university-waurn-ponds-campus-distance"
-						},
-
-						{
-							"number": float(data[239]),
-							"year": "2016",
-							"desc":"della-international-college-city-campus-distance"
-						},
-
-						{
-							"number": float(data[240]),
-							"year": "2016",
-							"desc":"della-international-college-sunshine-campus-distance"
-						},
-
-						{
-							"number": float(data[241]),
-							"year": "2016",
-							"desc":"department-of-education-and-training-victoria-distance"
-						},
-
-						{
-							"number": float(data[242]),
-							"year": "2016",
-							"desc":"east-west-college-of-natural-therapies-distance"
-						},
-
-						{
-							"number": float(data[243]),
-							"year": "2016",
-							"desc":"education-access-australia-distance"
-						},
-
-						{
-							"number": float(data[244]),
-							"year": "2016",
-							"desc":"education-training--employment-australia-etea-distance"
-						},
-
-						{
-							"number": float(data[245]),
-							"year": "2016",
-							"desc":"elite-training-institute-distance"
-						},
-
-						{
-							"number": float(data[246]),
-							"year": "2016",
-							"desc":"elly-lukas-beauty-therapy-college-distance"
-						},
-
-						{
-							"number": float(data[247]),
-							"year": "2016",
-							"desc":"elsis-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[248]),
-							"year": "2016",
-							"desc":"endeavour-college-of-natural-health-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[249]),
-							"year": "2016",
-							"desc":"everest-institute-of-education-distance"
-						},
-
-						{
-							"number": float(data[250]),
-							"year": "2016",
-							"desc":"explore-english-distance"
-						},
-
-						{
-							"number": float(data[251]),
-							"year": "2016",
-							"desc":"federation-university-ballarat-campus-distance"
-						},
-
-						{
-							"number": float(data[252]),
-							"year": "2016",
-							"desc":"flinders-international-college-distance"
-						},
-
-						{
-							"number": float(data[253]),
-							"year": "2016",
-							"desc":"fusion-enlgish-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[254]),
-							"year": "2016",
-							"desc":"global-business-college-of-australia-distance"
-						},
-
-						{
-							"number": float(data[255]),
-							"year": "2016",
-							"desc":"gordon-institute-of-tafe-east-geelong-campus-distance"
-						},
-
-						{
-							"number": float(data[256]),
-							"year": "2016",
-							"desc":"gordon-institute-of-tafe-east-geelong-elicos-campus-distance"
-						},
-
-						{
-							"number": float(data[257]),
-							"year": "2016",
-							"desc":"greenwich-english-college-melbourne-distance"
-						},
-
-						{
-							"number": float(data[258]),
-							"year": "2016",
-							"desc":"harvest-bible-college-distance"
-						},
-
-						{
-							"number": float(data[259]),
-							"year": "2016",
-							"desc":"hays-international-college-distance"
-						},
-
-						{
-							"number": float(data[260]),
-							"year": "2016",
-							"desc":"heading-out-academy-distance"
-						},
-
-						{
-							"number": float(data[261]),
-							"year": "2016",
-							"desc":"headmasters-advanced-academy-of-training-distance"
-						},
-
-						{
-							"number": float(data[262]),
-							"year": "2016",
-							"desc":"holmesglen-holmesglen-institute-chadstone-campus-distance"
-						},
-
-						{
-							"number": float(data[263]),
-							"year": "2016",
-							"desc":"holmesglen-holmesglen-institute-city-campus-distance"
-						},
-
-						{
-							"number": float(data[264]),
-							"year": "2016",
-							"desc":"holmesglen-holmesglen-institute-waverley-campus-distance"
-						},
-
-						{
-							"number": float(data[265]),
-							"year": "2016",
-							"desc":"holmesglen-institute-holmesglen-moorabbin-campus-distance"
-						},
-
-						{
-							"number": float(data[266]),
-							"year": "2016",
-							"desc":"hospitality-management-institute-of-australia-distance"
-						},
-
-						{
-							"number": float(data[267]),
-							"year": "2016",
-							"desc":"impact-english-college-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[268]),
-							"year": "2016",
-							"desc":"imperial-college-of-technology-and-management-distance"
-						},
-
-						{
-							"number": float(data[269]),
-							"year": "2016",
-							"desc":"institute-of-health-and-nursing-australia-distance"
-						},
-
-						{
-							"number": float(data[270]),
-							"year": "2016",
-							"desc":"institute-of-tertiary-and-higher-education-australia-(ithea)-distance"
-						},
-
-						{
-							"number": float(data[271]),
-							"year": "2016",
-							"desc":"inus-australia-education-and-training-distance"
-						},
-
-						{
-							"number": float(data[272]),
-							"year": "2016",
-							"desc":"jmc-academy-distance"
-						},
-
-						{
-							"number": float(data[273]),
-							"year": "2016",
-							"desc":"job-training-institute-dandenong-campus-distance"
-						},
-
-						{
-							"number": float(data[274]),
-							"year": "2016",
-							"desc":"kangan-batman-institute-of-tafe-docklands-distance"
-						},
-
-						{
-							"number": float(data[275]),
-							"year": "2016",
-							"desc":"kangan-batman-institute-of-tafe-richmond-distance"
-						},
-
-						{
-							"number": float(data[276]),
-							"year": "2016",
-							"desc":"kangan-institute-moonee-ponds-campus-distance"
-						},
-
-						{
-							"number": float(data[277]),
-							"year": "2016",
-							"desc":"kaplan-business-school-distance"
-						},
-
-						{
-							"number": float(data[278]),
-							"year": "2016",
-							"desc":"la-trobe-bundoora-campus-distance"
-						},
-
-						{
-							"number": float(data[279]),
-							"year": "2016",
-							"desc":"la-trobe-university-albury-wodonga-campus-distance"
-						},
-
-						{
-							"number": float(data[280]),
-							"year": "2016",
-							"desc":"la-trobe-university-bendigo-campus-distance"
-						},
-
-						{
-							"number": float(data[281]),
-							"year": "2016",
-							"desc":"la-trobe-university-city-campus-(collins-street)-city-campus-(collins-street)-distance"
-						},
-
-						{
-							"number": float(data[282]),
-							"year": "2016",
-							"desc":"la-trobe-university-melbourne-(bundoora)-campus-distance"
-						},
-
-						{
-							"number": float(data[283]),
-							"year": "2016",
-							"desc":"la-trobe-university-mildura-campus-distance"
-						},
-
-						{
-							"number": float(data[284]),
-							"year": "2016",
-							"desc":"la-trobe-university-shepparton-campus-distance"
-						},
-
-						{
-							"number": float(data[285]),
-							"year": "2016",
-							"desc":"latrobe-college-of-art-and-design-distance"
-						},
-
-						{
-							"number": float(data[286]),
-							"year": "2016",
-							"desc":"lawson-college-australia-distance"
-						},
-
-						{
-							"number": float(data[287]),
-							"year": "2016",
-							"desc":"lonsdale-institute-eurocentres-melbourne-distance"
-						},
-
-						{
-							"number": float(data[288]),
-							"year": "2016",
-							"desc":"marcus-oldham-college-distance"
-						},
-
-						{
-							"number": float(data[289]),
-							"year": "2016",
-							"desc":"megt-institute-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[290]),
-							"year": "2016",
-							"desc":"melbourne-college-of-hair-and-beauty-distance"
-						},
-
-						{
-							"number": float(data[291]),
-							"year": "2016",
-							"desc":"melbourne-flight-training-distance"
-						},
-
-						{
-							"number": float(data[292]),
-							"year": "2016",
-							"desc":"melbourne-institute-of-technology-(federation-university)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[293]),
-							"year": "2016",
-							"desc":"melbourne-polytechnic-brunswick-campus-distance"
-						},
-
-						{
-							"number": float(data[294]),
-							"year": "2016",
-							"desc":"melbourne-polytechnic-epping-campus-distance"
-						},
-
-						{
-							"number": float(data[295]),
-							"year": "2016",
-							"desc":"melbourne-polytechnic-fairfield-campus-distance"
-						},
-
-						{
-							"number": float(data[296]),
-							"year": "2016",
-							"desc":"melbourne-polytechnic-heidelberg-campus-distance"
-						},
-
-						{
-							"number": float(data[297]),
-							"year": "2016",
-							"desc":"melbourne-polytechnic-preston-campus-distance"
-						},
-
-						{
-							"number": float(data[298]),
-							"year": "2016",
-							"desc":"melbourne-polytechnic-preston-tafe-campus-distance"
-						},
-
-						{
-							"number": float(data[299]),
-							"year": "2016",
-							"desc":"melbourne-rudolf-steiner-seminar-distance"
-						},
-
-						{
-							"number": float(data[300]),
-							"year": "2016",
-							"desc":"melbourne-school-of-theology-distance"
-						},
-
-						{
-							"number": float(data[301]),
-							"year": "2016",
-							"desc":"melbourne-university-hawthorn-english-language-centre-distance"
-						},
-
-						{
-							"number": float(data[302]),
-							"year": "2016",
-							"desc":"melbourne-university-trinity-college-distance"
-						},
-
-						{
-							"number": float(data[303]),
-							"year": "2016",
-							"desc":"menzies-institute-of-technology-adderley-campus-distance"
-						},
-
-						{
-							"number": float(data[304]),
-							"year": "2016",
-							"desc":"menzies-institute-of-technology-batman-campus-distance"
-						},
-
-						{
-							"number": float(data[305]),
-							"year": "2016",
-							"desc":"menzies-institute-of-technology-spencer-campus-distance"
-						},
-
-						{
-							"number": float(data[306]),
-							"year": "2016",
-							"desc":"monash-college-monash-university-english-language-centre-distance"
-						},
-
-						{
-							"number": float(data[307]),
-							"year": "2016",
-							"desc":"monash-international-berwick-campus-distance"
-						},
-
-						{
-							"number": float(data[308]),
-							"year": "2016",
-							"desc":"monash-international-peninsula-campus-distance"
-						},
-
-						{
-							"number": float(data[309]),
-							"year": "2016",
-							"desc":"monash-university-caulfield-campus-distance"
-						},
-
-						{
-							"number": float(data[310]),
-							"year": "2016",
-							"desc":"monash-university-city-campus-distance"
-						},
-
-						{
-							"number": float(data[311]),
-							"year": "2016",
-							"desc":"monash-university-clayton-campus-distance"
-						},
-
-						{
-							"number": float(data[312]),
-							"year": "2016",
-							"desc":"monash-university-gippsland-campus-distance"
-						},
-
-						{
-							"number": float(data[313]),
-							"year": "2016",
-							"desc":"monash-university-parkville-campus-(manning-building)-distance"
-						},
-
-						{
-							"number": float(data[314]),
-							"year": "2016",
-							"desc":"monash-university-english-language-centre-monash-college-city-campus-distance"
-						},
-
-						{
-							"number": float(data[315]),
-							"year": "2016",
-							"desc":"moorabbin-flying-services-distance"
-						},
-
-						{
-							"number": float(data[316]),
-							"year": "2016",
-							"desc":"national-theatre-(drama--ballet-school)-distance"
-						},
-
-						{
-							"number": float(data[317]),
-							"year": "2016",
-							"desc":"navitas-college-of-public-safety-(ncps)-distance"
-						},
-
-						{
-							"number": float(data[318]),
-							"year": "2016",
-							"desc":"north-melbourne-college-distance"
-						},
-
-						{
-							"number": float(data[319]),
-							"year": "2016",
-							"desc":"nova-institute-of-technology-distance"
-						},
-
-						{
-							"number": float(data[320]),
-							"year": "2016",
-							"desc":"oceania-polytechnic-institute-of-education-(opie)-distance"
-						},
-
-						{
-							"number": float(data[321]),
-							"year": "2016",
-							"desc":"orange-international-college-distance"
-						},
-
-						{
-							"number": float(data[322]),
-							"year": "2016",
-							"desc":"ozford-college-distance"
-						},
-
-						{
-							"number": float(data[323]),
-							"year": "2016",
-							"desc":"ozford-college-of-busines-distance"
-						},
-
-						{
-							"number": float(data[324]),
-							"year": "2016",
-							"desc":"ozford-college-of-business-distance"
-						},
-
-						{
-							"number": float(data[325]),
-							"year": "2016",
-							"desc":"pax-institute-of-education-distance"
-						},
-
-						{
-							"number": float(data[326]),
-							"year": "2016",
-							"desc":"pearson-aviation-essendon-airport-distance"
-						},
-
-						{
-							"number": float(data[327]),
-							"year": "2016",
-							"desc":"photography-studies-college-(psc)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[328]),
-							"year": "2016",
-							"desc":"pilgrim-theological-college-distance"
-						},
-
-						{
-							"number": float(data[329]),
-							"year": "2016",
-							"desc":"planetshakers-college-distance"
-						},
-
-						{
-							"number": float(data[330]),
-							"year": "2016",
-							"desc":"presbyterian-theological-college-box-hill-campus-distance"
-						},
-
-						{
-							"number": float(data[331]),
-							"year": "2016",
-							"desc":"rabbinical-college-of-australia-and-n-z-distance"
-						},
-
-						{
-							"number": float(data[332]),
-							"year": "2016",
-							"desc":"rc-(rhodes-college)-distance"
-						},
-
-						{
-							"number": float(data[333]),
-							"year": "2016",
-							"desc":"reformed-theological-college-geelong-campus-distance"
-						},
-
-						{
-							"number": float(data[334]),
-							"year": "2016",
-							"desc":"ridley-college-parkville-campus-distance"
-						},
-
-						{
-							"number": float(data[335]),
-							"year": "2016",
-							"desc":"rmit-english-worldwide-distance"
-						},
-
-						{
-							"number": float(data[336]),
-							"year": "2016",
-							"desc":"rmit-univeristy-brunswick-campus-distance"
-						},
-
-						{
-							"number": float(data[337]),
-							"year": "2016",
-							"desc":"rmit-university-(rmit)-city-campus-distance"
-						},
-
-						{
-							"number": float(data[338]),
-							"year": "2016",
-							"desc":"rmit-university-bundoora-campus-distance"
-						},
-
-						{
-							"number": float(data[339]),
-							"year": "2016",
-							"desc":"rmit-university-point-cook-campus-distance"
-						},
-
-						{
-							"number": float(data[340]),
-							"year": "2016",
-							"desc":"royal-gurkhas-institute-of-technology-(rgit)-australia-gurkhas-institute-of-hospitality--management-distance"
-						},
-
-						{
-							"number": float(data[341]),
-							"year": "2016",
-							"desc":"royal-gurkhas-institute-of-technology-australia-(rgit)-distance"
-						},
-
-						{
-							"number": float(data[342]),
-							"year": "2016",
-							"desc":"royal-victorian-aero-club-distance"
-						},
-
-						{
-							"number": float(data[343]),
-							"year": "2016",
-							"desc":"sae-institute-qantm-college-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[344]),
-							"year": "2016",
-							"desc":"school-for-f-m-alexander-studies-distance"
-						},
-
-						{
-							"number": float(data[345]),
-							"year": "2016",
-							"desc":"south-australian-college-of-english-(sace)-melbourne-college-of-english-distance"
-						},
-
-						{
-							"number": float(data[346]),
-							"year": "2016",
-							"desc":"south-pacific-institute-(spi)-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[347]),
-							"year": "2016",
-							"desc":"southern-cross-education-institute-(scei)-second-campus-distance"
-						},
-
-						{
-							"number": float(data[348]),
-							"year": "2016",
-							"desc":"southern-cross-education-institute-(scei)-third-campus-distance"
-						},
-
-						{
-							"number": float(data[349]),
-							"year": "2016",
-							"desc":"southern-school-of-natural-therapies-distance"
-						},
-
-						{
-							"number": float(data[350]),
-							"year": "2016",
-							"desc":"st-peters-institute-distance"
-						},
-
-						{
-							"number": float(data[351]),
-							"year": "2016",
-							"desc":"st-aerospace-academy-(australia)-pty-ltd-2-bowral-court-mitchell-park-distance"
-						},
-
-						{
-							"number": float(data[352]),
-							"year": "2016",
-							"desc":"st-peter-institute-bourke-street-campus-distance"
-						},
-
-						{
-							"number": float(data[353]),
-							"year": "2016",
-							"desc":"st-peter-institute-little-collins-campus-distance"
-						},
-
-						{
-							"number": float(data[354]),
-							"year": "2016",
-							"desc":"stott's-colleges-(front-cooking-school--carlton-campus)--vet-distance"
-						},
-
-						{
-							"number": float(data[355]),
-							"year": "2016",
-							"desc":"stott's-colleges-box-hill-campus-distance"
-						},
-
-						{
-							"number": float(data[356]),
-							"year": "2016",
-							"desc":"stott's-colleges-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[357]),
-							"year": "2016",
-							"desc":"strathfield-college-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[358]),
-							"year": "2016",
-							"desc":"sunraysia-institute-of-tafe-mildura-campus-distance"
-						},
-
-						{
-							"number": float(data[359]),
-							"year": "2016",
-							"desc":"sunshine-college-of-management-distance"
-						},
-
-						{
-							"number": float(data[360]),
-							"year": "2016",
-							"desc":"swinburne-university-of-technology-hawthorn-campus-distance"
-						},
-
-						{
-							"number": float(data[361]),
-							"year": "2016",
-							"desc":"swinburne-university-of-technology-prahan-campus-distance"
-						},
-
-						{
-							"number": float(data[362]),
-							"year": "2016",
-							"desc":"technical-education-development-institute-distance"
-						},
-
-						{
-							"number": float(data[363]),
-							"year": "2016",
-							"desc":"technical-institute-of-victoria-distance"
-						},
-
-						{
-							"number": float(data[364]),
-							"year": "2016",
-							"desc":"the-academy-of-interactive-entertainment-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[365]),
-							"year": "2016",
-							"desc":"the-australian-ballet-school-distance"
-						},
-
-						{
-							"number": float(data[366]),
-							"year": "2016",
-							"desc":"the-australian-conservatoire-of-ballet-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[367]),
-							"year": "2016",
-							"desc":"the-university-of-melbourne-distance"
-						},
-
-						{
-							"number": float(data[368]),
-							"year": "2016",
-							"desc":"tmg-college-distance"
-						},
 
-						{
-							"number": float(data[369]),
-							"year": "2016",
-							"desc":"torrens-university-fitzroy-campus-distance"
 						},
 
-						{
-							"number": float(data[370]),
-							"year": "2016",
-							"desc":"torrens-university-flinders-st-campus-distance"
-						},
-
-						{
-							"number": float(data[371]),
-							"year": "2016",
-							"desc":"trinity-college-theological-school-distance"
-						},
-
-						{
-							"number": float(data[372]),
-							"year": "2016",
-							"desc":"turner-english-box-hill-campus-distance"
-						},
-
-						{
-							"number": float(data[373]),
-							"year": "2016",
-							"desc":"turner-english-camberwell-campus-distance"
-						},
-
-						{
-							"number": float(data[374]),
-							"year": "2016",
-							"desc":"turner-english-dandenong-campus-distance"
-						},
-
-						{
-							"number": float(data[375]),
-							"year": "2016",
-							"desc":"turner-english-melbourne-cbd-campus-distance"
-						},
-
-						{
-							"number": float(data[376]),
-							"year": "2016",
-							"desc":"univeristy-of-divinity-whitley-college-distance"
-						},
-
-						{
-							"number": float(data[377]),
-							"year": "2016",
-							"desc":"universal-institute-of-technology-distance"
-						},
-
-						{
-							"number": float(data[378]),
-							"year": "2016",
-							"desc":"university-of-canberra-uc-melbourne--chadstone-campus-distance"
-						},
-
-						{
-							"number": float(data[379]),
-							"year": "2016",
-							"desc":"university-of-divinity-stirling-college-distance"
-						},
-
-						{
-							"number": float(data[380]),
-							"year": "2016",
-							"desc":"university-of-divinity-yarra-theological-union-distance"
-						},
-
-						{
-							"number": float(data[381]),
-							"year": "2016",
-							"desc":"victoria-university-city-flinders-distance"
-						},
-
-						{
-							"number": float(data[382]),
-							"year": "2016",
-							"desc":"victoria-university-city-queen-distance"
-						},
-
-						{
-							"number": float(data[383]),
-							"year": "2016",
-							"desc":"victoria-university-footscray-nicholson-distance"
-						},
-
-						{
-							"number": float(data[384]),
-							"year": "2016",
-							"desc":"victoria-university-footscray-park-distance"
-						},
-
-						{
-							"number": float(data[385]),
-							"year": "2016",
-							"desc":"victoria-university-melbourne-campus-distance"
-						},
-
-						{
-							"number": float(data[386]),
-							"year": "2016",
-							"desc":"victoria-university-st-albans-distance"
-						},
-
-						{
-							"number": float(data[387]),
-							"year": "2016",
-							"desc":"victoria-university-sunshine-distance"
-						},
-
-						{
-							"number": float(data[388]),
-							"year": "2016",
-							"desc":"victoria-university-werribee-distance"
-						},
-
-						{
-							"number": float(data[389]),
-							"year": "2016",
-							"desc":"victorian-academy-of-commerce-and-technology-startups-(vacts)-distance"
-						},
-
-						{
-							"number": float(data[390]),
-							"year": "2016",
-							"desc":"victorian-institute-of-culinary-arts--technology-main-campus--spotswood-distance"
-						},
-
-						{
-							"number": float(data[391]),
-							"year": "2016",
-							"desc":"victorian-institute-of-culinary-arts--technology-regional-campus-1--kerang-scoresby-st-distance"
-						},
-
-						{
-							"number": float(data[392]),
-							"year": "2016",
-							"desc":"victorian-institute-of-culinary-arts--technology-regional-campus-2--kerang-wellington-st-distance"
-						},
-
-						{
-							"number": float(data[393]),
-							"year": "2016",
-							"desc":"victorian-institute-of-culinary-arts--technology-regional-campus-3--shepparton-distance"
-						},
-
-						{
-							"number": float(data[394]),
-							"year": "2016",
-							"desc":"vit-(victorian-institute-of-technology)-abbotsford-campus-distance"
-						},
-
-						{
-							"number": float(data[395]),
-							"year": "2016",
-							"desc":"vit-(victorian-institute-of-technology)-melbourne-cbd-campus-distance"
-						},
-
-						{
-							"number": float(data[396]),
-							"year": "2016",
-							"desc":"whitehouse-institute-of-design-australia-distance"
-						},
-
-						{
-							"number": float(data[397]),
-							"year": "2016",
-							"desc":"william-angliss-institute-distance"
-						},
-
-						{
-							"number": float(data[398]),
-							"year": "2016",
-							"desc":"yorke-institute-distance"
-						},
 
-						{
+						"number-of-medical-workers": {
 							"number": int(data[628]),
 							"year": "2016",
-							"desc":"number-of-medical-workers"
+
 						},
 
-						{
+						"total-med-staff-per-suburb": {
 							"number": int(data[629]),
 							"year": "2016",
-							"desc":"total-med-staff-per-suburb"
+
 						},
 
-						{
+						"suburb-med-staff-presence-by-type-rank": {
 							"number": int(data[630]),
 							"year": "2016",
-							"desc":"suburb-med-staff-presence-by-type-rank"
+
 						},
 
-						{
+						"pop-per-doc": {
 							"number": int(data[631]),
 							"year": "2016",
-							"desc":"pop-per-doc"
+
 						},
 
-						{
+						"pop-per-doc-type": {
 							"number": int(data[632]),
 							"year": "2016",
-							"desc":"pop-per-doc-type"
+
 						},
 
-						{
+						"total-vic-med-staff": {
 							"number": int(data[633]),
 							"year": "2016",
-							"desc":"total-vic-med-staff"
+
 						},
 
-						{
+						"real-suburb-med-staff-presence-rank": {
 							"number": int(data[634]),
 							"year": "2016",
-							"desc":"real-suburb-med-staff-presence-rank"
+
 						},
 
-						{
+						"suburb-adjusted-med-staff-presence-rank": {
 							"number": int(data[635]),
 							"year": "2016",
-							"desc":"suburb-adjusted-med-staff-presence-rank"
+
 						},
 
-						{
+						"suburb-adjusted-med-staff-by-type-presence-rank": {
 							"number": int(data[636]),
 							"year": "2016",
-							"desc":"suburb-adjusted-med-staff-by-type-presence-rank"
+
 						},
 
-						{
+						"population-adjusted-med-staff-rating": {
 							"number": int(data[637]),
 							"year": "2016",
-							"desc":"population-adjusted-med-staff-rating"
+
 						},
 
-						{
+						"suburb-med-fac-flag": {
 							"number": (data[638]),
 							"year": "2016",
-							"desc":"suburb-med-fac-flag"
+
 						},
 
-						{
+						"suburb-pathology-and-diagnostic-imaging-services-fac-flag": {
 							"number": (data[639]),
 							"year": "2016",
-							"desc":"suburb-pathology-and-diagnostic-imaging-services-fac-flag"
+
 						},
 
-						{
+						"suburb-chiropractic-and-osteopathic-services-fac-flag": {
 							"number": (data[640]),
 							"year": "2016",
-							"desc":"suburb-chiropractic-and-osteopathic-services-fac-flag"
+
 						},
 
-						{
+						"suburb-hospitals-except-psychiatric-hospitals-fac-flag": {
 							"number": (data[641]),
 							"year": "2016",
-							"desc":"suburb-hospitals-except-psychiatric-hospitals-fac-flag"
+
 						},
 
-						{
+						"suburb-aged-care-residential-services-fac-flag": {
 							"number": (data[642]),
 							"year": "2016",
-							"desc":"suburb-aged-care-residential-services-fac-flag"
+
 						},
 
-						{
+						"suburb-other-allied-health-services-fac-flag": {
 							"number": (data[643]),
 							"year": "2016",
-							"desc":"suburb-other-allied-health-services-fac-flag"
+
 						},
 
-						{
+						"suburb-general-practice-medical-services-fac-flag": {
 							"number": (data[644]),
 							"year": "2016",
-							"desc":"suburb-general-practice-medical-services-fac-flag"
+
 						},
 
-						{
+						"suburb-physiotherapy-services-fac-flag": {
 							"number": (data[645]),
 							"year": "2016",
-							"desc":"suburb-physiotherapy-services-fac-flag"
+
 						},
 
-						{
+						"suburb-specialist-medical-services-fac-flag": {
 							"number": (data[646]),
 							"year": "2016",
-							"desc":"suburb-specialist-medical-services-fac-flag"
+
 						},
 
-						{
+						"suburb-dental-services-fac-flag": {
 							"number": (data[647]),
 							"year": "2016",
-							"desc":"suburb-dental-services-fac-flag"
+
 						},
 
-						{
+						"suburb-optometry-optical-dispensing-services-fac-flag": {
 							"number": (data[648]),
 							"year": "2016",
-							"desc":"suburb-optometry-optical-dispensing-services-fac-flag"
+
 						},
 
-						{
+						"suburb-other-health-care-services-fac-flag": {
 							"number": (data[649]),
 							"year": "2016",
-							"desc":"suburb-other-health-care-services-fac-flag"
+
 						},
 
-						{
+						"suburb-ambulance-services-fac-flag": {
 							"number": (data[650]),
 							"year": "2016",
-							"desc":"suburb-ambulance-services-fac-flag"
+
 						},
 
-						{
+						"suburb-residential-care-services-fac-flag": {
 							"number": (data[651]),
 							"year": "2016",
-							"desc":"suburb-residential-care-services-fac-flag"
+
 						},
 
-						{
+						"suburb-allied-health-services-fac-flag": {
 							"number": (data[652]),
 							"year": "2016",
-							"desc":"suburb-allied-health-services-fac-flag"
+
 						},
 
-						{
+						"suburb-psychiatric-hospitals-fac-flag": {
 							"number": (data[653]),
 							"year": "2016",
-							"desc":"suburb-psychiatric-hospitals-fac-flag"
+
 						},
 
-						{
+						"suburb-hospital-fac-flag": {
 							"number": (data[654]),
 							"year": "2016",
-							"desc":"suburb-hospital-fac-flag"
+
 						},
 
-						{
+						"suburb-medical-services-fac-flag": {
 							"number": (data[655]),
 							"year": "2016",
-							"desc":"suburb-medical-services-fac-flag"
+
 						},
 
-						{
+						"suburb-other-residential-care-services-fac-flag": {
 							"number": (data[656]),
 							"year": "2016",
-							"desc":"suburb-other-residential-care-services-fac-flag"
+
 						},
 
-						{
+						"suburb-medical-and-other-health-care-services-fac-flag": {
 							"number": (data[657]),
 							"year": "2016",
-							"desc":"suburb-medical-and-other-health-care-services-fac-flag"
+
 						},
 
-						{
+						"aged-care-residential-services": {
 							"number": int(data[658]),
 							"year": "2016",
-							"desc":"aged-care-residential-services"
+
 						},
 
-						{
+						"allied-health-services": {
 							"number": int(data[659]),
 							"year": "2016",
-							"desc":"allied-health-services"
+
 						},
 
-						{
+						"ambulance-services": {
 							"number": int(data[660]),
 							"year": "2016",
-							"desc":"ambulance-services"
+
 						},
 
-						{
+						"chiropractic-and-osteopathic-services": {
 							"number": int(data[661]),
 							"year": "2016",
-							"desc":"chiropractic-and-osteopathic-services"
+
 						},
 
-						{
+						"dental-services": {
 							"number": int(data[662]),
 							"year": "2016",
-							"desc":"dental-services"
+
 						},
 
-						{
+						"general-practice-medical-services": {
 							"number": int(data[663]),
 							"year": "2016",
-							"desc":"general-practice-medical-services"
+
 						},
 
-						{
+						"hospitals": {
 							"number": int(data[664]),
 							"year": "2016",
-							"desc":"hospitals"
+
 						},
 
-						{
+						"hospitals-except-psychiatric-hospitals": {
 							"number": int(data[665]),
 							"year": "2016",
-							"desc":"hospitals-except-psychiatric-hospitals"
+
 						},
 
-						{
+						"medical-and-other-health-care-services": {
 							"number": int(data[666]),
 							"year": "2016",
-							"desc":"medical-and-other-health-care-services"
+
 						},
 
-						{
+						"medical-services": {
 							"number": int(data[667]),
 							"year": "2016",
-							"desc":"medical-services"
+
 						},
 
-						{
+						"no-medical-facilities-in-the-area": {
 							"number": int(data[668]),
 							"year": "2016",
-							"desc":"no-medical-facilities-in-the-area"
+
 						},
 
-						{
+						"optometry-and-optical-dispensing": {
 							"number": int(data[669]),
 							"year": "2016",
-							"desc":"optometry-and-optical-dispensing"
+
 						},
 
-						{
+						"other-allied-health-services": {
 							"number": int(data[670]),
 							"year": "2016",
-							"desc":"other-allied-health-services"
+
 						},
 
-						{
+						"other-residential-care-services": {
 							"number": int(data[671]),
 							"year": "2016",
-							"desc":"other-residential-care-services"
+
 						},
 
-						{
+						"pathology-and-diagnostic-imaging-services": {
 							"number": int(data[672]),
 							"year": "2016",
-							"desc":"pathology-and-diagnostic-imaging-services"
+
 						},
 
-						{
+						"physiotherapy-services": {
 							"number": int(data[673]),
 							"year": "2016",
-							"desc":"physiotherapy-services"
+
 						},
 
-						{
+						"psychiatric-hospitals": {
 							"number": int(data[674]),
 							"year": "2016",
-							"desc":"psychiatric-hospitals"
+
 						},
 
-						{
+						"residential-care-services": {
 							"number": int(data[675]),
 							"year": "2016",
-							"desc":"residential-care-services"
+
 						},
 
-						{
+						"specialist-medical-services": {
 							"number": int(data[676]),
 							"year": "2016",
-							"desc":"specialist-medical-services"
+
 						},
 
-						{
+						"number-of-police-place-of-work": {
 							"number": int(data[677]),
 							"year": "2016",
-							"desc":"number-of-police-place-of-work"
+
 						},
 
-						{
+						"suburb-police-station-flag": {
 							"number": (data[678]),
 							"year": "2016",
-							"desc":"suburb-police-station-flag"
+
 						},
 
-						{
+						"pop-per-cop": {
 							"number": int(data[679]),
 							"year": "2016",
-							"desc":"pop-per-cop"
+
 						},
 
-						{
+						"total-vic-pol": {
 							"number": int(data[680]),
 							"year": "2016",
-							"desc":"total-vic-pol"
+
 						},
 
-						{
+						"suburb-police-presence-rank": {
 							"number": int(data[681]),
 							"year": "2016",
-							"desc":"suburb-police-presence-rank"
+
 						},
 
-						{
+						"suburb-adjusted-police-presence-rank": {
 							"number": int(data[682]),
 							"year": "2016",
-							"desc":"suburb-adjusted-police-presence-rank"
+
 						},
 
-						{
+						"population-adjusted-police-rating": {
 							"number": int(data[683]),
 							"year": "2016",
-							"desc":"population-adjusted-police-rating"
+
 						}
 
-            ],
+            },
+            "university_distances": {
+"aapoly-ami-education": { "number": float(data[170]), "year": "2016"},
+"aapoly-melbourne-campus": { "number": float(data[171]), "year": "2016"},
+"academia-international-melbourne-campus": { "number": float(data[172]), "year": "2016"},
+"acumen-institute-of-further-education-cbd-campus": { "number": float(data[173]), "year": "2016"},
+"acumen-institute-of-further-education-richmond-campus": { "number": float(data[174]), "year": "2016"},
+"agb-training-geelong-campus": { "number": float(data[175]), "year": "2016"},
+"alacc-health-college-australia": { "number": float(data[176]), "year": "2016"},
+"alfred-deakin-college-(mibt)-waurn-ponds-campus": { "number": float(data[177]), "year": "2016"},
+"altec-college-melbourne-campus": { "number": float(data[178]), "year": "2016"},
+"angad-australian-institute-of-technology-la-trobe-st-campus": { "number": float(data[179]), "year": "2016"},
+"angad-australian-institute-of-technology-lonsdale-st-campus": { "number": float(data[180]), "year": "2016"},
+"aoi-institute": { "number": float(data[181]), "year": "2016"},
+"ashton-college-footscray-campus": { "number": float(data[182]), "year": "2016"},
+"ashton-college-hallam-campus": { "number": float(data[183]), "year": "2016"},
+"ashton-college-hospitality-campus": { "number": float(data[184]), "year": "2016"},
+"ashton-college-northcote-campus": { "number": float(data[185]), "year": "2016"},
+"australian-academy-of-fashion-design": { "number": float(data[186]), "year": "2016"},
+"australian-careers-education-donald-street-campus-(aurora-building)": { "number": float(data[187]), "year": "2016"},
+"australian-careers-education-victoria-street-campus": { "number": float(data[188]), "year": "2016"},
+"australian-catholic-univeristy-melbourne-campus": { "number": float(data[189]), "year": "2016"},
+"australian-catholic-university-ballarat-campus": { "number": float(data[190]), "year": "2016"},
+"australian-centre-of-further-education": { "number": float(data[191]), "year": "2016"},
+"australian-college-of-applied-psychology-acap--melbourne-campus": { "number": float(data[192]), "year": "2016"},
+"australian-college-of-sport-basketball-melbourne-campus": { "number": float(data[193]), "year": "2016"},
+"australian-college-of-theology": { "number": float(data[194]), "year": "2016"},
+"australian-college-of-trade-thornbury-campus": { "number": float(data[195]), "year": "2016"},
+"australian-education-academy-10-blissington-street-springvale": { "number": float(data[196]), "year": "2016"},
+"australian-institute-of-technical-training-(aitt)-melbourne-campus": { "number": float(data[197]), "year": "2016"},
+"australian-institute-of-trades-institute-of-hotel-management-australia": { "number": float(data[198]), "year": "2016"},
+"australian-institute-of-translation--interpretation-(aiti)-melbourne-campus": { "number": float(data[199]), "year": "2016"},
+"australian-it--hospitality-institute-footscray-campus": { "number": float(data[200]), "year": "2016"},
+"australian-national-airline-college": { "number": float(data[201]), "year": "2016"},
+"australian-national-college-franklin-street-campus": { "number": float(data[202]), "year": "2016"},
+"australian-national-institute-of-business--technology-(anibt)-melbourne-campus": { "number": float(data[203]), "year": "2016"},
+"australian-pacific-college-melbourne-campus": { "number": float(data[204]), "year": "2016"},
+"australian-study-link-institute": { "number": float(data[205]), "year": "2016"},
+"aveta--australian-vocational-education--training-academy": { "number": float(data[206]), "year": "2016"},
+"barkly-international-college-city-campus": { "number": float(data[207]), "year": "2016"},
+"barkly-international-college-north-melbourne-campus--automotive-workshop": { "number": float(data[208]), "year": "2016"},
+"barkly-international-college": { "number": float(data[209]), "year": "2016"},
+"baxter-institute-automotive--bakery-campus": { "number": float(data[210]), "year": "2016"},
+"baxter-institute-fabrication-campus": { "number": float(data[211]), "year": "2016"},
+"baxter-institute-hairdressing-and-beauty-campus-(flinders-street)": { "number": float(data[212]), "year": "2016"},
+"beaconhills-college": { "number": float(data[213]), "year": "2016"},
+"bendigo-tafe-bendigo": { "number": float(data[214]), "year": "2016"},
+"bendigo-tafe-and-kangan-institute-broadmeadows-campus": { "number": float(data[215]), "year": "2016"},
+"biba-academy-swantson-street-campus": { "number": float(data[216]), "year": "2016"},
+"box-hill-institute-city-campus": { "number": float(data[217]), "year": "2016"},
+"box-hill-institute": { "number": float(data[218]), "year": "2016"},
+"brighton-institute-of-technology": { "number": float(data[219]), "year": "2016"},
+"catholic-theological-college-(ctc)-melbourne-college-of-divinity--east-melbourne-campus": { "number": float(data[220]), "year": "2016"},
+"central-australian-college-(cac)-melbourne-campus": { "number": float(data[221]), "year": "2016"},
+"central-melbourne-institute-(cmi)-city-campus": { "number": float(data[222]), "year": "2016"},
+"central-melbourne-institute": { "number": float(data[223]), "year": "2016"},
+"charles-sturt-university-study-centres-melbourne": { "number": float(data[224]), "year": "2016"},
+"chisholm-institue-chisholm-at-331": { "number": float(data[225]), "year": "2016"},
+"chisholm-institute-bass-coast": { "number": float(data[226]), "year": "2016"},
+"chisholm-institute-cranbourne-campus": { "number": float(data[227]), "year": "2016"},
+"chisholm-institute-dandenong-campus": { "number": float(data[228]), "year": "2016"},
+"chisholm-institute-flinders-lane-campus": { "number": float(data[229]), "year": "2016"},
+"chisholm-institute-melbourne-city-campus": { "number": float(data[230]), "year": "2016"},
+"collarts--australian-college-of-the-arts": { "number": float(data[231]), "year": "2016"},
+"dalton-college": { "number": float(data[232]), "year": "2016"},
+"dance-factory": { "number": float(data[233]), "year": "2016"},
+"deakin-college-(mibt)-burwood-campus": { "number": float(data[234]), "year": "2016"},
+"deakin-university-burwood-campus": { "number": float(data[235]), "year": "2016"},
+"deakin-university-geelong-waterfront-campus": { "number": float(data[236]), "year": "2016"},
+"deakin-university-warrnambool-campus": { "number": float(data[237]), "year": "2016"},
+"deakin-university-waurn-ponds-campus": { "number": float(data[238]), "year": "2016"},
+"della-international-college-city-campus": { "number": float(data[239]), "year": "2016"},
+"della-international-college-sunshine-campus": { "number": float(data[240]), "year": "2016"},
+"department-of-education-and-training-victoria": { "number": float(data[241]), "year": "2016"},
+"east-west-college-of-natural-therapies": { "number": float(data[242]), "year": "2016"},
+"education-access-australia": { "number": float(data[243]), "year": "2016"},
+"education-training--employment-australia-etea": { "number": float(data[244]), "year": "2016"},
+"elite-training-institute": { "number": float(data[245]), "year": "2016"},
+"elly-lukas-beauty-therapy-college": { "number": float(data[246]), "year": "2016"},
+"elsis-melbourne-campus": { "number": float(data[247]), "year": "2016"},
+"endeavour-college-of-natural-health-melbourne-campus": { "number": float(data[248]), "year": "2016"},
+"everest-institute-of-education": { "number": float(data[249]), "year": "2016"},
+"explore-english": { "number": float(data[250]), "year": "2016"},
+"federation-university-ballarat-campus": { "number": float(data[251]), "year": "2016"},
+"flinders-international-college": { "number": float(data[252]), "year": "2016"},
+"fusion-enlgish-melbourne-campus": { "number": float(data[253]), "year": "2016"},
+"global-business-college-of-australia": { "number": float(data[254]), "year": "2016"},
+"gordon-institute-of-tafe-east-geelong-campus": { "number": float(data[255]), "year": "2016"},
+"gordon-institute-of-tafe-east-geelong-elicos-campus": { "number": float(data[256]), "year": "2016"},
+"greenwich-english-college-melbourne": { "number": float(data[257]), "year": "2016"},
+"harvest-bible-college": { "number": float(data[258]), "year": "2016"},
+"hays-international-college": { "number": float(data[259]), "year": "2016"},
+"heading-out-academy": { "number": float(data[260]), "year": "2016"},
+"headmasters-advanced-academy-of-training": { "number": float(data[261]), "year": "2016"},
+"holmesglen-holmesglen-institute-chadstone-campus": { "number": float(data[262]), "year": "2016"},
+"holmesglen-holmesglen-institute-city-campus": { "number": float(data[263]), "year": "2016"},
+"holmesglen-holmesglen-institute-waverley-campus": { "number": float(data[264]), "year": "2016"},
+"holmesglen-institute-holmesglen-moorabbin-campus": { "number": float(data[265]), "year": "2016"},
+"hospitality-management-institute-of-australia": { "number": float(data[266]), "year": "2016"},
+"impact-english-college-melbourne-campus": { "number": float(data[267]), "year": "2016"},
+"imperial-college-of-technology-and-management": { "number": float(data[268]), "year": "2016"},
+"institute-of-health-and-nursing-australia": { "number": float(data[269]), "year": "2016"},
+"institute-of-tertiary-and-higher-education-australia-(ithea)": { "number": float(data[270]), "year": "2016"},
+"inus-australia-education-and-training": { "number": float(data[271]), "year": "2016"},
+"jmc-academy": { "number": float(data[272]), "year": "2016"},
+"job-training-institute-dandenong-campus": { "number": float(data[273]), "year": "2016"},
+"kangan-batman-institute-of-tafe-docklands": { "number": float(data[274]), "year": "2016"},
+"kangan-batman-institute-of-tafe-richmond": { "number": float(data[275]), "year": "2016"},
+"kangan-institute-moonee-ponds-campus": { "number": float(data[276]), "year": "2016"},
+"kaplan-business-school": { "number": float(data[277]), "year": "2016"},
+"la-trobe-bundoora-campus": { "number": float(data[278]), "year": "2016"},
+"la-trobe-university-albury-wodonga-campus": { "number": float(data[279]), "year": "2016"},
+"la-trobe-university-bendigo-campus": { "number": float(data[280]), "year": "2016"},
+"la-trobe-university-city-campus-(collins-street)-city-campus-(collins-street)": { "number": float(data[281]), "year": "2016"},
+"la-trobe-university-melbourne-(bundoora)-campus": { "number": float(data[282]), "year": "2016"},
+"la-trobe-university-mildura-campus": { "number": float(data[283]), "year": "2016"},
+"la-trobe-university-shepparton-campus": { "number": float(data[284]), "year": "2016"},
+"latrobe-college-of-art-and-design": { "number": float(data[285]), "year": "2016"},
+"lawson-college-australia": { "number": float(data[286]), "year": "2016"},
+"lonsdale-institute-eurocentres-melbourne": { "number": float(data[287]), "year": "2016"},
+"marcus-oldham-college": { "number": float(data[288]), "year": "2016"},
+"megt-institute-melbourne-campus": { "number": float(data[289]), "year": "2016"},
+"melbourne-college-of-hair-and-beauty": { "number": float(data[290]), "year": "2016"},
+"melbourne-flight-training": { "number": float(data[291]), "year": "2016"},
+"melbourne-institute-of-technology-(federation-university)-melbourne-campus": { "number": float(data[292]), "year": "2016"},
+"melbourne-polytechnic-brunswick-campus": { "number": float(data[293]), "year": "2016"},
+"melbourne-polytechnic-epping-campus": { "number": float(data[294]), "year": "2016"},
+"melbourne-polytechnic-fairfield-campus": { "number": float(data[295]), "year": "2016"},
+"melbourne-polytechnic-heidelberg-campus": { "number": float(data[296]), "year": "2016"},
+"melbourne-polytechnic-preston-campus": { "number": float(data[297]), "year": "2016"},
+"melbourne-polytechnic-preston-tafe-campus": { "number": float(data[298]), "year": "2016"},
+"melbourne-rudolf-steiner-seminar": { "number": float(data[299]), "year": "2016"},
+"melbourne-school-of-theology": { "number": float(data[300]), "year": "2016"},
+"melbourne-university-hawthorn-english-language-centre": { "number": float(data[301]), "year": "2016"},
+"melbourne-university-trinity-college": { "number": float(data[302]), "year": "2016"},
+"menzies-institute-of-technology-adderley-campus": { "number": float(data[303]), "year": "2016"},
+"menzies-institute-of-technology-batman-campus": { "number": float(data[304]), "year": "2016"},
+"menzies-institute-of-technology-spencer-campus": { "number": float(data[305]), "year": "2016"},
+"monash-college-monash-university-english-language-centre": { "number": float(data[306]), "year": "2016"},
+"monash-international-berwick-campus": { "number": float(data[307]), "year": "2016"},
+"monash-international-peninsula-campus": { "number": float(data[308]), "year": "2016"},
+"monash-university-caulfield-campus": { "number": float(data[309]), "year": "2016"},
+"monash-university-city-campus": { "number": float(data[310]), "year": "2016"},
+"monash-university-clayton-campus": { "number": float(data[311]), "year": "2016"},
+"monash-university-gippsland-campus": { "number": float(data[312]), "year": "2016"},
+"monash-university-parkville-campus-(manning-building)": { "number": float(data[313]), "year": "2016"},
+"monash-university-english-language-centre-monash-college-city-campus": { "number": float(data[314]), "year": "2016"},
+"moorabbin-flying-services": { "number": float(data[315]), "year": "2016"},
+"national-theatre-(drama--ballet-school)": { "number": float(data[316]), "year": "2016"},
+"navitas-college-of-public-safety-(ncps)": { "number": float(data[317]), "year": "2016"},
+"north-melbourne-college": { "number": float(data[318]), "year": "2016"},
+"nova-institute-of-technology": { "number": float(data[319]), "year": "2016"},
+"oceania-polytechnic-institute-of-education-(opie)": { "number": float(data[320]), "year": "2016"},
+"orange-international-college": { "number": float(data[321]), "year": "2016"},
+"ozford-college-of-busines": { "number": float(data[322]), "year": "2016"},
+"ozford-college-of-business": { "number": float(data[323]), "year": "2016"},
+"ozford-college": { "number": float(data[324]), "year": "2016"},
+"pax-institute-of-education": { "number": float(data[325]), "year": "2016"},
+"pearson-aviation-essendon-airport": { "number": float(data[326]), "year": "2016"},
+"photography-studies-college-(psc)-melbourne-campus": { "number": float(data[327]), "year": "2016"},
+"pilgrim-theological-college": { "number": float(data[328]), "year": "2016"},
+"planetshakers-college": { "number": float(data[329]), "year": "2016"},
+"presbyterian-theological-college-box-hill-campus": { "number": float(data[330]), "year": "2016"},
+"rabbinical-college-of-australia-and-n-z-": { "number": float(data[331]), "year": "2016"},
+"rc-(rhodes-college)": { "number": float(data[332]), "year": "2016"},
+"reformed-theological-college-geelong-campus": { "number": float(data[333]), "year": "2016"},
+"ridley-college-parkville-campus": { "number": float(data[334]), "year": "2016"},
+"rmit-english-worldwide": { "number": float(data[335]), "year": "2016"},
+"rmit-univeristy-brunswick-campus": { "number": float(data[336]), "year": "2016"},
+"rmit-university-(rmit)-city-campus": { "number": float(data[337]), "year": "2016"},
+"rmit-university-bundoora-campus": { "number": float(data[338]), "year": "2016"},
+"rmit-university-point-cook-campus": { "number": float(data[339]), "year": "2016"},
+"royal-gurkhas-institute-of-technology-(rgit)-australia-gurkhas-institute-of-hospitality--management": { "number": float(data[340]), "year": "2016"},
+"royal-gurkhas-institute-of-technology-australia-(rgit)": { "number": float(data[341]), "year": "2016"},
+"royal-victorian-aero-club": { "number": float(data[342]), "year": "2016"},
+"sae-institute-qantm-college-melbourne-campus": { "number": float(data[343]), "year": "2016"},
+"school-for-f-m-alexander-studies": { "number": float(data[344]), "year": "2016"},
+"south-australian-college-of-english-(sace)-melbourne-college-of-english": { "number": float(data[345]), "year": "2016"},
+"south-pacific-institute-(spi)-melbourne-campus": { "number": float(data[346]), "year": "2016"},
+"southern-cross-education-institute-(scei)-second-campus": { "number": float(data[347]), "year": "2016"},
+"southern-cross-education-institute-(scei)-third-campus": { "number": float(data[348]), "year": "2016"},
+"southern-school-of-natural-therapies": { "number": float(data[349]), "year": "2016"},
+"st-peters-institute": { "number": float(data[350]), "year": "2016"},
+"st-aerospace-academy-(australia)-pty-ltd-2-bowral-court-mitchell-park": { "number": float(data[351]), "year": "2016"},
+"st-peter-institute-bourke-street-campus": { "number": float(data[352]), "year": "2016"},
+"st-peter-institute-little-collins-campus": { "number": float(data[353]), "year": "2016"},
+"stott's-colleges-(front-cooking-school--carlton-campus)--vet": { "number": float(data[354]), "year": "2016"},
+"stott's-colleges-box-hill-campus": { "number": float(data[355]), "year": "2016"},
+"stott's-colleges-melbourne-campus": { "number": float(data[356]), "year": "2016"},
+"strathfield-college-melbourne-campus": { "number": float(data[357]), "year": "2016"},
+"sunraysia-institute-of-tafe-mildura-campus": { "number": float(data[358]), "year": "2016"},
+"sunshine-college-of-management": { "number": float(data[359]), "year": "2016"},
+"swinburne-university-of-technology-hawthorn-campus": { "number": float(data[360]), "year": "2016"},
+"swinburne-university-of-technology-prahan-campus": { "number": float(data[361]), "year": "2016"},
+"technical-education-development-institute": { "number": float(data[362]), "year": "2016"},
+"technical-institute-of-victoria": { "number": float(data[363]), "year": "2016"},
+"the-academy-of-interactive-entertainment-melbourne-campus": { "number": float(data[364]), "year": "2016"},
+"the-australian-ballet-school": { "number": float(data[365]), "year": "2016"},
+"the-australian-conservatoire-of-ballet-melbourne-campus": { "number": float(data[366]), "year": "2016"},
+"the-university-of-melbourne": { "number": float(data[367]), "year": "2016"},
+"tmg-college": { "number": float(data[368]), "year": "2016"},
+"torrens-university-fitzroy-campus": { "number": float(data[369]), "year": "2016"},
+"torrens-university-flinders-st-campus": { "number": float(data[370]), "year": "2016"},
+"trinity-college-theological-school": { "number": float(data[371]), "year": "2016"},
+"turner-english-box-hill-campus": { "number": float(data[372]), "year": "2016"},
+"turner-english-camberwell-campus": { "number": float(data[373]), "year": "2016"},
+"turner-english-dandenong-campus": { "number": float(data[374]), "year": "2016"},
+"turner-english-melbourne-cbd-campus": { "number": float(data[375]), "year": "2016"},
+"univeristy-of-divinity-whitley-college": { "number": float(data[376]), "year": "2016"},
+"universal-institute-of-technology": { "number": float(data[377]), "year": "2016"},
+"university-of-canberra-uc-melbourne--chadstone-campus": { "number": float(data[378]), "year": "2016"},
+"university-of-divinity-stirling-college": { "number": float(data[379]), "year": "2016"},
+"university-of-divinity-yarra-theological-union": { "number": float(data[380]), "year": "2016"},
+"victoria-university-city-flinders": { "number": float(data[381]), "year": "2016"},
+"victoria-university-city-queen": { "number": float(data[382]), "year": "2016"},
+"victoria-university-footscray-nicholson": { "number": float(data[383]), "year": "2016"},
+"victoria-university-footscray-park": { "number": float(data[384]), "year": "2016"},
+"victoria-university-melbourne-campus": { "number": float(data[385]), "year": "2016"},
+"victoria-university-st-albans": { "number": float(data[386]), "year": "2016"},
+"victoria-university-sunshine": { "number": float(data[387]), "year": "2016"},
+"victoria-university-werribee": { "number": float(data[388]), "year": "2016"},
+"victorian-academy-of-commerce-and-technology-startups-(vacts)": { "number": float(data[389]), "year": "2016"},
+"victorian-institute-of-culinary-arts--technology-main-campus--spotswood": { "number": float(data[390]), "year": "2016"},
+"victorian-institute-of-culinary-arts--technology-regional-campus-1--kerang-scoresby-st": { "number": float(data[391]), "year": "2016"},
+"victorian-institute-of-culinary-arts--technology-regional-campus-2--kerang-wellington-st": { "number": float(data[392]), "year": "2016"},
+"victorian-institute-of-culinary-arts--technology-regional-campus-3--shepparton": { "number": float(data[393]), "year": "2016"},
+"vit-(victorian-institute-of-technology)-abbotsford-campus": { "number": float(data[394]), "year": "2016"},
+"vit-(victorian-institute-of-technology)-melbourne-cbd-campus": { "number": float(data[395]), "year": "2016"},
+"whitehouse-institute-of-design-australia": { "number": float(data[396]), "year": "2016"},
+"william-angliss-institute": { "number": float(data[397]), "year": "2016"},
+"yorke-institute": { "number": float(data[398]), "year": "2016"}
+            },
             "language": {
                 "acholi": int(data[28]),
                 "african-languages-nec": int(data[29]),

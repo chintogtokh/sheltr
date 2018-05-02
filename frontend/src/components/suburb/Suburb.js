@@ -27,12 +27,7 @@ class Suburb extends Component {
   }
 
   getStatFromArray(arr, desc) {
-    for (var i = 0; i < arr.length; i++) {
-      if(arr[i].desc===desc){
-        return arr[i];
-      }
-    }
-    return null;
+    return arr[desc];
   }
 
   componentWillMount() {
@@ -273,7 +268,7 @@ class Suburb extends Component {
                       }
 
                       {preferences.raw_uni &&
-                       <li> <b>University rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.universities[preferences.raw_uni.shim])}>{this.numberToWords("uni",this.state.suburb.universities[preferences.raw_uni.shim])}</span> your university was <b>{preferences.raw_uni.name}</b></li>}
+                       <li> <b>University distance</b> <span className="badge badge-pill badge-info">{"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"}</span> your university was <b>{preferences.raw_uni.name}</b></li>}
                     </ul>
 
                     <br/>
