@@ -21,8 +21,12 @@ div.header-container {
 
         .header-content-inner {
           padding: 0 20px;
+            text-align: center;
+
 
           div.lead{
+
+            font-size:1.5rem;
 
             .lead-row{
               margin-bottom:5px;
@@ -125,6 +129,7 @@ img.inline-logo{
 }
 
 .header-content-inner input {
+  text-align: center;
     border:none;
     color:black;
 
@@ -141,23 +146,6 @@ img.inline-logo{
         color: white;
     }
 }
-
-// .header-content-inner select {
-//     padding:0 10px;
-//     margin:0 10px;
-//     background:transparent;
-//     border:none;
-//     color:white;
-//     border-bottom: 3px solid white;
-//     border-bottom-style: dotted;
-
-//     option{
-//       color:white;
-//       background-color:grey;
-//     }
-
-
-// }
 
 .before-vicmap{
     // //z-index:10;
@@ -218,13 +206,15 @@ img.inline-logo{
 .react-select{
     display: inline-block;
     font-size: inherit;
-    float:right;
     clear:both;
-    width: 300px;
+    min-width: 300px;
     top: 0;
     color:black;
-    font-size:1.2rem;
-    margin-bottom: -0.5em;
+    font-size:2rem;
+
+    .Select-multi-value-wrapper{
+      line-height: 2rem;
+    }
 
     &.is-focused{
       .Select-control{
@@ -236,7 +226,9 @@ img.inline-logo{
 
     // z-index:0;
     .Select-control{
-      border:1px solid white;
+      border:none;
+      border-bottom: 1px solid white;
+      border-radius: 0;
       background-color:transparent;
       color:white;
       cursor: pointer;
@@ -322,4 +314,11 @@ div.find-suburbs-btn-container{
 
 .btn-clear{
   padding: 5px 10px;
+}
+
+// new
+
+.nooky{
+  font-size:2rem;
+  text-align: center;
 }

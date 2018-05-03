@@ -11,7 +11,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark">
         <Link to="/" className="navbar-brand"><img src={full_logo_inverse} alt="Sheltr logo"/></Link>
-          {!loggedIn &&
+          {false && !loggedIn &&
             <ul className="navbar-nav ml-md-auto">
                 <li className="nav-item">
                   <Link to="/auth/login" className="nav-link">login</Link>
@@ -21,7 +21,7 @@ class Navbar extends Component {
                 </li>
             </ul>
           }
-          {loggedIn &&
+          {false && loggedIn &&
             <ul className="navbar-nav ml-md-auto">
                 <li className="nav-item">
                   <Link to="/auth/logout" className="nav-link">logout ({user.username})</Link>

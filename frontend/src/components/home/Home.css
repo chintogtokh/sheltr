@@ -15,26 +15,29 @@ div.header-container {
   -o-background-size: cover;
   padding-bottom: 50px; }
   div.header-container .header-content .header-content-inner {
-    padding: 0 20px; }
-    div.header-container .header-content .header-content-inner div.lead .lead-row {
-      margin-bottom: 5px; }
-    div.header-container .header-content .header-content-inner div.lead img {
-      height: 1.5em;
-      max-width: 2em; }
-    div.header-container .header-content .header-content-inner div.lead .fake-img {
-      display: inline-block;
-      min-width: 1.5em; }
-    div.header-container .header-content .header-content-inner div.lead a.btn {
-      padding-left: 80px;
-      padding-right: 80px;
-      font-weight: bold;
-      border-radius: .9rem;
-      float: right;
-      clear: both; }
-    div.header-container .header-content .header-content-inner div.lead div.input-label {
-      padding: 0 10px;
-      min-width: 500px;
-      display: inline-block; }
+    padding: 0 20px;
+    text-align: center; }
+    div.header-container .header-content .header-content-inner div.lead {
+      font-size: 1.5rem; }
+      div.header-container .header-content .header-content-inner div.lead .lead-row {
+        margin-bottom: 5px; }
+      div.header-container .header-content .header-content-inner div.lead img {
+        height: 1.5em;
+        max-width: 2em; }
+      div.header-container .header-content .header-content-inner div.lead .fake-img {
+        display: inline-block;
+        min-width: 1.5em; }
+      div.header-container .header-content .header-content-inner div.lead a.btn {
+        padding-left: 80px;
+        padding-right: 80px;
+        font-weight: bold;
+        border-radius: .9rem;
+        float: right;
+        clear: both; }
+      div.header-container .header-content .header-content-inner div.lead div.input-label {
+        padding: 0 10px;
+        min-width: 500px;
+        display: inline-block; }
 
 @media (min-width: 1068px) {
   div.header-container .header-content {
@@ -80,6 +83,7 @@ img.inline-logo {
   margin-top: -43px; }
 
 .header-content-inner input {
+  text-align: center;
   border: none;
   color: black; }
   .header-content-inner input::placeholder {
@@ -134,17 +138,19 @@ img.inline-logo {
 .react-select {
   display: inline-block;
   font-size: inherit;
-  float: right;
   clear: both;
-  width: 300px;
+  min-width: 300px;
   top: 0;
   color: black;
-  font-size: 1.2rem;
-  margin-bottom: -0.5em; }
+  font-size: 2rem; }
+  .react-select .Select-multi-value-wrapper {
+    line-height: 2rem; }
   .react-select.is-focused .Select-control .Select-value-label {
     color: black !important; }
   .react-select .Select-control {
-    border: 1px solid white;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
     background-color: transparent;
     color: white;
     cursor: pointer; }
@@ -208,3 +214,7 @@ div.find-suburbs-btn-container {
 
 .btn-clear {
   padding: 5px 10px; }
+
+.nooky {
+  font-size: 2rem;
+  text-align: center; }

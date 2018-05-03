@@ -148,7 +148,7 @@ class Home extends Component {
   }
 
   render() {
-    const { crimeSafety, affordability, language, actualLanguage, uni } = this.state;
+    const { crimeSafety, affordability, language, actualLanguage, uni, distance } = this.state;
 
     return (
       <div>
@@ -156,13 +156,64 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span className="before-vicmap">Welcome new students!<br/>Are you coming to study in Victoria?</span></h1>
+              <h1><span className="before-vicmap">Welcome to Victoria, new students!</span></h1>
               <div className="lead">
-                Are you worried about finding a place to live? We'll help you. Just tell us your priorities.
+              Start finding a great place to live here!
               </div>
-              <br/>
+              <br/><br/>
 
               <form onSubmit={this.onSubmit}>
+
+              <div className="nooky">
+              I want to to live within &nbsp;
+
+              <Select className = "react-select"
+                    name="distance"
+                    placeholder = "please select..."
+                    value={distance}
+                    searchable = {false}
+                    onChange={this.handleSelectChange('distance')}
+                    options={[
+                      { value: '5', label: '5km' },
+                      { value: '10', label: '10km' },
+                      { value: '20', label: '20km' },
+                      { value: '50',  label: '50km' },
+                      { value: '100',  label: '100km' },
+                    ]}
+                  />
+              &nbsp;of&nbsp;
+
+              <Select.Async
+                  placeholder = "start typing..."
+                  autoload = {true}
+                  name="uni"
+                  filterOption={() => true}
+                  className = "react-select"
+                  value={uni}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.handleSelectChange('uni')}
+                  loadOptions={this.getUnis}
+                  backspaceRemoves={true} />
+
+              &nbsp; and speak&nbsp;
+
+              <Select.Async
+                  placeholder = "start typing..."
+                  name="actualLanguage"
+                  autoload = {true}
+                  className = "react-select"
+                  value={actualLanguage}
+                  valueKey="shim"
+                  labelKey="name"
+                  filterOption={() => true}
+                  onChange={this.handleSelectChange('actualLanguage')}
+                  loadOptions={this.getLanguages}
+                  backspaceRemoves={true} />
+              .
+              </div>
+
+              {/*
               <div className="lead">
                   <div className="lead-row">
                   <img src={detective} alt="safety"/>
@@ -257,12 +308,15 @@ class Home extends Component {
                   </div>
               </div>
 
+              */ }
+
               <br/>
 
               <div className="find-suburbs-btn-container">
               <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>&nbsp;
-              <button className="btn btn-danger btn-clear btn-lg" type="button" onClick={this.clearPreferences}> <i className="fas fa-times"></i> Clear </button>
               </div>
+
+
               </form>
           </div>
         </div>
