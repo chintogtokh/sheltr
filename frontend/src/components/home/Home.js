@@ -80,7 +80,7 @@ class Home extends Component {
     if(Object.keys(params).length===0 || typeof params.uni == "undefined" || params.uni == null){
       this.mustSubmitNotification("You must input at least one preference and a university!");
     }
-    else if((typeof params.language != "undefined" && params.language != null) && (params.actualLanguage == null || typeof params.actualLanguage == "undefined" )){
+    else if((typeof params.language != "undefined" && params.language != null && params.language != "0") && (params.actualLanguage == null || typeof params.actualLanguage == "undefined" )){
       this.mustSubmitNotification("You must input a language if you select a language preference!");
     }
     else{
@@ -211,7 +211,7 @@ class Home extends Component {
                     value={language}
                     onChange={this.handleSelectChange('language')}
                     options={[
-                  { value: '0', label: 'Not a priority' },
+                      { value: '0', label: 'Not a priority' },
                       { value: '1',  label: 'Low priority' },
                       { value: '4',  label: 'Neutral' },
                       { value: '7',  label: 'Moderate priority' },

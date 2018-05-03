@@ -170,7 +170,7 @@ class AllSuburbs extends Component {
                 <div className="col-md-3">{this.state.suburb_7}
                 </div>
               </div>
-              <div className="row">
+        { /*   <div className="row">
                 <div className="col-md-3">{this.state.suburb_8}
                 </div>
                 <div className="col-md-3">{this.state.suburb_9}
@@ -189,7 +189,7 @@ class AllSuburbs extends Component {
                 </div>
                 <div className="col-md-3">{this.state.suburb_15}
                 </div>
-              </div>
+              </div> */ }
               </div>
             </div>
           </main>
