@@ -13,8 +13,6 @@ main {
 
 .container {
   padding-top: 40px; }
-  .container h1 {
-    text-transform: lowercase; }
 
 .custom-toast {
   font-family: 'Cabin'; }

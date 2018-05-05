@@ -135,14 +135,14 @@ class Home extends Component {
     const { uni, distance } = this.state;
 
     return (
-      <div>
+      <div id="HomeComponent">
       <ToastContainer />
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
               <h1>Welcome to Victoria, new students!</h1>
               <div className="lead">
-                Start finding a great place to live here!
+                You can start finding a great new home here!
               </div>
 
               <form onSubmit={this.onSubmit}>
@@ -170,7 +170,6 @@ class Home extends Component {
                   backspaceRemoves={true} />
 
 
-
               <div className="nooky-label-container" style={{width:'300px'}}>
                 <div className="nooky-label">
               and live within a distance of
@@ -178,20 +177,20 @@ class Home extends Component {
               </div>
 
               <Select className = "react-select"
-                    name="distance"
-                    placeholder = "..."
-                    value={distance}
-                    searchable = {false}
-                    style={{width:'150px'}}
-                    onChange={this.handleSelectChange('distance')}
-                    options={[
-                      { value: '5', label: '5km' },
-                      { value: '10', label: '10km' },
-                      { value: '20', label: '20km' },
-                      { value: '50',  label: '50km' },
-                      { value: '100',  label: '100km' },
-                    ]}
-                  />
+                name="distance"
+                placeholder = "..."
+                value={distance}
+                searchable = {false}
+                style={{width:'150px'}}
+                onChange={this.handleSelectChange('distance')}
+                options={[
+                  { value: '5', label: '5km' },
+                  { value: '10', label: '10km' },
+                  { value: '20', label: '20km' },
+                  { value: '50',  label: '50km' },
+                  { value: '100',  label: '100km' },
+                ]}
+              />
 
 
               {/*

@@ -3,6 +3,7 @@ import './AllSuburbs.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import Select from 'react-select';
 
 class AllSuburbs extends Component {
 
@@ -116,9 +117,30 @@ class AllSuburbs extends Component {
           })
   }
 
+  handleFilterChange = function(name) {
+    return function(newValue) {
+        if((typeof newValue !== "undefined" && newValue !== null) && name !== "actualLanguage" && name !== "uni"){
+          this.setState({[name]:newValue.value});
+          if(name==="language" && newValue.value===0){
+            this.setState({"actualLanguage": null});
+          }
+        }
+        else if(typeof newValue !== "undefined"){
+          this.setState({[name]:newValue,["raw_"+name]:newValue});
+        }
+        else{
+          this.setState({[name]:''});
+        }
+    }.bind(this);
+  };
+
+
   render() {
+
+    const { filter } = this.state;
+
       return (
-      <div>
+      <div id="AllSuburbsComponent">
           <ToastContainer />
           <main role="main">
             <div className="container">
@@ -130,20 +152,42 @@ class AllSuburbs extends Component {
                 </ol>
               </nav>
 
-              <h1>Suburbs matching your preferences</h1>
+              <h1>Suburb Suggestions</h1>
 
-              <p>
-              According to the analysis of our data based on your preferences, we think that the following suburbs may fit your needs.
-              </p>
               <div>
+                The following suburbs might fit your needs. Start drilling down using the options to the right!
+              </div>
+
+              <div className="sortable-section-container">
+                <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    Sort by:
+                    </div>
+                  </div>
+                  <Select className = "react-select"
+                  name="filter"
+                  placeholder = "distance"
+                  value={filter}
+                  searchable = {false}
+                  style={{width:'150px'}}
+                  onChange={this.handleFilterChange('filter')}
+                  options={[
+                    { value: 'safety', label: 'safety' },
+                    { value: 'affordability', label: 'affordability' },
+                    { value: 'distance', label: 'distance' },
+                  ]}
+                />
+                </div>
+              </div>
+
 
                 { this.state.suburb &&
                   <div className="row">{[...Array(8)].map((e, i) => {
                     return <div key={i} className="col-md-3">{this.state.suburb[i]}</div>
                   })}</div>
                 }
-
-              </div>
             </div>
           </main>
       </div>

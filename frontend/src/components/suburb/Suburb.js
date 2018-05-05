@@ -5,11 +5,10 @@ import { suburbActions } from '../../actions';
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
-import { Link } from 'react-router-dom';
-import detective from '../../files/detective.svg';
-import chat from '../../files/chat.svg';
-import credit_card from '../../files/credit_card.svg';
-import university from '../../files/university.svg';
+// import detective from '../../files/detective.svg';
+// import chat from '../../files/chat.svg';
+// import credit_card from '../../files/credit_card.svg';
+// import university from '../../files/university.svg';
 
 class Suburb extends Component {
 
@@ -19,8 +18,6 @@ class Suburb extends Component {
       this.state = {
         'suburb': null
       }
-
-      const suburbName = props.match.params.name;
 
       this.handleSelectChange = this.handleSelectChange.bind(this);
 
@@ -162,7 +159,7 @@ class Suburb extends Component {
   };
 
   numberToColor = (num) => {
-    num = parseInt(num);
+    num = parseInt(num,10);
     if(num>70){
       return "badge-success";
     }
@@ -175,13 +172,14 @@ class Suburb extends Component {
   }
 
   numberToWords = (name,num) => {
-    num = parseInt(num);
+    num = parseInt(num,10);
     if(num>80){
       switch(name){
         case "safety": return "very safe";
         case "affordability": return "very affordable";
         case "language":  return "many students";
         case "uni": return "very close";
+        default: return "";
       }
     }
     else if(num>60){
@@ -190,6 +188,7 @@ class Suburb extends Component {
         case "affordability": return "affordable";
         case "language":  return "some students";
         case "uni": return "close";
+        default: return "";
       }
     }
     else if (num>40){
@@ -198,6 +197,7 @@ class Suburb extends Component {
         case "affordability": return "kinda affordable";
         case "language":  return "few students";
         case "uni": return "far";
+        default: return "";
       }
     }
     else{
@@ -206,6 +206,7 @@ class Suburb extends Component {
         case "affordability": return "unaffordable";
         case "language":  return "no students";
         case "uni": return "very far";
+        default: return "";
       }
     }
   }
@@ -215,7 +216,7 @@ class Suburb extends Component {
       const { wiki, selected_suburb, preferences} = this.props;
 
       return (
-      <div>
+      <div id="SuburbComponent">
           <main role="main">
 
 
@@ -269,7 +270,7 @@ class Suburb extends Component {
                       <li> <b>Affordability rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.numberToWords("affordability",this.state.suburb.rating_affordability)}</span> { preferences.affordability && <span> your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span> you did not input a preference</span>}</li>
 
 
-                      {preferences.language && preferences.language!=0 &&
+                      {preferences.language && preferences.language!==0 &&
 
                         <li>
                           <b>International student language rating</b> for <b>{preferences.raw_actualLanguage.name}</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.numberToWords("language",this.state.suburb.language[preferences.raw_actualLanguage.shim])}</span> your preference was
@@ -306,7 +307,7 @@ class Suburb extends Component {
                       </div>
                       <div className="col-md-4">
                     {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}
-                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number)).toFixed(2)} %)
+                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number,10) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number),10).toFixed(2)} %)
                       </div>
                     </div>
 
@@ -349,10 +350,10 @@ class Suburb extends Component {
                     <h3>Search for properties in this area here</h3>
                     <div className="realestate-section">
                     <span>
-                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
+                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img alt="Domain.com.au" style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
                     </span>
                     <span>
-                      <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
+                      <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img alt="Realestate.com.au" style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
                     </span>
                     </div>
                     <br/>

@@ -1,10 +1,10 @@
-.media img {
+#SuburbComponent .media img {
   width: 80px; }
 
-.container h1 {
+#SuburbComponent .container h1 {
   text-transform: capitalize; }
 
-.react-select-single-suburb {
+#SuburbComponent .react-select-single-suburb {
   clear: both;
   display: inline-block;
   font-size: inherit;
@@ -13,48 +13,48 @@
   color: black;
   font-size: 15px;
   margin-bottom: 1em; }
-  .react-select-single-suburb .Select-control {
+  #SuburbComponent .react-select-single-suburb .Select-control {
     border-color: #d9d9d9 #ccc #b3b3b3 !important;
     border-radius: 4px !important;
     border: 1px solid #ccc !important; }
-  .react-select-single-suburb .Select-placeholder {
+  #SuburbComponent .react-select-single-suburb .Select-placeholder {
     color: black; }
-  .react-select-single-suburb .Select-menu {
+  #SuburbComponent .react-select-single-suburb .Select-menu {
     z-index: 50;
     max-height: 100px; }
 
-.stats-section .row {
+#SuburbComponent .stats-section .row {
   margin-bottom: 10px; }
-  .stats-section .row h4 {
+  #SuburbComponent .stats-section .row h4 {
     font-size: 1.2em; }
-  .stats-section .row img.stat-image {
+  #SuburbComponent .stats-section .row img.stat-image {
     float: left;
     height: 50px;
     padding: 5px;
     margin-right: 10px; }
 
-.wiki-link {
+#SuburbComponent .wiki-link {
   color: black;
   border-bottom: 1px solid black; }
-  .wiki-link:hover {
+  #SuburbComponent .wiki-link:hover {
     text-decoration: none;
     border-bottom: 1px solid blue; }
 
-.leaflet-container {
+#SuburbComponent .leaflet-container {
   margin-top: 100px; }
 
-.realestate-section a {
+#SuburbComponent .realestate-section a {
   padding: 10px; }
 
-.tiny-icon {
+#SuburbComponent .tiny-icon {
   width: 50px; }
 
-ul.rating-list {
+#SuburbComponent ul.rating-list {
   list-style-type: none;
   margin-left: 0;
   padding-left: 0; }
-  ul.rating-list li {
+  #SuburbComponent ul.rating-list li {
     margin-bottom: 10px; }
 
-.badge {
+#SuburbComponent .badge {
   font-size: 1em; }

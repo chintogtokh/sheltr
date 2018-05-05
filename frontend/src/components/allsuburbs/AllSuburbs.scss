@@ -1,3 +1,5 @@
+#AllSuburbsComponent{
+
 .suburb-card{
 	width:200px;
 	height:150px;
@@ -28,7 +30,95 @@
     height: 100%;
     transition: all .2s ease-in-out;
 
-        &:hover{
-            transform: scale(1.1);
-        }
+    &:hover{
+        transform: scale(1.1);
+    }
 }
+
+.sortable-section-container{
+    width:100%;
+    text-align:right;
+    padding:10px 0;
+}
+
+.react-select{
+    display: inline-block;
+    font-size: inherit;
+    clear:both;
+    top: 0;
+    color:black;
+    text-align: center;
+    cursor: pointer;
+
+    input{
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+      color:black!important;
+      padding: 0px;
+    }
+
+    .Select-input{
+    }
+
+    .Select-control{
+    }
+
+    &.is-focused{
+      .Select-control{
+
+      .Select-placeholder{
+        color:black;
+        cursor: pointer!important;
+      }
+    }
+    }
+
+    &.is-open{
+      .Select-control{
+      }
+
+      .Select-value-label{
+        color:transparent!important;
+      }
+    }
+
+    // z-index:0;
+    .Select-control{
+      box-shadow: none!important;
+      color:black;
+
+      .Select-value-label{
+        color:black!important;
+      }
+    }
+
+    .Select-placeholder{
+      color:black;
+      cursor: pointer!important;
+    }
+
+    .Select-menu{
+      //max-height:150px!important;
+    }
+
+}
+
+
+}
+
+.filter-text-container{
+    margin:0 10px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    width:70px;
+
+    .filter-text{
+      position: absolute;
+      bottom: 0;
+      height: 36px;
+      padding: 8px 5px;
+      left: 0;
+    }
+  }

@@ -7,6 +7,3 @@ footer {
   display: inline; }
   .tram-container img {
     width: 100px; }
-  .tram-container:hover {
-    transition: 2s;
-    margin-right: -100px; }

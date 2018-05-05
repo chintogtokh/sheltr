@@ -64,7 +64,6 @@ rankedSuburbRouter.post('/', (req, res) => {
     suburbModel.aggregate(query).sort({
         'userRating': -1
     }).limit(16).exec(function(err, docs) {
-        console.log(err);
         if(typeof docs==="undefined"){
             res.send([]);
         }
@@ -72,17 +71,6 @@ rankedSuburbRouter.post('/', (req, res) => {
             res.send(docs);
         }
     });;
-
-    // promise.then(data => {
-    //     if (data) {
-    //      res.send(data);
-    //     }
-    //     else {
-    //      res.status(404).json({
-    //             message: "Suburb doesn't exist"
-    //         });
-    //     }
-    // })
 
 });
 
