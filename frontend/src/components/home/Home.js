@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 // import {debounce} from 'lodash';
 
 //images
-import detective from '../../files/detective.svg';
-import chat from '../../files/chat.svg';
-import credit_card from '../../files/credit_card.svg';
-import university from '../../files/university.svg';
+// import detective from '../../files/detective.svg';
+// import chat from '../../files/chat.svg';
+// import credit_card from '../../files/credit_card.svg';
+// import university from '../../files/university.svg';
 //css
 import 'react-select/dist/react-select.css';
 import './Home.css';
@@ -51,7 +51,7 @@ class Home extends Component {
     return function(newValue) {
         if((typeof newValue !== "undefined" && newValue !== null) && name !== "actualLanguage" && name !== "uni"){
           this.setState({[name]:newValue.value});
-          if(name==="language" && newValue.value==0){
+          if(name==="language" && newValue.value===0){
             this.setState({"actualLanguage": null});
           }
         }
@@ -69,18 +69,13 @@ class Home extends Component {
     this.new = false;
 
     let params = this.state;
-    // for(var key in params){
-    //   if (params[key]==="" || params[key]===null){
-    //     delete params[key];
-    //   }
-    // }
 
     console.log(this.state);
 
-    if(Object.keys(params).length===0 || typeof params.uni == "undefined" || params.uni == null){
+    if(Object.keys(params).length===0 || typeof params.uni === "undefined" || params.uni === null){
       this.mustSubmitNotification("You must input at least one preference and a university!");
     }
-    else if((typeof params.language != "undefined" && params.language != null && params.language != "0") && (params.actualLanguage == null || typeof params.actualLanguage == "undefined" )){
+    else if((typeof params.language !== "undefined" && params.language !== null && params.language !== "0") && (params.actualLanguage === null || typeof params.actualLanguage === "undefined" )){
       this.mustSubmitNotification("You must input a language if you select a language preference!");
     }
     else{
@@ -92,13 +87,8 @@ class Home extends Component {
   clearPreferences = function(e) {
     e.preventDefault();
     this.setState({actualLanguage:null});
-    this.setState({language:null});
-    this.setState({crimeSafety:null});
-    this.setState({affordability:null});
     this.setState({uni:null});
   }
-
-
 
   componentWillReceiveProps(nextProps) {
 
@@ -148,7 +138,7 @@ class Home extends Component {
   }
 
   render() {
-    const { crimeSafety, affordability, language, actualLanguage, uni, distance } = this.state;
+    const { actualLanguage, uni, distance } = this.state;
 
     return (
       <div>
@@ -156,22 +146,27 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span className="before-vicmap">Welcome to Victoria, new students!</span></h1>
+              <h1>Welcome to Victoria, new students!</h1>
               <div className="lead">
-              Start finding a great place to live here!
+                Start finding a great place to live here!
               </div>
-              <br/><br/>
 
               <form onSubmit={this.onSubmit}>
 
               <div className="nooky">
-              I want to to live within &nbsp;
+
+              <div className="nooky-label-container" style={{width:'200px'}}>
+                <div className="nooky-label">
+                  I want to live within
+                </div>
+              </div>
 
               <Select className = "react-select"
                     name="distance"
                     placeholder = "please select..."
                     value={distance}
                     searchable = {false}
+                    style={{width:'150px'}}
                     onChange={this.handleSelectChange('distance')}
                     options={[
                       { value: '5', label: '5km' },
@@ -181,27 +176,38 @@ class Home extends Component {
                       { value: '100',  label: '100km' },
                     ]}
                   />
-              &nbsp;of&nbsp;
+
+              <div className="nooky-label-container" style={{width:'50px'}}>
+                <div className="nooky-label">
+              of
+              </div>
+              </div>
 
               <Select.Async
-                  placeholder = "start typing..."
+                  placeholder = "enter a uni..."
                   autoload = {true}
                   name="uni"
                   filterOption={() => true}
                   className = "react-select"
                   value={uni}
+                  style={{width:'400px'}}
                   valueKey="shim"
                   labelKey="name"
                   onChange={this.handleSelectChange('uni')}
                   loadOptions={this.getUnis}
                   backspaceRemoves={true} />
 
-              &nbsp; and speak&nbsp;
+              <div className="nooky-label-container" style={{width:'150px'}}>
+                <div className="nooky-label">
+              and speak
+              </div>
+              </div>
 
               <Select.Async
-                  placeholder = "start typing..."
+                  placeholder = "enter a language..."
                   name="actualLanguage"
                   autoload = {true}
+                  style={{width:'300px'}}
                   className = "react-select"
                   value={actualLanguage}
                   valueKey="shim"
@@ -210,112 +216,11 @@ class Home extends Component {
                   onChange={this.handleSelectChange('actualLanguage')}
                   loadOptions={this.getLanguages}
                   backspaceRemoves={true} />
-              .
               </div>
-
-              {/*
-              <div className="lead">
-                  <div className="lead-row">
-                  <img src={detective} alt="safety"/>
-                  <div className="input-label"> Is living in a safe suburb a priority?</div>
-
-                  <Select className = "react-select"
-                    name="crimeSafety"
-                    placeholder = "please select..."
-                    searchable = {false}
-                    value={crimeSafety}
-                    onChange={this.handleSelectChange('crimeSafety')}
-                    options={[
-                      { value: '0', label: 'Not a priority' },
-                      { value: '1',  label: 'Low priority' },
-                      { value: '4',  label: 'Neutral' },
-                      { value: '7',  label: 'Moderate priority' },
-                      { value: '10',  label: 'High priority' }
-                    ]}
-                  />
-                  </div>
-                  <div className="lead-row">
-                  <img src={credit_card} alt="affordability"/>
-                  <div className="input-label"> Is living in an affordable suburb a priority?</div>
-                  <Select className = "react-select"
-                    name="affordability"
-                    placeholder = "please select..."
-                    value={affordability}
-                    searchable = {false}
-                    onChange={this.handleSelectChange('affordability')}
-                    options={[
-                      { value: '0', label: 'Not a priority' },
-                      { value: '1',  label: 'Low priority' },
-                      { value: '4',  label: 'Neutral' },
-                      { value: '7',  label: 'Moderate priority' },
-                      { value: '10',  label: 'High priority' }
-                    ]}
-                  />
-                  </div>
-                  <div className="lead-row">
-                  <img src={chat} alt="language"/>
-                  <div className="input-label"> Is living near people speaking your language a priority?</div>
-                  <Select className = "react-select"
-                    name="language"
-                    placeholder = "please select..."
-                    searchable = {false}
-                    value={language}
-                    onChange={this.handleSelectChange('language')}
-                    options={[
-                      { value: '0', label: 'Not a priority' },
-                      { value: '1',  label: 'Low priority' },
-                      { value: '4',  label: 'Neutral' },
-                      { value: '7',  label: 'Moderate priority' },
-                      { value: '10',  label: 'High priority' }
-                    ]}
-                  />
-                  </div>
-                  { (language && language!=0) &&
-                  <div className="lead-row">
-                  <div className="fake-img">&nbsp;</div>
-                  <div className="input-label">My native language is:</div>
-
-                  <Select.Async
-                  placeholder = "start typing..."
-                  name="actualLanguage"
-                  autoload = {true}
-                  className = "react-select"
-                  value={actualLanguage}
-                  valueKey="shim"
-                  labelKey="name"
-                  filterOption={() => true}
-                  onChange={this.handleSelectChange('actualLanguage')}
-                  loadOptions={this.getLanguages}
-                  backspaceRemoves={true} />
-
-                  </div>
-                  }
-                  <div className="lead-row">
-                  <img src={university} alt="university"/>
-                  <div className="input-label">My preferred university or institute is:</div>
-                  <Select.Async
-                  placeholder = "start typing..."
-                  autoload = {true}
-                  name="uni"
-                  filterOption={() => true}
-                  className = "react-select"
-                  value={uni}
-                  valueKey="shim"
-                  labelKey="name"
-                  onChange={this.handleSelectChange('uni')}
-                  loadOptions={this.getUnis}
-                  backspaceRemoves={true} />
-                  </div>
-              </div>
-
-              */ }
-
-              <br/>
 
               <div className="find-suburbs-btn-container">
               <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>&nbsp;
               </div>
-
 
               </form>
           </div>

@@ -2,23 +2,23 @@ div.header-container {
   display: block;
   position: relative;
   width: 100%;
-  min-height: 500px;
   text-align: left;
   color: #fff;
-  padding-top: 80px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   background-image: url(../../files/poly.png);
   background-color: rgba(0, 0, 0, 0.5);
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover;
-  padding-bottom: 50px; }
+  -o-background-size: cover; }
   div.header-container .header-content .header-content-inner {
     padding: 0 20px;
     text-align: center; }
     div.header-container .header-content .header-content-inner div.lead {
-      font-size: 1.5rem; }
+      font-size: 1.5rem;
+      margin-bottom: 20px; }
       div.header-container .header-content .header-content-inner div.lead .lead-row {
         margin-bottom: 5px; }
       div.header-container .header-content .header-content-inner div.lead img {
@@ -41,8 +41,7 @@ div.header-container {
 
 @media (min-width: 1068px) {
   div.header-container .header-content {
-    width: 100%;
-    padding-bottom: 50px; }
+    width: 100%; }
     div.header-container .header-content .header-content-inner {
       margin-right: auto;
       margin-left: auto;
@@ -82,31 +81,6 @@ img.inline-logo {
   height: 70px;
   margin-top: -43px; }
 
-.header-content-inner input {
-  text-align: center;
-  border: none;
-  color: black; }
-  .header-content-inner input::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white;
-    opacity: 1;
-    /* Firefox */ }
-  .header-content-inner input:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: white; }
-  .header-content-inner input::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: white; }
-
-.before-vicmap {
-  position: relative; }
-
-.vicmap {
-  background-image: url(../../files/vicmap.svg);
-  padding: 35px 0;
-  background-size: contain;
-  background-repeat: no-repeat; }
-
 .home-container {
   background-color: white;
   border-radius: 25px;
@@ -139,72 +113,23 @@ img.inline-logo {
   display: inline-block;
   font-size: inherit;
   clear: both;
-  min-width: 300px;
   top: 0;
-  color: black;
-  font-size: 2rem; }
-  .react-select .Select-multi-value-wrapper {
-    line-height: 2rem; }
+  color: black; }
+
+.react-select {
+  color: black; }
   .react-select.is-focused .Select-control .Select-value-label {
-    color: black !important; }
+    color: gray !important; }
   .react-select .Select-control {
-    border: none;
-    border-bottom: 1px solid white;
-    border-radius: 0;
     background-color: transparent;
     color: white;
-    cursor: pointer; }
+    border: none;
+    border-bottom: 2px solid white;
+    border-radius: 0; }
     .react-select .Select-control .Select-value-label {
       color: white !important; }
   .react-select .Select-placeholder {
     color: white; }
-  .react-select .Select-menu {
-    z-index: 50;
-    max-height: 150px; }
-
-.pulsating-circle {
-  position: absolute;
-  transform: translateX(-50%) translateY(-50%);
-  width: 30px;
-  height: 30px; }
-  .pulsating-circle:before {
-    content: '';
-    position: relative;
-    display: block;
-    width: 300%;
-    height: 300%;
-    box-sizing: border-box;
-    margin-left: -100%;
-    margin-top: -100%;
-    border-radius: 45px;
-    background-color: #01a4e9;
-    animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
-  .pulsating-circle:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite; }
-
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.33); }
-  80%, 100% {
-    opacity: 0; } }
-
-@keyframes pulse-dot {
-  0% {
-    transform: scale(0.8); }
-  50% {
-    transform: scale(1); }
-  100% {
-    transform: scale(0.8); } }
 
 div.find-suburbs-btn-container {
   text-align: center; }
@@ -216,5 +141,16 @@ div.find-suburbs-btn-container {
   padding: 5px 10px; }
 
 .nooky {
-  font-size: 2rem;
-  text-align: center; }
+  font-size: 140%;
+  line-height: 100%;
+  margin-bottom: 50px; }
+  .nooky .nooky-label-container {
+    padding: 0 10px;
+    display: inline-block;
+    text-align: center;
+    position: relative; }
+    .nooky .nooky-label-container .nooky-label {
+      position: absolute;
+      bottom: 0;
+      height: 36px;
+      padding: 9px 0; }
