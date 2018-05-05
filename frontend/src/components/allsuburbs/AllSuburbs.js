@@ -2,33 +2,24 @@ import React, { Component } from 'react';
 import './AllSuburbs.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-// import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { ToastContainer, toast } from 'react-toastify';
 
 class AllSuburbs extends Component {
 
   constructor(props) {
     super(props);
-    // const { dispatch } = this.props;
     this.state = {
-      suburb_0: "",
-      suburb_1: "",
-      suburb_2: "",
-      suburb_3: "",
-      suburb_4: "",
-      suburb_5: "",
-      suburb_6: "",
-      suburb_7: "",
-      suburb_8: "",
-      suburb_9: "",
-      suburb_10: "",
-      suburb_11: "",
-      suburb_12: "",
-      suburb_13: "",
-      suburb_14: "",
-      suburb_15: ""
-    };
+      suburbs : {}
+    }
   }
+
+  mustSubmitNotification = (text) => toast(text,
+      {
+        type: toast.TYPE.INFO,
+        autoClose: 5000,
+        hideProgressBar: true,
+        bodyClassName: "custom-toast"
+      });
 
   componentDidMount = function() {
         document.title = "Sheltr | Recommendations";
@@ -54,7 +45,6 @@ class AllSuburbs extends Component {
     let { preferences } = this.props;
 
     let params = JSON.parse(JSON.stringify(preferences));
-//    delete params;
 
     delete params.raw_uni;
     delete params.raw_actualLanguage;
@@ -85,52 +75,40 @@ class AllSuburbs extends Component {
           ))
           .then(response => {
               if (response.status !== 200) {
-                  // dispatch({
-                  //     type: suburbConstants.SUBURB_NOTFOUND,
-                  // })
-                  console.log("error occured");
+                  this.mustSubmitNotification("Could not fetch suburbs");
               }
               else{
-
                 for (let i = 0; i < response.data.length; i++) {
                   fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + response.data[i].name + ", Victoria")
-                    .then(response1 => response1.json().then( data => ({
+                    .then(response_wiki => response_wiki.json().then( data => ({
                         data: data,
-                        status: response1.status
+                        status: response_wiki.status
                         })
                     ))
-                    .then(response1 => {
+                    .then(response_wiki => {
                         if (true) {
                           let shel = response.data[i];
-                          let wiki = response1.data;
-                          this.setState({["suburb_" + i]:
-                            <Link to={"/suburb/" + shel.shim} className="text-dark">
-                                        <div className="card mb-4 box-shadow h-md-250">
-                                        {response1.status === 200 && wiki.thumbnail &&
+                          let wiki = response_wiki.data;
 
-                                          <div className="img-container">
-                                        <img className="card-img-top" src={wiki.thumbnail.source} alt={shel.shim} />
-                                        </div>
-                                      }
-                                      {!wiki.thumbnail &&
-
-                                          <div className="img-container-empty">
-                                          <span style={{color:'white'}}>No image available.</span>
-                                        </div>
-                                      }
-              <div className="card-body">
-                <h3 className="mb-0">
-                  {shel.name}
-                </h3>
-                <div className="mb-1 text-muted"></div>
-                {/*<p className="card-text mb-auto">
-                  {response1.status === 200?wiki.extract:shel.name + " is a suburb in Victoria."}
-
-                </p>*/}
-              </div>
-            </div>
-            </Link>
-                        });
+                          this.setState({ suburb: { ...this.state.suburb, [i]:  <Link to={"/suburb/" + shel.shim} className="text-dark">
+                                <div className="card mb-4 box-shadow h-md-250">
+                                  {response_wiki.status === 200 && wiki.thumbnail &&
+                                    <div className="img-container">
+                                      <img className="card-img-top" src={wiki.thumbnail.source} alt={shel.shim} />
+                                    </div>
+                                  }
+                                  {!wiki.thumbnail &&
+                                    <div className="img-container-empty">
+                                      <span style={{color:'white'}}>No image available.</span>
+                                    </div>
+                                  }
+                                  <div className="card-body">
+                                    <h3 className="mb-0">
+                                      {shel.name}
+                                    </h3>
+                                  </div>
+                                </div>
+                              </Link>  } });
                         }
                     });
                 }
@@ -141,15 +119,16 @@ class AllSuburbs extends Component {
   render() {
       return (
       <div>
+          <ToastContainer />
           <main role="main">
             <div className="container">
 
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><Link to="/">Home</Link></li>
-                <li class="breadcrumb-item active" aria-current="page">Suburb Suggestions</li>
-              </ol>
-            </nav>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                  <li className="breadcrumb-item active" aria-current="page">Suburb Suggestions</li>
+                </ol>
+              </nav>
 
               <h1>Suburbs matching your preferences</h1>
 
@@ -158,46 +137,12 @@ class AllSuburbs extends Component {
               </p>
               <div>
 
-              <div className="row">
-                <div className="col-md-3">{this.state.suburb_0}
-                </div>
-                <div className="col-md-3">{this.state.suburb_1}
-                </div>
-                <div className="col-md-3">{this.state.suburb_2}
-                </div>
-                <div className="col-md-3">{this.state.suburb_3}
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-3">{this.state.suburb_4}
-                </div>
-                <div className="col-md-3">{this.state.suburb_5}
-                </div>
-                <div className="col-md-3">{this.state.suburb_6}
-                </div>
-                <div className="col-md-3">{this.state.suburb_7}
-                </div>
-              </div>
-        { /*   <div className="row">
-                <div className="col-md-3">{this.state.suburb_8}
-                </div>
-                <div className="col-md-3">{this.state.suburb_9}
-                </div>
-                <div className="col-md-3">{this.state.suburb_10}
-                </div>
-                <div className="col-md-3">{this.state.suburb_11}
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-3">{this.state.suburb_12}
-                </div>
-                <div className="col-md-3">{this.state.suburb_13}
-                </div>
-                <div className="col-md-3">{this.state.suburb_14}
-                </div>
-                <div className="col-md-3">{this.state.suburb_15}
-                </div>
-              </div> */ }
+                { this.state.suburb &&
+                  <div className="row">{[...Array(8)].map((e, i) => {
+                    return <div key={i} className="col-md-3">{this.state.suburb[i]}</div>
+                  })}</div>
+                }
+
               </div>
             </div>
           </main>

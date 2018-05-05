@@ -73,10 +73,7 @@ class Home extends Component {
     console.log(this.state);
 
     if(Object.keys(params).length===0 || typeof params.uni === "undefined" || params.uni === null){
-      this.mustSubmitNotification("You must input at least one preference and a university!");
-    }
-    else if((typeof params.language !== "undefined" && params.language !== null && params.language !== "0") && (params.actualLanguage === null || typeof params.actualLanguage === "undefined" )){
-      this.mustSubmitNotification("You must input a language if you select a language preference!");
+      this.mustSubmitNotification("You must input your preferences!");
     }
     else{
       const { dispatch } = this.props;
@@ -91,9 +88,6 @@ class Home extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-
-
     if (nextProps.preferences && this.new === false) {
       this.props.history.push('/suburb');
     }
