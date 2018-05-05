@@ -18,3 +18,9 @@ main {
 
 .custom-toast {
   font-family: 'Cabin'; }
+
+.breadcrumb {
+  background-color: white;
+  border-radius: 0;
+  padding-bottom: 0;
+  padding: 5px 0px; }

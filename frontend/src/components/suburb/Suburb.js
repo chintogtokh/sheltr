@@ -5,7 +5,7 @@ import { suburbActions } from '../../actions';
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
-
+import { Link } from 'react-router-dom';
 import detective from '../../files/detective.svg';
 import chat from '../../files/chat.svg';
 import credit_card from '../../files/credit_card.svg';
@@ -217,8 +217,19 @@ class Suburb extends Component {
       return (
       <div>
           <main role="main">
+
+
+
             { this.state.suburb &&
               <div className="container">
+
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/suburb">Suburb Suggestions</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{this.state.suburb.name}</li>
+                </ol>
+              </nav>
 
                 <div className="row">
                   <div className="col-md-8">

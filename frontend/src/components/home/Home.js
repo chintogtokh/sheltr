@@ -86,7 +86,7 @@ class Home extends Component {
 
   clearPreferences = function(e) {
     e.preventDefault();
-    this.setState({actualLanguage:null});
+    this.setState({distance:null});
     this.setState({uni:null});
   }
 
@@ -138,7 +138,7 @@ class Home extends Component {
   }
 
   render() {
-    const { actualLanguage, uni, distance } = this.state;
+    const { uni, distance } = this.state;
 
     return (
       <div>

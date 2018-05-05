@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AllSuburbs.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 // import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class AllSuburbs extends Component {
@@ -142,6 +143,13 @@ class AllSuburbs extends Component {
       <div>
           <main role="main">
             <div className="container">
+
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><Link to="/">Home</Link></li>
+                <li class="breadcrumb-item active" aria-current="page">Suburb Suggestions</li>
+              </ol>
+            </nav>
 
               <h1>Suburbs matching your preferences</h1>
 
