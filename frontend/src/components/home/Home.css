@@ -4,8 +4,8 @@ div.header-container {
   width: 100%;
   text-align: left;
   color: #fff;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   background-image: url(../../files/poly.png);
   background-color: rgba(0, 0, 0, 0.5);
   background-position: center;
@@ -18,7 +18,7 @@ div.header-container {
     text-align: center; }
     div.header-container .header-content .header-content-inner div.lead {
       font-size: 1.5rem;
-      margin-bottom: 20px; }
+      margin-bottom: 35px; }
       div.header-container .header-content .header-content-inner div.lead .lead-row {
         margin-bottom: 5px; }
       div.header-container .header-content .header-content-inner div.lead img {
@@ -114,22 +114,49 @@ img.inline-logo {
   font-size: inherit;
   clear: both;
   top: 0;
-  color: black; }
-
-.react-select {
-  color: black; }
-  .react-select.is-focused .Select-control .Select-value-label {
-    color: gray !important; }
+  color: black;
+  cursor: pointer; }
+  .react-select input {
+    caret-color: white !important;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+    color: white !important;
+    padding: 0px; }
+  .react-select .Select-input {
+    background-color: transparent !important; }
+  .react-select .Select-control {
+    border-bottom: 2px solid white !important; }
+  .react-select.is-focused .Select-control {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid white !important; }
+    .react-select.is-focused .Select-control .Select-placeholder {
+      color: transparent;
+      cursor: pointer !important; }
+  .react-select.is-open .Select-control {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid white !important; }
+  .react-select.is-open .Select-value-label {
+    color: transparent !important; }
   .react-select .Select-control {
     background-color: transparent;
+    box-shadow: none !important;
     color: white;
     border: none;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid white !important;
     border-radius: 0; }
     .react-select .Select-control .Select-value-label {
       color: white !important; }
   .react-select .Select-placeholder {
-    color: white; }
+    color: white;
+    cursor: pointer !important; }
+  .react-select .Select-menu {
+    max-height: 150px !important; }
 
 div.find-suburbs-btn-container {
   text-align: center; }
@@ -141,7 +168,7 @@ div.find-suburbs-btn-container {
   padding: 5px 10px; }
 
 .nooky {
-  font-size: 140%;
+  font-size: 150%;
   line-height: 100%;
   margin-bottom: 50px; }
   .nooky .nooky-label-container {
@@ -153,4 +180,5 @@ div.find-suburbs-btn-container {
       position: absolute;
       bottom: 0;
       height: 36px;
-      padding: 9px 0; }
+      padding: 8px 5px;
+      left: 0; }

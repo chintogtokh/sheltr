@@ -155,15 +155,37 @@ class Home extends Component {
 
               <div className="nooky">
 
-              <div className="nooky-label-container" style={{width:'200px'}}>
+              <div className="nooky-label-container" style={{width:'220px'}}>
                 <div className="nooky-label">
-                  I want to live within
+                  I plan on studying at
                 </div>
+              </div>
+
+              <Select.Async
+                  placeholder = "enter a uni..."
+                  autoload = {true}
+                  name="uni"
+                  filterOption={() => true}
+                  className = "react-select"
+                  value={uni}
+                  style={{width:'550px'}}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.handleSelectChange('uni')}
+                  loadOptions={this.getUnis}
+                  backspaceRemoves={true} />
+
+
+
+              <div className="nooky-label-container" style={{width:'300px'}}>
+                <div className="nooky-label">
+              and live within a distance of
+              </div>
               </div>
 
               <Select className = "react-select"
                     name="distance"
-                    placeholder = "please select..."
+                    placeholder = "..."
                     value={distance}
                     searchable = {false}
                     style={{width:'150px'}}
@@ -177,32 +199,8 @@ class Home extends Component {
                     ]}
                   />
 
-              <div className="nooky-label-container" style={{width:'50px'}}>
-                <div className="nooky-label">
-              of
-              </div>
-              </div>
 
-              <Select.Async
-                  placeholder = "enter a uni..."
-                  autoload = {true}
-                  name="uni"
-                  filterOption={() => true}
-                  className = "react-select"
-                  value={uni}
-                  style={{width:'400px'}}
-                  valueKey="shim"
-                  labelKey="name"
-                  onChange={this.handleSelectChange('uni')}
-                  loadOptions={this.getUnis}
-                  backspaceRemoves={true} />
-
-              <div className="nooky-label-container" style={{width:'150px'}}>
-                <div className="nooky-label">
-              and speak
-              </div>
-              </div>
-
+              {/*
               <Select.Async
                   placeholder = "enter a language..."
                   name="actualLanguage"
@@ -216,10 +214,13 @@ class Home extends Component {
                   onChange={this.handleSelectChange('actualLanguage')}
                   loadOptions={this.getLanguages}
                   backspaceRemoves={true} />
+              */}
               </div>
 
               <div className="find-suburbs-btn-container">
               <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>&nbsp;
+              <button className="btn btn-danger btn-clear btn-lg" type="button" onClick={this.clearPreferences}> <i className="fas fa-times"></i> Clear </button>
+
               </div>
 
               </form>

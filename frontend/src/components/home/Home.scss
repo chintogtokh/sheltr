@@ -4,8 +4,8 @@ div.header-container {
     width: 100%;
     text-align: left;
     color: #fff;
-    padding-top:60px;
-    padding-bottom:60px;
+    padding-top:80px;
+    padding-bottom:80px;
     background-image: url(../../files/poly.png);
     background-color: rgba(0,0,0,0.5);
     background-position: center;
@@ -25,7 +25,7 @@ div.header-container {
           div.lead{
 
             font-size:1.5rem;
-            margin-bottom:20px;
+            margin-bottom:35px;
 
             .lead-row{
               margin-bottom:5px;
@@ -191,28 +191,59 @@ img.inline-logo{
     display: inline-block;
     font-size: inherit;
     clear:both;
-    // min-width: 300px;
     top: 0;
     color:black;
-}
+    cursor: pointer;
 
-.react-select{
-    color:black;
+    input{
+      caret-color:white!important;
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+      color:white!important;
+      padding: 0px;
+    }
+
+    .Select-input{
+      background-color:transparent!important;
+    }
+
+    .Select-control{
+      border-bottom:2px solid white !important;
+    }
 
     &.is-focused{
       .Select-control{
-        .Select-value-label{
-        color:gray!important;
+        background-color:transparent !important;
+        border:none!important;
+        border-bottom:2px solid white !important;
+
+      .Select-placeholder{
+        color:transparent;
+        cursor: pointer!important;
       }
     }
+    }
+
+    &.is-open{
+      .Select-control{
+        background-color:transparent !important;
+        border:none!important;
+        border-bottom:2px solid white !important;
+      }
+
+      .Select-value-label{
+        color:transparent!important;
+      }
     }
 
     // z-index:0;
     .Select-control{
       background-color:transparent;
+      box-shadow: none!important;
       color:white;
       border: none;
-      border-bottom: 2px solid white;
+      border-bottom: 2px solid white !important;
       border-radius: 0;
 
       .Select-value-label{
@@ -222,6 +253,11 @@ img.inline-logo{
 
     .Select-placeholder{
       color:white;
+      cursor: pointer!important;
+    }
+
+    .Select-menu{
+      max-height:150px!important;
     }
 
 }
@@ -243,7 +279,7 @@ div.find-suburbs-btn-container{
 // new
 
 .nooky{
-    font-size:140%;
+    font-size:150%;
     line-height:100%;
     margin-bottom:50px;
 
@@ -257,7 +293,8 @@ div.find-suburbs-btn-container{
       position: absolute;
       bottom: 0;
       height: 36px;
-      padding: 9px 0;
+      padding: 8px 5px;
+      left: 0;
     }
    }
 }
