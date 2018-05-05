@@ -93,20 +93,15 @@ class AllSuburbs extends Component {
 
                           this.setState({ suburb: { ...this.state.suburb, [i]:  <Link to={"/suburb/" + shel.shim} className="text-dark">
                                 <div className="card mb-4 box-shadow h-md-250">
-                                  {response_wiki.status === 200 && wiki.thumbnail &&
-                                    <div className="img-container">
-                                      <img className="card-img-top" src={wiki.thumbnail.source} alt={shel.shim} />
-                                    </div>
-                                  }
-                                  {!wiki.thumbnail &&
-                                    <div className="img-container-empty">
-                                      <span style={{color:'white'}}>No image available.</span>
-                                    </div>
-                                  }
                                   <div className="card-body">
                                     <h3 className="mb-0">
                                       {shel.name}
                                     </h3>
+                                    <p class="card-text">
+                                      Safety:<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                      <br />
+                                      Affordability:
+                                    </p>
                                   </div>
                                 </div>
                               </Link>  } });
