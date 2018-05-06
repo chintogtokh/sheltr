@@ -35,6 +35,10 @@
     }
 }
 
+.sortable-section{
+  display: inline-block;
+}
+
 .sortable-section-container{
     width:100%;
     text-align:right;
@@ -122,3 +126,26 @@
       left: 0;
     }
   }
+
+.star-ratings{
+  position: relative;
+  display: inline-block;
+
+  .empty{
+
+  }
+
+  .actual{
+    position: absolute;
+    left:0;
+  }
+}
+
+.star-label{
+  display: inline-block;
+  width:100px;
+}
+
+.card-text{
+  padding-top:20px;
+}

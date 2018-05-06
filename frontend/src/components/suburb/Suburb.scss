@@ -1,97 +1,113 @@
 #SuburbComponent{
 
-.media img{
-	width:80px;
-}
-
-.container h1{
-    text-transform: capitalize;
-}
-
-.react-select-single-suburb{
-    clear:both;
-    display: inline-block;
-    font-size: inherit;
-    width:100%;
-    top: 0;
-    color:black;
-    font-size:15px;
-    margin-bottom: 1em;
-    // z-index:0;
-    .Select-control{
-    	border-color: #d9d9d9 #ccc #b3b3b3 !important;
-    	border-radius: 4px !important;
-    	border: 1px solid #ccc !important;
+    .media img{
+    	width:80px;
     }
 
-    .Select-placeholder{
-      color:black;
+    .container{
+        padding-bottom:80px;
     }
 
-    .Select-menu{
-      z-index:50;
-      max-height: 100px;
-    }
-}
-
-
-
-.stats-section{
-
-    .row{
-        margin-bottom:10px;
-
-        h4{
-            font-size:1.2em;
+    .react-select-single-suburb{
+        clear:both;
+        display: inline-block;
+        font-size: inherit;
+        width:100%;
+        top: 0;
+        color:black;
+        font-size:15px;
+        margin-bottom: 1em;
+        // z-index:0;
+        .Select-control{
+        	border-color: #d9d9d9 #ccc #b3b3b3 !important;
+        	border-radius: 4px !important;
+        	border: 1px solid #ccc !important;
         }
 
-        img.stat-image{
-            float: left;
-            height:50px;
-            padding:5px;
-            margin-right:10px;
+        .Select-placeholder{
+          color:black;
         }
 
+        .Select-menu{
+          z-index:50;
+          max-height: 100px;
+        }
+    }
+
+    .stats-section{
+        .row{
+            margin-bottom:10px;
+
+            h4{
+                font-size:1.2em;
+            }
+
+            img.stat-image{
+                float: left;
+                height:50px;
+                padding:5px;
+                margin-right:10px;
+            }
+        }
+    }
+
+    .wiki-link{
+        color:black;
+        border-bottom:1px solid black;
+
+        &:hover{
+            text-decoration: none;
+            border-bottom:1px solid blue;
+        }
+    }
+
+    .leaflet-container{
+        margin-top:100px;
+    }
+
+    .realestate-section{
+        a{
+            padding:10px;
+        }
+    }
+
+    .tiny-icon{
+        width:50px;
+    }
+
+    ul.rating-list{
+        list-style-type: none;
+        margin-left:0;
+        padding-left:0;
+
+        li{
+            margin-bottom:10px;
+        }
+    }
+
+    .badge{
+        font-size:1em;
     }
 
 
-}
-
-.wiki-link{
-    color:black;
-    border-bottom:1px solid black;
-
-    &:hover{
-        text-decoration: none;
-        border-bottom:1px solid blue;
+    .streetview-container{
+        width:100%;
+        height:100%;
+        position: absolute;
+        z-index:-5;
+        left:0;
     }
-}
 
-.leaflet-container{
-    margin-top:100px;
-}
-
-.realestate-section{
-    a{
-        padding:10px;
+    .streetview-container-after{
+        width:100%;
+        height:100%;
+        background:rgba(255,255,255,0.7);
+        position: absolute;
+        z-index:-1;
+        left:0;
     }
-}
 
-.tiny-icon{
-    width:50px;
-}
-
-ul.rating-list{
-    list-style-type: none;
-    margin-left:0;
-    padding-left:0;
-
-    li{
-        margin-bottom:10px;
+    .breadcrumb {
+        background: none!important;
     }
-}
-
-.badge{
-    font-size:1em;
-}
 }

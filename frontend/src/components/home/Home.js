@@ -3,13 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import { browseActions } from '../../actions';
 import { connect } from 'react-redux';
-// import {debounce} from 'lodash';
-
-//images
-// import detective from '../../files/detective.svg';
-// import chat from '../../files/chat.svg';
-// import credit_card from '../../files/credit_card.svg';
-// import university from '../../files/university.svg';
+import monash from '../../files/monash.svg';
 //css
 import 'react-select/dist/react-select.css';
 import './Home.css';
@@ -162,14 +156,15 @@ class Home extends Component {
                   filterOption={() => true}
                   className = "react-select"
                   value={uni}
-                  style={{width:'550px'}}
+                  style={{width:'350px'}}
                   valueKey="shim"
                   labelKey="name"
                   onChange={this.handleSelectChange('uni')}
                   loadOptions={this.getUnis}
                   backspaceRemoves={true} />
 
-
+              </div>
+                <div className="nooky">
               <div className="nooky-label-container" style={{width:'300px'}}>
                 <div className="nooky-label">
               and live within a distance of
@@ -192,22 +187,6 @@ class Home extends Component {
                 ]}
               />
 
-
-              {/*
-              <Select.Async
-                  placeholder = "enter a language..."
-                  name="actualLanguage"
-                  autoload = {true}
-                  style={{width:'300px'}}
-                  className = "react-select"
-                  value={actualLanguage}
-                  valueKey="shim"
-                  labelKey="name"
-                  filterOption={() => true}
-                  onChange={this.handleSelectChange('actualLanguage')}
-                  loadOptions={this.getLanguages}
-                  backspaceRemoves={true} />
-              */}
               </div>
 
               <div className="find-suburbs-btn-container">
@@ -246,14 +225,8 @@ class Home extends Component {
             </div>
             <div className="col-md-4">
                 <h2 className="featurette-heading">Who made this?</h2>
-                <div className="lead">We're four students at Monash University.</div>
-                <div className="lead">Floor 3, Building B, Monash Caulfield.</div>
-                <p className="block-of-portraits">
-                <img alt="Chintogtokh" src="images/chinto.jpg" />
-                <img alt="James" src="images/james.jpg" />
-                <img alt="Sharmeen" src="images/sharmeen.jpg" />
-                <img alt="Wanping" src="images/wanping.jpg" />
-                </p>
+                <div className="lead">We're a group at Monash University, and we're located at Floor 3, Building B, Monash Caulfield.</div>
+                <img src={monash} alt="Monash University" style={{width:'50%'}}/>
             </div>
           </div>
         </div>

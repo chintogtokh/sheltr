@@ -5,6 +5,8 @@ import { suburbActions } from '../../actions';
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
+import ReactDOM from 'react-dom';
+import ReactStreetview from 'react-streetview';
 // import detective from '../../files/detective.svg';
 // import chat from '../../files/chat.svg';
 // import credit_card from '../../files/credit_card.svg';
@@ -60,6 +62,16 @@ class Suburb extends Component {
 
                 const { dispatch } = this.props;
                 dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
+
+                this.setState({streetViewPanoramaOptions: {
+                  addressControl: false,
+                  disableDefaultUI: true,
+                  showRoadLabels: false,
+                    position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+                    pov: {heading: 100, pitch: 0},
+                    zoom: 1
+                }});
+
 
                 // if(this.state.uni_coords){
                 //   var newbounds = bounds;
@@ -215,13 +227,43 @@ class Suburb extends Component {
   render() {
       const { wiki, selected_suburb, preferences} = this.props;
 
+      const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
+
+      // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
+
+
+
       return (
       <div id="SuburbComponent">
+
+
+
           <main role="main">
 
-
-
             { this.state.suburb &&
+
+              <div>
+
+              {
+                this.state.streetViewPanoramaOptions &&
+                <div>
+                <div className="streetview-container">
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      backgroundColor: 'white'
+                  }}>
+                      <ReactStreetview
+                          apiKey={googleMapsApiKey}
+                          streetViewPanoramaOptions={this.state.streetViewPanoramaOptions}
+                      />
+                  </div>
+                </div>
+                <div className="streetview-container-after">
+                </div>
+                </div>
+              }
+
               <div className="container">
 
               <nav aria-label="breadcrumb">
@@ -231,6 +273,8 @@ class Suburb extends Component {
                   <li class="breadcrumb-item active" aria-current="page">{this.state.suburb.name}</li>
                 </ol>
               </nav>
+
+
 
                 <div className="row">
                   <div className="col-md-8">
@@ -265,22 +309,22 @@ class Suburb extends Component {
                     </h3>
                     <ul className="rating-list">
 
-                      <li> <b>Safety rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.numberToWords("safety",this.state.suburb.rating_safety)}</span> { preferences.crimeSafety &&  <span> your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span> you did not input a preference</span>}</li>
+                      <li> Safety rating <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.numberToWords("safety",this.state.suburb.rating_safety)}</span> { preferences.crimeSafety &&  <span> your preference was {this.numberToRanking(preferences.crimeSafety)}</span>}{ !preferences.crimeSafety && <span> you did not input a preference</span>}</li>
 
-                      <li> <b>Affordability rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.numberToWords("affordability",this.state.suburb.rating_affordability)}</span> { preferences.affordability && <span> your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span> you did not input a preference</span>}</li>
+                      <li> Affordability rating <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.numberToWords("affordability",this.state.suburb.rating_affordability)}</span> { preferences.affordability && <span> your preference was {this.numberToRanking(preferences.affordability)}</span>}{ !preferences.affordability && <span> you did not input a preference</span>}</li>
 
 
                       {preferences.language && preferences.language!==0 &&
 
                         <li>
-                          <b>International student language rating</b> for <b>{preferences.raw_actualLanguage.name}</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.numberToWords("language",this.state.suburb.language[preferences.raw_actualLanguage.shim])}</span> your preference was
-                          <b>&nbsp;{this.numberToRanking(preferences.language)}&nbsp;</b>
+                          International student language rating for {preferences.raw_actualLanguage.name} <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.numberToWords("language",this.state.suburb.language[preferences.raw_actualLanguage.shim])}</span> your preference was
+                          &nbsp;{this.numberToRanking(preferences.language)}&nbsp;
                         </li>
 
                       }
 
                       {preferences.raw_uni &&
-                       <li> <b>University distance</b> <span className="badge badge-pill badge-info">{"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"}</span> your university was <b>{preferences.raw_uni.name}</b></li>}
+                       <li> University distance <span className="badge badge-pill badge-info">{"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"}</span> your university was {preferences.raw_uni.name}</li>}
                     </ul>
 
                     <br/>
@@ -402,6 +446,7 @@ class Suburb extends Component {
                     </div>
                   </div>
 
+              </div>
               </div>
             }
             { !this.state.suburb &&

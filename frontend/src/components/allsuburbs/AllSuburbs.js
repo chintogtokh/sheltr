@@ -42,6 +42,26 @@ class AllSuburbs extends Component {
           });
   }
 
+  numberToStar = function(number){
+
+    var ret=[];
+    var star=<i className="fas fa-star"></i>
+    var halfStar=<i className="fas fa-star"></i>
+
+    var rating = Math.floor(number/10);
+
+    for(var i=0;i<Math.floor(rating/2);i++){
+      ret.push(star);
+    }
+    if(rating%2!=0){
+      ret.push(halfStar);
+    }
+
+    return [<span className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+      </span>,<span className='actual'>{ret}</span>];
+
+  }
+
   componentWillMount() {
     let { preferences } = this.props;
 
@@ -91,20 +111,26 @@ class AllSuburbs extends Component {
                           let shel = response.data[i];
                           let wiki = response_wiki.data;
 
-                          this.setState({ suburb: { ...this.state.suburb, [i]:  <Link to={"/suburb/" + shel.shim} className="text-dark">
+                          this.setState({ suburb: { ...this.state.suburb, [i]:
                                 <div className="card mb-4 box-shadow h-md-250">
                                   <div className="card-body">
                                     <h3 className="mb-0">
-                                      {shel.name}
+                                      <Link to={"/suburb/" + shel.shim} className="text-dark">{shel.name}</Link>
                                     </h3>
-                                    <p class="card-text">
-                                      Safety:<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <div className="card-text">
+                                      <div className="star-label"> Safety </div>
+                                      <div className="star-ratings">
+                                        {this.numberToStar(shel.rating_safety)}
+                                      </div>
                                       <br />
-                                      Affordability:
-                                    </p>
+                                      <div className="star-label">Affordability</div>
+                                      <div className="star-ratings">
+                                        {this.numberToStar(shel.rating_affordability)}
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
-                              </Link>  } });
+                                } });
                         }
                     });
                 }
@@ -154,6 +180,52 @@ class AllSuburbs extends Component {
               </div>
 
               <div className="sortable-section-container">
+
+                <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    University:
+                    </div>
+                  </div>
+                  <Select className = "react-select"
+                  name="filter"
+                  placeholder = "distance"
+                  value={filter}
+                  searchable = {false}
+                  style={{width:'150px'}}
+                  onChange={this.handleFilterChange('filter')}
+                  options={[
+                    { value: 'safety', label: 'safety' },
+                    { value: 'affordability', label: 'affordability' },
+                    { value: 'distance', label: 'distance' },
+                  ]}
+                />
+                </div>
+
+
+                <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    Distance:
+                    </div>
+                  </div>
+                  <Select className = "react-select"
+                  name="filter"
+                  placeholder = "distance"
+                  value={filter}
+                  searchable = {false}
+                  style={{width:'150px'}}
+                  onChange={this.handleFilterChange('filter')}
+                  options={[
+                    { value: 'safety', label: 'safety' },
+                    { value: 'affordability', label: 'affordability' },
+                    { value: 'distance', label: 'distance' },
+                  ]}
+                />
+                </div>
+
                 <div className="sortable-section">
 
                   <div className="filter-text-container">
@@ -175,7 +247,33 @@ class AllSuburbs extends Component {
                   ]}
                 />
                 </div>
+
+                 <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    Language:
+                    </div>
+                  </div>
+                  <Select className = "react-select"
+                  name="filter"
+                  placeholder = "distance"
+                  value={filter}
+                  searchable = {false}
+                  style={{width:'150px'}}
+                  onChange={this.handleFilterChange('filter')}
+                  options={[
+                    { value: 'safety', label: 'safety' },
+                    { value: 'affordability', label: 'affordability' },
+                    { value: 'distance', label: 'distance' },
+                  ]}
+                />
+                </div>
+
               </div>
+
+
+
 
 
                 { this.state.suburb &&
