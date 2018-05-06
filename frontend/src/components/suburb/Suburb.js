@@ -197,7 +197,18 @@ class Suburb extends Component {
 
 
   render() {
-      const { wiki, selected_suburb, preferences} = this.props;
+      var { wiki, selected_suburb, preferences} = this.props;
+
+      if(wiki){
+        var ret = "";
+        var wikiNew = wiki.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+        for (var i = 0; i < wikiNew.length; i++) {
+          if(wikiNew[i].toLowerCase().indexOf("population")===-1){
+            ret+=wikiNew[i]+" ";
+          }
+        }
+        wiki = ret;
+      }
 
       const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
 
@@ -280,7 +291,10 @@ class Suburb extends Component {
                   <div className="row">
                     <div className="col-md-8">
                     <p>
-                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data automatically extracted from Wikipedia)</i></a>}
+                    {
+                      wiki
+                    }
+                    {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data automatically extracted from Wikipedia)</i></a>}
                     </p>
 
                     <h3>

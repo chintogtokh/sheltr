@@ -189,10 +189,6 @@ class AllSuburbs extends Component {
           <ToastContainer />
           <main role="main">
 
-
-
-
-
             {
                 this.state.suburb && this.state.streetViewPanoramaOptions &&
                 <div>
@@ -328,7 +324,7 @@ class AllSuburbs extends Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-12" style={{textAlign: 'center'}}>
-                    <h1>loading data <i class="fas fa-spinner fa-spin"></i></h1>
+                    <h1>loading data <i className="fas fa-spinner fa-spin"></i></h1>
                   </div>
                   </div>
               </div>
