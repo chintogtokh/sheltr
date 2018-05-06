@@ -25,6 +25,7 @@ const App = () => (
         <Route exact path="/suburb" component={AllSuburbs} />
         <Route exact path="/suburb/:name" component={Suburb} />
         <Route exact path="/credits" component={Credits} />
+        <Route exact path="/404" component={FourOhFour} />
         <Route component={NoMatch} />
       </Switch>
       <Footer />
@@ -42,6 +43,18 @@ const NoMatch = ({ location }) => (
     </main>
   </div>
 );
+
+const FourOhFour = ({ location }) => (
+  <div>
+    <main role="main">
+        <div className="container">
+          <h1>Sorry :(</h1>
+          <pre>That page doesn't seem to exist</pre>
+        </div>
+    </main>
+  </div>
+);
+
 
 
 export default App;

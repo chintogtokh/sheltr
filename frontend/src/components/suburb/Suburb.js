@@ -23,7 +23,10 @@ class Suburb extends Component {
 
       this.handleSelectChange = this.handleSelectChange.bind(this);
 
-  }
+      this.loaded = false;
+
+  };
+
 
   getStatFromArray(arr, desc) {
     return arr[desc];
@@ -40,8 +43,10 @@ class Suburb extends Component {
             })
         ))
         .then(response => {
+            this.loaded = true;
+
             if (response.status !== 200) {
-                return;
+                // window.location = "/404";
             }
             else{
               let bboxArray;// = bbox(suburb.geojson);
@@ -170,57 +175,25 @@ class Suburb extends Component {
     return tmp[num.toString()];
   };
 
-  numberToColor = (num) => {
-    num = parseInt(num,10);
-    if(num>70){
-      return "badge-success";
-    }
-    else if(num>40){
-      return "badge-warning";
-    }
-    else{
-      return "badge-danger";
-    }
-  }
 
-  numberToWords = (name,num) => {
-    num = parseInt(num,10);
-    if(num>80){
-      switch(name){
-        case "safety": return "very safe";
-        case "affordability": return "very affordable";
-        case "language":  return "many students";
-        case "uni": return "very close";
-        default: return "";
-      }
+  numberToStar = function(number){
+
+    var ret=[];
+    var star=<i className="fas fa-star"></i>
+    var halfStar=<i className="fas fa-star"></i>
+
+    var rating = Math.floor(number/10);
+
+    for(var i=0;i<Math.floor(rating/2);i++){
+      ret.push(star);
     }
-    else if(num>60){
-      switch(name){
-        case "safety": return "safe";
-        case "affordability": return "affordable";
-        case "language":  return "some students";
-        case "uni": return "close";
-        default: return "";
-      }
+    if(rating%2!=0){
+      ret.push(halfStar);
     }
-    else if (num>40){
-      switch(name){
-        case "safety": return "kinda safe";
-        case "affordability": return "kinda affordable";
-        case "language":  return "few students";
-        case "uni": return "far";
-        default: return "";
-      }
-    }
-    else{
-      switch(name){
-        case "safety": return "unsafe";
-        case "affordability": return "unaffordable";
-        case "language":  return "no students";
-        case "uni": return "very far";
-        default: return "";
-      }
-    }
+
+    return [<span className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+      </span>,<span className='actual'>{ret}</span>];
+
   }
 
 
@@ -240,6 +213,16 @@ class Suburb extends Component {
 
           <main role="main">
 
+            {!this.loaded &&
+
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-8">
+                    <h1>Loading data <i class="fas fa-spinner fa-spin"></i></h1>
+                  </div>
+                  </div>
+              </div>
+            }
             { this.state.suburb &&
 
               <div>
@@ -309,22 +292,32 @@ class Suburb extends Component {
                     </h3>
                     <ul className="rating-list">
 
-                      <li> Safety rating <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.numberToWords("safety",this.state.suburb.rating_safety)}</span> { preferences.crimeSafety &&  <span> your preference was {this.numberToRanking(preferences.crimeSafety)}</span>}{ !preferences.crimeSafety && <span> you did not input a preference</span>}</li>
+                      <li> <div className="star-label">Safety</div>
+                                      <div className="star-ratings">
+                                        {this.numberToStar(this.state.suburb.rating_safety)}
+                                      </div> </li>
 
-                      <li> Affordability rating <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.numberToWords("affordability",this.state.suburb.rating_affordability)}</span> { preferences.affordability && <span> your preference was {this.numberToRanking(preferences.affordability)}</span>}{ !preferences.affordability && <span> you did not input a preference</span>}</li>
 
+                      <li> <div className="star-label">Affordability rating</div>
+                      <div className="star-ratings">
+                      {this.numberToStar(this.state.suburb.rating_affordability)}
+                      </div></li>
 
                       {preferences.language && preferences.language!==0 &&
 
                         <li>
-                          International student language rating for {preferences.raw_actualLanguage.name} <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.numberToWords("language",this.state.suburb.language[preferences.raw_actualLanguage.shim])}</span> your preference was
-                          &nbsp;{this.numberToRanking(preferences.language)}&nbsp;
+                        <div className="star-label">International student language</div>
+                      <div className="star-ratings">
+                          {this.numberToStar(this.state.suburb.language[preferences.raw_actualLanguage.shim])}
+                          </div>
+                          ({preferences.raw_actualLanguage.name})
                         </li>
 
                       }
 
                       {preferences.raw_uni &&
-                       <li> University distance <span className="badge badge-pill badge-info">{"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"}</span> your university was {preferences.raw_uni.name}</li>}
+                       <li> University distance {"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"} your university was {preferences.raw_uni.name}</li>
+                     }
                     </ul>
 
                     <br/>
@@ -391,10 +384,12 @@ class Suburb extends Component {
 
                     <br/>
 
-                    <h3>Search for properties in this area here</h3>
+                    <h3>Search for properties</h3>
                     <div className="realestate-section">
+                    <i>Disclaimer: The following are external sites and we not affiliated in any way.</i>
+                    <br/>
                     <span>
-                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img alt="Domain.com.au" style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
+                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img alt="Domain.com.au" style={{height: '25px'}} src="/externallogos/domain.png" /></a>
                     </span>
                     <span>
                       <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img alt="Realestate.com.au" style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
@@ -447,12 +442,6 @@ class Suburb extends Component {
                   </div>
 
               </div>
-              </div>
-            }
-            { !this.state.suburb &&
-              <div className="container">
-                  <h1>Suburb not found :(</h1>
-                  <pre>Try another one?</pre>
               </div>
             }
           </main>
