@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
+import ReactDOM from 'react-dom';
+import ReactStreetview from 'react-streetview';
 
 class AllSuburbs extends Component {
 
@@ -12,6 +14,8 @@ class AllSuburbs extends Component {
     this.state = {
       suburbs : {}
     }
+
+    this.loaded = false;
   }
 
   mustSubmitNotification = (text) => toast(text,
@@ -45,16 +49,15 @@ class AllSuburbs extends Component {
   numberToStar = function(number){
 
     var ret=[];
-    var star=<i className="fas fa-star"></i>
-    var halfStar=<i className="fas fa-star"></i>
 
     var rating = Math.floor(number/10);
 
-    for(var i=0;i<Math.floor(rating/2);i++){
-      ret.push(star);
+    var i=0
+    for(i=0;i<Math.floor(rating/2);i++){
+      ret.push(<i key={i} className="fas fa-star"></i>);
     }
     if(rating%2!=0){
-      ret.push(halfStar);
+      ret.push(<i key={i} className="fas fa-star"></i>);
     }
 
     return [<span className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
@@ -82,6 +85,25 @@ class AllSuburbs extends Component {
       params.actualLanguage = tmp;
     }
 
+    fetch('/api/university/' + this.props.preferences.raw_uni.shim)
+        .then(response => response.json().then( data => ({
+            data: data,
+            status: response.status
+            })
+        ))
+        .then(response => {
+
+            this.setState({streetViewPanoramaOptions: {
+                  addressControl: false,
+                  disableDefaultUI: true,
+                  showRoadLabels: false,
+                    position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+                    pov: {heading: 100, pitch: 0},
+                    zoom: 1
+                }});
+
+        });
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -95,6 +117,7 @@ class AllSuburbs extends Component {
               })
           ))
           .then(response => {
+            this.loaded = true;
               if (response.status !== 200) {
                   this.mustSubmitNotification("Could not fetch suburbs");
               }
@@ -159,11 +182,37 @@ class AllSuburbs extends Component {
   render() {
 
     const { filter } = this.state;
+      const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
 
       return (
       <div id="AllSuburbsComponent">
           <ToastContainer />
           <main role="main">
+
+
+
+
+
+            {
+                this.state.suburb && this.state.streetViewPanoramaOptions &&
+                <div>
+                <div className="streetview-container">
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      backgroundColor: 'white'
+                  }}>
+                      <ReactStreetview
+                          apiKey={googleMapsApiKey}
+                          streetViewPanoramaOptions={this.state.streetViewPanoramaOptions}
+                      />
+                  </div>
+                </div>
+                <div className="streetview-container-after">
+                </div>
+                </div>
+              }
+
             <div className="container">
 
               <nav aria-label="breadcrumb">
@@ -274,7 +323,16 @@ class AllSuburbs extends Component {
 
 
 
+              {!this.loaded &&
 
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12" style={{textAlign: 'center'}}>
+                    <h1>loading data <i class="fas fa-spinner fa-spin"></i></h1>
+                  </div>
+                  </div>
+              </div>
+            }
 
                 { this.state.suburb &&
                   <div className="row">{[...Array(8)].map((e, i) => {

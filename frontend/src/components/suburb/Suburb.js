@@ -179,16 +179,15 @@ class Suburb extends Component {
   numberToStar = function(number){
 
     var ret=[];
-    var star=<i className="fas fa-star"></i>
-    var halfStar=<i className="fas fa-star"></i>
 
     var rating = Math.floor(number/10);
 
-    for(var i=0;i<Math.floor(rating/2);i++){
-      ret.push(star);
+    var i=0
+    for(i=0;i<Math.floor(rating/2);i++){
+      ret.push(<i key={i} className="fas fa-star"></i>);
     }
     if(rating%2!=0){
-      ret.push(halfStar);
+      ret.push(<i key={i} className="fas fa-star"></i>);
     }
 
     return [<span className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
@@ -205,11 +204,8 @@ class Suburb extends Component {
       // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
 
 
-
       return (
       <div id="SuburbComponent">
-
-
 
           <main role="main">
 
@@ -217,8 +213,8 @@ class Suburb extends Component {
 
               <div className="container">
                 <div className="row">
-                  <div className="col-md-8">
-                    <h1>Loading data <i class="fas fa-spinner fa-spin"></i></h1>
+                  <div className="col-md-12" style={{textAlign: 'center'}}>
+                    <h1>loading data <i class="fas fa-spinner fa-spin"></i></h1>
                   </div>
                   </div>
               </div>

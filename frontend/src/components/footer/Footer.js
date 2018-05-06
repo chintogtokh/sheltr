@@ -23,7 +23,7 @@ class Footer extends Component {
           <Link to="/contact">contact</Link>&nbsp;&middot;&nbsp;
           <Link to="/credits">credits</Link>
           <span className="tram-container">
-            <img src={tram} alt="Tram"/>
+            <img src={tram} alt="Tram" title="Ding!"/>
           </span>
           </p>
         </footer>
