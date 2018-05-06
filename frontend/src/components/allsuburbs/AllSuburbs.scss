@@ -11,6 +11,8 @@ main{
 
 .container{
         padding-bottom:80px;
+        z-index:1;
+        position: relative;
     }
 
 .img-container{
@@ -149,7 +151,7 @@ main{
         height:100%;
         background:rgba(255,255,255,0.8);
         position: absolute;
-        z-index:-1;
+        z-index:0;
         left:0;
     }
 
