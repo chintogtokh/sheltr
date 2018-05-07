@@ -155,12 +155,18 @@ class AllSuburbs extends Component {
   }
 
   getRankedSuburbs = function(params){
-    this.setState({loaded:false});
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params)
     };
+
+    if(params.filter === "language" && (params.language === null || typeof params.language === "undefined")){
+      return;
+    }
+
+    this.setState({loaded:false});
 
     fetch('/api/ranked_suburbs',requestOptions)
       .then(response => response.json().then( data => ({
@@ -273,7 +279,7 @@ class AllSuburbs extends Component {
               <h1>Suburb Suggestions</h1>
 
               <div>
-                The following suburbs might fit your needs. Start drilling down using the options to the right!
+                The following suburbs might fit your needs. Start drilling down using the filters!
               </div>
 
               <div className="sortable-section-container">

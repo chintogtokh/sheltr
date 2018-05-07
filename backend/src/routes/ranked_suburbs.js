@@ -30,9 +30,11 @@ rankedSuburbRouter.post('/', (req, res) => {
             shim: true,
             rating_affordability: true,
             coords: true,
+            ["university_distances."+uni]: true,
             rating_safety: true,
-            universities: true,
-            ["language." + actualLanguage]: true
+            ["language." + language]: true,
+            "stats.price-rank-in-percentile": true,
+
         }
     }];
 
@@ -40,27 +42,28 @@ rankedSuburbRouter.post('/', (req, res) => {
     query[0]['$match']["university_distances."+uni+".number"] = { "$exists": true, "$lt": parseFloat(distance) };
 
     var sorter = "";
+    var sorter_bool = 1;
     switch(filter){
-        case "distance":
-            sorter = "university_distances."+uni+".number";
-            break;
         case "affordability":
-            sorter = "university_distances."+uni+".number";
+            sorter = "stats.price-rank-in-percentile.number";
+            sorter_bool = 1;
             break;
         case "safety":
-            sorter = "university_distances."+uni+".number";
+            sorter = "stats.suburb-town-name-2016-adjusted-crime-rank.number";
+            sorter_bool = -1;
             break;
         case "language":
-            sorter = "university_distances."+uni+".number";
+            sorter = "language."+language;
+            sorter_bool = -1;
             break;
+        case "distance":
         default:
             sorter = "university_distances."+uni+".number";
+            sorter_bool = 1;
     }
 
-    // query[0]['$match']["stats.suburb-residents.number"] = { "$exists": true, "$gt": 50 };
-
     suburbModel.aggregate(query).sort({
-        [sorter]: -1
+        [sorter]: sorter_bool
     }).limit(16).exec(function(err, docs) {
         if(typeof docs==="undefined"){
             res.send([]);
