@@ -30,7 +30,7 @@ class AllSuburbs extends Component {
       });
 
   componentDidMount = function() {
-        document.title = "Sheltr | Recommendations";
+        document.title = "Sheltr | Suggestions";
 
         if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
       this.setState(this.props.preferences);
@@ -132,79 +132,70 @@ class AllSuburbs extends Component {
     }
 
     fetch('/api/university/' + this.props.preferences.raw_uni.shim)
-        .then(response => response.json().then( data => ({
-            data: data,
-            status: response.status
-            })
-        ))
-        .then(response => {
+    .then(response => response.json().then( data => ({
+      data: data,
+      status: response.status
+      })
+    ))
+    .then(response => {
+      this.setState({streetViewPanoramaOptions: {
+        addressControl: false,
+        disableDefaultUI: true,
+        showRoadLabels: false,
+          position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+          pov: {heading: 100, pitch: 0},
+          zoom: 1
+      }});
+    });
 
-            this.setState({streetViewPanoramaOptions: {
-                  addressControl: false,
-                  disableDefaultUI: true,
-                  showRoadLabels: false,
-                    position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
-                    pov: {heading: 100, pitch: 0},
-                    zoom: 1
-                }});
+    this.getRankedSuburbs(params);
+  }
 
-        });
-
+  getRankedSuburbs = function(params){
+    this.loaded = false;
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params)
     };
 
-      fetch('/api/ranked_suburbs',requestOptions)
-          .then(response => response.json().then( data => ({
-              data: data,
-              status: response.status
-              })
-          ))
-          .then(response => {
-            this.loaded = true;
-              if (response.status !== 200) {
-                  this.mustSubmitNotification("Could not fetch suburbs");
-              }
-              else{
-                for (let i = 0; i < response.data.length; i++) {
-                  fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + response.data[i].name + ", Victoria")
-                    .then(response_wiki => response_wiki.json().then( data => ({
-                        data: data,
-                        status: response_wiki.status
-                        })
-                    ))
-                    .then(response_wiki => {
-                        if (true) {
-                          let shel = response.data[i];
-                          let wiki = response_wiki.data;
-
-                          this.setState({ suburb: { ...this.state.suburb, [i]:
-                                <div className="card mb-4 box-shadow h-md-250">
-                                  <div className="card-body">
-                                    <h3 className="mb-0">
-                                      <Link to={"/suburb/" + shel.shim} className="text-dark">{shel.name}</Link>
-                                    </h3>
-                                    <div className="card-text">
-                                      <div className="star-label"> Safety </div>
-                                      <div className="star-ratings">
-                                        {this.numberToStar(shel.rating_safety)}
-                                      </div>
-                                      <br />
-                                      <div className="star-label">Affordability</div>
-                                      <div className="star-ratings">
-                                        {this.numberToStar(shel.rating_affordability)}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                } });
-                        }
-                    });
-                }
-              }
+    fetch('/api/ranked_suburbs',requestOptions)
+      .then(response => response.json().then( data => ({
+          data: data,
+          status: response.status
           })
+      ))
+      .then(response => {
+        this.loaded = true;
+          if (response.status !== 200) {
+              this.mustSubmitNotification("Could not fetch suburbs");
+          }
+          else{
+            for (let i = 0; i < response.data.length; i++) {
+              let shel = response.data[i];
+              this.setState({ suburb: { ...this.state.suburb, [i]:
+                    <div className="card mb-4 box-shadow h-md-250">
+                      <div className="card-body">
+                        <h3 className="mb-0">
+                          <Link to={"/suburb/" + shel.shim} className="text-dark">{shel.name}</Link>
+                        </h3>
+                        <div className="card-text">
+                          <div className="star-label"> Safety </div>
+                          <div className="star-ratings">
+                            {this.numberToStar(shel.rating_safety)}
+                          </div>
+                          <br />
+                          <div className="star-label">Affordability</div>
+                          <div className="star-ratings">
+                            {this.numberToStar(shel.rating_affordability)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              } });
+            }
+          }
+      });
   }
 
   handleFilterChange = function(name) {
@@ -214,6 +205,13 @@ class AllSuburbs extends Component {
           if(name==="language" && newValue.value===0){
             this.setState({"actualLanguage": null});
           }
+          var params = {
+            distance: this.state.distance,
+            language: this.state.language?this.state.language.shim:null,
+            uni: this.state.uni?this.state.uni.shim:null,
+            filter: this.state.filter,
+          }
+          this.getRankedSuburbs(params);
         }
         else if(typeof newValue !== "undefined"){
           this.setState({[name]:newValue,["raw_"+name]:newValue});
