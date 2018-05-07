@@ -255,10 +255,10 @@ class Suburb extends Component {
               <div className="container">
 
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/">Home</a></li>
-                  <li class="breadcrumb-item"><a href="/suburb">Suburb Suggestions</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{this.state.suburb.name}</li>
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                  <li className="breadcrumb-item"><Link to="/suburb">Suburb Suggestions</Link></li>
+                  <li className="breadcrumb-item active" aria-current="page">{this.state.suburb.name}</li>
                 </ol>
               </nav>
 

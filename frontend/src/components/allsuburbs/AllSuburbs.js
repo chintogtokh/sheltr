@@ -18,6 +18,7 @@ class AllSuburbs extends Component {
     this.loaded = false;
     this.getUnis = this.getUnis.bind(this);
     this.getLanguages = this.getLanguages.bind(this);
+    this.toggleLoaded = this.toggleLoaded.bind(this);
     this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
 
   }
@@ -152,6 +153,10 @@ class AllSuburbs extends Component {
     this.getRankedSuburbs(params);
   }
 
+  toggleLoaded = function(){
+    this.loaded = !this.loaded;
+  }
+
   getRankedSuburbs = function(params){
     this.loaded = false;
     const requestOptions = {
@@ -167,7 +172,8 @@ class AllSuburbs extends Component {
           })
       ))
       .then(response => {
-          this.loaded = true;
+          var _this = this;
+          setTimeout(function(){_this.toggleLoaded()},100);
           if (response.status !== 200) {
               this.mustSubmitNotification("Could not fetch suburbs");
           }
@@ -203,7 +209,6 @@ class AllSuburbs extends Component {
     return function(newValue) {
 
         var getRankedSubs = () => {
-          console.log("getrankedsubs");
           var params = {
               distance: this.state.distance,
               language: this.state.language?this.state.language.shim:null,
