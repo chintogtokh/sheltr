@@ -18,6 +18,7 @@ class AllSuburbs extends Component {
     this.loaded = false;
     this.getUnis = this.getUnis.bind(this);
     this.getLanguages = this.getLanguages.bind(this);
+    this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
 
   }
 
@@ -30,10 +31,10 @@ class AllSuburbs extends Component {
       });
 
   componentDidMount = function() {
-        document.title = "Sheltr | Suggestions";
+      document.title = "Sheltr | Suggestions";
 
-        if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
-      this.setState(this.props.preferences);
+      if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
+        this.setState(this.props.preferences);
       }
 
     }
@@ -166,7 +167,7 @@ class AllSuburbs extends Component {
           })
       ))
       .then(response => {
-        this.loaded = true;
+          this.loaded = true;
           if (response.status !== 200) {
               this.mustSubmitNotification("Could not fetch suburbs");
           }
@@ -200,25 +201,28 @@ class AllSuburbs extends Component {
 
   handleFilterChange = function(name) {
     return function(newValue) {
-        if((typeof newValue !== "undefined" && newValue !== null) && name !== "actualLanguage" && name !== "uni"){
-          this.setState({[name]:newValue.value});
-          if(name==="language" && newValue.value===0){
-            this.setState({"actualLanguage": null});
-          }
+
+        var getRankedSubs = () => {
+          console.log("getrankedsubs");
           var params = {
-            distance: this.state.distance,
-            language: this.state.language?this.state.language.shim:null,
-            uni: this.state.uni?this.state.uni.shim:null,
-            filter: this.state.filter,
-          }
-          this.getRankedSuburbs(params);
+              distance: this.state.distance,
+              language: this.state.language?this.state.language.shim:null,
+              uni: this.state.uni?this.state.uni.shim:null,
+              filter: this.state.filter,
+            }
+            this.getRankedSuburbs(params);
+        }
+
+        if((typeof newValue !== "undefined" && newValue !== null) && name !== "language" && name !== "uni"){
+          this.setState({[name]:newValue.value}, getRankedSubs);
         }
         else if(typeof newValue !== "undefined"){
-          this.setState({[name]:newValue,["raw_"+name]:newValue});
+          this.setState({[name]:newValue,["raw_"+name]:newValue}, getRankedSubs);
         }
         else{
-          this.setState({[name]:''});
+          this.setState({[name]:''}, getRankedSubs);
         }
+
     }.bind(this);
   };
 
@@ -275,7 +279,7 @@ class AllSuburbs extends Component {
 
                   <div className="filter-text-container">
                     <div className="filter-text">
-                    University:
+                    University
                     </div>
                   </div>
                   <Select.Async
@@ -350,19 +354,19 @@ class AllSuburbs extends Component {
                     Language:
                     </div>
                   </div>
-                  <Select className = "react-select"
+                 <Select.Async
+                  placeholder = ""
+                  autoload = {true}
                   name="language"
-                  placeholder = "distance"
+                  filterOption={() => true}
+                  className = "react-select"
                   value={language}
-                  searchable = {false}
                   style={{width:'150px'}}
+                  valueKey="shim"
+                  labelKey="name"
                   onChange={this.handleFilterChange('language')}
-                  options={[
-                    { value: 'safety', label: 'safety' },
-                    { value: 'affordability', label: 'affordability' },
-                    { value: 'distance', label: 'distance' },
-                  ]}
-                />
+                  loadOptions={this.getLanguages}
+                  backspaceRemoves={true} />
                 </div>
                 }
 
@@ -379,7 +383,7 @@ class AllSuburbs extends Component {
                 </div>
                 }
 
-                { this.state.suburb &&
+                { this.loaded && this.state.suburb &&
                   <div className="row">{[...Array(8)].map((e, i) => {
                     return <div key={i} className="col-md-3">{this.state.suburb[i]}</div>
                   })}</div>

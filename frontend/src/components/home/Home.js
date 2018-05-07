@@ -64,7 +64,6 @@ class Home extends Component {
 
     let params = this.state;
 
-    console.log(this.state);
 
     if(Object.keys(params).length===0 || typeof params.uni === "undefined" || params.uni === null){
       this.mustSubmitNotification("You must input your preferences!");
