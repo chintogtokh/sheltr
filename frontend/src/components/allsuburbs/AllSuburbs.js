@@ -292,7 +292,7 @@ class AllSuburbs extends Component {
                   filterOption={() => true}
                   className = "react-select"
                   value={uni}
-                  style={{width:'150px'}}
+                  style={{width:'200px'}}
                   valueKey="shim"
                   labelKey="name"
                   onChange={this.handleFilterChange('uni')}
