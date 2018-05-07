@@ -12,13 +12,12 @@ class AllSuburbs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      suburbs : {}
+      suburbs : {},
+      loaded: false,
     }
 
-    this.loaded = false;
     this.getUnis = this.getUnis.bind(this);
     this.getLanguages = this.getLanguages.bind(this);
-    this.toggleLoaded = this.toggleLoaded.bind(this);
     this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
 
   }
@@ -153,12 +152,8 @@ class AllSuburbs extends Component {
     this.getRankedSuburbs(params);
   }
 
-  toggleLoaded = function(){
-    this.loaded = !this.loaded;
-  }
-
   getRankedSuburbs = function(params){
-    this.loaded = false;
+    this.setState({loaded:false});
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -172,8 +167,8 @@ class AllSuburbs extends Component {
           })
       ))
       .then(response => {
-          var _this = this;
-          setTimeout(function(){_this.toggleLoaded()},100);
+          var _thisOne = this;
+          setTimeout(function() { this.setState({loaded: true}); }.bind(this), 1000);
           if (response.status !== 200) {
               this.mustSubmitNotification("Could not fetch suburbs");
           }
@@ -377,7 +372,7 @@ class AllSuburbs extends Component {
 
               </div>
 
-              {!this.loaded &&
+              {!this.state.loaded &&
 
                 <div className="container">
                   <div className="row">
@@ -388,7 +383,7 @@ class AllSuburbs extends Component {
                 </div>
                 }
 
-                { this.loaded && this.state.suburb &&
+                { this.state.loaded && this.state.suburb &&
                   <div className="row">{[...Array(8)].map((e, i) => {
                     return <div key={i} className="col-md-3">{this.state.suburb[i]}</div>
                   })}</div>
