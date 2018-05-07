@@ -16,6 +16,9 @@ class AllSuburbs extends Component {
     }
 
     this.loaded = false;
+    this.getUnis = this.getUnis.bind(this);
+    this.getLanguages = this.getLanguages.bind(this);
+
   }
 
   mustSubmitNotification = (text) => toast(text,
@@ -28,8 +31,51 @@ class AllSuburbs extends Component {
 
   componentDidMount = function() {
         document.title = "Sheltr | Recommendations";
+
+        if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
+      this.setState(this.props.preferences);
+      }
+
     }
 
+  getLanguages (input) {
+    if (!input) {
+      if(this.state.raw_actualLanguage){
+        input = this.state.raw_actualLanguage.name;
+      }
+        else{
+          return Promise.resolve({ options: [] });
+        }
+    }
+
+    return fetch(`/api/search/languages?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
+
+
+  getUnis (input) {
+    if (!input) {
+      if(this.state.raw_uni){
+        input = this.state.raw_uni.name;
+      }
+      else{
+        return Promise.resolve({ options: [] });
+      }
+    }
+
+    if(input.length<=2){
+      return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/search/universities?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
 
   getWiki = function(name,count){
 
@@ -181,8 +227,9 @@ class AllSuburbs extends Component {
 
   render() {
 
-    const { filter } = this.state;
-      const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
+    const { uni, distance, filter, language } = this.state;
+
+    const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
 
       return (
       <div id="AllSuburbsComponent">
@@ -233,19 +280,19 @@ class AllSuburbs extends Component {
                     University:
                     </div>
                   </div>
-                  <Select className = "react-select"
-                  name="filter"
-                  placeholder = "distance"
-                  value={filter}
-                  searchable = {false}
+                  <Select.Async
+                  placeholder = ""
+                  autoload = {true}
+                  name="uni"
+                  filterOption={() => true}
+                  className = "react-select"
+                  value={uni}
                   style={{width:'150px'}}
-                  onChange={this.handleFilterChange('filter')}
-                  options={[
-                    { value: 'safety', label: 'safety' },
-                    { value: 'affordability', label: 'affordability' },
-                    { value: 'distance', label: 'distance' },
-                  ]}
-                />
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.handleFilterChange('uni')}
+                  loadOptions={this.getUnis}
+                  backspaceRemoves={true} />
                 </div>
 
 
@@ -257,16 +304,18 @@ class AllSuburbs extends Component {
                     </div>
                   </div>
                   <Select className = "react-select"
-                  name="filter"
-                  placeholder = "distance"
-                  value={filter}
+                  name="distance"
+                  placeholder = {distance}
+                  value={distance}
                   searchable = {false}
                   style={{width:'150px'}}
-                  onChange={this.handleFilterChange('filter')}
+                  onChange={this.handleFilterChange('distance')}
                   options={[
-                    { value: 'safety', label: 'safety' },
-                    { value: 'affordability', label: 'affordability' },
-                    { value: 'distance', label: 'distance' },
+                    { value: '5', label: '5km' },
+                    { value: '10', label: '10km' },
+                    { value: '20', label: '20km' },
+                    { value: '50',  label: '50km' },
+                    { value: '100',  label: '100km' },
                   ]}
                 />
                 </div>
@@ -289,9 +338,12 @@ class AllSuburbs extends Component {
                     { value: 'safety', label: 'safety' },
                     { value: 'affordability', label: 'affordability' },
                     { value: 'distance', label: 'distance' },
+                    { value: 'language', label: 'language' },
                   ]}
                 />
                 </div>
+
+                { filter==="language" &&
 
                  <div className="sortable-section">
 
@@ -301,12 +353,12 @@ class AllSuburbs extends Component {
                     </div>
                   </div>
                   <Select className = "react-select"
-                  name="filter"
+                  name="language"
                   placeholder = "distance"
-                  value={filter}
+                  value={language}
                   searchable = {false}
                   style={{width:'150px'}}
-                  onChange={this.handleFilterChange('filter')}
+                  onChange={this.handleFilterChange('language')}
                   options={[
                     { value: 'safety', label: 'safety' },
                     { value: 'affordability', label: 'affordability' },
@@ -314,21 +366,20 @@ class AllSuburbs extends Component {
                   ]}
                 />
                 </div>
+                }
 
               </div>
-
-
 
               {!this.loaded &&
 
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-12" style={{textAlign: 'center'}}>
-                    <h1>loading data <i className="fas fa-spinner fa-spin"></i></h1>
-                  </div>
-                  </div>
-              </div>
-            }
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12" style={{textAlign: 'center'}}>
+                      <h1>loading data <i className="fas fa-spinner fa-spin"></i></h1>
+                    </div>
+                    </div>
+                </div>
+                }
 
                 { this.state.suburb &&
                   <div className="row">{[...Array(8)].map((e, i) => {

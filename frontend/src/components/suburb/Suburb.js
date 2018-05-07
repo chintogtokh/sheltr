@@ -22,9 +22,7 @@ class Suburb extends Component {
       }
 
       this.handleSelectChange = this.handleSelectChange.bind(this);
-
       this.loaded = false;
-
   };
 
 
