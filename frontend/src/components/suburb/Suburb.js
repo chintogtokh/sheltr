@@ -325,7 +325,7 @@ class Suburb extends Component {
                       }
 
                       {preferences.raw_uni &&
-                       <li> University distance {"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"} your university was {preferences.raw_uni.name}</li>
+                       <li> Distance from {preferences.raw_uni.name} is approximately {this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km"}</li>
                      }
                     </ul>
 

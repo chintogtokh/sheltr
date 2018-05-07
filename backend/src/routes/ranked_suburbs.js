@@ -29,6 +29,7 @@ rankedSuburbRouter.post('/', (req, res) => {
             name: true,
             shim: true,
             rating_affordability: true,
+            coords: true,
             rating_safety: true,
             universities: true,
             ["language." + actualLanguage]: true,

@@ -173,5 +173,26 @@ main{
       background: rgba(255,255,255,0.9);
     }
 
+    .suburb-link{
+      text-decoration: none;
+      color:black;
+
+      div.card{
+        border:none;
+      }
+
+      &:hover{
+        div.card{
+        -moz-box-shadow:    0 0 10px #112660;
+         -webkit-box-shadow: 0 0 10px #112660;
+         box-shadow:         0 0 10px #112660;
+
+         h3{
+          text-decoration: underline;
+         }
+        }
+      }
+    }
+
 }
 

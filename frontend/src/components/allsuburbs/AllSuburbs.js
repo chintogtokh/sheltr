@@ -16,6 +16,8 @@ class AllSuburbs extends Component {
       loaded: false,
     }
 
+    this.googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
+
     this.getUnis = this.getUnis.bind(this);
     this.getLanguages = this.getLanguages.bind(this);
     this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
@@ -176,10 +178,12 @@ class AllSuburbs extends Component {
             for (let i = 0; i < response.data.length; i++) {
               let shel = response.data[i];
               this.setState({ suburb: { ...this.state.suburb, [i]:
+                  <Link to={"/suburb/" + shel.shim} className="suburb-link">
                     <div className="card mb-4 box-shadow h-md-250">
+                      <img className="card-img-top" src={'http://maps.googleapis.com/maps/api/streetview?size=640x480&location=' + shel.coords.lat + "," + shel.coords.lng + '&pitch=0&sensor=false&key=' + this.googleMapsApiKey} alt={shel.name} />
                       <div className="card-body">
                         <h3 className="mb-0">
-                          <Link to={"/suburb/" + shel.shim} className="text-dark">{shel.name}</Link>
+                          {shel.name}
                         </h3>
                         <div className="card-text">
                           <div className="star-label"> Safety </div>
@@ -194,6 +198,7 @@ class AllSuburbs extends Component {
                         </div>
                       </div>
                     </div>
+                  </Link>
               } });
             }
           }
@@ -231,8 +236,6 @@ class AllSuburbs extends Component {
 
     const { uni, distance, filter, language } = this.state;
 
-    const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
-
       return (
       <div id="AllSuburbsComponent">
           <ToastContainer />
@@ -248,7 +251,7 @@ class AllSuburbs extends Component {
                       backgroundColor: 'white'
                   }}>
                       <ReactStreetview
-                          apiKey={googleMapsApiKey}
+                          apiKey={this.googleMapsApiKey}
                           streetViewPanoramaOptions={this.state.streetViewPanoramaOptions}
                       />
                   </div>
