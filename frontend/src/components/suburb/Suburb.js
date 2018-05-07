@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Suburb.css';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { suburbActions } from '../../actions';
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
