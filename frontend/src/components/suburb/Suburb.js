@@ -346,7 +346,7 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/prisoner.svg" alt="Crime per 10000 population" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/prisnor.svg" alt="Crime per 10000 population" height="50" width="50" />
                       <h4> Number of offences </h4>
 
                       </div>
@@ -380,7 +380,7 @@ class Suburb extends Component {
                       <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/train.svg" alt="public transport" height="50" width="50" />
-                      <h4> Availability of public transport </h4>
+                      <h4> Available public transport </h4>
 
                       </div>
                       <div className="col-md-4">
