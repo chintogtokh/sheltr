@@ -380,7 +380,24 @@ class Suburb extends Component {
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"suburb-med-fac-flag").number ? "Yes" : "No"}
+                    {this.getStatFromArray(this.state.suburb.stats, "aged-care-residential-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "allied-health-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "ambulance-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "chiropractic-and-osteopathic-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "dental-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "general-practice-medical-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "hospitals").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "medical-and-other-health-care-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "medical-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "no-medical-facilities-in-the-area").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "optometry-and-optical-dispensing").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "other-allied-health-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "other-residential-care-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "pathology-and-diagnostic-imaging-services").number || 
+                     this.getStatFromArray(this.state.suburb.stats, "physiotherapy-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "residential-care-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "specialist-medical-services").number ?                    
+                     <img className="stat-image" src="/otherimages/yes.svg" alt="yes" height="50" width="50" /> : <img className="stat-image" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
                       </div>
                     </div>
 
