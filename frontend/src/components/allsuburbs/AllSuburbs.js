@@ -52,8 +52,8 @@ class AllSuburbs extends Component {
 
   getLanguages (input) {
     if (!input) {
-      if(this.state.raw_actualLanguage){
-        input = this.state.raw_actualLanguage.name;
+      if(this.state.raw_language){
+        input = this.state.raw_language.name;
       }
         else{
           return Promise.resolve({ options: [] });
@@ -129,7 +129,7 @@ class AllSuburbs extends Component {
     let params = JSON.parse(JSON.stringify(preferences));
 
     // delete params.raw_uni;
-    // delete params.raw_actualLanguage;
+    // delete params.raw_language;
 
     if(params.uni && params.uni.shim){
       let tmp = params.uni.shim;
@@ -137,10 +137,10 @@ class AllSuburbs extends Component {
       params.uni = tmp;
     }
 
-    if(params.actualLanguage && params.actualLanguage.shim){
-      let tmp = params.actualLanguage.shim;
-      delete params.actualLanguage;
-      params.actualLanguage = tmp;
+    if(params.language && params.language.shim){
+      let tmp = params.language.shim;
+      delete params.language;
+      params.language = tmp;
     }
 
     fetch('/api/university/' + this.props.preferences.raw_uni.shim )
@@ -237,9 +237,9 @@ class AllSuburbs extends Component {
             const { dispatch } = this.props;
             dispatch(browseActions.enterPreferences({
               distance: this.state.distance,
-              raw_actualLanguage: this.state.raw_actualLanguage,
+              raw_language: this.state.raw_language,
               raw_uni: this.state.raw_uni,
-              actualLanguage: this.state.raw_actualLanguage,
+              language: this.state.raw_language,
               uni: this.state.raw_uni,
               filter: this.state.filter,
             }));

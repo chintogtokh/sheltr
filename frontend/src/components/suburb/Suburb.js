@@ -136,10 +136,10 @@ class Suburb extends Component {
 
   numberToRanking = (num) => {
     let tmp = {     '10':  'high priority',
-                      '7':  'moderate priority',
-                      '4':  'neutral',
-                      '1':  'low priority',
-                      '0':  'not a priority'}
+                    '7':  'moderate priority',
+                    '4':  'neutral',
+                    '1':  'low priority',
+                    '0':  'not a priority'}
     return tmp[num.toString()];
   };
 
@@ -270,7 +270,7 @@ class Suburb extends Component {
                     </h3>
                     <ul className="rating-list">
 
-                      <li> <div className="star-label">Safety</div>
+                      <li> <div className="star-label">Safety rating</div>
                                       <div className="star-ratings">
                                         {this.numberToStar(this.state.suburb.rating_safety)}
                                       </div> </li>
@@ -284,11 +284,10 @@ class Suburb extends Component {
                       {preferences.language && preferences.language!==0 &&
 
                         <li>
-                        <div className="star-label">International student language</div>
+                        <div className="star-label">International student language rating for {preferences.raw_language.name}</div>
                       <div className="star-ratings">
-                          {this.numberToStar(this.state.suburb.language[preferences.raw_actualLanguage.shim])}
+                          {this.numberToStar(this.state.suburb.language[preferences.raw_language.shim])}
                           </div>
-                          ({preferences.raw_actualLanguage.name})
                         </li>
 
                       }
@@ -362,21 +361,28 @@ class Suburb extends Component {
                       <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/athletics.svg" alt="public transport" height="50" width="50" />
-                      <h4> Available modes of transport </h4>
+                      <h4> Popular modes of transport </h4>
 
                       </div>
                       <div className="col-md-4">
-                      {this.getStatFromArray(this.state.suburb.stats,"train-station-flag").number ? <img className="stat-image" src="/otherimages/train.svg" alt="Train" height="50" width="50" /> : ""}
-                      {this.getStatFromArray(this.state.suburb.stats,"tram-line-flag").number ? <img className="stat-image" src="/otherimages/tram.svg" alt="Tram" height="50" width="50" /> : ""}
-                      {this.getStatFromArray(this.state.suburb.stats,"bus-line-flag").number ? <img className="stat-image" src="/otherimages/school-bus.svg" alt="Bus" height="50" width="50" /> : ""}
-                      {this.getStatFromArray(this.state.suburb.stats,"ferry-flag").number ? <img className="stat-image" src="/otherimages/ferry.svg" alt="Ferry" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"train-station-flag").number ? <img className="stat-image" src="/otherimages/train.svg" alt="Train" title="Train" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"tram-line-flag").number ? <img className="stat-image" src="/otherimages/tram.svg" alt="Tram" title="Tram" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"bus-line-flag").number ? <img className="stat-image" src="/otherimages/school-bus.svg" alt="Bus" title="Bus" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"ferry-flag").number ? <img className="stat-image" src="/otherimages/ferry.svg" alt="Ferry" title="Ferry" height="50" width="50" /> : ""}
+
+                      {!this.getStatFromArray(this.state.suburb.stats,"ferry-flag").number &&
+                      !this.getStatFromArray(this.state.suburb.stats,"tram-line-flag").number &&
+                      !this.getStatFromArray(this.state.suburb.stats,"bus-line-flag").number &&
+                      !this.getStatFromArray(this.state.suburb.stats,"train-station-flag").number
+                       ? <img className="stat-image" src="/otherimages/no.svg" alt="None" title="None" height="50" width="50" /> : ""}
+
                       </div>
                     </div>
 
                       <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/hospital.svg" alt="Hospital" height="50" width="50" />
-                      <h4> Availability of Medical Facilities </h4>
+                      <h4> Medical Facilities </h4>
 
                       </div>
                       <div className="col-md-4">
@@ -397,18 +403,18 @@ class Suburb extends Component {
                      this.getStatFromArray(this.state.suburb.stats, "physiotherapy-services").number ||
                      this.getStatFromArray(this.state.suburb.stats, "residential-care-services").number ||
                      this.getStatFromArray(this.state.suburb.stats, "specialist-medical-services").number ?
-                     <img className="stat-image" src="/otherimages/yes.svg" alt="yes" height="50" width="50" /> : <img className="stat-image" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
+                     <img className="stat-image" title="Available" src="/otherimages/yes.svg" alt="yes" height="50" width="50" /> : <img className="stat-image" title="None" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
                       </div>
                     </div>
 
                      <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/police.svg" alt="police" height="50" width="50" />
-                      <h4> Availability of Police Stations </h4>
+                      <h4> Police Stations </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"suburb-police-station-flag").number ? <img className="stat-image" src="/otherimages/yes.svg" alt="yes" height="50" width="50" /> : <img className="stat-image" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-police-station-flag").number ? <img className="stat-image" src="/otherimages/yes.svg" title="Available" alt="yes" height="50" width="50" /> : <img title="None" className="stat-image" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
                       </div>
                     </div>
 
