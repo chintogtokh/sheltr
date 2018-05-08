@@ -56,6 +56,7 @@ rankedSuburbRouter.post('/', (req, res) => {
         case "language":
             sorter = "language."+language;
             sorter_bool = -1;
+            query[0]['$match']["language." + language] = { "$exists": true, "$ne": 0 };
             break;
         case "distance":
         default:

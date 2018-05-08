@@ -143,29 +143,47 @@ class AllSuburbs extends Component {
       params.language = tmp;
     }
 
-    fetch('/api/university/' + this.props.preferences.raw_uni.shim )
-    .then(response => response.json().then( data => ({
-      data: data,
-      status: response.status
-      })
-    ))
-    .then(response => {
-      this.setState({streetViewPanoramaOptions: {
-        addressControl: false,
-        disableDefaultUI: true,
-        showRoadLabels: false,
-          position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
-          pov: {heading: 100, pitch: 0},
-          zoom: 1
-      }});
-    });
+    if(this.props.preferences.raw_uni){
 
-    this.getRankedSuburbs(params);
+      fetch('/api/university/' + this.props.preferences.raw_uni.shim )
+      .then(response => response.json().then( data => ({
+        data: data,
+        status: response.status
+        })
+      ))
+      .then(response => {
+        this.setState({streetViewPanoramaOptions: {
+          addressControl: false,
+          disableDefaultUI: true,
+          showRoadLabels: false,
+            position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+            pov: {heading: 100, pitch: 0},
+            zoom: 1
+        }});
+      });
+    }
+
+    // if(params.uni && params.distance){
+      this.getRankedSuburbs(params);
+    // }
+    // else{
+    //   this.mustSubmitNotification("You must enter a university and distance first.");
+    //   this.setState({loaded: true, itemsCount: 0});
+    // }
+
   }
 
   getRankedSuburbs = function(params){
 
     this.setState({activePage:1});
+
+    if(!(params.uni && params.distance)){
+      this.mustSubmitNotification("You must enter a university and distance first.");
+      this.setState({invalidPreferences: true});
+    }
+    else{
+      this.setState({invalidPreferences: false});
+    }
 
     const requestOptions = {
         method: 'POST',
@@ -193,6 +211,8 @@ class AllSuburbs extends Component {
           }
           else{
             this.setState({itemsCount: response.data.length});
+
+            this.setState({ suburb: {}});
 
             for (let i = 0; i < response.data.length; i++) {
               let shel = response.data[i];
@@ -235,14 +255,25 @@ class AllSuburbs extends Component {
               filter: this.state.filter,
             }
             const { dispatch } = this.props;
-            dispatch(browseActions.enterPreferences({
+
+            var preferences = {
               distance: this.state.distance,
               raw_language: this.state.raw_language,
               raw_uni: this.state.raw_uni,
               language: this.state.raw_language,
               uni: this.state.raw_uni,
               filter: this.state.filter,
-            }));
+            };
+
+            if(this.state.filter==="language"){
+              if(this.state.raw_language){
+                dispatch(browseActions.enterPreferences(preferences));
+              }
+            }
+            else{
+              dispatch(browseActions.enterPreferences(preferences));
+            }
+
             this.getRankedSuburbs(params);
         }
 
@@ -314,7 +345,7 @@ class AllSuburbs extends Component {
                     </div>
                   </div>
                   <Select.Async
-                  placeholder = ""
+                  placeholder = "Select..."
                   autoload = {true}
                   name="uni"
                   filterOption={() => true}
@@ -358,7 +389,7 @@ class AllSuburbs extends Component {
 
                   <div className="filter-text-container">
                     <div className="filter-text">
-                    Sort by:
+                    Filter by:
                     </div>
                   </div>
                   <Select className = "react-select"
@@ -422,7 +453,29 @@ class AllSuburbs extends Component {
                     return <div key={i+(this.state.activePage-1)*8} className="col-md-3">{this.state.suburb[i+(this.state.activePage-1)*8]}</div>
                   })}</div>
 
+                  {
+                    this.state.itemsCount===0 && this.state.uni && this.state.distance &&
+                    <div className="row">
+                      <div className="col-md-12" style={{textAlign: 'center'}}>
+                      <h1>no suburbs matching that criteria :(</h1>
+                        </div>
+                    </div>
+                  }
 
+
+                { this.state.invalidPreferences &&
+
+                  <div>
+                    <div className="row">
+                      <div className="col-md-12" style={{textAlign: 'center'}}>
+                      <h1>invalid preferences entered :(</h1>
+                        <h3>you must enter both a university and distance</h3>
+                        </div>
+                    </div>
+                  </div>
+                }
+
+                {this.state.itemsCount!==0 &&
                   <Pagination
                     activePage={this.state.activePage}
                     prevPageText="prev"
@@ -434,9 +487,10 @@ class AllSuburbs extends Component {
                     itemClass="page-item"
                     linkClass="page-link"
                   />
-
+                }
                   </div>
                 }
+
             </div>
           </main>
       </div>
