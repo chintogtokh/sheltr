@@ -7,12 +7,8 @@ import Leaflet from 'leaflet'
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
-// import ReactDOM from 'react-dom';
 import ReactStreetview from 'react-streetview';
 import uniimage from '../../files/uni.png';
-// import chat from '../../files/chat.svg';
-// import credit_card from '../../files/credit_card.svg';
-// import university from '../../files/university.svg';
 
 class Suburb extends Component {
 
@@ -54,55 +50,79 @@ class Suburb extends Component {
         .then(response => {
             this.loaded = true;
 
-            fetch('/api/university/' + this.props.preferences.raw_uni.shim)
-            .then(response => response.json().then( data => ({
-                data: data,
-                status: response.status
-                })
-            ))
-            .then(uniResponse => {
+            if(this.props.preferences.raw_uni){
 
-              if (uniResponse.status !== 200) {
-                  // window.location = "/404";
-              }
-              else{
-                let bboxArray;// = bbox(suburb.geojson);
-                let corner1;// = [bboxArray[1], bboxArray[0]];
-                let corner2;// = [bboxArray[3], bboxArray[2]];
-                let bounds;// = [corner1, corner2];
+              fetch('/api/university/' + this.props.preferences.raw_uni.shim)
+              .then(response => response.json().then( data => ({
+                  data: data,
+                  status: response.status
+                  })
+              ))
+              .then(uniResponse => {
+
+                if (uniResponse.status !== 200) {
+                    // window.location = "/404";
+                }
+                else{
+                  let bboxArray;// = bbox(suburb.geojson);
+                  let corner1;// = [bboxArray[1], bboxArray[0]];
+                  let corner2;// = [bboxArray[3], bboxArray[2]];
+                  let bounds;// = [corner1, corner2];
 
 
-                var tempjson = JSON.parse(JSON.stringify(response.data.geojson));
+                  var tempjson = JSON.parse(JSON.stringify(response.data.geojson));
 
 
-                tempjson.features[0].geometry.coordinates[0][0].push([uniResponse.data.coords.lng,uniResponse.data.coords.lat]);
+                  tempjson.features[0].geometry.coordinates[0][0].push([uniResponse.data.coords.lng,uniResponse.data.coords.lat]);
 
-                bboxArray = bbox(tempjson);
+                  bboxArray = bbox(tempjson);
 
-                corner1 = [bboxArray[1], bboxArray[0]];
-                corner2 = [bboxArray[3], bboxArray[2]];
-                bounds = [corner1, corner2];
+                  corner1 = [bboxArray[1], bboxArray[0]];
+                  corner2 = [bboxArray[3], bboxArray[2]];
+                  bounds = [corner1, corner2];
 
-                  this.setState({suburb: response.data, bounds: bounds});
+                    this.setState({suburb: response.data, bounds: bounds});
 
-                  document.title = "Sheltr | " + this.state.suburb.name;
+                    document.title = "Sheltr | " + this.state.suburb.name;
 
-                  const { dispatch } = this.props;
-                  dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
+                    const { dispatch } = this.props;
+                    dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
 
-                  this.setState({streetViewPanoramaOptions: {
-                    addressControl: false,
-                    disableDefaultUI: true,
-                    showRoadLabels: false,
-                      position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
-                      pov: {heading: 100, pitch: 0},
-                      zoom: 1
-                  }});
-              }
+                    this.setState({streetViewPanoramaOptions: {
+                      addressControl: false,
+                      disableDefaultUI: true,
+                      showRoadLabels: false,
+                        position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+                        pov: {heading: 100, pitch: 0},
+                        zoom: 1
+                    }});
+                }
 
-                this.setState({uni_coords: uniResponse.data.coords});
-            });
+                  this.setState({uni_coords: uniResponse.data.coords});
+              });
+            }
+            else{
+              let bboxArray;// = bbox(suburb.geojson);
+              let corner1;// = [bboxArray[1], bboxArray[0]];
+              let corner2;// = [bboxArray[3], bboxArray[2]];
+              let bounds;// = [corner1, corner2];
 
+              var tempjson = JSON.parse(JSON.stringify(response.data.geojson));
+
+              bboxArray = bbox(tempjson);
+
+              corner1 = [bboxArray[1], bboxArray[0]];
+              corner2 = [bboxArray[3], bboxArray[2]];
+              bounds = [corner1, corner2];
+
+              this.setState({suburb: response.data, bounds: bounds});
+
+              document.title = "Sheltr | " + this.state.suburb.name;
+
+              const { dispatch } = this.props;
+              dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
+
+            }
 
         });
 
