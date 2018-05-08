@@ -65,7 +65,7 @@ rankedSuburbRouter.post('/', (req, res) => {
 
     suburbModel.aggregate(query).sort({
         [sorter]: sorter_bool
-    }).limit(16).exec(function(err, docs) {
+    }).limit(100).exec(function(err, docs) {
         if(typeof docs==="undefined"){
             res.send([]);
         }

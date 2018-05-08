@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import ReactDOM from 'react-dom';
 import ReactStreetview from 'react-streetview';
+import Pagination from "react-js-pagination";
 
 class AllSuburbs extends Component {
 
@@ -14,6 +15,7 @@ class AllSuburbs extends Component {
     this.state = {
       suburbs : {},
       loaded: false,
+      activePage: 1
     }
 
     this.googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
@@ -21,7 +23,13 @@ class AllSuburbs extends Component {
     this.getUnis = this.getUnis.bind(this);
     this.getLanguages = this.getLanguages.bind(this);
     this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
 
+  }
+
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({activePage: pageNumber});
   }
 
   mustSubmitNotification = (text) => toast(text,
@@ -156,6 +164,8 @@ class AllSuburbs extends Component {
 
   getRankedSuburbs = function(params){
 
+    this.setState({activePage:1});
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -181,6 +191,8 @@ class AllSuburbs extends Component {
               this.mustSubmitNotification("Could not fetch suburbs");
           }
           else{
+            this.setState({itemsCount: response.data.length});
+
             for (let i = 0; i < response.data.length; i++) {
               let shel = response.data[i];
               this.setState({ suburb: { ...this.state.suburb, [i]:
@@ -322,6 +334,7 @@ class AllSuburbs extends Component {
                   style={{width:'150px'}}
                   onChange={this.handleFilterChange('distance')}
                   options={[
+                    { value: '2', label: '2km' },
                     { value: '5', label: '5km' },
                     { value: '10', label: '10km' },
                     { value: '20', label: '20km' },
@@ -393,9 +406,26 @@ class AllSuburbs extends Component {
                 }
 
                 { this.state.loaded && this.state.suburb &&
+
+                  <div>
                   <div className="row">{[...Array(8)].map((e, i) => {
-                    return <div key={i} className="col-md-3">{this.state.suburb[i]}</div>
+                    return <div key={i+(this.state.activePage-1)*8} className="col-md-3">{this.state.suburb[i+(this.state.activePage-1)*8]}</div>
                   })}</div>
+
+
+                  <Pagination
+                    activePage={this.state.activePage}
+                    prevPageText="prev"
+                    nextPageText="next"
+                    itemsCountPerPage={8}
+                    totalItemsCount={this.state.itemsCount}
+                    pageRangeDisplayed={Math.floor(this.state.itemsCount/8)}
+                    onChange={this.handlePageChange}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                  />
+
+                  </div>
                 }
             </div>
           </main>

@@ -178,6 +178,7 @@ class Home extends Component {
                 style={{width:'150px'}}
                 onChange={this.handleSelectChange('distance')}
                 options={[
+                  { value: '2', label: '2km' },
                   { value: '5', label: '5km' },
                   { value: '10', label: '10km' },
                   { value: '20', label: '20km' },
