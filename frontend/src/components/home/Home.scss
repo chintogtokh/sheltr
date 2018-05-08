@@ -27,7 +27,7 @@
           div.lead{
 
             font-size:1.5rem;
-            margin-bottom:35px;
+            margin-bottom:25px;
 
             .lead-row{
               margin-bottom:5px;
@@ -313,4 +313,13 @@ div.find-suburbs-btn-container{
     }
    }
 }
+
+
+.single-image{
+  text-align: center;
+  img{
+    width:60%;
+  }
+}
+
 }

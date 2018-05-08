@@ -135,7 +135,7 @@ class Home extends Component {
           <div className="header-content-inner text-xs-center">
               <h1>Welcome to Victoria, new students!</h1>
               <div className="lead">
-                You can start finding a great new home here!
+                You can start finding a great new place to live here!
               </div>
 
               <form onSubmit={this.onSubmit}>
@@ -225,7 +225,9 @@ class Home extends Component {
             <div className="col-md-4">
                 <h2 className="featurette-heading">Who made this?</h2>
                 <div className="lead">We're a group at Monash University, and we're located at Floor 3, Building B, Monash Caulfield.</div>
-                <img src={monash} alt="Monash University" style={{width:'50%'}}/>
+                <p className="single-image">
+                <img src={monash} alt="Monash University"/>
+                </p>
             </div>
           </div>
         </div>
