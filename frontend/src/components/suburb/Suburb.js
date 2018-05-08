@@ -328,8 +328,8 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/prisnor.svg" alt="Crime per 10000 population" height="50" width="50" />
-                      <h4> Number of offences </h4>
+                      <img className="stat-image" src="/otherimages/prisoner.svg" alt="Crime per 10000 population" height="50" width="50" />
+                      <h4> Number of offences per 10'000</h4>
 
                       </div>
                       <div className="col-md-4">
@@ -340,7 +340,7 @@ class Suburb extends Component {
                        <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/money.svg" alt="Average rental range" height="50" width="50" />
-                      <h4> Average weekly rent paid by an International student </h4>
+                      <h4> Average weekly rent paid by international students </h4>
 
                       </div>
                       <div className="col-md-4">
@@ -350,7 +350,7 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/planet-earth (1).svg" alt="Most popular language" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/planet-earth.svg" alt="Most popular language" height="50" width="50" />
                       <h4> Most popular international student language </h4>
 
                       </div>
@@ -358,43 +358,46 @@ class Suburb extends Component {
                     {this.getStatFromArray(this.state.suburb.stats,"suburb-most-int-student-lang").number}
                       </div>
                     </div>
-      
+
                       <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/train.svg" alt="public transport" height="50" width="50" />
-                      <h4> Available public transport </h4>
+                      <img className="stat-image" src="/otherimages/athletics.svg" alt="public transport" height="50" width="50" />
+                      <h4> Modes of transport </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"most-common-transport-method").number}
+                      {this.getStatFromArray(this.state.suburb.stats,"train-station-flag").number ? <img className="stat-image" src="/otherimages/train.svg" alt="Train" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"tram-line-flag").number ? <img className="stat-image" src="/otherimages/tram.svg" alt="Tram" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"bus-line-flag").number ? <img className="stat-image" src="/otherimages/school-bus.svg" alt="Bus" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"ferry-flag").number ? <img className="stat-image" src="/otherimages/ferry.svg" alt="Ferry" height="50" width="50" /> : ""}
                       </div>
                     </div>
-                      
+
                       <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/hospital.svg" alt="Hospital" height="50" width="50" />
-                      <h4> Availability of Medical facility </h4>
+                      <h4> Availability of Medical Facilities </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"suburb-med-fac-flag").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-med-fac-flag").number ? "Yes" : "No"}
                       </div>
                     </div>
-      
+
                      <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/police.svg" alt="police" height="50" width="50" />
-                      <h4> Availability of Police </h4>
+                      <h4> Availability of Police Stations </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"suburb-police-station-flag").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-police-station-flag").number ? "Yes" : "No"}
                       </div>
                     </div>
-                   
-      
+
+
       </div>
-      
+
 
                     <br/>
 

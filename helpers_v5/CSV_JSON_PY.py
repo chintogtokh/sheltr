@@ -308,103 +308,103 @@ def row_to_obj(data):
                     "year": "2016",
                 },
                 "bus-line-flag": {
-                    "number":bool(data[167]),
+                    "number":True if data[167]=="Y" else False,
                     "year": "2016",
                 },
                 "ferry-flag": {
-                    "number":bool(data[168]),
+                    "number": True if data[168]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-aged-care-residential-services-fac-flag": {
-                    "number":bool(data[646]),
+                    "number":True if data[646]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-allied-health-services-fac-flag": {
-                    "number":bool(data[656]),
+                    "number":True if data[656]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-ambulance-services-fac-flag": {
-                    "number":bool(data[654]),
+                    "number":True if data[654]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-chiropractic-and-osteopathic-services-fac-flag": {
-                    "number":bool(data[644]),
+                    "number":True if data[644]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-dental-services-fac-flag": {
-                    "number":bool(data[651]),
+                    "number":True if data[651]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-general-practice-medical-services-fac-flag": {
-                    "number":bool(data[648]),
+                    "number":True if data[648]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-hospital-fac-flag": {
-                    "number":bool(data[658]),
+                    "number":True if data[658]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-hospitals-except-psychiatric-hospitals-fac-flag": {
-                    "number":bool(data[645]),
+                    "number":True if data[645]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-med-fac-flag": {
-                    "number":bool(data[642]),
+                    "number":True if data[642]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-medical-and-other-health-care-services-fac-flag": {
-                    "number":bool(data[661]),
+                    "number":True if data[661]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-medical-services-fac-flag": {
-                    "number":bool(data[659]),
+                    "number":True if data[659]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-optometry-optical-dispensing-services-fac-flag": {
-                    "number":bool(data[652]),
+                    "number":True if data[652]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-other-allied-health-services-fac-flag": {
-                    "number":bool(data[647]),
+                    "number":True if data[647]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-other-health-care-services-fac-flag": {
-                    "number":bool(data[653]),
+                    "number":True if data[653]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-other-residential-care-services-fac-flag": {
-                    "number":bool(data[660]),
+                    "number":True if data[660]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-pathology-and-diagnostic-imaging-services-fac-flag": {
-                    "number":bool(data[643]),
+                    "number":True if data[643]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-physiotherapy-services-fac-flag": {
-                    "number":bool(data[649]),
+                    "number":True if data[649]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-police-station-flag": {
-                    "number":bool(data[682]),
+                    "number":True if data[682]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-psychiatric-hospitals-fac-flag": {
-                    "number":bool(data[657]),
+                    "number":True if data[657]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-residential-care-services-fac-flag": {
-                    "number":bool(data[655]),
+                    "number":True if data[655]=="Y" else False,
                     "year": "2016",
                 },
                 "suburb-specialist-medical-services-fac-flag": {
-                    "number":bool(data[650]),
+                    "number":True if data[650]=="Y" else False,
                     "year": "2016",
                 },
                 "train-station-flag": {
-                    "number":bool(data[166]),
+                    "number":True if data[166]=="Y" else False,
                     "year": "2016",
                 },
                 "tram-line-flag": {
-                    "number":bool(data[169]),
+                    "number":True if data[169]=="Y" else False,
                     "year": "2016",
                 },
             },
