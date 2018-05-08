@@ -33,7 +33,8 @@ rankedSuburbRouter.post('/', (req, res) => {
             ["university_distances."+uni]: true,
             rating_safety: true,
             ["language." + language]: true,
-            "stats.price-rank-in-percentile": true,
+            "stats.price-range-rank": true,
+            "stats.suburb-town-name-2016-adjusted-crime-rank" : true
 
         }
     }];
@@ -45,8 +46,8 @@ rankedSuburbRouter.post('/', (req, res) => {
     var sorter_bool = 1;
     switch(filter){
         case "affordability":
-            sorter = "stats.price-rank-in-percentile.number";
-            sorter_bool = 1;
+            sorter = "stats.price-range-rank.number";
+            sorter_bool = -1;
             break;
         case "safety":
             sorter = "stats.suburb-town-name-2016-adjusted-crime-rank.number";

@@ -224,7 +224,7 @@ class Suburb extends Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-12" style={{textAlign: 'center'}}>
-                    <h1>loading data <i class="fas fa-spinner fa-spin"></i></h1>
+                    <h1>loading data <i className="fas fa-spinner fa-spin"></i></h1>
                   </div>
                   </div>
               </div>
@@ -364,7 +364,7 @@ class Suburb extends Component {
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"offences-per-10000-population").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"offences-per-10000").number.toFixed(2)}
                       </div>
                     </div>
 
