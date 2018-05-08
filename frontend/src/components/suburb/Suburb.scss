@@ -46,9 +46,21 @@
 
             img.stat-image{
                 float: left;
+                margin-top:-7px;
                 height:50px;
                 padding:5px;
                 margin-right:10px;
+            }
+
+            .col-md-4{
+                img.stat-image{
+                    height:40px;
+                    margin: 0;
+                    margin-right: 5px;
+                    margin-left: -5px;
+                    margin-right:5px;
+                    padding:0;
+                }
             }
         }
     }

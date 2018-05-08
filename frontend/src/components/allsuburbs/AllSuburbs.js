@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import ReactDOM from 'react-dom';
+import { browseActions } from '../../actions';
 import ReactStreetview from 'react-streetview';
 import Pagination from "react-js-pagination";
 
@@ -127,8 +128,8 @@ class AllSuburbs extends Component {
 
     let params = JSON.parse(JSON.stringify(preferences));
 
-    delete params.raw_uni;
-    delete params.raw_actualLanguage;
+    // delete params.raw_uni;
+    // delete params.raw_actualLanguage;
 
     if(params.uni && params.uni.shim){
       let tmp = params.uni.shim;
@@ -142,7 +143,7 @@ class AllSuburbs extends Component {
       params.actualLanguage = tmp;
     }
 
-    fetch('/api/university/' + this.props.preferences.raw_uni.shim)
+    fetch('/api/university/' + this.props.preferences.raw_uni.shim )
     .then(response => response.json().then( data => ({
       data: data,
       status: response.status
@@ -233,6 +234,15 @@ class AllSuburbs extends Component {
               uni: this.state.uni?this.state.uni.shim:null,
               filter: this.state.filter,
             }
+            const { dispatch } = this.props;
+            dispatch(browseActions.enterPreferences({
+              distance: this.state.distance,
+              raw_actualLanguage: this.state.raw_actualLanguage,
+              raw_uni: this.state.raw_uni,
+              actualLanguage: this.state.raw_actualLanguage,
+              uni: this.state.raw_uni,
+              filter: this.state.filter,
+            }));
             this.getRankedSuburbs(params);
         }
 
