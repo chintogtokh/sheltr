@@ -6,9 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 import {stores} from './helpers';
 import { PersistGate } from 'redux-persist/integration/react';
 
-// setup fake backend
-//import { configureFakeBackend } from './helpers';
-//configureFakeBackend();
 
 ReactDOM.render(
 	<Provider store={stores.store}>

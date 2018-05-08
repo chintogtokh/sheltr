@@ -3,13 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import { browseActions } from '../../actions';
 import { connect } from 'react-redux';
-// import {debounce} from 'lodash';
-
-//images
-import detective from '../../files/detective.svg';
-import chat from '../../files/chat.svg';
-import credit_card from '../../files/credit_card.svg';
-import university from '../../files/university.svg';
+import monash from '../../files/monash.svg';
 //css
 import 'react-select/dist/react-select.css';
 import './Home.css';
@@ -51,7 +45,7 @@ class Home extends Component {
     return function(newValue) {
         if((typeof newValue !== "undefined" && newValue !== null) && name !== "actualLanguage" && name !== "uni"){
           this.setState({[name]:newValue.value});
-          if(name==="language" && newValue.value==0){
+          if(name==="language" && newValue.value===0){
             this.setState({"actualLanguage": null});
           }
         }
@@ -69,19 +63,10 @@ class Home extends Component {
     this.new = false;
 
     let params = this.state;
-    // for(var key in params){
-    //   if (params[key]==="" || params[key]===null){
-    //     delete params[key];
-    //   }
-    // }
 
-    console.log(this.state);
 
-    if(Object.keys(params).length===0 || typeof params.uni == "undefined" || params.uni == null){
-      this.mustSubmitNotification("You must input at least one preference and a university!");
-    }
-    else if((typeof params.language != "undefined" && params.language != null && params.language != "0") && (params.actualLanguage == null || typeof params.actualLanguage == "undefined" )){
-      this.mustSubmitNotification("You must input a language if you select a language preference!");
+    if(Object.keys(params).length===0 || typeof params.uni === "undefined" || params.uni === null){
+      this.mustSubmitNotification("You must input your preferences!");
     }
     else{
       const { dispatch } = this.props;
@@ -91,19 +76,11 @@ class Home extends Component {
 
   clearPreferences = function(e) {
     e.preventDefault();
-    this.setState({actualLanguage:null});
-    this.setState({language:null});
-    this.setState({crimeSafety:null});
-    this.setState({affordability:null});
+    this.setState({distance:null});
     this.setState({uni:null});
   }
 
-
-
   componentWillReceiveProps(nextProps) {
-
-
-
     if (nextProps.preferences && this.new === false) {
       this.props.history.push('/suburb');
     }
@@ -148,121 +125,76 @@ class Home extends Component {
   }
 
   render() {
-    const { crimeSafety, affordability, language, actualLanguage, uni } = this.state;
+    const { uni, distance } = this.state;
 
     return (
-      <div>
+      <div id="HomeComponent">
       <ToastContainer />
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1><span className="before-vicmap">Welcome new students!<br/>Are you coming to study in Victoria?</span></h1>
+              <h1>Welcome to Victoria, new students!</h1>
               <div className="lead">
-                Are you worried about finding a place to live? We'll help you. Just tell us your priorities.
+                You can start finding a great new place to live here!
               </div>
-              <br/>
 
               <form onSubmit={this.onSubmit}>
-              <div className="lead">
-                  <div className="lead-row">
-                  <img src={detective} alt="safety"/>
-                  <div className="input-label"> Is living in a safe suburb a priority?</div>
 
-                  <Select className = "react-select"
-                    name="crimeSafety"
-                    placeholder = "please select..."
-                    searchable = {false}
-                    value={crimeSafety}
-                    onChange={this.handleSelectChange('crimeSafety')}
-                    options={[
-                      { value: '0', label: 'Not a priority' },
-                      { value: '1',  label: 'Low priority' },
-                      { value: '4',  label: 'Neutral' },
-                      { value: '7',  label: 'Moderate priority' },
-                      { value: '10',  label: 'High priority' }
-                    ]}
-                  />
-                  </div>
-                  <div className="lead-row">
-                  <img src={credit_card} alt="affordability"/>
-                  <div className="input-label"> Is living in an affordable suburb a priority?</div>
-                  <Select className = "react-select"
-                    name="affordability"
-                    placeholder = "please select..."
-                    value={affordability}
-                    searchable = {false}
-                    onChange={this.handleSelectChange('affordability')}
-                    options={[
-                      { value: '0', label: 'Not a priority' },
-                      { value: '1',  label: 'Low priority' },
-                      { value: '4',  label: 'Neutral' },
-                      { value: '7',  label: 'Moderate priority' },
-                      { value: '10',  label: 'High priority' }
-                    ]}
-                  />
-                  </div>
-                  <div className="lead-row">
-                  <img src={chat} alt="language"/>
-                  <div className="input-label"> Is living near people speaking your language a priority?</div>
-                  <Select className = "react-select"
-                    name="language"
-                    placeholder = "please select..."
-                    searchable = {false}
-                    value={language}
-                    onChange={this.handleSelectChange('language')}
-                    options={[
-                      { value: '0', label: 'Not a priority' },
-                      { value: '1',  label: 'Low priority' },
-                      { value: '4',  label: 'Neutral' },
-                      { value: '7',  label: 'Moderate priority' },
-                      { value: '10',  label: 'High priority' }
-                    ]}
-                  />
-                  </div>
-                  { (language && language!=0) &&
-                  <div className="lead-row">
-                  <div className="fake-img">&nbsp;</div>
-                  <div className="input-label">My native language is:</div>
+              <div className="nooky">
 
-                  <Select.Async
-                  placeholder = "start typing..."
-                  name="actualLanguage"
-                  autoload = {true}
-                  className = "react-select"
-                  value={actualLanguage}
-                  valueKey="shim"
-                  labelKey="name"
-                  filterOption={() => true}
-                  onChange={this.handleSelectChange('actualLanguage')}
-                  loadOptions={this.getLanguages}
-                  backspaceRemoves={true} />
+              <div className="nooky-label-container" style={{width:'220px'}}>
+                <div className="nooky-label">
+                  I plan on studying at
+                </div>
+              </div>
 
-                  </div>
-                  }
-                  <div className="lead-row">
-                  <img src={university} alt="university"/>
-                  <div className="input-label">My preferred university or institute is:</div>
-                  <Select.Async
-                  placeholder = "start typing..."
+              <Select.Async
+                  placeholder = "enter a uni..."
                   autoload = {true}
                   name="uni"
                   filterOption={() => true}
                   className = "react-select"
                   value={uni}
+                  style={{width:'350px'}}
                   valueKey="shim"
                   labelKey="name"
                   onChange={this.handleSelectChange('uni')}
                   loadOptions={this.getUnis}
                   backspaceRemoves={true} />
-                  </div>
+
+              </div>
+                <div className="nooky">
+              <div className="nooky-label-container" style={{width:'300px'}}>
+                <div className="nooky-label">
+              and live within a distance of
+              </div>
               </div>
 
-              <br/>
+              <Select className = "react-select"
+                name="distance"
+                placeholder = "..."
+                value={distance}
+                searchable = {false}
+                style={{width:'150px'}}
+                onChange={this.handleSelectChange('distance')}
+                options={[
+                  { value: '2', label: '2km' },
+                  { value: '5', label: '5km' },
+                  { value: '10', label: '10km' },
+                  { value: '20', label: '20km' },
+                  { value: '50',  label: '50km' },
+                  { value: '100',  label: '100km' },
+                ]}
+              />
+
+              </div>
 
               <div className="find-suburbs-btn-container">
               <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>&nbsp;
               <button className="btn btn-danger btn-clear btn-lg" type="button" onClick={this.clearPreferences}> <i className="fas fa-times"></i> Clear </button>
+
               </div>
+
               </form>
           </div>
         </div>
@@ -293,13 +225,9 @@ class Home extends Component {
             </div>
             <div className="col-md-4">
                 <h2 className="featurette-heading">Who made this?</h2>
-                <div className="lead">We're four students at Monash University.</div>
-                <div className="lead">Floor 3, Building B, Monash Caulfield.</div>
-                <p className="block-of-portraits">
-                <img alt="Chintogtokh" src="images/chinto.jpg" />
-                <img alt="James" src="images/james.jpg" />
-                <img alt="Sharmeen" src="images/sharmeen.jpg" />
-                <img alt="Wanping" src="images/wanping.jpg" />
+                <div className="lead">We're a group at Monash University, and we're located at Floor 3, Building B, Monash Caulfield.</div>
+                <p className="single-image">
+                <img src={monash} alt="Monash University"/>
                 </p>
             </div>
           </div>

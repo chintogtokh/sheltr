@@ -2,37 +2,92 @@ import React, { Component } from 'react';
 import './AllSuburbs.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { ToastContainer, toast } from 'react-toastify';
+import Select from 'react-select';
+// import ReactDOM from 'react-dom';
+import { browseActions } from '../../actions';
+import ReactStreetview from 'react-streetview';
+import Pagination from "react-js-pagination";
 
 class AllSuburbs extends Component {
 
   constructor(props) {
     super(props);
-    // const { dispatch } = this.props;
     this.state = {
-      suburb_0: "",
-      suburb_1: "",
-      suburb_2: "",
-      suburb_3: "",
-      suburb_4: "",
-      suburb_5: "",
-      suburb_6: "",
-      suburb_7: "",
-      suburb_8: "",
-      suburb_9: "",
-      suburb_10: "",
-      suburb_11: "",
-      suburb_12: "",
-      suburb_13: "",
-      suburb_14: "",
-      suburb_15: ""
-    };
-  }
-
-  componentDidMount = function() {
-        document.title = "Sheltr | Recommendations";
+      suburbs : {},
+      loaded: false,
+      activePage: 1
     }
 
+    this.googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
+
+    this.getUnis = this.getUnis.bind(this);
+    this.getLanguages = this.getLanguages.bind(this);
+    this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+
+  }
+
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({activePage: pageNumber});
+  }
+
+  mustSubmitNotification = (text) => toast(text,
+      {
+        type: toast.TYPE.INFO,
+        autoClose: 5000,
+        hideProgressBar: true,
+        bodyClassName: "custom-toast"
+      });
+
+  componentDidMount = function() {
+      document.title = "Sheltr | Suggestions";
+
+      if(!(Object.keys(this.props.preferences).length === 0 && this.props.preferences.constructor === Object)){
+        this.setState(this.props.preferences);
+      }
+
+    }
+
+  getLanguages (input) {
+    if (!input) {
+      if(this.state.raw_language){
+        input = this.state.raw_language.name;
+      }
+        else{
+          return Promise.resolve({ options: [] });
+        }
+    }
+
+    return fetch(`/api/search/languages?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
+
+
+  getUnis (input) {
+    if (!input) {
+      if(this.state.raw_uni){
+        input = this.state.raw_uni.name;
+      }
+      else{
+        return Promise.resolve({ options: [] });
+      }
+    }
+
+    if(input.length<=2){
+      return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/search/universities?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
+  }
 
   getWiki = function(name,count){
 
@@ -49,14 +104,32 @@ class AllSuburbs extends Component {
           });
   }
 
+  numberToStar = function(number){
+
+    var ret=[];
+
+    var rating = Math.floor(number/10);
+
+    var i=0
+    for(i=0;i<Math.floor(rating/2);i++){
+      ret.push(<i key={i} className="fas fa-star"></i>);
+    }
+    if(rating%2!==0){
+      ret.push(<i key={i} className="fas fa-star"></i>);
+    }
+
+    return [<span key={1} className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+      </span>,<span key={2} className='actual'>{ret}</span>];
+
+  }
+
   componentWillMount() {
     let { preferences } = this.props;
 
     let params = JSON.parse(JSON.stringify(preferences));
-//    delete params;
 
-    delete params.raw_uni;
-    delete params.raw_actualLanguage;
+    // delete params.raw_uni;
+    // delete params.raw_language;
 
     if(params.uni && params.uni.shim){
       let tmp = params.uni.shim;
@@ -64,11 +137,35 @@ class AllSuburbs extends Component {
       params.uni = tmp;
     }
 
-    if(params.actualLanguage && params.actualLanguage.shim){
-      let tmp = params.actualLanguage.shim;
-      delete params.actualLanguage;
-      params.actualLanguage = tmp;
+    if(params.language && params.language.shim){
+      let tmp = params.language.shim;
+      delete params.language;
+      params.language = tmp;
     }
+
+    fetch('/api/university/' + this.props.preferences.raw_uni.shim )
+    .then(response => response.json().then( data => ({
+      data: data,
+      status: response.status
+      })
+    ))
+    .then(response => {
+      this.setState({streetViewPanoramaOptions: {
+        addressControl: false,
+        disableDefaultUI: true,
+        showRoadLabels: false,
+          position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+          pov: {heading: 100, pitch: 0},
+          zoom: 1
+      }});
+    });
+
+    this.getRankedSuburbs(params);
+  }
+
+  getRankedSuburbs = function(params){
+
+    this.setState({activePage:1});
 
     const requestOptions = {
         method: 'POST',
@@ -76,121 +173,270 @@ class AllSuburbs extends Component {
         body: JSON.stringify(params)
     };
 
-      fetch('/api/ranked_suburbs',requestOptions)
-          .then(response => response.json().then( data => ({
-              data: data,
-              status: response.status
-              })
-          ))
-          .then(response => {
-              if (response.status !== 200) {
-                  // dispatch({
-                  //     type: suburbConstants.SUBURB_NOTFOUND,
-                  // })
-                  console.log("error occured");
-              }
-              else{
+    if(params.filter === "language" && (params.language === null || typeof params.language === "undefined")){
+      return;
+    }
 
-                for (let i = 0; i < response.data.length; i++) {
-                  fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + response.data[i].name + ", Victoria")
-                    .then(response1 => response1.json().then( data => ({
-                        data: data,
-                        status: response1.status
-                        })
-                    ))
-                    .then(response1 => {
-                        if (true) {
-                          let shel = response.data[i];
-                          let wiki = response1.data;
-                          this.setState({["suburb_" + i]:
-                            <Link to={"/suburb/" + shel.shim} className="text-dark">
-                                        <div className="card mb-4 box-shadow h-md-250">
-                                        {response1.status === 200 && wiki.thumbnail &&
+    this.setState({loaded:false});
 
-                                          <div className="img-container">
-                                        <img className="card-img-top" src={wiki.thumbnail.source} alt={shel.shim} />
-                                        </div>
-                                      }
-                                      {!wiki.thumbnail &&
-
-                                          <div className="img-container-empty">
-                                          <span style={{color:'white'}}>No image available.</span>
-                                        </div>
-                                      }
-              <div className="card-body">
-                <h3 className="mb-0">
-                  {shel.name}
-                </h3>
-                <div className="mb-1 text-muted"></div>
-                {/*<p className="card-text mb-auto">
-                  {response1.status === 200?wiki.extract:shel.name + " is a suburb in Victoria."}
-
-                </p>*/}
-              </div>
-            </div>
-            </Link>
-                        });
-                        }
-                    });
-                }
-              }
+    fetch('/api/ranked_suburbs',requestOptions)
+      .then(response => response.json().then( data => ({
+          data: data,
+          status: response.status
           })
+      ))
+      .then(response => {
+          // setTimeout(function() { this.setState({loaded: true}); }.bind(this), 1000);
+          this.setState({loaded: true});
+          if (response.status !== 200) {
+              this.mustSubmitNotification("Could not fetch suburbs");
+          }
+          else{
+            this.setState({itemsCount: response.data.length});
+
+            for (let i = 0; i < response.data.length; i++) {
+              let shel = response.data[i];
+              this.setState({ suburb: { ...this.state.suburb, [i]:
+                  <Link to={"/suburb/" + shel.shim} className="suburb-link">
+                    <div className="card mb-4 box-shadow h-md-250">
+                      <img className="card-img-top" src={'http://maps.googleapis.com/maps/api/streetview?size=640x480&location=' + shel.coords.lat + "," + shel.coords.lng + '&pitch=0&sensor=false&key=' + this.googleMapsApiKey} alt={shel.name} />
+                      <div className="card-body">
+                        <h3 className="mb-0">
+                          {shel.name}
+                        </h3>
+                        <div className="card-text">
+                          <div className="star-label"> Safety </div>
+                          <div className="star-ratings">
+                            {this.numberToStar(shel.rating_safety)}
+                          </div>
+                          <br />
+                          <div className="star-label">Affordability</div>
+                          <div className="star-ratings">
+                            {this.numberToStar(shel.rating_affordability)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+              } });
+            }
+          }
+      });
   }
 
+  handleFilterChange = function(name) {
+    return function(newValue) {
+
+        var getRankedSubs = () => {
+          var params = {
+              distance: this.state.distance,
+              language: this.state.language?this.state.language.shim:null,
+              uni: this.state.uni?this.state.uni.shim:null,
+              filter: this.state.filter,
+            }
+            const { dispatch } = this.props;
+            dispatch(browseActions.enterPreferences({
+              distance: this.state.distance,
+              raw_language: this.state.raw_language,
+              raw_uni: this.state.raw_uni,
+              language: this.state.raw_language,
+              uni: this.state.raw_uni,
+              filter: this.state.filter,
+            }));
+            this.getRankedSuburbs(params);
+        }
+
+        if((typeof newValue !== "undefined" && newValue !== null) && name !== "language" && name !== "uni"){
+          this.setState({[name]:newValue.value}, getRankedSubs);
+        }
+        else if(typeof newValue !== "undefined"){
+          this.setState({[name]:newValue,["raw_"+name]:newValue}, getRankedSubs);
+        }
+        else{
+          this.setState({[name]:''}, getRankedSubs);
+        }
+
+    }.bind(this);
+  };
+
+
   render() {
+
+    const { uni, distance, filter, language } = this.state;
+
       return (
-      <div>
+      <div id="AllSuburbsComponent">
+          <ToastContainer />
           <main role="main">
+
+            {
+                this.state.suburb && this.state.streetViewPanoramaOptions &&
+                <div>
+                <div className="streetview-container">
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      backgroundColor: 'white'
+                  }}>
+                      <ReactStreetview
+                          apiKey={this.googleMapsApiKey}
+                          streetViewPanoramaOptions={this.state.streetViewPanoramaOptions}
+                      />
+                  </div>
+                </div>
+                <div className="streetview-container-after">
+                </div>
+                </div>
+              }
+
             <div className="container">
 
-              <h1>Suburbs matching your preferences</h1>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                  <li className="breadcrumb-item active" aria-current="page">Suburb Suggestions</li>
+                </ol>
+              </nav>
 
-              <p>
-              According to the analysis of our data based on your preferences, we think that the following suburbs may fit your needs.
-              </p>
+              <h1>Suburb Suggestions</h1>
+
               <div>
+                The following suburbs might fit your needs. Start drilling down using the filters!
+              </div>
 
-              <div className="row">
-                <div className="col-md-3">{this.state.suburb_0}
+              <div className="sortable-section-container">
+
+                <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    University
+                    </div>
+                  </div>
+                  <Select.Async
+                  placeholder = ""
+                  autoload = {true}
+                  name="uni"
+                  filterOption={() => true}
+                  className = "react-select"
+                  value={uni}
+                  style={{width:'200px'}}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.handleFilterChange('uni')}
+                  loadOptions={this.getUnis}
+                  backspaceRemoves={true} />
                 </div>
-                <div className="col-md-3">{this.state.suburb_1}
+
+
+                <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    Distance:
+                    </div>
+                  </div>
+                  <Select className = "react-select"
+                  name="distance"
+                  placeholder = {distance}
+                  value={distance}
+                  searchable = {false}
+                  style={{width:'150px'}}
+                  onChange={this.handleFilterChange('distance')}
+                  options={[
+                    { value: '2', label: '2km' },
+                    { value: '5', label: '5km' },
+                    { value: '10', label: '10km' },
+                    { value: '20', label: '20km' },
+                    { value: '50',  label: '50km' },
+                    { value: '100',  label: '100km' },
+                  ]}
+                />
                 </div>
-                <div className="col-md-3">{this.state.suburb_2}
+
+                <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    Sort by:
+                    </div>
+                  </div>
+                  <Select className = "react-select"
+                  name="filter"
+                  placeholder = "distance"
+                  value={filter}
+                  searchable = {false}
+                  style={{width:'150px'}}
+                  onChange={this.handleFilterChange('filter')}
+                  options={[
+                    { value: 'safety', label: 'safety' },
+                    { value: 'affordability', label: 'affordability' },
+                    { value: 'distance', label: 'distance' },
+                    { value: 'language', label: 'language' },
+                  ]}
+                />
                 </div>
-                <div className="col-md-3">{this.state.suburb_3}
+
+                { filter==="language" &&
+
+                 <div className="sortable-section">
+
+                  <div className="filter-text-container">
+                    <div className="filter-text">
+                    Language:
+                    </div>
+                  </div>
+                 <Select.Async
+                  placeholder = ""
+                  autoload = {true}
+                  name="language"
+                  filterOption={() => true}
+                  className = "react-select"
+                  value={language}
+                  style={{width:'150px'}}
+                  valueKey="shim"
+                  labelKey="name"
+                  onChange={this.handleFilterChange('language')}
+                  loadOptions={this.getLanguages}
+                  backspaceRemoves={true} />
                 </div>
+                }
+
               </div>
-              <div className="row">
-                <div className="col-md-3">{this.state.suburb_4}
+
+              {!this.state.loaded &&
+
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12" style={{textAlign: 'center'}}>
+                      <h1>loading data <i className="fas fa-spinner fa-spin"></i></h1>
+                    </div>
+                    </div>
                 </div>
-                <div className="col-md-3">{this.state.suburb_5}
-                </div>
-                <div className="col-md-3">{this.state.suburb_6}
-                </div>
-                <div className="col-md-3">{this.state.suburb_7}
-                </div>
-              </div>
-        { /*   <div className="row">
-                <div className="col-md-3">{this.state.suburb_8}
-                </div>
-                <div className="col-md-3">{this.state.suburb_9}
-                </div>
-                <div className="col-md-3">{this.state.suburb_10}
-                </div>
-                <div className="col-md-3">{this.state.suburb_11}
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-3">{this.state.suburb_12}
-                </div>
-                <div className="col-md-3">{this.state.suburb_13}
-                </div>
-                <div className="col-md-3">{this.state.suburb_14}
-                </div>
-                <div className="col-md-3">{this.state.suburb_15}
-                </div>
-              </div> */ }
-              </div>
+                }
+
+                { this.state.loaded && this.state.suburb &&
+
+                  <div>
+                  <div className="row">{[...Array(8)].map((e, i) => {
+                    return <div key={i+(this.state.activePage-1)*8} className="col-md-3">{this.state.suburb[i+(this.state.activePage-1)*8]}</div>
+                  })}</div>
+
+
+                  <Pagination
+                    activePage={this.state.activePage}
+                    prevPageText="prev"
+                    nextPageText="next"
+                    itemsCountPerPage={8}
+                    totalItemsCount={this.state.itemsCount}
+                    pageRangeDisplayed={Math.floor(this.state.itemsCount/8)}
+                    onChange={this.handlePageChange}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                  />
+
+                  </div>
+                }
             </div>
           </main>
       </div>

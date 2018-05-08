@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './Suburb.css';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { suburbActions } from '../../actions';
+import Leaflet from 'leaflet'
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
-
-import detective from '../../files/detective.svg';
-import chat from '../../files/chat.svg';
-import credit_card from '../../files/credit_card.svg';
-import university from '../../files/university.svg';
+// import ReactDOM from 'react-dom';
+import ReactStreetview from 'react-streetview';
+import uniimage from '../../files/uni.png';
+// import chat from '../../files/chat.svg';
+// import credit_card from '../../files/credit_card.svg';
+// import university from '../../files/university.svg';
 
 class Suburb extends Component {
 
@@ -20,11 +23,19 @@ class Suburb extends Component {
         'suburb': null
       }
 
-      const suburbName = props.match.params.name;
-
       this.handleSelectChange = this.handleSelectChange.bind(this);
+      this.loaded = false;
 
-  }
+      this.markerImage = new Leaflet.Icon({
+               iconUrl: uniimage,
+               iconSize:     [60, 60], // size of the icon
+               shadowSize:   [64, 64], // size of the shadow
+               iconAnchor:   [60, 60], // point of the icon which will correspond to marker's location
+               shadowAnchor: [4, 62],  // the same for the shadow
+               popupAnchor:  [-3, -76]// point from which the popup should open relative to the iconAnchor
+           })
+  };
+
 
   getStatFromArray(arr, desc) {
     return arr[desc];
@@ -41,90 +52,61 @@ class Suburb extends Component {
             })
         ))
         .then(response => {
-            if (response.status !== 200) {
-                return;
-            }
-            else{
-              let bboxArray;// = bbox(suburb.geojson);
-              let corner1;// = [bboxArray[1], bboxArray[0]];
-              let corner2;// = [bboxArray[3], bboxArray[2]];
-              let bounds;// = [corner1, corner2];
+            this.loaded = true;
 
-              // let suburb = this.state.suburb;
+            fetch('/api/university/' + this.props.preferences.raw_uni.shim)
+            .then(response => response.json().then( data => ({
+                data: data,
+                status: response.status
+                })
+            ))
+            .then(uniResponse => {
 
-              bboxArray = bbox(response.data.geojson);
-              corner1 = [bboxArray[1], bboxArray[0]];
-              corner2 = [bboxArray[3], bboxArray[2]];
-              bounds = [corner1, corner2];
+              if (uniResponse.status !== 200) {
+                  // window.location = "/404";
+              }
+              else{
+                let bboxArray;// = bbox(suburb.geojson);
+                let corner1;// = [bboxArray[1], bboxArray[0]];
+                let corner2;// = [bboxArray[3], bboxArray[2]];
+                let bounds;// = [corner1, corner2];
 
-                this.setState({suburb: response.data, bounds: bounds});
 
-                document.title = "Sheltr | " + this.state.suburb.name;
+                var tempjson = JSON.parse(JSON.stringify(response.data.geojson));
 
-                const { dispatch } = this.props;
-                dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
 
-                // if(this.state.uni_coords){
-                //   var newbounds = bounds;
-                //   console.log(newbounds);
+                tempjson.features[0].geometry.coordinates[0][0].push([uniResponse.data.coords.lng,uniResponse.data.coords.lat]);
 
-                //   if(this.state.uni_coords.lat>this.state.bounds[0][0]){
-                //     //newbounds[0][0] = this.state.uni_coords.lat;
-                //   }
-                //   if(this.state.uni_coords.lng>this.state.bounds[0][1]){
-                //     newbounds[0][1] = this.state.uni_coords.lng;
-                //   }
+                bboxArray = bbox(tempjson);
 
-                //   if(this.state.uni_coords.lat<this.state.bounds[1][0]){
-                //     newbounds[1][0] = this.state.uni_coords.lat;
-                //   }
-                //   if(this.state.uni_coords.lng<this.state.bounds[1][1]){
-                //     //newbounds[1][1] = this.state.uni_coords.lng;
-                //   }
+                corner1 = [bboxArray[1], bboxArray[0]];
+                corner2 = [bboxArray[3], bboxArray[2]];
+                bounds = [corner1, corner2];
 
-                //   console.log(newbounds);
-                //   this.setState({bounds: newbounds});
-                //   this.setState({boundsUpdated: true});
-                // }
+                  this.setState({suburb: response.data, bounds: bounds});
 
-            }
-        });
+                  document.title = "Sheltr | " + this.state.suburb.name;
 
-    fetch('/api/university/' + this.props.preferences.raw_uni.shim)
-        .then(response => response.json().then( data => ({
-            data: data,
-            status: response.status
-            })
-        ))
-        .then(response => {
-            this.setState({uni_coords: response.data.coords});
+                  const { dispatch } = this.props;
+                  dispatch(suburbActions.fetchSuburbWiki(this.state.suburb.name));
 
-            // if(this.state.bounds){
-            //       var newbounds = this.state.bounds;
-            //       console.log(newbounds);
+                  this.setState({streetViewPanoramaOptions: {
+                    addressControl: false,
+                    disableDefaultUI: true,
+                    showRoadLabels: false,
+                      position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+                      pov: {heading: 100, pitch: 0},
+                      zoom: 1
+                  }});
+              }
 
-            //       if(response.data.coords.lat>this.state.bounds[0][0]){
-            //         //newbounds[0][0] = response.data.coords.lat;
-            //       }
-            //       if(response.data.coords.lng>this.state.bounds[0][1]){
-            //         newbounds[0][1] = response.data.coords.lng;
-            //       }
+                this.setState({uni_coords: uniResponse.data.coords});
+            });
 
-            //       if(response.data.coords.lat<this.state.bounds[1][0]){
-            //         newbounds[1][0] = response.data.coords.lat;
-            //       }
-            //       if(response.data.coords.lng<this.state.bounds[1][1]){
-            //         //newbounds[1][1] = response.data.coords.lng;
-            //       }
-
-            //       console.log(newbounds);
-            //       this.setState({bounds: newbounds});
-            //       this.setState({boundsUpdated: true});
-            //     }
-
-            //this.setState({suburb: response.data, bounds: bounds});
 
         });
+
+
 
   }
 
@@ -154,71 +136,103 @@ class Suburb extends Component {
 
   numberToRanking = (num) => {
     let tmp = {     '10':  'high priority',
-                      '7':  'moderate priority',
-                      '4':  'neutral',
-                      '1':  'low priority',
-                      '0':  'not a priority'}
+                    '7':  'moderate priority',
+                    '4':  'neutral',
+                    '1':  'low priority',
+                    '0':  'not a priority'}
     return tmp[num.toString()];
   };
 
-  numberToColor = (num) => {
-    num = parseInt(num);
-    if(num>70){
-      return "badge-success";
-    }
-    else if(num>40){
-      return "badge-warning";
-    }
-    else{
-      return "badge-danger";
-    }
-  }
 
-  numberToWords = (name,num) => {
-    num = parseInt(num);
-    if(num>80){
-      switch(name){
-        case "safety": return "very safe";
-        case "affordability": return "very affordable";
-        case "language":  return "many students";
-        case "uni": return "very close";
-      }
+  numberToStar = function(number){
+
+    var ret=[];
+
+    var rating = Math.floor(number/10);
+
+    var i=0
+    for(i=0;i<Math.floor(rating/2);i++){
+      ret.push(<i key={i} className="fas fa-star"></i>);
     }
-    else if(num>60){
-      switch(name){
-        case "safety": return "safe";
-        case "affordability": return "affordable";
-        case "language":  return "some students";
-        case "uni": return "close";
-      }
+    if(rating%2!==0){
+      ret.push(<i key={i} className="fas fa-star"></i>);
     }
-    else if (num>40){
-      switch(name){
-        case "safety": return "kinda safe";
-        case "affordability": return "kinda affordable";
-        case "language":  return "few students";
-        case "uni": return "far";
-      }
-    }
-    else{
-      switch(name){
-        case "safety": return "unsafe";
-        case "affordability": return "unaffordable";
-        case "language":  return "no students";
-        case "uni": return "very far";
-      }
-    }
+
+    return [<span key={1} className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+      </span>,<span key={2} className='actual'>{ret}</span>];
+
   }
 
 
   render() {
-      const { wiki, selected_suburb, preferences} = this.props;
+      var { wiki, selected_suburb, preferences} = this.props;
+
+      if(wiki){
+        var ret = "";
+        var wikiNew = wiki.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+        for (var i = 0; i < wikiNew.length; i++) {
+          if(wikiNew[i].toLowerCase().indexOf("population")===-1){
+            ret+=wikiNew[i]+" ";
+          }
+        }
+        wiki = ret;
+      }
+
+      const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
+
+      // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
+
 
       return (
-      <div>
+      <div id="SuburbComponent">
+
           <main role="main">
-            { this.state.suburb &&
+
+            {!this.loaded &&
+
               <div className="container">
+                <div className="row">
+                  <div className="col-md-12" style={{textAlign: 'center'}}>
+                    <h1>loading data <i className="fas fa-spinner fa-spin"></i></h1>
+                  </div>
+                  </div>
+              </div>
+            }
+            { this.state.suburb &&
+
+              <div>
+
+              {
+                this.state.streetViewPanoramaOptions &&
+                <div>
+                <div className="streetview-container">
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      backgroundColor: 'white'
+                  }}>
+                      <ReactStreetview
+                          apiKey={googleMapsApiKey}
+                          streetViewPanoramaOptions={this.state.streetViewPanoramaOptions}
+                      />
+                  </div>
+                </div>
+                <div className="streetview-container-after">
+                </div>
+                </div>
+              }
+
+              <div className="container">
+
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                  <li className="breadcrumb-item"><Link to="/suburb">Suburb Suggestions</Link></li>
+                  <li className="breadcrumb-item active" aria-current="page">{this.state.suburb.name}</li>
+                </ol>
+              </nav>
+
+
 
                 <div className="row">
                   <div className="col-md-8">
@@ -245,7 +259,10 @@ class Suburb extends Component {
                   <div className="row">
                     <div className="col-md-8">
                     <p>
-                    {wiki} {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data automatically extracted from Wikipedia)</i></a>}
+                    {
+                      wiki
+                    }
+                    {wiki && <a className="wiki-link" href={"https://en.wikipedia.org/wiki/" + this.state.suburb.name + ", Victoria"}><i>(data automatically extracted from Wikipedia)</i></a>}
                     </p>
 
                     <h3>
@@ -253,22 +270,31 @@ class Suburb extends Component {
                     </h3>
                     <ul className="rating-list">
 
-                      <li> <b>Safety rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_safety)}>{this.numberToWords("safety",this.state.suburb.rating_safety)}</span> { preferences.crimeSafety &&  <span> your preference was <b>{this.numberToRanking(preferences.crimeSafety)}</b></span>}{ !preferences.crimeSafety && <span> you did not input a preference</span>}</li>
+                      <li> <div className="star-label">Safety rating</div>
+                                      <div className="star-ratings">
+                                        {this.numberToStar(this.state.suburb.rating_safety)}
+                                      </div> </li>
 
-                      <li> <b>Affordability rating</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.rating_affordability)}>{this.numberToWords("affordability",this.state.suburb.rating_affordability)}</span> { preferences.affordability && <span> your preference was <b>{this.numberToRanking(preferences.affordability)}</b></span>}{ !preferences.affordability && <span> you did not input a preference</span>}</li>
 
+                      <li> <div className="star-label">Affordability rating</div>
+                      <div className="star-ratings">
+                      {this.numberToStar(this.state.suburb.rating_affordability)}
+                      </div></li>
 
-                      {preferences.language && preferences.language!=0 &&
+                      {preferences.language && preferences.language!==0 &&
 
                         <li>
-                          <b>International student language rating</b> for <b>{preferences.raw_actualLanguage.name}</b> <span className={"badge badge-pill " + this.numberToColor(this.state.suburb.language[preferences.raw_actualLanguage.shim])}>{this.numberToWords("language",this.state.suburb.language[preferences.raw_actualLanguage.shim])}</span> your preference was
-                          <b>&nbsp;{this.numberToRanking(preferences.language)}&nbsp;</b>
+                        <div className="star-label">International student language rating for {preferences.raw_language.name}</div>
+                      <div className="star-ratings">
+                          {this.numberToStar(this.state.suburb.language[preferences.raw_language.shim])}
+                          </div>
                         </li>
 
                       }
 
                       {preferences.raw_uni &&
-                       <li> <b>University distance</b> <span className="badge badge-pill badge-info">{"approx. " + this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km distance"}</span> your university was <b>{preferences.raw_uni.name}</b></li>}
+                       <li> Distance from {preferences.raw_uni.name} is approximately {this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km"}</li>
+                     }
                     </ul>
 
                     <br/>
@@ -278,7 +304,7 @@ class Suburb extends Component {
                     <div className="stats-section">
                     <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/suburb-resident.png" alt="Population" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/team.svg" alt="Population" height="50" width="50" />
                      <h4> Population </h4>
 
                       </div>
@@ -289,41 +315,41 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/total-int-student-per-suburbt.png" alt="International student population" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/graduated.svg" alt="International student population" height="50" width="50" />
                       <h4> International student population </h4>
 
                       </div>
                       <div className="col-md-4">
                     {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}
-                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number)).toFixed(2)} %)
+                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number,10) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number),10).toFixed(2)} %)
                       </div>
                     </div>
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/offences-per-10000-population.png" alt="Crime per 10000 population" height="50" width="50" />
-                      <h4> Number of crimes per 10'000 people </h4>
+                      <img className="stat-image" src="/otherimages/prisoner.svg" alt="Crime per 10000 population" height="50" width="50" />
+                      <h4> Number of offences per 10'000 residents</h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"offences-per-10000-population").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"offences-per-10000").number.toFixed(2)}
                       </div>
                     </div>
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/suburb-most-common-expense-tier.png" alt="Average rental range" height="50" width="50" />
-                      <h4> Most common rental price range (per week) </h4>
+                      <img className="stat-image" src="/otherimages/money.svg" alt="Average rental range" height="50" width="50" />
+                      <h4> Average weekly rent paid by international students </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"suburb-most-common-expense-tier").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"vic-int-student-most-common-expense-tier").number}
                       </div>
                     </div>
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/suburb-most-int-student-lang.png" alt="Most popular language" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/planet-earth.svg" alt="Most popular language" height="50" width="50" />
                       <h4> Most popular international student language </h4>
 
                       </div>
@@ -331,17 +357,82 @@ class Suburb extends Component {
                     {this.getStatFromArray(this.state.suburb.stats,"suburb-most-int-student-lang").number}
                       </div>
                     </div>
+
+                      <div className='row'>
+                      <div className="col-md-6">
+                      <img className="stat-image" src="/otherimages/athletics.svg" alt="public transport" height="50" width="50" />
+                      <h4> Popular modes of transport </h4>
+
+                      </div>
+                      <div className="col-md-4">
+                      {this.getStatFromArray(this.state.suburb.stats,"train-station-flag").number ? <img className="stat-image" src="/otherimages/train.svg" alt="Train" title="Train" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"tram-line-flag").number ? <img className="stat-image" src="/otherimages/tram.svg" alt="Tram" title="Tram" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"bus-line-flag").number ? <img className="stat-image" src="/otherimages/school-bus.svg" alt="Bus" title="Bus" height="50" width="50" /> : ""}
+                      {this.getStatFromArray(this.state.suburb.stats,"ferry-flag").number ? <img className="stat-image" src="/otherimages/ferry.svg" alt="Ferry" title="Ferry" height="50" width="50" /> : ""}
+
+                      {!this.getStatFromArray(this.state.suburb.stats,"ferry-flag").number &&
+                      !this.getStatFromArray(this.state.suburb.stats,"tram-line-flag").number &&
+                      !this.getStatFromArray(this.state.suburb.stats,"bus-line-flag").number &&
+                      !this.getStatFromArray(this.state.suburb.stats,"train-station-flag").number
+                       ? <img className="stat-image" src="/otherimages/no.svg" alt="None" title="None" height="50" width="50" /> : ""}
+
+                      </div>
                     </div>
+
+                      <div className='row'>
+                      <div className="col-md-6">
+                      <img className="stat-image" src="/otherimages/hospital.svg" alt="Hospital" height="50" width="50" />
+                      <h4> Medical Facilities </h4>
+
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats, "aged-care-residential-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "allied-health-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "ambulance-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "chiropractic-and-osteopathic-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "dental-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "general-practice-medical-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "hospitals").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "medical-and-other-health-care-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "medical-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "no-medical-facilities-in-the-area").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "optometry-and-optical-dispensing").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "other-allied-health-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "other-residential-care-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "pathology-and-diagnostic-imaging-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "physiotherapy-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "residential-care-services").number ||
+                     this.getStatFromArray(this.state.suburb.stats, "specialist-medical-services").number ?
+                     <img className="stat-image" title="Available" src="/otherimages/yes.svg" alt="yes" height="50" width="50" /> : <img className="stat-image" title="None" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
+                      </div>
+                    </div>
+
+                     <div className='row'>
+                      <div className="col-md-6">
+                      <img className="stat-image" src="/otherimages/police.svg" alt="police" height="50" width="50" />
+                      <h4> Police Stations </h4>
+
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-police-station-flag").number ? <img className="stat-image" src="/otherimages/yes.svg" title="Available" alt="yes" height="50" width="50" /> : <img title="None" className="stat-image" src="/otherimages/no.svg" alt="yes" height="50" width="50" />}
+                      </div>
+                    </div>
+
+
+      </div>
+
 
                     <br/>
 
-                    <h3>Search for properties in this area here</h3>
+                    <h3>Search for properties</h3>
                     <div className="realestate-section">
+                    <i>Disclaimer: The following are external sites and we not affiliated in any way.</i>
+                    <br/><br/>
                     <span>
-                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img style={{height: '40px'}} src="/externallogos/domain.gif" /></a>
+                      <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img alt="Domain.com.au" style={{height: '25px'}} src="/externallogos/domain.png" /></a>
                     </span>
                     <span>
-                      <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
+                      <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img alt="Realestate.com.au" style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
                     </span>
                     </div>
                     <br/>
@@ -377,7 +468,7 @@ class Suburb extends Component {
                             />
                             <GeoJSON key={this.state.suburb.shim} data={this.state.suburb.geojson} style={this.getStyle} />
                             {this.state.uni_coords &&
-                            <Marker position={this.state.uni_coords}>
+                            <Marker position={this.state.uni_coords} icon={this.markerImage}>
                               <Popup>
                                 <span>
                                   {preferences.raw_uni.name}
@@ -391,11 +482,6 @@ class Suburb extends Component {
                   </div>
 
               </div>
-            }
-            { !this.state.suburb &&
-              <div className="container">
-                  <h1>Suburb not found :(</h1>
-                  <pre>Try another one?</pre>
               </div>
             }
           </main>

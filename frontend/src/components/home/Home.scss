@@ -1,13 +1,14 @@
-div.header-container {
+#HomeComponent{
+
+  div.header-container {
     display: block;
-    // //z-index:10;
     position: relative;
     width: 100%;
-    min-height: 500px;
     text-align: left;
     color: #fff;
-    padding-top:80px;
-    background-image: url(../../files/poly.png);
+    padding-top:200px;
+    padding-bottom:200px;
+    background-image: url(../../files/back.jpg);
     background-color: rgba(0,0,0,0.5);
     background-position: center;
     -webkit-background-size: cover;
@@ -15,14 +16,18 @@ div.header-container {
     background-size: cover;
     -o-background-size: cover;
     // background-color: rgba(0,0,0,0.5);
-    padding-bottom:50px;
 
     .header-content{
 
         .header-content-inner {
           padding: 0 20px;
+            text-align: center;
+
 
           div.lead{
+
+            font-size:1.5rem;
+            margin-bottom:25px;
 
             .lead-row{
               margin-bottom:5px;
@@ -61,9 +66,6 @@ div.header-container {
   div.header-container {
    .header-content {
       width:100%;
-      // //z-index:10;
-      // background-color: rgba(0,0,0,0.5);
-      padding-bottom:50px;
 
       .header-content-inner {
         margin-right: auto;
@@ -124,53 +126,24 @@ img.inline-logo{
     margin-top:-43px;
 }
 
-.header-content-inner input {
-    border:none;
-    color:black;
-
-    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: white;
-        opacity: 1; /* Firefox */
-    }
-
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-        color: white;
-    }
-
-    &::-ms-input-placeholder { /* Microsoft Edge */
-        color: white;
-    }
-}
-
-// .header-content-inner select {
-//     padding:0 10px;
-//     margin:0 10px;
-//     background:transparent;
+// .header-content-inner input {
+//   text-align: center;
 //     border:none;
-//     color:white;
-//     border-bottom: 3px solid white;
-//     border-bottom-style: dotted;
+//     color:black;
 
-//     option{
-//       color:white;
-//       background-color:grey;
+//     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+//         color: white;
+//         opacity: 1; /* Firefox */
 //     }
 
+//     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+//         color: white;
+//     }
 
+//     &::-ms-input-placeholder { /* Microsoft Edge */
+//         color: white;
+//     }
 // }
-
-.before-vicmap{
-    // //z-index:10;
-    position: relative;
-}
-
-.vicmap{
-    background-image: url(../../files/vicmap.svg);
-    //z-index:-1;
-    padding:35px 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 
 .home-container{
   // margin-top:-40px;
@@ -179,6 +152,10 @@ img.inline-logo{
   border-radius: 25px;
   max-width:1200px;
   padding: 40px;
+
+  .lead{
+    padding-bottom:20px;
+  }
 }
 
 .block-of-images{
@@ -215,31 +192,65 @@ img.inline-logo{
   }
 }
 
+
 .react-select{
     display: inline-block;
     font-size: inherit;
-    float:right;
     clear:both;
-    width: 300px;
     top: 0;
     color:black;
-    font-size:1.2rem;
-    margin-bottom: -0.5em;
+    cursor: pointer;
+
+    input{
+      caret-color:white!important;
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+      color:white!important;
+      padding: 0px;
+    }
+
+    .Select-input{
+      background-color:transparent!important;
+    }
+
+    .Select-control{
+      border-bottom:2px solid white !important;
+    }
 
     &.is-focused{
       .Select-control{
-        .Select-value-label{
-        color:black!important;
+        background-color:transparent !important;
+        border:none!important;
+        border-bottom:2px solid white !important;
+
+      .Select-placeholder{
+        color:transparent;
+        cursor: pointer!important;
       }
     }
     }
 
+    &.is-open{
+      .Select-control{
+        background-color:transparent !important;
+        border:none!important;
+        border-bottom:2px solid white !important;
+      }
+
+      .Select-value-label{
+        color:transparent!important;
+      }
+    }
+
     // z-index:0;
     .Select-control{
-      border:1px solid white;
       background-color:transparent;
+      box-shadow: none!important;
       color:white;
-      cursor: pointer;
+      border: none;
+      border-bottom: 2px solid white !important;
+      border-radius: 0;
 
       .Select-value-label{
         color:white!important;
@@ -248,71 +259,27 @@ img.inline-logo{
 
     .Select-placeholder{
       color:white;
+      cursor: pointer!important;
     }
 
     .Select-menu{
-      z-index:50;
-      max-height: 150px;
+      max-height:150px!important;
     }
+
+    .Select-clear{
+      color:white!important;
+    }
+
+    .Select-arrow{
+      border-color: white transparent transparent;
+    }
+
 }
 
-.pulsating-circle {
-  position: absolute;
-  transform: translateX(-50%) translateY(-50%);
-  width: 30px;
-  height: 30px;
 
-  &:before {
-    content: '';
-    position: relative;
-    display: block;
-    width: 300%;
-    height: 300%;
-    box-sizing: border-box;
-    margin-left: -100%;
-    margin-top: -100%;
-    border-radius: 45px;
-    background-color: #01a4e9;
-    animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 0 8px rgba(0,0,0,.3);
-    animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    transform: scale(.33);
-  }
-  80%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes pulse-dot {
-  0% {
-    transform: scale(.8);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(.8);
-  }
-}
 
 div.find-suburbs-btn-container{
+  margin-top:40px;
   text-align: center;
 }
 
@@ -322,4 +289,37 @@ div.find-suburbs-btn-container{
 
 .btn-clear{
   padding: 5px 10px;
+}
+
+// new
+
+.nooky{
+    font-size:150%;
+    line-height:100%;
+    margin-bottom:10px;
+
+   .nooky-label-container{
+    padding:0 10px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+
+    .nooky-label{
+      position: absolute;
+      bottom: 0;
+      height: 36px;
+      padding: 8px 5px;
+      left: 0;
+    }
+   }
+}
+
+
+.single-image{
+  text-align: center;
+  img{
+    width:60%;
+  }
+}
+
 }
