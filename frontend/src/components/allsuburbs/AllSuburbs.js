@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { browseActions } from '../../actions';
 import ReactStreetview from 'react-streetview';
 import Pagination from "react-js-pagination";
@@ -114,12 +114,12 @@ class AllSuburbs extends Component {
     for(i=0;i<Math.floor(rating/2);i++){
       ret.push(<i key={i} className="fas fa-star"></i>);
     }
-    if(rating%2!=0){
+    if(rating%2!==0){
       ret.push(<i key={i} className="fas fa-star"></i>);
     }
 
-    return [<span className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
-      </span>,<span className='actual'>{ret}</span>];
+    return [<span key={1} className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+      </span>,<span key={2} className='actual'>{ret}</span>];
 
   }
 
@@ -186,8 +186,8 @@ class AllSuburbs extends Component {
           })
       ))
       .then(response => {
-          var _thisOne = this;
-          setTimeout(function() { this.setState({loaded: true}); }.bind(this), 1000);
+          // setTimeout(function() { this.setState({loaded: true}); }.bind(this), 1000);
+          this.setState({loaded: true});
           if (response.status !== 200) {
               this.mustSubmitNotification("Could not fetch suburbs");
           }

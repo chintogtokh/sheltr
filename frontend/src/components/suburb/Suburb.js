@@ -7,7 +7,7 @@ import Leaflet from 'leaflet'
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
 import Select from 'react-select';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import ReactStreetview from 'react-streetview';
 import uniimage from '../../files/uni.png';
 // import chat from '../../files/chat.svg';
@@ -154,12 +154,12 @@ class Suburb extends Component {
     for(i=0;i<Math.floor(rating/2);i++){
       ret.push(<i key={i} className="fas fa-star"></i>);
     }
-    if(rating%2!=0){
+    if(rating%2!==0){
       ret.push(<i key={i} className="fas fa-star"></i>);
     }
 
-    return [<span className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
-      </span>,<span className='actual'>{ret}</span>];
+    return [<span key={1} className="empty"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+      </span>,<span key={2} className='actual'>{ret}</span>];
 
   }
 
