@@ -336,7 +336,7 @@ class Suburb extends Component {
                     <div className="stats-section">
                     <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/suburb-resident.png" alt="Population" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/team.svg" alt="Population" height="50" width="50" />
                      <h4> Population </h4>
 
                       </div>
@@ -347,7 +347,7 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/total-int-student-per-suburbt.png" alt="International student population" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/graduated.svg" alt="International student population" height="50" width="50" />
                       <h4> International student population </h4>
 
                       </div>
@@ -359,8 +359,8 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/offences-per-10000-population.png" alt="Crime per 10000 population" height="50" width="50" />
-                      <h4> Number of crimes per 10'000 people </h4>
+                      <img className="stat-image" src="/otherimages/prisnor.svg" alt="Crime per 10000 population" height="50" width="50" />
+                      <h4> Number of offences </h4>
 
                       </div>
                       <div className="col-md-4">
@@ -370,18 +370,18 @@ class Suburb extends Component {
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/suburb-most-common-expense-tier.png" alt="Average rental range" height="50" width="50" />
-                      <h4> Most common rental price range (per week) </h4>
+                      <img className="stat-image" src="/otherimages/money.svg" alt="Average rental range" height="50" width="50" />
+                      <h4> Average weekly rent paid by an International student </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"suburb-most-common-expense-tier").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"vic-int-student-most-common-expense-tier").number}
                       </div>
                     </div>
 
                        <div className='row'>
                       <div className="col-md-6">
-                      <img className="stat-image" src="/otherimages/suburb-most-int-student-lang.png" alt="Most popular language" height="50" width="50" />
+                      <img className="stat-image" src="/otherimages/planet-earth (1).svg" alt="Most popular language" height="50" width="50" />
                       <h4> Most popular international student language </h4>
 
                       </div>
@@ -389,7 +389,43 @@ class Suburb extends Component {
                     {this.getStatFromArray(this.state.suburb.stats,"suburb-most-int-student-lang").number}
                       </div>
                     </div>
+      
+                      <div className='row'>
+                      <div className="col-md-6">
+                      <img className="stat-image" src="/otherimages/train.svg" alt="public transport" height="50" width="50" />
+                      <h4> Available public transport </h4>
+
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"most-common-transport-method").number}
+                      </div>
                     </div>
+                      
+                      <div className='row'>
+                      <div className="col-md-6">
+                      <img className="stat-image" src="/otherimages/hospital.svg" alt="Hospital" height="50" width="50" />
+                      <h4> Availability of Medical facility </h4>
+
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-med-fac-flag").number}
+                      </div>
+                    </div>
+      
+                     <div className='row'>
+                      <div className="col-md-6">
+                      <img className="stat-image" src="/otherimages/police.svg" alt="police" height="50" width="50" />
+                      <h4> Availability of Police </h4>
+
+                      </div>
+                      <div className="col-md-4">
+                    {this.getStatFromArray(this.state.suburb.stats,"suburb-police-station-flag").number}
+                      </div>
+                    </div>
+                   
+      
+      </div>
+      
 
                     <br/>
 
