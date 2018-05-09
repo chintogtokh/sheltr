@@ -149,7 +149,7 @@ class Home extends Component {
               </div>
 
               <Select.Async
-                  placeholder = "enter a uni..."
+                  placeholder = "..."
                   autoload = {true}
                   name="uni"
                   filterOption={() => true}
@@ -158,6 +158,7 @@ class Home extends Component {
                   style={{width:'350px'}}
                   valueKey="shim"
                   labelKey="name"
+                  arrowRenderer={function () {return (<span></span> ); } }
                   onChange={this.handleSelectChange('uni')}
                   loadOptions={this.getUnis}
                   backspaceRemoves={true} />
@@ -175,6 +176,7 @@ class Home extends Component {
                 placeholder = "..."
                 value={distance}
                 searchable = {false}
+                arrowRenderer={function () {return (<span></span> ); } }
                 style={{width:'150px'}}
                 onChange={this.handleSelectChange('distance')}
                 options={[

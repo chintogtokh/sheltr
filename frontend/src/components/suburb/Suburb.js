@@ -448,32 +448,21 @@ class Suburb extends Component {
                     <div className="realestate-section">
                     <i>Disclaimer: The following are external sites and we not affiliated in any way.</i>
                     <br/><br/>
-                    <span>
+                    <button className="btn btn-light">
                       <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img alt="Domain.com.au" style={{height: '25px'}} src="/externallogos/domain.png" /></a>
-                    </span>
-                    <span>
+                      &nbsp;
+                      <i className="fas fa-external-link-alt"></i>
+                    </button>
+                    <button className="btn btn-light">
                       <a target="_blank" href={"https://www.realestate.com.au/rent/in-" + this.state.suburb.name.toLowerCase() + ",+vic/list-1"}><img alt="Realestate.com.au" style={{height:"40px"}} src="/externallogos/realestate.png" /></a>
-                    </span>
+                      &nbsp;
+                      <i className="fas fa-external-link-alt"></i>
+                    </button>
                     </div>
                     <br/>
 
 
-                    {/*
-                      <div className="media">
-                        <img className="mr-3" src="/images/suburb_icons/teamwork.png" alt="Population" />
-                        <div className="media-body">
-                          <h5 className="mt-0">Population</h5>
-                          {suburb.population}
-                        </div>
-                      </div>
 
-                      <div className="media">
-                        <img className="mr-3" src="/images/suburb_icons/savings.png" alt="Population" />
-                        <div className="media-body">
-                          <h5 className="mt-0">Rent</h5>
-                          {suburb.average_rental}
-                        </div>
-                      </div> */}
                     </div>
                     <div className="col-md-4">
 

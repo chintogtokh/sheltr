@@ -1886,926 +1886,236 @@ def row_to_obj(data):
 
             },
             "university_distances": {
-                "aapoly-melbourne-campus": {
-                    "number":float(data[171]),
-                    "year": "2016",
-                },
-                "academia-international-melbourne-campus": {
-                    "number":float(data[172]),
-                    "year": "2016",
-                },
-                "acumen-institute-of-further-education-cbd-campus": {
-                    "number":float(data[173]),
-                    "year": "2016",
-                },
-                "acumen-institute-of-further-education-richmond-campus": {
-                    "number":float(data[174]),
-                    "year": "2016",
-                },
-                "agb-training-geelong-campus": {
-                    "number":float(data[175]),
-                    "year": "2016",
-                },
-                "alacc-health-college-australia": {
-                    "number":float(data[176]),
-                    "year": "2016",
-                },
-                "alfred-deakin-college-(mibt)-waurn-ponds-campus": {
-                    "number":float(data[177]),
-                    "year": "2016",
-                },
-                "altec-college-melbourne-campus": {
-                    "number":float(data[178]),
-                    "year": "2016",
-                },
-                "angad-australian-institute-of-technology-la-trobe-st-campus": {
-                    "number":float(data[179]),
-                    "year": "2016",
-                },
-                "aoi-institute": {
-                    "number":float(data[180]),
-                    "year": "2016",
-                },
-                "ashton-college-footscray-campus": {
-                    "number":float(data[181]),
-                    "year": "2016",
-                },
-                "ashton-college-hallam-campus": {
-                    "number":float(data[182]),
-                    "year": "2016",
-                },
-                "ashton-college-hospitality-campus": {
-                    "number":float(data[183]),
-                    "year": "2016",
-                },
-                "ashton-college-northcote-campus": {
-                    "number":float(data[184]),
-                    "year": "2016",
-                },
-                "australian-academy-of-fashion-design": {
-                    "number":float(data[185]),
-                    "year": "2016",
-                },
-                "australian-careers-education-donald-street-campus-(aurora-building)": {
-                    "number":float(data[186]),
-                    "year": "2016",
-                },
-                "australian-careers-education-victoria-street-campus": {
-                    "number":float(data[187]),
-                    "year": "2016",
-                },
-                "australian-catholic-univeristy-melbourne-campus": {
-                    "number":float(data[188]),
-                    "year": "2016",
-                },
-                "australian-catholic-university-ballarat-campus": {
-                    "number":float(data[189]),
-                    "year": "2016",
-                },
-                "australian-centre-of-further-education": {
-                    "number":float(data[190]),
-                    "year": "2016",
-                },
-                "australian-college-of-applied-psychology-acap---melbourne-campus": {
-                    "number":float(data[191]),
-                    "year": "2016",
-                },
-                "australian-college-of-sport-basketball-melbourne-campus": {
-                    "number":float(data[192]),
-                    "year": "2016",
-                },
-                "australian-college-of-theology": {
-                    "number":float(data[193]),
-                    "year": "2016",
-                },
-                "australian-college-of-trade-thornbury-campus": {
-                    "number":float(data[194]),
-                    "year": "2016",
-                },
-                "australian-education-academy-10-blissington-street-springvale": {
-                    "number":float(data[195]),
-                    "year": "2016",
-                },
-                "australian-institute-of-technical-training-(aitt)-melbourne-campus": {
-                    "number":float(data[196]),
-                    "year": "2016",
-                },
-                "australian-institute-of-trades-institute-of-hotel-management-australia": {
-                    "number":float(data[197]),
-                    "year": "2016",
-                },
-                "australian-institute-of-translation-interpretation-(aiti)-melbourne-campus": {
-                    "number":float(data[198]),
-                    "year": "2016",
-                },
-                "australian-it-hospitality-institute-footscray-campus": {
-                    "number":float(data[199]),
-                    "year": "2016",
-                },
-                "australian-national-airline-college": {
-                    "number":float(data[200]),
-                    "year": "2016",
-                },
-                "australian-national-college-franklin-street-campus": {
-                    "number":float(data[201]),
-                    "year": "2016",
-                },
-                "australian-national-institute-of-business-technology-(anibt)-melbourne-campus": {
-                    "number":float(data[202]),
-                    "year": "2016",
-                },
-                "australian-pacific-college-melbourne-campus": {
-                    "number":float(data[203]),
-                    "year": "2016",
-                },
-                "australian-study-link-institute": {
-                    "number":float(data[204]),
-                    "year": "2016",
-                },
-                "aveta---australian-vocational-education-training-academy": {
-                    "number":float(data[205]),
-                    "year": "2016",
-                },
-                "barkly-international-college-city-campus": {
-                    "number":float(data[206]),
-                    "year": "2016",
-                },
-                "barkly-international-college-north-melbourne-campus-automotive-workshop": {
-                    "number":float(data[207]),
-                    "year": "2016",
-                },
-                "baxter-institute-automotive-bakery-campus": {
-                    "number":float(data[208]),
-                    "year": "2016",
-                },
-                "baxter-institute-fabrication-campus": {
-                    "number":float(data[209]),
-                    "year": "2016",
-                },
-                "baxter-institute-hairdressing-and-beauty-campus-(flinders-street)": {
-                    "number":float(data[210]),
-                    "year": "2016",
-                },
-                "beaconhills-college": {
-                    "number":float(data[211]),
-                    "year": "2016",
-                },
-                "bendigo-tafe-bendigo": {
-                    "number":float(data[212]),
-                    "year": "2016",
-                },
-                "bendigo-tafe-and-kangan-institute-broadmeadows-campus": {
-                    "number":float(data[213]),
-                    "year": "2016",
-                },
-                "biba-academy-swantson-street-campus": {
-                    "number":float(data[214]),
-                    "year": "2016",
-                },
-                "box-hill-institute-city-campus": {
-                    "number":float(data[215]),
-                    "year": "2016",
-                },
-                "box-hill-institute": {
-                    "number":float(data[216]),
-                    "year": "2016",
-                },
-                "brighton-institute-of-technology": {
-                    "number":float(data[217]),
-                    "year": "2016",
-                },
-                "catholic-theological-college-(ctc)-melbourne-college-of-divinity---east-melbourne-campus": {
-                    "number":float(data[218]),
-                    "year": "2016",
-                },
-                "central-australian-college-(cac)-melbourne-campus": {
-                    "number":float(data[219]),
-                    "year": "2016",
-                },
-                "central-melbourne-institute-(cmi)-city-campus": {
-                    "number":float(data[220]),
-                    "year": "2016",
-                },
-                "central-melbourne-institute": {
-                    "number":float(data[221]),
-                    "year": "2016",
-                },
-                "central-queensland-university-city-campus": {
-                    "number":float(data[222]),
-                    "year": "2016",
-                },
-                "charles-sturt-university-study-centres-melbourne": {
-                    "number":float(data[223]),
-                    "year": "2016",
-                },
-                "chisholm-institue-chisholm-at-331": {
-                    "number":float(data[224]),
-                    "year": "2016",
-                },
-                "chisholm-institute-bass-coast": {
-                    "number":float(data[225]),
-                    "year": "2016",
-                },
-                "chisholm-institute-cranbourne-campus": {
-                    "number":float(data[226]),
-                    "year": "2016",
-                },
-                "chisholm-institute-dandenong-campus": {
-                    "number":float(data[227]),
-                    "year": "2016",
-                },
-                "chisholm-institute-flinders-lane-campus": {
-                    "number":float(data[228]),
-                    "year": "2016",
-                },
-                "chisholm-institute-melbourne-city-campus": {
-                    "number":float(data[229]),
-                    "year": "2016",
-                },
-                "collarts---australian-college-of-the-arts": {
-                    "number":float(data[230]),
-                    "year": "2016",
-                },
-                "dalton-college": {
-                    "number":float(data[231]),
-                    "year": "2016",
-                },
-                "dance-factory": {
-                    "number":float(data[232]),
-                    "year": "2016",
-                },
-                "deakin-college-(mibt)-burwood-campus": {
-                    "number":float(data[233]),
-                    "year": "2016",
-                },
-                "deakin-university-geelong-waterfront-campus": {
-                    "number":float(data[234]),
-                    "year": "2016",
-                },
-                "deakin-university-warrnambool-campus": {
-                    "number":float(data[235]),
-                    "year": "2016",
-                },
-                "deakin-university-waurn-ponds-campus": {
-                    "number":float(data[236]),
-                    "year": "2016",
-                },
-                "della-international-college-city-campus": {
-                    "number":float(data[237]),
-                    "year": "2016",
-                },
-                "della-international-college-sunshine-campus": {
-                    "number":float(data[238]),
-                    "year": "2016",
-                },
-                "department-of-education-and-training-victoria": {
-                    "number":float(data[239]),
-                    "year": "2016",
-                },
-                "east-west-college-of-natural-therapies": {
-                    "number":float(data[240]),
-                    "year": "2016",
-                },
-                "education-access-australia": {
-                    "number":float(data[241]),
-                    "year": "2016",
-                },
-                "education-training-employment-australia-etea": {
-                    "number":float(data[242]),
-                    "year": "2016",
-                },
-                "elite-training-institute": {
-                    "number":float(data[243]),
-                    "year": "2016",
-                },
-                "elly-lukas-beauty-therapy-college": {
-                    "number":float(data[244]),
-                    "year": "2016",
-                },
-                "elsis-melbourne-campus": {
-                    "number":float(data[245]),
-                    "year": "2016",
-                },
-                "endeavour-college-of-natural-health-melbourne-campus": {
-                    "number":float(data[246]),
-                    "year": "2016",
-                },
-                "everest-institute-of-education": {
-                    "number":float(data[247]),
-                    "year": "2016",
-                },
-                "explore-english": {
-                    "number":float(data[248]),
-                    "year": "2016",
-                },
-                "federation-university-ballarat-campus": {
-                    "number":float(data[249]),
-                    "year": "2016",
-                },
-                "federation-university-gippsland-campus": {
-                    "number":float(data[250]),
-                    "year": "2016",
-                },
-                "federation-university-wimmera-campus": {
-                    "number":float(data[251]),
-                    "year": "2016",
-                },
-                "federation-university-berwick-campus": {
-                    "number":float(data[306]),
-                    "year": "2016",
-                },
-                "flinders-international-college": {
-                    "number":float(data[252]),
-                    "year": "2016",
-                },
-                "fusion-enlgish-melbourne-campus": {
-                    "number":float(data[253]),
-                    "year": "2016",
-                },
-                "global-business-college-of-australia": {
-                    "number":float(data[254]),
-                    "year": "2016",
-                },
-                "gordon-institute-of-tafe-east-geelong-campus": {
-                    "number":float(data[255]),
-                    "year": "2016",
-                },
-                "gordon-institute-of-tafe-east-geelong-elicos-campus": {
-                    "number":float(data[256]),
-                    "year": "2016",
-                },
-                "greenwich-english-college-melbourne": {
-                    "number":float(data[257]),
-                    "year": "2016",
-                },
-                "harvest-bible-college": {
-                    "number":float(data[258]),
-                    "year": "2016",
-                },
-                "hays-international-college": {
-                    "number":float(data[259]),
-                    "year": "2016",
-                },
-                "heading-out-academy": {
-                    "number":float(data[260]),
-                    "year": "2016",
-                },
-                "headmasters-advanced-academy-of-training": {
-                    "number":float(data[261]),
-                    "year": "2016",
-                },
-                "holmesglen-holmesglen-institute-chadstone-campus": {
-                    "number":float(data[262]),
-                    "year": "2016",
-                },
-                "holmesglen-holmesglen-institute-city-campus": {
-                    "number":float(data[263]),
-                    "year": "2016",
-                },
-                "holmesglen-holmesglen-institute-waverley-campus": {
-                    "number":float(data[264]),
-                    "year": "2016",
-                },
-                "holmesglen-institute-holmesglen-moorabbin-campus": {
-                    "number":float(data[265]),
-                    "year": "2016",
-                },
-                "hospitality-management-institute-of-australia": {
-                    "number":float(data[266]),
-                    "year": "2016",
-                },
-                "impact-english-college-melbourne-campus": {
-                    "number":float(data[267]),
-                    "year": "2016",
-                },
-                "imperial-college-of-technology-and-management": {
-                    "number":float(data[268]),
-                    "year": "2016",
-                },
-                "institute-of-health-and-nursing-australia": {
-                    "number":float(data[269]),
-                    "year": "2016",
-                },
-                "institute-of-tertiary-and-higher-education-australia-(ithea)": {
-                    "number":float(data[270]),
-                    "year": "2016",
-                },
-                "inus-australia-education-and-training": {
-                    "number":float(data[271]),
-                    "year": "2016",
-                },
-                "jmc-academy": {
-                    "number":float(data[272]),
-                    "year": "2016",
-                },
-                "job-training-institute-dandenong-campus": {
-                    "number":float(data[273]),
-                    "year": "2016",
-                },
-                "kangan-batman-institute-of-tafe-docklands": {
-                    "number":float(data[274]),
-                    "year": "2016",
-                },
-                "kangan-batman-institute-of-tafe-richmond": {
-                    "number":float(data[275]),
-                    "year": "2016",
-                },
-                "kangan-institute-moonee-ponds-campus": {
-                    "number":float(data[276]),
-                    "year": "2016",
-                },
-                "kaplan-business-school": {
-                    "number":float(data[277]),
-                    "year": "2016",
-                },
-                "la-trobe-bundoora-campus": {
-                    "number":float(data[278]),
-                    "year": "2016",
-                },
-                "la-trobe-university-albury-wodonga-campus": {
-                    "number":float(data[279]),
-                    "year": "2016",
-                },
-                "la-trobe-university-bendigo-campus": {
-                    "number":float(data[280]),
-                    "year": "2016",
-                },
-                "la-trobe-university-city-campus-(collins-street)-city-campus-(collins-street)": {
-                    "number":float(data[281]),
-                    "year": "2016",
-                },
-                "la-trobe-university-mildura-campus": {
-                    "number":float(data[282]),
-                    "year": "2016",
-                },
-                "la-trobe-university-shepparton-campus": {
-                    "number":float(data[283]),
-                    "year": "2016",
-                },
-                "latrobe-college-of-art-and-design": {
-                    "number":float(data[284]),
-                    "year": "2016",
-                },
-                "lawson-college-australia": {
-                    "number":float(data[285]),
-                    "year": "2016",
-                },
-                "lonsdale-institute-eurocentres-melbourne": {
-                    "number":float(data[286]),
-                    "year": "2016",
-                },
-                "marcus-oldham-college": {
-                    "number":float(data[287]),
-                    "year": "2016",
-                },
-                "megt-institute-melbourne-campus": {
-                    "number":float(data[288]),
-                    "year": "2016",
-                },
-                "melbourne-college-of-hair-and-beauty": {
-                    "number":float(data[289]),
-                    "year": "2016",
-                },
-                "melbourne-flight-training": {
-                    "number":float(data[290]),
-                    "year": "2016",
-                },
-                "melbourne-institute-of-technology-(federation-university)-melbourne-campus": {
-                    "number":float(data[291]),
-                    "year": "2016",
-                },
-                "melbourne-polytechnic-brunswick-campus": {
-                    "number":float(data[292]),
-                    "year": "2016",
-                },
-                "melbourne-polytechnic-epping-campus": {
-                    "number":float(data[293]),
-                    "year": "2016",
-                },
-                "melbourne-polytechnic-fairfield-campus": {
-                    "number":float(data[294]),
-                    "year": "2016",
-                },
-                "melbourne-polytechnic-heidelberg-campus": {
-                    "number":float(data[295]),
-                    "year": "2016",
-                },
-                "melbourne-polytechnic-preston-campus": {
-                    "number":float(data[296]),
-                    "year": "2016",
-                },
-                "melbourne-polytechnic-preston-tafe-campus": {
-                    "number":float(data[297]),
-                    "year": "2016",
-                },
-                "melbourne-rudolf-steiner-seminar": {
-                    "number":float(data[298]),
-                    "year": "2016",
-                },
-                "melbourne-school-of-theology": {
-                    "number":float(data[299]),
-                    "year": "2016",
-                },
-                "melbourne-university-hawthorn-english-language-centre": {
-                    "number":float(data[300]),
-                    "year": "2016",
-                },
-                "melbourne-university-trinity-college": {
-                    "number":float(data[301]),
-                    "year": "2016",
-                },
-                "menzies-institute-of-technology-adderley-campus": {
-                    "number":float(data[302]),
-                    "year": "2016",
-                },
-                "menzies-institute-of-technology-batman-campus": {
-                    "number":float(data[303]),
-                    "year": "2016",
-                },
-                "menzies-institute-of-technology-spencer-campus": {
-                    "number":float(data[304]),
-                    "year": "2016",
-                },
-                "monash-college-monash-university-english-language-centre": {
-                    "number":float(data[305]),
-                    "year": "2016",
-                },
-                "monash-international-peninsula-campus": {
-                    "number":float(data[307]),
-                    "year": "2016",
-                },
-                "monash-university-caulfield-campus": {
-                    "number":float(data[308]),
-                    "year": "2016",
-                },
-                "monash-university-city-campus": {
-                    "number":float(data[309]),
-                    "year": "2016",
-                },
-                "monash-university-clayton-campus": {
-                    "number":float(data[310]),
-                    "year": "2016",
-                },
-                "monash-university-parkville-campus-(manning-building)": {
-                    "number":float(data[311]),
-                    "year": "2016",
-                },
-                "monash-university-english-language-centre-monash-college-city-campus": {
-                    "number":float(data[312]),
-                    "year": "2016",
-                },
-                "moorabbin-flying-services": {
-                    "number":float(data[313]),
-                    "year": "2016",
-                },
-                "national-theatre-(drama-ballet-school)": {
-                    "number":float(data[314]),
-                    "year": "2016",
-                },
-                "navitas-college-of-public-safety-(ncps)": {
-                    "number":float(data[315]),
-                    "year": "2016",
-                },
-                "north-melbourne-college": {
-                    "number":float(data[316]),
-                    "year": "2016",
-                },
-                "nova-institute-of-technology": {
-                    "number":float(data[317]),
-                    "year": "2016",
-                },
-                "oceania-polytechnic-institute-of-education-(opie)": {
-                    "number":float(data[318]),
-                    "year": "2016",
-                },
-                "orange-international-college": {
-                    "number":float(data[319]),
-                    "year": "2016",
-                },
-                "ozford-college": {
-                    "number":float(data[320]),
-                    "year": "2016",
-                },
-                "ozford-college-of-busines": {
-                    "number":float(data[321]),
-                    "year": "2016",
-                },
-                "ozford-college-of-business": {
-                    "number":float(data[322]),
-                    "year": "2016",
-                },
-                "pax-institute-of-education": {
-                    "number":float(data[323]),
-                    "year": "2016",
-                },
-                "pearson-aviation-essendon-airport": {
-                    "number":float(data[324]),
-                    "year": "2016",
-                },
-                "photography-studies-college-(psc)-melbourne-campus": {
-                    "number":float(data[325]),
-                    "year": "2016",
-                },
-                "pilgrim-theological-college": {
-                    "number":float(data[326]),
-                    "year": "2016",
-                },
-                "planetshakers-college": {
-                    "number":float(data[327]),
-                    "year": "2016",
-                },
-                "presbyterian-theological-college-box-hill-campus": {
-                    "number":float(data[328]),
-                    "year": "2016",
-                },
-                "rabbinical-college-of-australia-and-n-z": {
-                    "number":float(data[329]),
-                    "year": "2016",
-                },
-                "rc-(rhodes-college)": {
-                    "number":float(data[330]),
-                    "year": "2016",
-                },
-                "reformed-theological-college-geelong-campus": {
-                    "number":float(data[331]),
-                    "year": "2016",
-                },
-                "ridley-college-parkville-campus": {
-                    "number":float(data[332]),
-                    "year": "2016",
-                },
-                "rmit-english-worldwide": {
-                    "number":float(data[333]),
-                    "year": "2016",
-                },
-                "rmit-univeristy-brunswick-campus": {
-                    "number":float(data[334]),
-                    "year": "2016",
-                },
-                "rmit-university-(rmit)-city-campus": {
-                    "number":float(data[335]),
-                    "year": "2016",
-                },
-                "rmit-university-bundoora-campus": {
-                    "number":float(data[336]),
-                    "year": "2016",
-                },
-                "rmit-university-point-cook-campus": {
-                    "number":float(data[337]),
-                    "year": "2016",
-                },
-                "royal-gurkhas-institute-of-technology-(rgit)-australia-gurkhas-institute-of-hospitality-management": {
-                    "number":float(data[338]),
-                    "year": "2016",
-                },
-                "royal-gurkhas-institute-of-technology-australia-(rgit)": {
-                    "number":float(data[339]),
-                    "year": "2016",
-                },
-                "royal-victorian-aero-club": {
-                    "number":float(data[340]),
-                    "year": "2016",
-                },
-                "sae-institute-qantm-college-melbourne-campus": {
-                    "number":float(data[341]),
-                    "year": "2016",
-                },
-                "school-for-f-m-alexander-studies": {
-                    "number":float(data[342]),
-                    "year": "2016",
-                },
-                "south-australian-college-of-english-(sace)-melbourne-college-of-english": {
-                    "number":float(data[343]),
-                    "year": "2016",
-                },
-                "south-pacific-institute-(spi)-melbourne-campus": {
-                    "number":float(data[344]),
-                    "year": "2016",
-                },
-                "southern-cross-education-institute-(scei)-second-campus": {
-                    "number":float(data[345]),
-                    "year": "2016",
-                },
-                "southern-cross-education-institute-(scei)-third-campus": {
-                    "number":float(data[346]),
-                    "year": "2016",
-                },
-                "southern-school-of-natural-therapies": {
-                    "number":float(data[347]),
-                    "year": "2016",
-                },
-                "st-aerospace-academy-(australia)-pty-ltd-2-bowral-court-mitchell-park": {
-                    "number":float(data[348]),
-                    "year": "2016",
-                },
-                "st-peter-institute-bourke-street-campus": {
-                    "number":float(data[349]),
-                    "year": "2016",
-                },
-                "st-peter-institute-little-collins-campus": {
-                    "number":float(data[350]),
-                    "year": "2016",
-                },
-                "stott's-colleges-(front-cooking-school---carlton-campus)---vet": {
-                    "number":float(data[351]),
-                    "year": "2016",
-                },
-                "stott's-colleges-box-hill-campus": {
-                    "number":float(data[352]),
-                    "year": "2016",
-                },
-                "stott's-colleges-melbourne-campus": {
-                    "number":float(data[353]),
-                    "year": "2016",
-                },
-                "strathfield-college-melbourne-campus": {
-                    "number":float(data[354]),
-                    "year": "2016",
-                },
-                "sunraysia-institute-of-tafe-mildura-campus": {
-                    "number":float(data[355]),
-                    "year": "2016",
-                },
-                "sunshine-college-of-management": {
-                    "number":float(data[356]),
-                    "year": "2016",
-                },
-                "swinburne-university-of-technology-croydon-campus": {
-                    "number":float(data[357]),
-                    "year": "2016",
-                },
-                "swinburne-university-of-technology-wantirna-campus": {
-                    "number":float(data[358]),
-                    "year": "2016",
-                },
-                "swinburne-university-of-technology-hawthorn-campus": {
-                    "number":float(data[359]),
-                    "year": "2016",
-                },
-                "technical-education-development-institute": {
-                    "number":float(data[360]),
-                    "year": "2016",
-                },
-                "technical-institute-of-victoria": {
-                    "number":float(data[361]),
-                    "year": "2016",
-                },
-                "the-university-of-melbourne-southbank-campus": {
-                    "number":float(data[362]),
-                    "year": "2016",
-                },
-                "the-academy-of-interactive-entertainment-melbourne-campus": {
-                    "number":float(data[363]),
-                    "year": "2016",
-                },
-                "the-australian-ballet-school": {
-                    "number":float(data[364]),
-                    "year": "2016",
-                },
-                "the-australian-conservatoire-of-ballet-melbourne-campus": {
-                    "number":float(data[365]),
-                    "year": "2016",
-                },
-                "the-university-of-melbourne-burnley-campus": {
-                    "number":float(data[366]),
-                    "year": "2016",
-                },
-                "the-university-of-melbourne": {
-                    "number":float(data[367]),
-                    "year": "2016",
-                },
-                "the-university-of-melbourne-werribee-campus": {
-                    "number":float(data[368]),
-                    "year": "2016",
-                },
-                "tmg-college": {
-                    "number":float(data[369]),
-                    "year": "2016",
-                },
-                "torrens-university-fitzroy-campus": {
-                    "number":float(data[370]),
-                    "year": "2016",
-                },
-                "torrens-university-flinders-st-campus": {
-                    "number":float(data[371]),
-                    "year": "2016",
-                },
-                "trinity-college-theological-school": {
-                    "number":float(data[372]),
-                    "year": "2016",
-                },
-                "turner-english-box-hill-campus": {
-                    "number":float(data[373]),
-                    "year": "2016",
-                },
-                "turner-english-camberwell-campus": {
-                    "number":float(data[374]),
-                    "year": "2016",
-                },
-                "turner-english-dandenong-campus": {
-                    "number":float(data[375]),
-                    "year": "2016",
-                },
-                "turner-english-melbourne-cbd-campus": {
-                    "number":float(data[376]),
-                    "year": "2016",
-                },
-                "univeristy-of-divinity-whitley-college": {
-                    "number":float(data[377]),
-                    "year": "2016",
-                },
-                "universal-institute-of-technology": {
-                    "number":float(data[378]),
-                    "year": "2016",
-                },
-                "university-of-canberra-uc-melbourne---chadstone-campus": {
-                    "number":float(data[379]),
-                    "year": "2016",
-                },
-                "university-of-divinity-stirling-college": {
-                    "number":float(data[380]),
-                    "year": "2016",
-                },
-                "university-of-divinity-yarra-theological-union": {
-                    "number":float(data[381]),
-                    "year": "2016",
-                },
-                "victoria-university-city-flinders": {
-                    "number":float(data[382]),
-                    "year": "2016",
-                },
-                "victoria-university-city-flinders-lane": {
-                    "number":float(data[383]),
-                    "year": "2016",
-                },
-                "victoria-university-city-queen": {
-                    "number":float(data[384]),
-                    "year": "2016",
-                },
-                "victoria-university-footscray-nicholson": {
-                    "number":float(data[385]),
-                    "year": "2016",
-                },
-                "victoria-university-footscray-park": {
-                    "number":float(data[386]),
-                    "year": "2016",
-                },
-                "victoria-university-st-albans": {
-                    "number":float(data[387]),
-                    "year": "2016",
-                },
-                "victoria-university-sunshine": {
-                    "number":float(data[388]),
-                    "year": "2016",
-                },
-                "victoria-university-werribee": {
-                    "number":float(data[389]),
-                    "year": "2016",
-                },
-                "victoria-university-city-king": {
-                    "number":float(data[390]),
-                    "year": "2016",
-                },
-                "victorian-academy-of-commerce-and-technology-startups-(vacts)": {
-                    "number":float(data[391]),
-                    "year": "2016",
-                },
-                "victorian-institute-of-culinary-arts-technology-main-campus---spotswood": {
-                    "number":float(data[392]),
-                    "year": "2016",
-                },
-                "victorian-institute-of-culinary-arts-technology-regional-campus-1---kerang-scoresby-st": {
-                    "number":float(data[393]),
-                    "year": "2016",
-                },
-                "victorian-institute-of-culinary-arts-technology-regional-campus-2---kerang-wellington-st": {
-                    "number":float(data[394]),
-                    "year": "2016",
-                },
-                "victorian-institute-of-culinary-arts-technology-regional-campus-3---shepparton": {
-                    "number":float(data[395]),
-                    "year": "2016",
-                },
-                "vit-(victorian-institute-of-technology)-abbotsford-campus": {
-                    "number":float(data[396]),
-                    "year": "2016",
-                },
-                "vit-(victorian-institute-of-technology)-melbourne-cbd-campus": {
-                    "number":float(data[397]),
-                    "year": "2016",
-                },
-                "whitehouse-institute-of-design-australia": {
-                    "number":float(data[398]),
-                    "year": "2016",
-                },
-                "william-angliss-institute": {
-                    "number":float(data[399]),
-                    "year": "2016",
-                },
-                "yorke-institute": {
-                    "number":float(data[400]),
-                    "year": "2016",
-                },
+                "aapoly-melbourne-campus": {"number": float(data[171]), "year": "2016"},
+                "academia-international-melbourne-campus": {"number": float(data[172]), "year": "2016"},
+                "acumen-institute-of-further-education-cbd-campus": {"number": float(data[173]), "year": "2016"},
+                "acumen-institute-of-further-education-richmond-campus": {"number": float(data[174]), "year": "2016"},
+                "agb-training-geelong-campus": {"number": float(data[175]), "year": "2016"},
+                "alacc-health-college-australia": {"number": float(data[176]), "year": "2016"},
+                "alfred-deakin-college-mibt-waurn-ponds-campus": {"number": float(data[177]), "year": "2016"},
+                "altec-college-melbourne-campus": {"number": float(data[178]), "year": "2016"},
+                "angad-australian-institute-of-technology-la-trobe-st-campus": {"number": float(data[179]), "year": "2016"},
+                "aoi-institute": {"number": float(data[180]), "year": "2016"},
+                "ashton-college-footscray-campus": {"number": float(data[181]), "year": "2016"},
+                "ashton-college-hallam-campus": {"number": float(data[182]), "year": "2016"},
+                "ashton-college-hospitality-campus": {"number": float(data[183]), "year": "2016"},
+                "ashton-college-northcote-campus": {"number": float(data[184]), "year": "2016"},
+                "australian-academy-of-fashion-design": {"number": float(data[185]), "year": "2016"},
+                "australian-careers-education-donald-street-campus-aurora-building": {"number": float(data[186]), "year": "2016"},
+                "australian-careers-education-victoria-street-campus": {"number": float(data[187]), "year": "2016"},
+                "australian-catholic-univeristy-melbourne-campus": {"number": float(data[188]), "year": "2016"},
+                "australian-catholic-university-ballarat-campus": {"number": float(data[189]), "year": "2016"},
+                "australian-centre-of-further-education": {"number": float(data[190]), "year": "2016"},
+                "australian-college-of-applied-psychology-acap-melbourne-campus": {"number": float(data[191]), "year": "2016"},
+                "australian-college-of-sport-basketball-melbourne-campus": {"number": float(data[192]), "year": "2016"},
+                "australian-college-of-theology": {"number": float(data[193]), "year": "2016"},
+                "australian-college-of-trade-thornbury-campus": {"number": float(data[194]), "year": "2016"},
+                "australian-education-academy-10-blissington-street-springvale": {"number": float(data[195]), "year": "2016"},
+                "australian-institute-of-technical-training-aitt-melbourne-campus": {"number": float(data[196]), "year": "2016"},
+                "australian-institute-of-trades-institute-of-hotel-management-australia": {"number": float(data[197]), "year": "2016"},
+                "australian-institute-of-translation-interpretation-aiti-melbourne-campus": {"number": float(data[198]), "year": "2016"},
+                "australian-it-hospitality-institute-footscray-campus": {"number": float(data[199]), "year": "2016"},
+                "australian-national-airline-college": {"number": float(data[200]), "year": "2016"},
+                "australian-national-college-franklin-street-campus": {"number": float(data[201]), "year": "2016"},
+                "australian-national-institute-of-business-technology-anibt-melbourne-campus": {"number": float(data[202]), "year": "2016"},
+                "australian-pacific-college-melbourne-campus": {"number": float(data[203]), "year": "2016"},
+                "australian-study-link-institute": {"number": float(data[204]), "year": "2016"},
+                "aveta-australian-vocational-education-training-academy": {"number": float(data[205]), "year": "2016"},
+                "barkly-international-college-city-campus": {"number": float(data[206]), "year": "2016"},
+                "barkly-international-college-north-melbourne-campus-automotive-workshop": {"number": float(data[207]), "year": "2016"},
+                "baxter-institute-automotive-bakery-campus": {"number": float(data[208]), "year": "2016"},
+                "baxter-institute-fabrication-campus": {"number": float(data[209]), "year": "2016"},
+                "baxter-institute-hairdressing-and-beauty-campus-flinders-street": {"number": float(data[210]), "year": "2016"},
+                "beaconhills-college": {"number": float(data[211]), "year": "2016"},
+                "bendigo-tafe-bendigo": {"number": float(data[212]), "year": "2016"},
+                "bendigo-tafe-and-kangan-institute-broadmeadows-campus": {"number": float(data[213]), "year": "2016"},
+                "biba-academy-swantson-street-campus": {"number": float(data[214]), "year": "2016"},
+                "box-hill-institute-city-campus": {"number": float(data[215]), "year": "2016"},
+                "box-hill-institute": {"number": float(data[216]), "year": "2016"},
+                "brighton-institute-of-technology": {"number": float(data[217]), "year": "2016"},
+                "catholic-theological-college-ctc-melbourne-college-of-divinity-east-melbourne-campus": {"number": float(data[218]), "year": "2016"},
+                "central-australian-college-cac-melbourne-campus": {"number": float(data[219]), "year": "2016"},
+                "central-melbourne-institute-cmi-city-campus": {"number": float(data[220]), "year": "2016"},
+                "central-melbourne-institute": {"number": float(data[221]), "year": "2016"},
+                "central-queensland-university-city-campus": {"number": float(data[222]), "year": "2016"},
+                "charles-sturt-university-study-centres-melbourne": {"number": float(data[223]), "year": "2016"},
+                "chisholm-institue-chisholm-at-331": {"number": float(data[224]), "year": "2016"},
+                "chisholm-institute-bass-coast": {"number": float(data[225]), "year": "2016"},
+                "chisholm-institute-cranbourne-campus": {"number": float(data[226]), "year": "2016"},
+                "chisholm-institute-dandenong-campus": {"number": float(data[227]), "year": "2016"},
+                "chisholm-institute-flinders-lane-campus": {"number": float(data[228]), "year": "2016"},
+                "chisholm-institute-melbourne-city-campus": {"number": float(data[229]), "year": "2016"},
+                "collarts-australian-college-of-the-arts": {"number": float(data[230]), "year": "2016"},
+                "dalton-college": {"number": float(data[231]), "year": "2016"},
+                "dance-factory": {"number": float(data[232]), "year": "2016"},
+                "deakin-college-mibt-burwood-campus": {"number": float(data[233]), "year": "2016"},
+                "deakin-university-geelong-waterfront-campus": {"number": float(data[234]), "year": "2016"},
+                "deakin-university-warrnambool-campus": {"number": float(data[235]), "year": "2016"},
+                "deakin-university-waurn-ponds-campus": {"number": float(data[236]), "year": "2016"},
+                "della-international-college-city-campus": {"number": float(data[237]), "year": "2016"},
+                "della-international-college-sunshine-campus": {"number": float(data[238]), "year": "2016"},
+                "department-of-education-and-training-victoria": {"number": float(data[239]), "year": "2016"},
+                "east-west-college-of-natural-therapies": {"number": float(data[240]), "year": "2016"},
+                "education-access-australia": {"number": float(data[241]), "year": "2016"},
+                "education-training-employment-australia-etea": {"number": float(data[242]), "year": "2016"},
+                "elite-training-institute": {"number": float(data[243]), "year": "2016"},
+                "elly-lukas-beauty-therapy-college": {"number": float(data[244]), "year": "2016"},
+                "elsis-melbourne-campus": {"number": float(data[245]), "year": "2016"},
+                "endeavour-college-of-natural-health-melbourne-campus": {"number": float(data[246]), "year": "2016"},
+                "everest-institute-of-education": {"number": float(data[247]), "year": "2016"},
+                "explore-english": {"number": float(data[248]), "year": "2016"},
+                "federation-university-ballarat-campus": {"number": float(data[249]), "year": "2016"},
+                "federation-university-gippsland-campus": {"number": float(data[250]), "year": "2016"},
+                "federation-university-wimmera-campus": {"number": float(data[251]), "year": "2016"},
+                "flinders-international-college": {"number": float(data[252]), "year": "2016"},
+                "fusion-enlgish-melbourne-campus": {"number": float(data[253]), "year": "2016"},
+                "global-business-college-of-australia": {"number": float(data[254]), "year": "2016"},
+                "gordon-institute-of-tafe-east-geelong-campus": {"number": float(data[255]), "year": "2016"},
+                "gordon-institute-of-tafe-east-geelong-elicos-campus": {"number": float(data[256]), "year": "2016"},
+                "greenwich-english-college-melbourne": {"number": float(data[257]), "year": "2016"},
+                "harvest-bible-college": {"number": float(data[258]), "year": "2016"},
+                "hays-international-college": {"number": float(data[259]), "year": "2016"},
+                "heading-out-academy": {"number": float(data[260]), "year": "2016"},
+                "headmasters-advanced-academy-of-training": {"number": float(data[261]), "year": "2016"},
+                "holmesglen-holmesglen-institute-chadstone-campus": {"number": float(data[262]), "year": "2016"},
+                "holmesglen-holmesglen-institute-city-campus": {"number": float(data[263]), "year": "2016"},
+                "holmesglen-holmesglen-institute-waverley-campus": {"number": float(data[264]), "year": "2016"},
+                "holmesglen-institute-holmesglen-moorabbin-campus": {"number": float(data[265]), "year": "2016"},
+                "hospitality-management-institute-of-australia": {"number": float(data[266]), "year": "2016"},
+                "impact-english-college-melbourne-campus": {"number": float(data[267]), "year": "2016"},
+                "imperial-college-of-technology-and-management": {"number": float(data[268]), "year": "2016"},
+                "institute-of-health-and-nursing-australia": {"number": float(data[269]), "year": "2016"},
+                "institute-of-tertiary-and-higher-education-australia-ithea": {"number": float(data[270]), "year": "2016"},
+                "inus-australia-education-and-training": {"number": float(data[271]), "year": "2016"},
+                "jmc-academy": {"number": float(data[272]), "year": "2016"},
+                "job-training-institute-dandenong-campus": {"number": float(data[273]), "year": "2016"},
+                "kangan-batman-institute-of-tafe-docklands": {"number": float(data[274]), "year": "2016"},
+                "kangan-batman-institute-of-tafe-richmond": {"number": float(data[275]), "year": "2016"},
+                "kangan-institute-moonee-ponds-campus": {"number": float(data[276]), "year": "2016"},
+                "kaplan-business-school": {"number": float(data[277]), "year": "2016"},
+                "la-trobe-bundoora-campus": {"number": float(data[278]), "year": "2016"},
+                "la-trobe-university-albury-wodonga-campus": {"number": float(data[279]), "year": "2016"},
+                "la-trobe-university-bendigo-campus": {"number": float(data[280]), "year": "2016"},
+                "la-trobe-university-city-campus-collins-street-city-campus-collins-street": {"number": float(data[281]), "year": "2016"},
+                "la-trobe-university-mildura-campus": {"number": float(data[282]), "year": "2016"},
+                "la-trobe-university-shepparton-campus": {"number": float(data[283]), "year": "2016"},
+                "latrobe-college-of-art-and-design": {"number": float(data[284]), "year": "2016"},
+                "lawson-college-australia": {"number": float(data[285]), "year": "2016"},
+                "lonsdale-institute-eurocentres-melbourne": {"number": float(data[286]), "year": "2016"},
+                "marcus-oldham-college": {"number": float(data[287]), "year": "2016"},
+                "megt-institute-melbourne-campus": {"number": float(data[288]), "year": "2016"},
+                "melbourne-college-of-hair-and-beauty": {"number": float(data[289]), "year": "2016"},
+                "melbourne-flight-training": {"number": float(data[290]), "year": "2016"},
+                "melbourne-institute-of-technology-federation-university-melbourne-campus": {"number": float(data[291]), "year": "2016"},
+                "melbourne-polytechnic-brunswick-campus": {"number": float(data[292]), "year": "2016"},
+                "melbourne-polytechnic-epping-campus": {"number": float(data[293]), "year": "2016"},
+                "melbourne-polytechnic-fairfield-campus": {"number": float(data[294]), "year": "2016"},
+                "melbourne-polytechnic-heidelberg-campus": {"number": float(data[295]), "year": "2016"},
+                "melbourne-polytechnic-preston-campus": {"number": float(data[296]), "year": "2016"},
+                "melbourne-polytechnic-preston-tafe-campus": {"number": float(data[297]), "year": "2016"},
+                "melbourne-rudolf-steiner-seminar": {"number": float(data[298]), "year": "2016"},
+                "melbourne-school-of-theology": {"number": float(data[299]), "year": "2016"},
+                "melbourne-university-hawthorn-english-language-centre": {"number": float(data[300]), "year": "2016"},
+                "melbourne-university-trinity-college": {"number": float(data[301]), "year": "2016"},
+                "menzies-institute-of-technology-adderley-campus": {"number": float(data[302]), "year": "2016"},
+                "menzies-institute-of-technology-batman-campus": {"number": float(data[303]), "year": "2016"},
+                "menzies-institute-of-technology-spencer-campus": {"number": float(data[304]), "year": "2016"},
+                "monash-college-monash-university-english-language-centre": {"number": float(data[305]), "year": "2016"},
+                "federation-university-berwick-campus": {"number": float(data[306]), "year": "2016"},
+                "monash-international-peninsula-campus": {"number": float(data[307]), "year": "2016"},
+                "monash-university-caulfield-campus": {"number": float(data[308]), "year": "2016"},
+                "monash-university-city-campus": {"number": float(data[309]), "year": "2016"},
+                "monash-university-clayton-campus": {"number": float(data[310]), "year": "2016"},
+                "monash-university-parkville-campus-manning-building": {"number": float(data[311]), "year": "2016"},
+                "monash-university-english-language-centre-monash-college-city-campus": {"number": float(data[312]), "year": "2016"},
+                "moorabbin-flying-services": {"number": float(data[313]), "year": "2016"},
+                "national-theatre-drama-ballet-school": {"number": float(data[314]), "year": "2016"},
+                "navitas-college-of-public-safety-ncps": {"number": float(data[315]), "year": "2016"},
+                "north-melbourne-college": {"number": float(data[316]), "year": "2016"},
+                "nova-institute-of-technology": {"number": float(data[317]), "year": "2016"},
+                "oceania-polytechnic-institute-of-education-opie": {"number": float(data[318]), "year": "2016"},
+                "orange-international-college": {"number": float(data[319]), "year": "2016"},
+                "ozford-college-of-busines": {"number": float(data[320]), "year": "2016"},
+                "ozford-college-of-business": {"number": float(data[321]), "year": "2016"},
+                "ozford-college": {"number": float(data[322]), "year": "2016"},
+                "pax-institute-of-education": {"number": float(data[323]), "year": "2016"},
+                "pearson-aviation-essendon-airport": {"number": float(data[324]), "year": "2016"},
+                "photography-studies-college-psc-melbourne-campus": {"number": float(data[325]), "year": "2016"},
+                "pilgrim-theological-college": {"number": float(data[326]), "year": "2016"},
+                "planetshakers-college": {"number": float(data[327]), "year": "2016"},
+                "presbyterian-theological-college-box-hill-campus": {"number": float(data[328]), "year": "2016"},
+                "rabbinical-college-of-australia-and-n-z": {"number": float(data[329]), "year": "2016"},
+                "rc-rhodes-college": {"number": float(data[330]), "year": "2016"},
+                "reformed-theological-college-geelong-campus": {"number": float(data[331]), "year": "2016"},
+                "ridley-college-parkville-campus": {"number": float(data[332]), "year": "2016"},
+                "rmit-english-worldwide": {"number": float(data[333]), "year": "2016"},
+                "rmit-univeristy-brunswick-campus": {"number": float(data[334]), "year": "2016"},
+                "rmit-university-rmit-city-campus": {"number": float(data[335]), "year": "2016"},
+                "rmit-university-bundoora-campus": {"number": float(data[336]), "year": "2016"},
+                "rmit-university-point-cook-campus": {"number": float(data[337]), "year": "2016"},
+                "royal-gurkhas-institute-of-technology-rgit-australia-gurkhas-institute-of-hospitality-management": {"number": float(data[338]), "year": "2016"},
+                "royal-gurkhas-institute-of-technology-australia-rgit": {"number": float(data[339]), "year": "2016"},
+                "royal-victorian-aero-club": {"number": float(data[340]), "year": "2016"},
+                "sae-institute-qantm-college-melbourne-campus": {"number": float(data[341]), "year": "2016"},
+                "school-for-f-m-alexander-studies": {"number": float(data[342]), "year": "2016"},
+                "south-australian-college-of-english-sace-melbourne-college-of-english": {"number": float(data[343]), "year": "2016"},
+                "south-pacific-institute-spi-melbourne-campus": {"number": float(data[344]), "year": "2016"},
+                "southern-cross-education-institute-scei-second-campus": {"number": float(data[345]), "year": "2016"},
+                "southern-cross-education-institute-scei-third-campus": {"number": float(data[346]), "year": "2016"},
+                "southern-school-of-natural-therapies": {"number": float(data[347]), "year": "2016"},
+                "st-aerospace-academy-australia-pty-ltd-2-bowral-court-mitchell-park": {"number": float(data[348]), "year": "2016"},
+                "st-peter-institute-bourke-street-campus": {"number": float(data[349]), "year": "2016"},
+                "st-peter-institute-little-collins-campus": {"number": float(data[350]), "year": "2016"},
+                "stott-s-colleges-front-cooking-school-carlton-campus-vet": {"number": float(data[351]), "year": "2016"},
+                "stott-s-colleges-box-hill-campus": {"number": float(data[352]), "year": "2016"},
+                "stott-s-colleges-melbourne-campus": {"number": float(data[353]), "year": "2016"},
+                "strathfield-college-melbourne-campus": {"number": float(data[354]), "year": "2016"},
+                "sunraysia-institute-of-tafe-mildura-campus": {"number": float(data[355]), "year": "2016"},
+                "sunshine-college-of-management": {"number": float(data[356]), "year": "2016"},
+                "swinburne-university-of-technology-croydon-campus": {"number": float(data[357]), "year": "2016"},
+                "swinburne-university-of-technology-wantirna-campus": {"number": float(data[358]), "year": "2016"},
+                "swinburne-university-of-technology-hawthorn-campus": {"number": float(data[359]), "year": "2016"},
+                "technical-education-development-institute": {"number": float(data[360]), "year": "2016"},
+                "technical-institute-of-victoria": {"number": float(data[361]), "year": "2016"},
+                "the-university-of-melbourne-southbank-campus": {"number": float(data[362]), "year": "2016"},
+                "the-academy-of-interactive-entertainment-melbourne-campus": {"number": float(data[363]), "year": "2016"},
+                "the-australian-ballet-school": {"number": float(data[364]), "year": "2016"},
+                "the-australian-conservatoire-of-ballet-melbourne-campus": {"number": float(data[365]), "year": "2016"},
+                "the-university-of-melbourne-burnley-campus": {"number": float(data[366]), "year": "2016"},
+                "the-university-of-melbourne": {"number": float(data[367]), "year": "2016"},
+                "the-university-of-melbourne-werribee-campus": {"number": float(data[368]), "year": "2016"},
+                "tmg-college": {"number": float(data[369]), "year": "2016"},
+                "torrens-university-fitzroy-campus": {"number": float(data[370]), "year": "2016"},
+                "torrens-university-flinders-st-campus": {"number": float(data[371]), "year": "2016"},
+                "trinity-college-theological-school": {"number": float(data[372]), "year": "2016"},
+                "turner-english-box-hill-campus": {"number": float(data[373]), "year": "2016"},
+                "turner-english-camberwell-campus": {"number": float(data[374]), "year": "2016"},
+                "turner-english-dandenong-campus": {"number": float(data[375]), "year": "2016"},
+                "turner-english-melbourne-cbd-campus": {"number": float(data[376]), "year": "2016"},
+                "univeristy-of-divinity-whitley-college": {"number": float(data[377]), "year": "2016"},
+                "universal-institute-of-technology": {"number": float(data[378]), "year": "2016"},
+                "university-of-canberra-uc-melbourne-chadstone-campus": {"number": float(data[379]), "year": "2016"},
+                "university-of-divinity-stirling-college": {"number": float(data[380]), "year": "2016"},
+                "university-of-divinity-yarra-theological-union": {"number": float(data[381]), "year": "2016"},
+                "victoria-university-city-flinders-lane": {"number": float(data[382]), "year": "2016"},
+                "victoria-university-city-flinders": {"number": float(data[383]), "year": "2016"},
+                "victoria-university-city-queen": {"number": float(data[384]), "year": "2016"},
+                "victoria-university-footscray-nicholson": {"number": float(data[385]), "year": "2016"},
+                "victoria-university-footscray-park": {"number": float(data[386]), "year": "2016"},
+                "victoria-university-st-albans": {"number": float(data[387]), "year": "2016"},
+                "victoria-university-sunshine": {"number": float(data[388]), "year": "2016"},
+                "victoria-university-werribee": {"number": float(data[389]), "year": "2016"},
+                "victoria-university-city-king": {"number": float(data[390]), "year": "2016"},
+                "victorian-academy-of-commerce-and-technology-startups-vacts": {"number": float(data[391]), "year": "2016"},
+                "victorian-institute-of-culinary-arts-technology-main-campus-spotswood": {"number": float(data[392]), "year": "2016"},
+                "victorian-institute-of-culinary-arts-technology-regional-campus-1-kerang-scoresby-st": {"number": float(data[393]), "year": "2016"},
+                "victorian-institute-of-culinary-arts-technology-regional-campus-2-kerang-wellington-st": {"number": float(data[394]), "year": "2016"},
+                "victorian-institute-of-culinary-arts-technology-regional-campus-3-shepparton": {"number": float(data[395]), "year": "2016"},
+                "vit-victorian-institute-of-technology-abbotsford-campus": {"number": float(data[396]), "year": "2016"},
+                "vit-victorian-institute-of-technology-melbourne-cbd-campus": {"number": float(data[397]), "year": "2016"},
+                "whitehouse-institute-of-design-australia": {"number": float(data[398]), "year": "2016"},
+                "william-angliss-institute": {"number": float(data[399]), "year": "2016"},
+                "yorke-institute": {"number": float(data[400]), "year": "2016"}
             },
             "language": {
                 "acholi": int(data[28]),
@@ -3177,7 +2487,9 @@ with open('IE_DATA_COMP_6_05_2018.csv', 'rb') as csvfile:
     # readr.next()
     readr.next()
     for line in readr:
-        print json.dumps(row_to_obj(line))
+        obj = row_to_obj(line)
+        if obj['name']!="Ballarat":
+            print json.dumps(obj)
         #if(line[0]=="BROWN HILL"):
             #print line
 #print line[620]

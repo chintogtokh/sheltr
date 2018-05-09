@@ -234,6 +234,23 @@ class AllSuburbs extends Component {
                           <div className="star-ratings">
                             {this.numberToStar(shel.rating_affordability)}
                           </div>
+                          <br />
+                          { params.uni &&
+                            <div>
+                              <div className="star-label">Distance</div>
+                              <div className="star-ratings">
+                                {shel.university_distances[params.uni].number.toFixed(2) + " km"}
+                              </div>
+                            </div>
+                          }
+                          { params.language &&
+                            <div>
+                              <div className="star-label">Language ({params.language.split("-").join(" ").replace(/\b\w/g, l => l.toUpperCase())})</div>
+                              <div className="star-ratings">
+                                {this.numberToStar(shel.language[params.language])}
+                              </div>
+                            </div>
+                          }
                         </div>
                       </div>
                     </div>
