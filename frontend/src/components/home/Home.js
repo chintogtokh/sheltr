@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
 import { browseActions } from '../../actions';
 import { connect } from 'react-redux';
-import monash from '../../files/monash.svg';
+import { HashLink } from 'react-router-hash-link';
 //css
 import 'react-select/dist/react-select.css';
 import './Home.css';
@@ -193,13 +193,18 @@ class Home extends Component {
 
               <div className="find-suburbs-btn-container">
               <button className="btn btn-find-suburbs btn-info btn-lg" type="submit"> Find suburbs </button>&nbsp;
-              <button className="btn btn-danger btn-clear btn-lg" type="button" onClick={this.clearPreferences}> <i className="fas fa-times"></i> Clear </button>
+              <button className="btn btn-light btn-clear btn-lg" type="button" onClick={this.clearPreferences}> <i className="fas fa-times"></i> Clear </button>
+
+
 
               </div>
 
               </form>
           </div>
         </div>
+
+        <HashLink className="more-info" smooth to="/#about" scroll={el => el.scrollIntoView({ behavior: "smooth", block: 'start' })}><i className="fas fa-caret-down"></i></HashLink>
+
       </div>
       <div id="about"></div>
       <main role="main">
@@ -228,9 +233,6 @@ class Home extends Component {
             <div className="col-md-4">
                 <h2 className="featurette-heading">Who made this?</h2>
                 <div className="lead">We're a group at Monash University, and we're located at Floor 3, Building B, Monash Caulfield.</div>
-                <p className="single-image">
-                <img src={monash} alt="Monash University"/>
-                </p>
             </div>
           </div>
         </div>

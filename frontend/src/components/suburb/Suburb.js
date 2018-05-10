@@ -6,6 +6,7 @@ import { suburbActions } from '../../actions';
 import Leaflet from 'leaflet'
 import { Map, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bbox from 'turf-bbox';
+import { configs } from '../../helpers';
 import Select from 'react-select';
 import ReactStreetview from 'react-streetview';
 import uniimage from '../../files/uni.png';
@@ -14,6 +15,8 @@ class Suburb extends Component {
 
   constructor(props) {
       super(props);
+
+      this.googleMapsApiKey = configs.googleMapsApiKey;
 
       this.state = {
         'suburb': null
@@ -200,11 +203,6 @@ class Suburb extends Component {
         wiki = ret;
       }
 
-      const googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
-
-      // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
-
-
       return (
       <div id="SuburbComponent">
 
@@ -234,7 +232,7 @@ class Suburb extends Component {
                       backgroundColor: 'white'
                   }}>
                       <ReactStreetview
-                          apiKey={googleMapsApiKey}
+                          apiKey={this.googleMapsApiKey}
                           streetViewPanoramaOptions={this.state.streetViewPanoramaOptions}
                       />
                   </div>

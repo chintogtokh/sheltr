@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Select from 'react-select';
-// import ReactDOM from 'react-dom';
 import { browseActions } from '../../actions';
+import { configs } from '../../helpers';
 import ReactStreetview from 'react-streetview';
 import Pagination from "react-js-pagination";
 
@@ -19,7 +19,7 @@ class AllSuburbs extends Component {
       activePage: 1
     }
 
-    this.googleMapsApiKey = 'AIzaSyAtl3mboWdO7jxiQHdSHqg97WHHig53LaQ';
+    this.googleMapsApiKey = configs.googleMapsApiKey;
 
     this.getUnis = this.getUnis.bind(this);
     this.getLanguages = this.getLanguages.bind(this);

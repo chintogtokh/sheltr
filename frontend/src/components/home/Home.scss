@@ -1,14 +1,15 @@
 #HomeComponent{
 
   div.header-container {
-    min-height:100%;
+    min-height:calc(100vh - 50px);
     display: block;
     position: relative;
     width: 100%;
     text-align: left;
     color: #fff;
-    padding-top:100px;
-    padding-bottom:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: url(../../files/back.jpg);
     background-color: rgba(0,0,0,0.5);
     background-position: center;
@@ -296,7 +297,14 @@ div.find-suburbs-btn-container{
 }
 
 .btn-find-suburbs{
-  padding: 5px 90px;
+  padding: 5px 100px;
+  background-color:#112660;
+  border-color:#112660;
+
+  &:hover{
+    background-color:#071029;
+    border-color:#071029;
+  }
 }
 
 .btn-clear{
@@ -332,6 +340,26 @@ div.find-suburbs-btn-container{
   img{
     width:60%;
   }
+}
+
+@media (min-width: 1068px) {
+.more-info{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999999;
+  color:white;
+  background-color:  #112660;
+  width:50px;
+  height:50px;
+  line-height: 50px;
+  border-radius: 25px;
+  text-align: center;
+
+  &:hover{
+    background-color: #071029;
+  }
+}
 }
 
 }

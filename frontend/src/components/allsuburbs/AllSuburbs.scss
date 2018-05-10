@@ -196,5 +196,15 @@ main{
       }
     }
 
+  .page-link{
+    color: #112660;
+  }
+
+  .page-item.active .page-link {
+    background-color: #112660;
+    border-color: #112660;
+    color:white;
+  }
+
 }
 
