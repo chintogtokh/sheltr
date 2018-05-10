@@ -14,7 +14,7 @@ import AllSuburbs from "../allsuburbs/AllSuburbs";
 import Credits from "../credits/Credits";
 
 const App = () => (
-  <Router>
+  <Router key={'v0.2'}>
     <div>
       <Navbar />
 
