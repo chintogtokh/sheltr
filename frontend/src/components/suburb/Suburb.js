@@ -91,10 +91,12 @@ class Suburb extends Component {
                     this.setState({streetViewPanoramaOptions: {
                       addressControl: false,
                       disableDefaultUI: true,
+                      motionTracking: false,
+                      motionTrackingControl: false,
                       showRoadLabels: false,
-                        position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
-                        pov: {heading: 100, pitch: 0},
-                        zoom: 1
+                      position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
+                      pov: {heading: 100, pitch: 0},
+                      zoom: 1
                     }});
                 }
 

@@ -201,6 +201,10 @@ img.inline-logo{
     top: 0;
     color:black;
     cursor: pointer;
+    @media (max-width: 1068px) {
+      width: 100%;
+    }
+
 
     input{
       caret-color:white!important;
@@ -217,6 +221,9 @@ img.inline-logo{
 
     .Select-control{
       border-bottom:2px solid white !important;
+      @media (max-width: 1068px) {
+        width: 100% !important;
+      }
     }
 
     &.is-focused{
@@ -282,6 +289,10 @@ img.inline-logo{
 div.find-suburbs-btn-container{
   margin-top:40px;
   text-align: center;
+
+  button{
+    margin-bottom:10px;
+  }
 }
 
 .btn-find-suburbs{

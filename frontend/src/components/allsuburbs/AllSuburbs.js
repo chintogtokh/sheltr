@@ -154,6 +154,8 @@ class AllSuburbs extends Component {
       .then(response => {
         this.setState({streetViewPanoramaOptions: {
           addressControl: false,
+           motionTracking: false,
+            motionTrackingControl: false,
           disableDefaultUI: true,
           showRoadLabels: false,
             position: {lat: response.data.coords.lat, lng: response.data.coords.lng},
@@ -216,10 +218,28 @@ class AllSuburbs extends Component {
 
             for (let i = 0; i < response.data.length; i++) {
               let shel = response.data[i];
+
+              fetch('https://maps.googleapis.com/maps/api/streetview/metadata?location=' + shel.coords.lat + "," + shel.coords.lng + '&key=' + this.googleMapsApiKey)
+              .then(metaResponse => metaResponse.json().then( data => ({
+                  data: data,
+                  status: metaResponse.status
+                  })
+              ))
+              .then(metaResponse => {
+                var imageURL = "";
+                if(metaResponse.data.status !== "OK"){
+                  console.log(metaResponse.data);
+                  imageURL = "images/transparent.png";
+                }
+                else{
+                  imageURL = 'http://maps.googleapis.com/maps/api/streetview?size=640x480&location=' + shel.coords.lat + "," + shel.coords.lng + '&pitch=0&sensor=false&key=' + this.googleMapsApiKey;
+                }
+
+
               this.setState({ suburb: { ...this.state.suburb, [i]:
                   <Link to={"/suburb/" + shel.shim} className="suburb-link">
                     <div className="card mb-4 box-shadow h-md-250">
-                      <img className="card-img-top" src={'http://maps.googleapis.com/maps/api/streetview?size=640x480&location=' + shel.coords.lat + "," + shel.coords.lng + '&pitch=0&sensor=false&key=' + this.googleMapsApiKey} alt={shel.name} />
+                      <img className="card-img-top" src={imageURL} alt={shel.name} />
                       <div className="card-body">
                         <h3 className="mb-0">
                           {shel.name}
@@ -256,6 +276,7 @@ class AllSuburbs extends Component {
                     </div>
                   </Link>
               } });
+              });
             }
           }
       });
