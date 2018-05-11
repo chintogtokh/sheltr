@@ -446,7 +446,7 @@ class Suburb extends Component {
 
                     <h3>Search for properties</h3>
                     <div className="realestate-section">
-                    <i>Disclaimer: The following are external sites and we not affiliated in any way.</i>
+                    <i>Disclaimer: The following are external sites and not affiliated with us in any way.</i>
                     <br/><br/>
                     <button className="btn btn-light">
                       <a target="_blank" href={"https://www.domain.com.au/rent/?terms=" + this.state.suburb.name.toLowerCase() + " vic"}><img alt="Domain.com.au" style={{height: '25px'}} src="/externallogos/domain.png" /></a>
