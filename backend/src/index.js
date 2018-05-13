@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import {clientErrorHandler, errorHandler} from './middleware';
-import passport from './passport';
 
 const app = express();
 const port = 6000;

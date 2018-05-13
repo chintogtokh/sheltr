@@ -1,19 +1,13 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
-// import cars from './cars';
-import users from './users';
-import auth from './auth';
 import suburbs from './suburbs';
 import ranked_suburbs from './ranked_suburbs';
 import search from './search';
 import unis from './unis';
-import passport from 'passport';
 
 let api = Router();
 
 // api.use('/api/cars', passport.authenticate('jwt', {session: false}), cars);
-api.use('/api/users', users);
-api.use('/api/auth', auth);
 api.use('/api/suburbs', suburbs);
 api.use('/api/ranked_suburbs', ranked_suburbs);
 api.use('/api/university', unis);

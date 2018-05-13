@@ -313,7 +313,14 @@ class Suburb extends Component {
                       }
 
                       {preferences.raw_uni &&
-                       <li> Distance from {preferences.raw_uni.name} is approximately {this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km"}</li>
+
+                        <li>
+                        <div className="star-label">Distance from {preferences.raw_uni.name} </div>
+                      <div className="star-ratings">
+                          {this.state.suburb.university_distances[preferences.raw_uni.shim].number.toFixed(2) + " km"}
+                          </div>
+                        </li>
+
                      }
                     </ul>
 
