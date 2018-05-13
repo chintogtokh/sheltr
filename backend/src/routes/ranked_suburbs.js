@@ -16,10 +16,14 @@ rankedSuburbRouter.post('/', (req, res) => {
     }
     //var promise = suburbModel.aggregate({ $mul: { rating_safety: 1.25} },"rating_safety rating_affordability");
 
-    var language = (typeof preferences.language !== "undefined")? preferences.language :0;
+    var language = (typeof preferences.language !== "undefined")? preferences.language :null;
     var uni = (typeof preferences.uni !== "undefined")?preferences.uni:null;
     var filter = (typeof preferences.filter !== "undefined")?preferences.filter:null;
     var distance = (typeof preferences.distance !== "undefined")?preferences.distance:null;
+
+    if(!uni && !distance){
+        res.send([]);
+    }
 
 
     var query = [{
