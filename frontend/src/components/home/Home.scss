@@ -342,9 +342,14 @@ div.find-suburbs-btn-container{
   }
 }
 
+  .more-info{
+    display:none;
+  }
+    
 @media (min-width: 1068px) {
 .more-info{
   position: absolute;
+  display:block;
   bottom: 20px;
   right: 20px;
   z-index: 999999999;
