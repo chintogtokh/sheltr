@@ -183,13 +183,7 @@ class AllSuburbs extends Component {
       });
     }
 
-    // if(params.uni && params.distance){
       this.getRankedSuburbs(params);
-    // }
-    // else{
-    //   this.mustSubmitNotification("You must enter a university and distance first.");
-    //   this.setState({loaded: true, itemsCount: 0});
-    // }
 
   }
 
@@ -281,7 +275,7 @@ class AllSuburbs extends Component {
                               </div>
                             </div>
                           }
-                          { params.language &&
+                          { params.language && params.filter === "language" &&
                             <div>
                               <div className="star-label">Language ({params.language.split("-").join(" ").replace(/\b\w/g, l => l.toUpperCase())})</div>
                               <div className="star-ratings">

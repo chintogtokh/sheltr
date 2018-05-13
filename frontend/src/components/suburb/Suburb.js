@@ -129,7 +129,8 @@ class Suburb extends Component {
 
             }
 
-        });
+        })
+
 
 
 

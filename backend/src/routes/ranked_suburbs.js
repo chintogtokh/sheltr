@@ -32,6 +32,7 @@ rankedSuburbRouter.post('/', (req, res) => {
         $project: {
             name: true,
             shim: true,
+            ["stats.suburb-residents"]: true,
             rating_affordability: true,
             coords: true,
             ["university_distances."+uni]: true,
@@ -45,6 +46,9 @@ rankedSuburbRouter.post('/', (req, res) => {
 
     //distance
     query[0]['$match']["university_distances."+uni+".number"] = { "$exists": true, "$lt": parseFloat(distance) };
+
+    //remove population zero
+    query[0]['$match']["stats.suburb-residents.number"] = { "$exists": true, "$ne": 0 };
 
     var sorter = "";
     var sorter_bool = 1;
