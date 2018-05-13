@@ -26,6 +26,24 @@ class AllSuburbs extends Component {
     this.getRankedSuburbs = this.getRankedSuburbs.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
 
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+
+  }
+
+  handleSelectChange = function(value) {
+    window.open('/suburb/' + value.shim);
+  };
+
+  getSuburbs (input) {
+    if (!input) {
+          return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/search/suburbs?q=${input}`)
+    .then((response) => response.json())
+    .then((json) => {
+      return { options:json };
+    });
   }
 
   handlePageChange(pageNumber) {
@@ -331,7 +349,7 @@ class AllSuburbs extends Component {
 
   render() {
 
-    const { uni, distance, filter, language } = this.state;
+    const { uni, distance, filter, language, selected_suburb } = this.state;
 
       return (
       <div id="AllSuburbsComponent">
@@ -367,7 +385,27 @@ class AllSuburbs extends Component {
                 </ol>
               </nav>
 
-              <h1>Suburb Suggestions</h1>
+              <div className="row">
+                  <div className="col-md-8">
+                    <h1>Suburb Suggestions</h1>
+                  </div>
+
+                  <div className="col-md-4">
+                  <Select.Async
+                      placeholder = "search for another suburb?"
+                      name="selected_suburb"
+                      autoload = {true}
+                      className = "react-select-single-suburb"
+                      value={selected_suburb}
+                      valueKey="shim"
+                      labelKey="name"
+                      onChange={this.handleSelectChange}
+                      loadOptions={this.getSuburbs}
+                      backspaceRemoves={true} />
+                  </div>
+                </div>
+
+
 
               <div>
                 The following suburbs might fit your needs. Start drilling down using the filters!
