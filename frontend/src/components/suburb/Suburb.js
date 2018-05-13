@@ -366,11 +366,11 @@ class Suburb extends Component {
                        <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/money.svg" alt="Average rental range" height="50" width="50" />
-                      <h4> Average weekly rent paid by international students </h4>
+                      <h4> Average weekly rent paid by an international student </h4>
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"vic-int-student-most-common-expense-tier").number}
+                    {this.getStatFromArray(this.state.suburb.stats,"int-student-rental-price-bracket").number}
                       </div>
                     </div>
 
