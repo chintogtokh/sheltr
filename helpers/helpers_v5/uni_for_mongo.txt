@@ -15,7 +15,7 @@
 {"name": "Australian Academy of Fashion Design", "shim": "australian-academy-of-fashion-design", "coords": {"lat": -37.817414, "lng": 144.955623}}
 {"name": "Australian Careers Education, Donald Street Campus (Aurora Building)", "shim": "australian-careers-education-donald-street-campus-aurora-building", "coords": {"lat": -37.758965, "lng": 144.977737}}
 {"name": "Australian Careers Education, Victoria Street Campus", "shim": "australian-careers-education-victoria-street-campus", "coords": {"lat": -37.766402, "lng": 144.95802}}
-{"name": "Australian Catholic Univeristy, Melbourne Campus", "shim": "australian-catholic-univeristy-melbourne-campus", "coords": {"lat": -37.808105, "lng": 144.978268}}
+{"name": "Australian Catholic University, Melbourne Campus", "shim": "australian-catholic-univeristy-melbourne-campus", "coords": {"lat": -37.808105, "lng": 144.978268}}
 {"name": "Australian Catholic University, Ballarat Campus", "shim": "australian-catholic-university-ballarat-campus", "coords": {"lat": -37.557726, "lng": 143.844259}}
 {"name": "Australian Centre of Further Education", "shim": "australian-centre-of-further-education", "coords": {"lat": -37.810371, "lng": 144.958136}}
 {"name": "Australian College of Applied Psychology, ACAP - Melbourne Campus", "shim": "australian-college-of-applied-psychology-acap-melbourne-campus", "coords": {"lat": -37.810644, "lng": 144.96871}}
@@ -111,7 +111,7 @@
 {"name": "La Trobe University, City Campus (Collins Street), City Campus (Collins Street)", "shim": "la-trobe-university-city-campus-collins-street-city-campus-collins-street", "coords": {"lat": -37.816325, "lng": 144.962335}}
 {"name": "La Trobe University, Mildura Campus", "shim": "la-trobe-university-mildura-campus", "coords": {"lat": -34.2048, "lng": 142.168}}
 {"name": "La Trobe University, Shepparton Campus", "shim": "la-trobe-university-shepparton-campus", "coords": {"lat": -36.3808, "lng": 145.406}}
-{"name": "Latrobe College of Art and Design", "shim": "latrobe-college-of-art-and-design", "coords": {"lat": -37.8036, "lng": 144.991}}
+{"name": "La Trobe College of Art and Design", "shim": "latrobe-college-of-art-and-design", "coords": {"lat": -37.8036, "lng": 144.991}}
 {"name": "Lawson College Australia", "shim": "lawson-college-australia", "coords": {"lat": -37.9875, "lng": 145.215}}
 {"name": "Lonsdale Institute, Eurocentres Melbourne", "shim": "lonsdale-institute-eurocentres-melbourne", "coords": {"lat": -37.8171, "lng": 144.965}}
 {"name": "Marcus Oldham College", "shim": "marcus-oldham-college", "coords": {"lat": -38.1927, "lng": 144.305}}
@@ -161,7 +161,7 @@
 {"name": "Reformed Theological College, Geelong Campus", "shim": "reformed-theological-college-geelong-campus", "coords": {"lat": -38.1898693, "lng": 144.3019719}}
 {"name": "Ridley College, Parkville Campus", "shim": "ridley-college-parkville-campus", "coords": {"lat": -37.7837187, "lng": 144.9551728}}
 {"name": "RMIT English Worldwide", "shim": "rmit-english-worldwide", "coords": {"lat": -37.8135, "lng": 144.966}}
-{"name": "RMIT Univeristy, Brunswick Campus", "shim": "rmit-univeristy-brunswick-campus", "coords": {"lat": -37.7711, "lng": 144.956}}
+{"name": "RMIT University, Brunswick Campus", "shim": "rmit-univeristy-brunswick-campus", "coords": {"lat": -37.7711, "lng": 144.956}}
 {"name": "RMIT University (RMIT), City Campus", "shim": "rmit-university-rmit-city-campus", "coords": {"lat": -37.8074, "lng": 144.965}}
 {"name": "RMIT University, Bundoora Campus", "shim": "rmit-university-bundoora-campus", "coords": {"lat": -37.676835, "lng": 145.072686}}
 {"name": "RMIT University, Point Cook Campus", "shim": "rmit-university-point-cook-campus", "coords": {"lat": -37.92885, "lng": 144.749083}}
@@ -204,7 +204,7 @@
 {"name": "Turner English, Camberwell Campus", "shim": "turner-english-camberwell-campus", "coords": {"lat": -37.847054, "lng": 145.063744}}
 {"name": "Turner English, Dandenong Campus", "shim": "turner-english-dandenong-campus", "coords": {"lat": -37.988483, "lng": 145.214864}}
 {"name": "Turner English, Melbourne CBD Campus", "shim": "turner-english-melbourne-cbd-campus", "coords": {"lat": -37.813279, "lng": 144.959735}}
-{"name": "Univeristy of Divinity, Whitley College", "shim": "univeristy-of-divinity-whitley-college", "coords": {"lat": -37.787017, "lng": 144.957062}}
+{"name": "University of Divinity, Whitley College", "shim": "univeristy-of-divinity-whitley-college", "coords": {"lat": -37.787017, "lng": 144.957062}}
 {"name": "Universal Institute of Technology", "shim": "universal-institute-of-technology", "coords": {"lat": -37.815505, "lng": 144.960624}}
 {"name": "University of Canberra, UC Melbourne - Chadstone Campus", "shim": "university-of-canberra-uc-melbourne-chadstone-campus", "coords": {"lat": -37.882, "lng": 145.101}}
 {"name": "University of Divinity, Stirling College", "shim": "university-of-divinity-stirling-college", "coords": {"lat": -37.92787, "lng": 145.195467}}

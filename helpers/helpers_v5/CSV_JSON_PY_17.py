@@ -10,7 +10,7 @@ def row_to_obj(data):
             "name": data[0].title(),
             "shim": re.sub('[^0-9a-zA-Z]+', '-', data[0].lower()),
             "rating_safety": float(data[9]),
-            "rating_affordability": float(data[17]),
+            "rating_affordability": 100-float(data[17]),
             "geojson": json_data,
             "coords": {
                 "lat": float(data[3]),
@@ -50,7 +50,7 @@ def row_to_obj(data):
                     "year": "2016",
                 },
                 "price-range-rank": {
-                    "number":float(data[14]),
+                    "number":100-float(data[14]),
                     "year": "2016",
                 },
                 "rental-price-range-lower": {
