@@ -302,7 +302,7 @@ class Suburb extends Component {
                       {this.numberToStar(this.state.suburb.rating_affordability)}
                       </div></li>
 
-                      {preferences.language && preferences.language!==0 &&
+                      {preferences.filter === "language" && preferences.language && preferences.language!==0 &&
 
                         <li>
                         <div className="star-label">International student language rating for {preferences.raw_language.name}</div>
