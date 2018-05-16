@@ -240,7 +240,6 @@ class AllSuburbs extends Component {
               .then(metaResponse => {
                 var imageURL = "";
                 if(metaResponse.data.status !== "OK"){
-                  console.log(metaResponse.data);
                   imageURL = "images/transparent.png";
                 }
                 else{

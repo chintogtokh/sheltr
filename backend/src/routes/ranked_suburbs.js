@@ -39,8 +39,8 @@ rankedSuburbRouter.post('/', (req, res) => {
             rating_safety: true,
             ["language." + language]: true,
             "stats.price-range-rank": true,
-            "stats.suburb-town-name-2016-adjusted-crime-rank" : true
-
+            "stats.suburb-town-name-2016-adjusted-crime-rank" : true,
+            "stats.suburb-most-common-expense-tier": true,
         }
     }];
 
@@ -49,6 +49,10 @@ rankedSuburbRouter.post('/', (req, res) => {
 
     //remove population zero
     query[0]['$match']["stats.suburb-residents.number"] = { "$exists": true, "$ne": 0 };
+
+    //coz data
+    query[0]['$match']["stats.suburb-most-common-expense-tier.number"] = { "$exists": true, "$ne": "As at 2016, there are no rental properties listed in this area." };
+
 
     var sorter = "";
     var sorter_bool = 1;
