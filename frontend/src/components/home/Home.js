@@ -133,7 +133,7 @@ class Home extends Component {
       <div className="header-container">
         <div className="header-content">
           <div className="header-content-inner text-xs-center">
-              <h1>Welcome to Victoria, new students!</h1>
+              <h1>New students, welcome to VICTORIA!</h1>
               <div className="lead">
                 You can start finding a great new place to live here!
               </div>
