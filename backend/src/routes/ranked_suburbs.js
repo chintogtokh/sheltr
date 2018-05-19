@@ -23,6 +23,7 @@ rankedSuburbRouter.post('/', (req, res) => {
 
     if(!uni && !distance){
         res.send([]);
+        return;
     }
 
 

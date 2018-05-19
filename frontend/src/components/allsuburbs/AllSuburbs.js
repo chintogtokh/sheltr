@@ -373,6 +373,9 @@ class AllSuburbs extends Component {
 
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
+                {this.props.history.length>3 &&
+                  <li className="breadcrumb-item"><a href="#"><i onClick={this.props.history.goBack} className="fas fa-chevron-circle-left"></i></a></li>
+                }
                   <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                   <li className="breadcrumb-item active" aria-current="page">Suburb Suggestions</li>
                 </ol>
