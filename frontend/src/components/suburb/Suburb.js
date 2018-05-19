@@ -352,14 +352,14 @@ class Suburb extends Component {
                       </div>
                       <div className="col-md-4">
                     {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}
-                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number,10) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number),10).toFixed(2)} %)
+                    //({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number,10) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number),10).toFixed(2)} %)
                       </div>
                     </div>
 
                        <div className='row'>
                       <div className="col-md-6">
                       <img className="stat-image" src="/otherimages/prisoner.svg" alt="Crime per 10000 population" height="50" width="50" />
-                      <h4> Number of offences per 10'000 residents</h4>
+                      <h4> Number of offences per 10,000 residents</h4>
 
                       </div>
                       <div className="col-md-4">
