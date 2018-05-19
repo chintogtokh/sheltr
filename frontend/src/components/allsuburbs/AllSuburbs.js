@@ -240,7 +240,7 @@ class AllSuburbs extends Component {
               .then(metaResponse => {
                 var imageURL = "";
                 if(metaResponse.data.status !== "OK"){
-                  imageURL = "images/transparent.png";
+                  imageURL = "images/noimage.png";
                 }
                 else{
                   imageURL = 'http://maps.googleapis.com/maps/api/streetview?size=640x480&location=' + shel.coords.lat + "," + shel.coords.lng + '&pitch=0&sensor=false&key=' + this.googleMapsApiKey;
@@ -373,8 +373,8 @@ class AllSuburbs extends Component {
 
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
-                {this.props.history.length>3 &&
-                  <li className="breadcrumb-item"><a href="#"><i onClick={this.props.history.goBack} className="fas fa-chevron-circle-left"></i></a></li>
+                {this.props.history.length>1 &&
+                  <li className="breadcrumb-item"><a onClick={this.props.history.goBack}><i className="fas fa-chevron-circle-left"></i></a></li>
                 }
                   <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                   <li className="breadcrumb-item active" aria-current="page">Suburb Suggestions</li>

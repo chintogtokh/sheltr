@@ -188,6 +188,14 @@ main{
         .breadcrumb-item.active{
           color:black;
         }
+
+        .breadcrumb-item a{
+          color: #007bff;
+
+          i:hover{
+            cursor: pointer;
+          }
+        }
     }
 
     .star-label{
@@ -198,7 +206,7 @@ main{
     }
 
     .card{
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.7);
     }
 
     .suburb-link{

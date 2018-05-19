@@ -150,6 +150,14 @@
           color:black;
         }
 
+        .breadcrumb-item a{
+          color: #007bff;
+
+          i:hover{
+            cursor: pointer;
+          }
+        }
+
     }
 
     .star-label{
