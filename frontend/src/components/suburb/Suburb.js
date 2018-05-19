@@ -351,8 +351,10 @@ class Suburb extends Component {
 
                       </div>
                       <div className="col-md-4">
-                    {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}
-                    ({(parseInt(this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number,10) * 100 /parseInt(this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number),10).toFixed(2)} %)
+                    {this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number}&nbsp;
+                    ({
+                      (this.getStatFromArray(this.state.suburb.stats,"total-int-students-per-suburb").number/this.getStatFromArray(this.state.suburb.stats,"suburb-residents").number * 100).toFixed(2)
+                      } %)
                       </div>
                     </div>
 
