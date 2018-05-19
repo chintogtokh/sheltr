@@ -1,13 +1,14 @@
 // This functions as the main css
-
-html{
-    height:100%;
+html {
+  position: relative;
+  min-height: 100%;
 }
 body {
     color: black;
     font-family: 'Cabin', sans-serif !important;
     height:100%;
     overflow-x:hidden;
+  margin-bottom: 100px; /* Margin bottom by footer height */
 }
 
 main{
