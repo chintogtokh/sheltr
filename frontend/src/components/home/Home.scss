@@ -21,6 +21,12 @@
 
     .header-content{
 
+      background: rgba(255,255,255,0.1);
+      padding: 20px 0;
+      width:100%;
+
+
+
         .header-content-inner {
           padding: 0 20px;
             text-align: center;
@@ -345,7 +351,7 @@ div.find-suburbs-btn-container{
   .more-info{
     display:none;
   }
-    
+
 @media (min-width: 1068px) {
 .more-info{
   position: absolute;
